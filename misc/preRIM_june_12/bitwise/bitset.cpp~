@@ -1,0 +1,57 @@
+#include<iostream>
+#include<string.h>
+using namespace std;
+
+
+
+class bitString
+{
+  int m_bit;
+  char *m_str;
+public:
+    explicit bitString (char *str)
+  {
+    m_str = strdup (str);
+    memset (&m_bit, 0, sizeof (m_bit));
+  }
+   ~bitString ()
+  {
+    cout<<" bitString::~bitString\n";
+    delete m_str;
+  }
+
+  inline char *ascii ()
+  {
+    return m_str;
+  }
+  bool isUnique ();
+
+protected:
+  bool bitSet ();
+};
+
+bool bitString::inUnique()
+{
+ bool ret(false);
+}
+
+bool bitSet()
+{ 
+ bool ret(false);
+ int index;
+ while(*m_str !='\0')
+{
+ index = (int) *m_str; 
+ m_str++;
+ 
+}
+}
+
+
+int
+main (void)
+{
+  bitString b ("helo");
+  cout<<" string :: "<<b.ascii()<<"  is unique "<<b.isUnique();
+  return 0;
+}
