@@ -1,3 +1,8 @@
+/*
+Author:rsadhu
+Date:07/12/2012
+Completely for learning purposes.
+*/
 #include<iostream>
 using namespace std;
 
