@@ -6,6 +6,7 @@ Completely for learning purposes.
 #include<iostream>
 using namespace std;
 
+
 struct  Node
 {
  Node *left,*right;
@@ -26,13 +27,32 @@ cout<<"\nINORDER\n";
  cout<<"\nPOSTORDER\n";
  postOrderRec(m_root);
  cout<<"\n";
+ cout<<"Non Recursive Methods\n";
+ inOrder(m_root);
 }
 protected:
 void inOrderRec(Node *node);
 void preOrderRec(Node *node);
 void postOrderRec(Node *node);
+void inOrder(Node *n);
+void preOrder(Node *n);
+void postOrder(Node *n);
 private:
 Node *m_root;
+};
+
+#define MAX 100
+template<typename T>
+class Stack
+{
+T * arr[MAX];
+int m_top;
+public:
+Stack():m_top(-1){};
+T *pop(){ if(m_top>0 ){ return arr[m_top--];}}
+void push(T *n){ if(m_top <MAX ){ arr[++m_top] = n;}}
+bool isEmpty(){ bool ret(false); if(m_top == -1){ ret= true;} return ret;}
+int size(){ return m_top;}
 };
 
 void BST::inOrderRec(Node *n)
@@ -53,7 +73,6 @@ void BST::preOrderRec(Node *n)
 }
 }
 
-
 void BST::postOrderRec(Node *n)
 {
  if(n!=NULL){
@@ -63,7 +82,46 @@ void BST::postOrderRec(Node *n)
 }
 }
 
+void BST::inOrder(Node *n)
+{
+Stack<Node *> s;
+/*
+while(n)
+{
+ if(n->left){
+ s.push(n);
+  n = n->left;
+ }
+ else{
+ Node * tmp ;
+ cout<< n->data<<" " ; 
+ }
+ 
+ }
+}*/
+}
 
+void test()
+{
+cout<<"\ntest function called\n";
+ Stack<int> st;
+ for(int i=0;i<10;i++)
+  st.push(&i);
+ 
+ for(int i=0;i<st.size();i++){
+ cout<<i<<" " ;
+ cout<<*(st.pop())<<" \n" ;
+ }
+ cout<<"\n";
+  
+}
+
+void BST::preOrder(Node *n)
+{
+}
+void BST::postOrder(Node *n)
+{
+}
 BST & BST::operator<(int d)
 {  
    if(!m_root){
@@ -98,12 +156,11 @@ BST & BST::operator<(int d)
 
 
 
-
-
 int main(void)
 {
  BST bst;
  bst<10<5<15<8<12<3<18;
  bst.displayAll();
+ test();
  return 0;
 }
