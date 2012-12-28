@@ -30,6 +30,7 @@ cout<<"\nINORDER\n";
  cout<<"\n";*/
  cout<<"Non Recursive Methods\n";
  inOrder(m_root);
+ bfsDisplay(m_root);
 }
 protected:
 void inOrderRec(Node *node);
@@ -38,6 +39,7 @@ void postOrderRec(Node *node);
 void inOrder(Node *n);
 void preOrder(Node *n);
 void postOrder(Node *n);
+void bfsDisplay(Node *n);
 private:
 Node *m_root;
 };
@@ -105,7 +107,30 @@ void BST::inOrder(Node *n)
  } 
 }
 
-
+void BST::bfsDisplay(Node *root)
+{
+ cout<<" BST::bfsDisplay \n";
+	queue<Node*> q;
+	if(root){
+	
+	q.push(root);
+	while(!q.empty())
+	{
+	 Node *d =  q.front();
+	 cout<<d->data<<"  " ;
+	 if(d->left)
+	 {	  
+	  q.push(d->left);
+	 }
+	 if(d->right)
+	 {
+	  q.push(d->right);
+	 }
+	 q.pop();	 
+	}	
+	}
+	cout<<" BDT::dfsDisplay end\n";
+}
 
 void BST::preOrder(Node *n)
 {
