@@ -1,9 +1,15 @@
 #include"phonebook.h"
 
-static FILE *fp=NULL;
+static FILE *fp;
+static unsigned int uid;
 void init(void)
 {
-	 fp = fopen("pb.txt","r+");
+	 fp = fopen("pb.txt","a+");
+	 if(!fp)
+	  {
+	   printf("\n File Creation/opening failing :: Exiting\n");
+	   exit(1);
+	  }
 }
 
 void close()
@@ -14,17 +20,34 @@ void close()
 
 void addContact()
 {
- printf("\n addContact called\n");
-	Contact *contact = (Contact *)malloc(sizeof(Contact));
-	
-	printf("\n 1.Enter the FirstName ");
-	puts(contact->firstName);
-	printf("\n 2.Enter the SecondName ");
-	puts(contact->secondName);
-	printf("\n 3.Enter the FirstNumber ");
-	puts(contact->firstNumber);
-	printf("\n 4.Enter the SecondNumber ");
-	puts(contact->secondNumber);
+  uid++;
+  char str[50];  
+
+  printf("\n Enter the First Name:: if not then press N\n");
+  scanf("%s",str);
+  if(strcmp(str,"N")==0){
+   printf("\nN pressed\n");
+   strcpy(str, "$");
+  }
+  fprintf(fp,"%d:%s ",uid,str);    
+  
+  printf("\n Enter the Second Name :: if not then press N\n");
+  scanf("%s",str);
+  if(strcmp(str,"N")==0)
+  strcpy(str, "$");
+  fprintf(fp,"%s ",str);
+  
+  printf("\n Enter the Mobile Number :: if not then press N\n");
+  scanf("%s",str);
+  if(strcmp(str,"N")==0)
+  strcpy(str, "$");
+  fprintf(fp,"%s ",str);    
+  
+  printf("\n Enter the TelePhone Number :: if not then press N\n");
+  scanf("%s",str);
+  if(strcmp(str,"N")==0)
+  strcpy(str, "$");
+  fprintf(fp,"%s#%s",str,"\n");      
 }
 
 void updateContact()
