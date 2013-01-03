@@ -71,16 +71,77 @@ int deleteContact()
 
 }
 
-Contact* findContact(Contact *f)
+int stringRecognizer(char *str,char *mob)
 {
- char fname[100],lname[100];
- int mob, tele;
+ while(*mob!='\0')
+ {
+  if(*mob != *str)
+  return 0;
+  mob++;
+  str++; 
+ }
+ 
+ if(*mob == '\0')
+ return 1; 
+}
+
+Contact *makeContact(char *buff)
+{
+ 
+ Contact *c;
+ int cnt=0;
+ char *tmp =(char *)malloc(sizeof(char )*30);
+ if(tmp == NULL)
+ printf("\n tmp failing\n");
+ else
+ {
+  strcpy(tmp,"hello");
+  printf("\n %s\n", tmp);
+ }
+ memset(tmp,0,30);
+ char ch;
+ while(*buff!='\0')
+ {
+  ch = *buff++;
+  *tmp++  = ch;
+   
+  if(*buff==' ' )
+  { 
+    buff++;
+	*tmp ='\0';
+	switch(cnt)
+	{
+	 case 1:
+		c->firstName = strdup(tmp);
+		break;
+	 case 2:
+		c->secondName = strdup(tmp);
+		break;
+	case 3:
+		c->firstNumber =  strdup(tmp);
+		break;
+	case 4:
+		c->secondNumber = strdup(tmp);
+		break;	 
+	}
+	cnt++;     
+  }     
+ }
+ return c;
+}
+
+Contact *findContact(char *mob)
+{
+ char fname[100],lname[100]; 
  fseek(fp,0,SEEK_SET); 
  char buff[100];
  while(fgets(buff,100,fp)!=NULL)
  {
   printf("%s\n",buff);
+  if(stringRecognizer(buff,mob))
+  return makeContact(buff);   
  }
+ return NULL;   
 }
 
 

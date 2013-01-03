@@ -5,8 +5,7 @@ typedef struct __contact
 	char *firstName;
 	char *secondName;
 	char *firstNumber;
-	char *secondNumber;
-	unsigned uid ;
+	char *secondNumber;	
 }Contact;
 
 typedef struct __list
@@ -18,7 +17,7 @@ typedef struct __list
 void addContact();
 void updateContact();
 int deleteContact();
-Contact* findContact(Contact *);
+Contact* findContact(char*);
 
 void init();
 

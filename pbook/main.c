@@ -20,8 +20,12 @@ int main(void)
 				 break;
          	         case 2:
 				 {
-				 Contact *p;
-				 findContact(p);
+				 char *p ="123";
+				 Contact *a = findContact(p);
+				 if(a)
+				 {
+				  printf("%s \n %s\n%s \n%s",a->firstName,a->secondName,a->firstNumber,a->secondNumber);
+				 }
 				 break;
 				 }
 			 case 3:
