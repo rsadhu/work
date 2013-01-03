@@ -90,7 +90,9 @@ Contact *makeContact(char *buff)
  
  Contact *c;
  int cnt=0;
- char *tmp =(char *)malloc(sizeof(char )*30);
+ //char *tmp =(char *)malloc(sizeof(char )*30);
+ char tmp[30];
+ int i=0;
  if(tmp == NULL)
  printf("\n tmp failing\n");
  else
@@ -102,29 +104,33 @@ Contact *makeContact(char *buff)
  char ch;
  while(*buff!='\0')
  {
-  ch = *buff++;
-  *tmp++  = ch;
-   
+  tmp[i++] = *buff++;
+     
   if(*buff==' ' )
   { 
+   cnt++;
     buff++;
-	*tmp ='\0';
+	tmp[i] ='\0';
+	i=0;
 	switch(cnt)
 	{
 	 case 1:
-		c->firstName = strdup(tmp);
+		c->firstNumber =  strdup(tmp);
+		
 		break;
 	 case 2:
-		c->secondName = strdup(tmp);
+		c->secondNumber = strdup(tmp);
+		
 		break;
 	case 3:
-		c->firstNumber =  strdup(tmp);
+		c->firstName = strdup(tmp);
+		
 		break;
 	case 4:
-		c->secondNumber = strdup(tmp);
+		c->secondName = strdup(tmp);
+		
 		break;	 
-	}
-	cnt++;     
+	}	 
   }     
  }
  return c;
