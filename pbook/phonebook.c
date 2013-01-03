@@ -18,36 +18,44 @@ void close()
 	fclose(fp);
 }
 
+void write( char *fname, char *lname,char *mob, char *tele)
+{
+   fprintf(fp,"%s %s %d %d%s",fname,lname,mob,tele,"\n");
+}
 void addContact()
 {
   uid++;
-  char str[50];  
+  char fname[50];  
+  char lname[50];  
+  char mob[150];  
+  char tele[50];  
 
   printf("\n Enter the First Name:: if not then press N\n");
-  scanf("%s",str);
-  if(strcmp(str,"N")==0){
+  scanf("%s",fname);
+  if(strcmp(fname,"N")==0){
    printf("\nN pressed\n");
-   strcpy(str, "$");
+   strcpy(fname, "$");
   }
-  fprintf(fp,"%d:%s ",uid,str);    
+  //fprintf(fp,"%d:%s ",uid,str);    
   
   printf("\n Enter the Second Name :: if not then press N\n");
-  scanf("%s",str);
-  if(strcmp(str,"N")==0)
-  strcpy(str, "$");
-  fprintf(fp,"%s ",str);
+  scanf("%s",lname);
+  if(strcmp(lname,"N")==0)
+  strcpy(lname, "$");
+  //fprintf(fp,"%s ",str);
   
   printf("\n Enter the Mobile Number :: if not then press N\n");
-  scanf("%s",str);
-  if(strcmp(str,"N")==0)
-  strcpy(str, "$");
-  fprintf(fp,"%s ",str);    
+  scanf("%s",mob);
+  if(strcmp(mob,"N")==0)
+  strcpy(mob, "$");
+  //fprintf(fp,"%s ",str);    
   
   printf("\n Enter the TelePhone Number :: if not then press N\n");
-  scanf("%s",str);
-  if(strcmp(str,"N")==0)
-  strcpy(str, "$");
-  fprintf(fp,"%s#%s",str,"\n");      
+  scanf("%s",tele);
+  if(strcmp(tele,"N")==0)
+  strcpy(tele, "$");
+  //fprintf(fp,"%s #%s",str,"\n");     
+  write(fname, lname, mob,tele);  
 }
 
 void updateContact()
@@ -62,7 +70,16 @@ int deleteContact()
 
 Contact* findContact(Contact *f)
 {
-
+ char fname[100],lname[100];
+ int mob, tele;
+ fseek(fp,0,SEEK_SET);
+ fscanf(fp,"%s %s %d %d",fname,lname,&mob,&tele);
+ printf("\n read items ... %s %s %d %d",fname,lname, mob,tele);
+ char buff[100];
+ while(fgets(buff,100,fp)!=NULL)
+ {
+  printf("%s\n",buff);
+ }
 }
 
 
