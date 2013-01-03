@@ -19,8 +19,8 @@ void close()
 }
 
 void write( char *fname, char *lname,char *mob, char *tele)
-{
-   fprintf(fp,"%s %s %d %d%s",fname,lname,mob,tele,"\n");
+{  
+   fprintf(fp,"%s %s %s %s%s",mob,tele,fname,lname,"\n");
 }
 void addContact()
 {
@@ -47,7 +47,10 @@ void addContact()
   printf("\n Enter the Mobile Number :: if not then press N\n");
   scanf("%s",mob);
   if(strcmp(mob,"N")==0)
-  strcpy(mob, "$");
+  {
+	printf("\n Mob number is important , Try again ,Exitting Now\n");
+	exit(1);
+  }
   //fprintf(fp,"%s ",str);    
   
   printf("\n Enter the TelePhone Number :: if not then press N\n");
@@ -72,9 +75,7 @@ Contact* findContact(Contact *f)
 {
  char fname[100],lname[100];
  int mob, tele;
- fseek(fp,0,SEEK_SET);
- fscanf(fp,"%s %s %d %d",fname,lname,&mob,&tele);
- printf("\n read items ... %s %s %d %d",fname,lname, mob,tele);
+ fseek(fp,0,SEEK_SET); 
  char buff[100];
  while(fgets(buff,100,fp)!=NULL)
  {
