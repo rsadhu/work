@@ -88,7 +88,7 @@ int stringRecognizer(char *str,char *mob)
 Contact *makeContact(char *buff)
 {
  
- Contact *c;
+ Contact *c = (Contact*)malloc(sizeof(Contact));
  int cnt=0;
  //char *tmp =(char *)malloc(sizeof(char )*30);
  char tmp[30];
