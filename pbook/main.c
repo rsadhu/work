@@ -51,6 +51,7 @@ int main(void)
 		}
 
 	}
+	close();
  return 0;
 }
 

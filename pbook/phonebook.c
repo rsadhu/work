@@ -100,12 +100,28 @@ void close()
 {
 	if(fp)
 	fclose(fp);
+	ContactList *tra;
+	displayList();
+	
+	while(_head)
+	{
+		tra =  _head;
+		if(tra->data!=NULL)
+		 free(tra->data);		
+
+		 _head =  _head->next;	
+		free(tra);
+		
+	}
 }
 
 void writeAgain(ContactList *head)
 {
 if(head){
+ fclose(fp);fp=NULL;
  fp = fopen("pb.txt","w");
+ 
+ fclose(fp);fp=NULL;
  fp = fopen("pb.txt","a+");
  Contact *obj;
  while(head)
