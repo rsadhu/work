@@ -2,15 +2,99 @@
 
 static FILE *fp;
 static unsigned int uid;
+ContactList *_head;
+
 void init(void)
 {
 	 fp = fopen("pb.txt","a+");
+	 
 	 if(!fp)
 	  {
 	   printf("\n File Creation/opening failing :: Exiting\n");
 	   exit(1);
 	  }
+	  fillList();
+	  displayList();
 }
+
+Contact *makeContact(char *buff)
+{
+ Contact *c = (Contact*)malloc(sizeof(Contact));
+ int cnt=0;
+ char tmp[30];
+ int i=0;
+ 
+ while(*buff!='\0')
+ {
+  tmp[i++] = *buff++;
+     
+  if(*buff==' ' )
+  { 
+    cnt++;
+    buff++;
+	tmp[i] ='\0';
+	i=0;
+	switch(cnt)
+	{
+	 case 1:
+		c->firstNumber =  strdup(tmp);		
+		break;
+	 case 2:
+		c->secondNumber = strdup(tmp);		
+		break;
+	case 3:
+		c->firstName = strdup(tmp);		
+		break;
+	case 4:
+		c->secondName = strdup(tmp);		
+		break;	 
+	}	 
+  }     
+ }
+ return c;
+}
+
+void fillList()
+{
+ fseek(fp,0,SEEK_SET); 
+ char buff[100];
+ while(fgets(buff,100,fp)!=NULL)
+ {
+   addtolist(makeContact(buff));
+ } 
+}
+
+void addtolist(Contact*obj)
+{
+ContactList * tmp =  (ContactList*)malloc(sizeof(ContactList));
+tmp->data = obj;
+tmp->next = NULL;
+ if(!_head)
+ {
+  _head =  tmp; 
+ }
+ else
+ {
+  ContactList *tra;
+  for(tra =_head;tra->next!=NULL;tra=tra->next);
+  tra->next = tmp;  
+ }
+}
+
+
+void displayList()
+{
+ ContactList *t =  _head;
+ Contact *tmp ;
+ while(t)
+ {
+  tmp = t->data;
+  printf("\n%s \n %s \n%s\n%s\n",tmp->firstName,tmp->secondName,tmp->firstNumber,tmp->secondNumber);
+  t =  t->next;  
+ }
+}
+
+
 
 void close()
 {
@@ -18,9 +102,17 @@ void close()
 	fclose(fp);
 }
 
+
 void write( char *fname, char *lname,char *mob, char *tele)
 {  
    fprintf(fp,"%s %s %s %s%s",mob,tele,fname,lname,"\n");
+   Contact *tmp = (Contact *)malloc(sizeof(Contact));
+   tmp->firstName =  strdup(fname);
+   tmp->secondName =  strdup(lname);
+   tmp->firstNumber =  strdup(mob);
+   tmp->secondNumber =  strdup(tele);
+   addtolist(tmp);
+   displayList();
 }
 void addContact()
 {
@@ -85,69 +177,11 @@ int stringRecognizer(char *str,char *mob)
  return 1; 
 }
 
-Contact *makeContact(char *buff)
-{
- 
- Contact *c = (Contact*)malloc(sizeof(Contact));
- int cnt=0;
- //char *tmp =(char *)malloc(sizeof(char )*30);
- char tmp[30];
- int i=0;
- if(tmp == NULL)
- printf("\n tmp failing\n");
- else
- {
-  strcpy(tmp,"hello");
-  printf("\n %s\n", tmp);
- }
- memset(tmp,0,30);
- char ch;
- while(*buff!='\0')
- {
-  tmp[i++] = *buff++;
-     
-  if(*buff==' ' )
-  { 
-   cnt++;
-    buff++;
-	tmp[i] ='\0';
-	i=0;
-	switch(cnt)
-	{
-	 case 1:
-		c->firstNumber =  strdup(tmp);
-		
-		break;
-	 case 2:
-		c->secondNumber = strdup(tmp);
-		
-		break;
-	case 3:
-		c->firstName = strdup(tmp);
-		
-		break;
-	case 4:
-		c->secondName = strdup(tmp);
-		
-		break;	 
-	}	 
-  }     
- }
- return c;
-}
+
 
 Contact *findContact(char *mob)
 {
- char fname[100],lname[100]; 
- fseek(fp,0,SEEK_SET); 
- char buff[100];
- while(fgets(buff,100,fp)!=NULL)
- {
-  printf("%s\n",buff);
-  if(stringRecognizer(buff,mob))
-  return makeContact(buff);   
- }
- return NULL;   
+ 
 }
 
 

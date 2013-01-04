@@ -10,9 +10,13 @@ typedef struct __contact
 
 typedef struct __list
 {
-	Contact *head;
+	Contact *data;
 	struct __list *next;
 }ContactList;
+
+void addtolist(Contact*);
+void fillList();
+void displayList();
 
 void addContact();
 void updateContact();
