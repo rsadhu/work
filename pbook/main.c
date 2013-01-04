@@ -32,8 +32,15 @@ int main(void)
 				 deleteContact("123");
 				 break;
 			 case 4:
-				 updateContact("123");
+			 {
+				 Contact *new  = (Contact *)malloc(sizeof(Contact));
+				 new->firstName= "xyz";
+				 new->secondName= "hjhjh";
+				 new->firstNumber = "99999";
+				 new->secondNumber = "88888";				 
+				 updateContact("123",new);
 				 break;
+				 }
 			 case 0:
 			 default:
 				 {

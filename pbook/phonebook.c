@@ -167,8 +167,38 @@ void addContact()
   write(fname, lname, mob,tele);  
 }
 
-void updateContact(char *mob)
+void updateContact(char * mob, Contact *new)
 {
+  ContactList *tra = _head;
+  Contact *obj=NULL;  
+  if(strcmp(tra->data->firstNumber,mob)==0)
+  {
+    //_head =  _head->next;
+	strcpy(tra->data->firstName,new->firstName);
+	strcpy(tra->data->secondName,new->secondName);
+	strcpy(tra->data->firstNumber,new->firstNumber);
+	strcpy(tra->data->secondNumber,new->secondNumber);
+  }
+  else
+  {
+    ContactList *prev =_head;	
+	tra =  prev->next;	
+	while(tra)
+	{	    
+		obj = tra->data;
+		if(strcmp(mob,obj->firstNumber)==0)
+		{		 
+		strcpy(obj->firstName,new->firstName);
+		strcpy(obj->secondName,new->secondName);
+		strcpy(obj->firstNumber,new->firstNumber);
+		strcpy(obj->secondNumber,new->secondNumber);
+		 break;
+		}
+		tra= tra->next;
+		prev = prev->next;
+	}	
+  }
+  writeAgain(_head);
 
 }
 

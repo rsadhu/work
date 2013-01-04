@@ -19,7 +19,7 @@ void fillList();
 void displayList();
 
 void addContact();
-void updateContact(char *mob);
+void updateContact(char * mob, Contact *new);
 int deleteContact(char *mob);
 Contact* findContact(char*mob);
 
