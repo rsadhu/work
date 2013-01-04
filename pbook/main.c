@@ -29,10 +29,10 @@ int main(void)
 				 break;
 				 }
 			 case 3:
-				 deleteContact();
+				 deleteContact("123");
 				 break;
 			 case 4:
-				 updateContact();
+				 updateContact("123");
 				 break;
 			 case 0:
 			 default:

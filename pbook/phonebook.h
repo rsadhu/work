@@ -19,9 +19,9 @@ void fillList();
 void displayList();
 
 void addContact();
-void updateContact();
-int deleteContact();
-Contact* findContact(char*);
+void updateContact(char *mob);
+int deleteContact(char *mob);
+Contact* findContact(char*mob);
 
 void init();
 

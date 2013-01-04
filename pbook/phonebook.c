@@ -28,7 +28,7 @@ Contact *makeContact(char *buff)
  {
   tmp[i++] = *buff++;
      
-  if(*buff==' ' )
+  if(*buff==' '  || *buff == '\n')
   { 
     cnt++;
     buff++;
@@ -102,6 +102,20 @@ void close()
 	fclose(fp);
 }
 
+void writeAgain(ContactList *head)
+{
+if(head){
+ fp = fopen("pb.txt","w");
+ fp = fopen("pb.txt","a+");
+ Contact *obj;
+ while(head)
+ {
+	obj =  head->data;   
+	fprintf(fp,"%s %s %s %s%s",obj->firstNumber,obj->secondNumber,obj->firstName,obj->secondName,"\n");
+	head = head->next;
+ } 
+ }
+}
 
 void write( char *fname, char *lname,char *mob, char *tele)
 {  
@@ -128,13 +142,13 @@ void addContact()
    printf("\nN pressed\n");
    strcpy(fname, "$");
   }
-  //fprintf(fp,"%d:%s ",uid,str);    
+  
   
   printf("\n Enter the Second Name :: if not then press N\n");
   scanf("%s",lname);
   if(strcmp(lname,"N")==0)
   strcpy(lname, "$");
-  //fprintf(fp,"%s ",str);
+  
   
   printf("\n Enter the Mobile Number :: if not then press N\n");
   scanf("%s",mob);
@@ -143,24 +157,47 @@ void addContact()
 	printf("\n Mob number is important , Try again ,Exitting Now\n");
 	exit(1);
   }
-  //fprintf(fp,"%s ",str);    
+  
   
   printf("\n Enter the TelePhone Number :: if not then press N\n");
   scanf("%s",tele);
   if(strcmp(tele,"N")==0)
   strcpy(tele, "$");
-  //fprintf(fp,"%s #%s",str,"\n");     
+  
   write(fname, lname, mob,tele);  
 }
 
-void updateContact()
+void updateContact(char *mob)
 {
 
 }
 
-int deleteContact()
+int deleteContact( char *mob)
 {
-
+  ContactList *tra = _head;
+  Contact *obj=NULL;  
+  if(strcmp(tra->data->firstNumber,mob)==0)
+  {
+    _head =  _head->next;
+  }
+  else
+  {
+    ContactList *prev =_head;	
+	tra =  prev->next;	
+	while(tra)
+	{	    
+		obj = tra->data;
+		if(strcmp(mob,obj->firstNumber)==0)
+		{
+		 prev->next = tra->next;
+		 free(tra);
+		 break;
+		}
+		tra= tra->next;
+		prev = prev->next;
+	}	
+  }
+  writeAgain(_head);
 }
 
 int stringRecognizer(char *str,char *mob)
@@ -181,7 +218,16 @@ int stringRecognizer(char *str,char *mob)
 
 Contact *findContact(char *mob)
 {
- 
+ displayList();
+  ContactList *tra = _head;
+  Contact *obj =NULL;
+  while(tra)
+  {
+	obj = tra->data;
+	if(strcmp(mob,obj->firstNumber))
+	return obj;
+	tra= tra->next;	
+  } 
 }
 
 
