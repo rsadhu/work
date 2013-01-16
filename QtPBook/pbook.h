@@ -6,12 +6,17 @@ class Pbook_P;
 
 class PBook
 {
+ PBook(){ cout<<"PBook::PBook\n";}
+ PBook(const PBook &);
  public:
- void addContact(char *fName,char *lName,char *mob,char *landline);
- void deleteContact(char *mob);
- void updateContact(char *fName,char *lName,char *mob,char *landline);
- Contact * find(char *mob); 
+ static PBook * getInstance();
+ void addContact(Contact *);
+ void deleteContact(Contact *);
+ void updateContact(Contact *);
+ Contact * find(Contact *); 
  private:
  Pbook_P *m_ptr;
+ static PBook  *self;
 };
 #endif //
+
