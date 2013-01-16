@@ -1,4 +1,4 @@
 output:
 		g++ -g *.h *.cpp
 clean:
-		rm *~ *.o
+		rm *~ *.o *.*.gch a.exe
