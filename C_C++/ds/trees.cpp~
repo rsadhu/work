@@ -1,0 +1,43 @@
+#include<iostream>
+using namespace std;
+
+class BST;
+
+template<class T>
+class Node
+{
+private:
+Node *left,*right;
+T *data;
+friend class BST;
+};
+
+template <typename U>
+class BST
+{
+ public:
+ BST & operator<(U &data);
+ void display();
+ private:
+Node *m_root;
+};
+
+
+void BST::display()
+{
+
+}
+
+template<typename U>
+BST & BST::operator(U &data)
+{
+ return *this;
+}
+
+int main(void)
+{
+ BST<int> bst;
+ bst<9<5<12<3<11<6<<13;
+ bst.display();
+ return 0;
+}
