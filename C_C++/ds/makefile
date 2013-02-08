@@ -1,2 +1,2 @@
 clean:
-	rm *~ *.o *.*.swp 
+	rm *~ *.o *.*.swp  a.out
