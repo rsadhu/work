@@ -12,6 +12,8 @@ void shellSort(int *arr,int size);
 void mergeSort(int *arr,int size);
 void quickSort(int *arr,int size);
 void display(int *arr,int size){ for(int i=0;i<size;i++) cout<<arr[i]<< " "; cout<<"\n";}
+protected:
+
 };
 
 void Sorter::bubbleSort(int *arr,int size)
@@ -58,12 +60,13 @@ void Sorter::insertionSort(int *arr,int size)
  for(int i=0;i<size;i++)
  { 
  int j = i+1 ;
- while(j-- > 0  && arr[j] < arr[i])
+ while(j > 0  && arr[j] < arr[j-1])
  {
  
    int tmp =  arr[j];
-   arr[j]= arr[i];
-   arr[i] =  tmp;  
+   arr[j]= arr[j-1];
+   arr[j-1] =  tmp;  
+   j--;
  }
  }
 }
@@ -74,6 +77,7 @@ void Sorter::shellSort(int *arr,int size)
 
 void Sorter::mergeSort(int *arr,int size)
 {
+
 }
 
 void Sorter::quickSort(int *arr,int size)
