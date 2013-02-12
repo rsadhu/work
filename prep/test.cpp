@@ -6,8 +6,27 @@ typedef struct st
 {
  unsigned bit:1;
 }bittest;
+
+
+bool pow2(int x)
+{
+ int y = 2;
+ bool f = true;
+ while(x>1)
+ {  
+  if(x%2 != 0)
+  { 
+   f = false;  
+   break;
+  }
+  x = x/y;
+ }
+ return f;
+}
+
 int main(void)
 {
+#ifdef R
  int a,c;
  double b,d;
  char l,m;
@@ -20,19 +39,12 @@ int main(void)
  int arr[]={1,2,3,4,5,6};
  int size=sizeof(arr)/sizeof(int);
  int j=0;
+ #endif
  
- while(j<size){
- tmp = arr[j]; 
- int i=0;
- while(i <  j)
+ for(int x=1;x<100;x++)
  {
-   arr[i+1]=arr[i];
-   i++;
+  printf("\n%d %d",x,pow2(x));
  }
- arr[j
- }
- for(i=0;i<5;i++)
- cout<<arr[i]<< " ";
- cout<<"\n"; 
+ cout<<"\n";
  return 0;
 }

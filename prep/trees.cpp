@@ -1,5 +1,8 @@
 #include<iostream>
+#include<queue>
+#include<stack>
 using namespace std;
+#define _NL_ cout<<"\n";
 
 class Node
 {
@@ -104,25 +107,20 @@ void BST::removeLeaf(Node **head,int d)
  if(*head)
  {
   if((*head)->data == d)
-  {
-   cout<<" deleted :: head"<<(*head)->data<<"\n";
+  {  
    delete *head;
    *head = NULL;
   }
   else
   {
-    if(d < (*head)->data){
-		cout<<" take left :: "<<(*head)->data<<"\n";
+    if(d < (*head)->data){	
 		removeLeaf(&(*head)->left,d);
 		}
-	else if(d > (*head)->data){
-		cout<<" take right :: "<<(*head)->data<<"\n";
+	else if(d > (*head)->data){		
 		removeLeaf(&(*head)->right,d);		
 		}
+  }  
   }
-  cout<<"\n if else end\n";
-  }
-  cout<<" end\n";
 }
 
 void BST::removeNode(int d)
@@ -139,23 +137,50 @@ inOrderRec(root->right);
 }
 }
 
+bool pow2(int x)
+{
+ int y = 2;
+ bool f = true;
+ while(x>1)
+ {  
+  if(x%2 != 0)
+  { 
+   f = false;  
+   break;
+  }
+  x = x/y;
+ }
+ return f;
+}
+
 void BST ::bfs(Node *head)
 {
- 
+queue<Node *>q;
+int cnt=0;
+q.push(head);
+while(!q.empty())
+{
+	 if(head->left)
+		q.push(head->left);
+	 if(head->right)
+		q.push(head->right);	 
+		
+		cout<< head->data << " ";
+		q.pop();	
+		head = q.front();		
+}
 }
 void BST::display()
 {
  inOrderRec(m_root);
- cout<<"\n";
+ _NL_
  bfs(m_root);
+ _NL_
 }
 int main(void)
 {
  BST bt;
- bt<20<30<35<25<10<15<5;
- bt.display();
- 
- bt.removeNode(5);
- bt.display();
+ bt<30<20<40<15<25<35<45<12<18<23<27<33<38<42<50;
+ bt.display(); 
  return 0;
 }
