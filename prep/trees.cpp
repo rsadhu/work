@@ -16,34 +16,49 @@ BST():m_root(NULL){}
 BST& operator<(int d);
 
 void display();
+void removeNode(int d);
+protected:
+void removeLeaf(Node **,int );
+void createTree(Node *,Node *newN);
+void inOrderRec(Node *);
+void bfs(Node *);
+void dfs(Node *);
 
 private:
-Node * createTree(Node *,int d );
-void inOrderRec(Node *);
-void bfs();
-void dfs();
-
 Node *m_root;
+
 };
 
 
 
-Node * BST::createTree(Node *head,int d)
+void BST::createTree(Node *head,Node * newN)
 {
  if(head)
  {
-	if(d > head->data)
-		head->right = createTree(head->right,d);
-	else if(d < head->data)
-		head->left = createTree(head->left,d);
+	if(newN->data > head->data)
+	{
+		if(head->right== NULL)
+			head->right =  newN;
+		else
+			createTree(head->right,newN);
+     }
+	else if(newN->data < head->data)
+	{
+		if(head->left == NULL)
+			head->left =  newN;
+		else
+			createTree(head->left,newN);
+    }
  }
- 
- return  new Node(d);
 }
 
+//bt<20<30<35<25<10<15<5;
 BST & BST::operator<(int d)
 {
+
 #ifdef R
+
+
  if(!m_root)
   m_root = new Node (d);
  else 
@@ -74,10 +89,46 @@ BST & BST::operator<(int d)
   }  
  }
  #endif
- m_root =  createTree(m_root,d);
+ if(!m_root)
+	m_root = new Node(d);
+else
+{
+ Node * tmp =  new Node (d);
+ createTree(m_root,tmp);	  
+ }
  return *this;
 }
 
+void BST::removeLeaf(Node **head,int d)
+{
+ if(*head)
+ {
+  if((*head)->data == d)
+  {
+   cout<<" deleted :: head"<<(*head)->data<<"\n";
+   delete *head;
+   *head = NULL;
+  }
+  else
+  {
+    if(d < (*head)->data){
+		cout<<" take left :: "<<(*head)->data<<"\n";
+		removeLeaf(&(*head)->left,d);
+		}
+	else if(d > (*head)->data){
+		cout<<" take right :: "<<(*head)->data<<"\n";
+		removeLeaf(&(*head)->right,d);		
+		}
+  }
+  cout<<"\n if else end\n";
+  }
+  cout<<" end\n";
+}
+
+void BST::removeNode(int d)
+{
+ removeLeaf(&m_root,d);
+}
 void BST::inOrderRec( Node *root)
 {
 
@@ -88,15 +139,23 @@ inOrderRec(root->right);
 }
 }
 
-
+void BST ::bfs(Node *head)
+{
+ 
+}
 void BST::display()
 {
  inOrderRec(m_root);
+ cout<<"\n";
+ bfs(m_root);
 }
 int main(void)
 {
  BST bt;
  bt<20<30<35<25<10<15<5;
+ bt.display();
+ 
+ bt.removeNode(5);
  bt.display();
  return 0;
 }
