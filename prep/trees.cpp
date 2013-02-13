@@ -21,6 +21,7 @@ BST& operator<(int d);
 void display();
 void removeNode(int d);
 protected:
+void spiralDisplay(Node *);
 void removeLeaf(Node **,int );
 void createTree(Node *,Node *newN);
 void inOrderRec(Node *);
@@ -33,6 +34,47 @@ Node *m_root;
 };
 
 
+void BST::spiralDisplay(Node *head)
+{
+ stack<Node *>first,second;
+ first.push(head);
+ int s;
+  while(!first.empty() || !second.empty())
+  {
+   _NL_
+   
+   while(!first.empty())
+   {
+    head = first.top();
+    first.pop();
+	cout<<head->data<<" ";	
+	s += head->data;
+	if(head->right)
+		second.push(head->right);
+	if(head->left)
+		second.push(head->left);   
+   }
+   cout<<s;
+   s = 0;
+   
+   _NL_
+   
+   while(!second.empty())
+   {
+	head = second.top();
+	cout<<head->data<<" ";
+	second.pop();	
+	s += head->data;	
+	if(head->left)
+		first.push(head->left);    
+	if(head->right)
+		first.push(head->right);
+   }
+   cout<<s;
+   s=0;   
+  }
+
+}
 
 void BST::createTree(Node *head,Node * newN)
 {
@@ -172,15 +214,18 @@ while(!q.empty())
 }
 void BST::display()
 {
+
  inOrderRec(m_root);
  _NL_
  bfs(m_root);
+ _NL_
+ spiralDisplay(m_root);
  _NL_
 }
 int main(void)
 {
  BST bt;
  bt<30<20<40<15<25<35<45<12<18<23<27<33<38<42<50;
- bt.display(); 
+ bt.display();  
  return 0;
 }
