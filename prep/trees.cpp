@@ -20,7 +20,13 @@ BST& operator<(int d);
 
 void display();
 void removeNode(int d);
+inline int height()
+{
+ //int oldh,newh;oldh=newh=0;calHeight(m_root,&oldh,&newh);return oldh;
+ return calHeight(m_root);
+ }
 protected:
+int calHeight(Node *);
 void spiralDisplay(Node *);
 void removeLeaf(Node **,int );
 void createTree(Node *,Node *newN);
@@ -33,6 +39,21 @@ Node *m_root;
 
 };
 
+int BST::calHeight(Node *p)
+{ 
+  {
+    ++*newH;
+    calHeight(node->left,oldH,newH);
+	*oldH = *newH;
+	--*newH;
+	calHeight(node->right,oldH,newH);	
+  } 
+*/
+  if (!p) return 0;
+  int left_height = calHeight(p->left);
+  int right_height = calHeight(p->right);
+  return (left_height > right_height) ? left_height + 1 : right_height + 1;  
+}
 
 void BST::spiralDisplay(Node *head)
 {
@@ -97,7 +118,7 @@ void BST::createTree(Node *head,Node * newN)
  }
 }
 
-//bt<20<30<35<25<10<15<5;
+// bt<30<20<40<15<25<35<45<12<18<23<27<33<38<42<50;
 BST & BST::operator<(int d)
 {
 
@@ -169,6 +190,7 @@ void BST::removeNode(int d)
 {
  removeLeaf(&m_root,d);
 }
+
 void BST::inOrderRec( Node *root)
 {
 
@@ -214,18 +236,20 @@ while(!q.empty())
 }
 void BST::display()
 {
-
- inOrderRec(m_root);
+  inOrderRec(m_root);
  _NL_
  bfs(m_root);
  _NL_
  spiralDisplay(m_root);
- _NL_
+ _NL_ 
 }
+
 int main(void)
 {
  BST bt;
  bt<30<20<40<15<25<35<45<12<18<23<27<33<38<42<50;
  bt.display();  
+ cout<<" \nthe height of the tree is ..."<< bt.height();
+ _NL_
  return 0;
 }
