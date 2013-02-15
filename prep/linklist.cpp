@@ -82,14 +82,25 @@ void SLL::display()
 void SLL::  reverseList()
 {
  Node *cur,*pre,*tmp;
- cur=pre=m_head;
- 
+ pre=m_head;
+ cur= pre->next;
+ tmp =  NULL;
+ while(cur)
+ {
+  pre->next = tmp;  
+  pre = cur;
+  cur = cur->next; 
+  tmp = pre;  
+ } 
+  m_head = tmp;
 }
 
 int main(void)
 {
  SLL sl;
  sl<1<2<3<4<5<6<7<8<9;
+ sl.display();
+ sl.reverseList();
  sl.display();
  return 0;
 }
