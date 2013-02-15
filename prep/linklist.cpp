@@ -21,7 +21,7 @@ class SLL
  void reverseList();
  private:
  void addIter(Node *,int );
- void addRec(Node *,int );
+ void addRec(Node *,int ,bool &f);
  void mergeTwo(Node *,Node *); 
  private:
  Node *m_head;
@@ -38,14 +38,15 @@ void SLL::addIter(Node *head,int d)
  head->next =new Node (d);
 }
 
-void SLL::addRec(Node *head,int d)
+void SLL::addRec(Node *head,int d,bool &flag)
 {
 if(head){
- if(head->next == NULL)
+ if(head->next == NULL  && flag == false)
  {
    head->next = new Node(d);
+   flag = true;
  }
- addRec(head->next,d);
+ addRec(head->next,d,flag);
 }
 }
 
@@ -59,7 +60,9 @@ SLL & SLL::operator<(int d)
  }
  else
  {
-  addIter(m_head,d);  
+  //addIter(m_head,d);  
+  bool f =  false;
+  addRec(m_head,d,f);
  }
  return *this;
 }
@@ -75,6 +78,13 @@ void SLL::display()
  cout<<"\n";
 }
 
+
+void SLL::  reverseList()
+{
+ Node *cur,*pre,*tmp;
+ cur=pre=m_head;
+ 
+}
 
 int main(void)
 {
