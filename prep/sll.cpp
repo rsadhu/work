@@ -44,7 +44,7 @@ SLL<T>::~SLL()
 	while(m_head)
 	{
 		 tra= m_head;
-		 m_head= m_head;
+		 m_head= m_head->next;
 		 delete tra;
 	}
 }
@@ -65,12 +65,14 @@ SLL<T> &SLL<T>::operator<(T d)
 template<typename T>
 void SLL<T>::display() // using inOrder traversal here 
 {
+cout<<"\n";
   Node<T> *tra= m_head;
   while(tra)
   {
 	  cout<< tra->data <<" " ;
 	  tra= tra->next;
   }
+cout<<"\n";
 }
 
 template<typename T>
@@ -92,7 +94,19 @@ void SLL<T>::reverse(Type t)
 template<typename T>
 void SLL<T>::reverseList()
 {
-	
+cout<<"\n ReverseList::Iter\n";
+	Node<T> *cur,*pre,*tmp;
+	pre=m_head;
+	cur= pre->next;
+	tmp =  NULL;
+	while(cur)
+	{
+		pre->next = tmp;
+		pre = cur;
+		cur = cur->next;
+		tmp = pre;
+	}
+	m_head = tmp;
 }
 
 template<typename T>
@@ -106,6 +120,8 @@ int main(void)
 {
 	 SLL<int> sl;
 	 sl<1<2<3<4<5<6<7<8<9;
+	 sl.display();
+         sl.reverse(UP);
 	 sl.display();
 	 return 0;
 }
