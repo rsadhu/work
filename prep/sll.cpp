@@ -7,8 +7,8 @@ using namespace std;
 typedef 
 enum type
 {
-		UP,
-		DOWN
+		ITER,
+		REC
 }Type;
 
 template<typename T>	
@@ -35,7 +35,7 @@ class SLL
 	private:		
 	void inOrder();	
 	void reverseList();
-	void reverseListRec();		
+	void reverseListRec(Node<T> *,Node<T> *);		
 };
 template<typename T>
 SLL<T>::~SLL()
@@ -80,11 +80,14 @@ void SLL<T>::reverse(Type t)
 { 
 	switch(t)
 	{
-		 case UP:
+		 case ITER:
 		 reverseList();
 		 break;
-		 case DOWN:
-		 reverseListRec();
+		 case REC:
+		 {
+			Node<T> *tra=m_head->next;
+			reverseListRec(m_head,tra);
+		 }
 		 break;
 		 default:
 		 break;
@@ -96,22 +99,25 @@ void SLL<T>::reverseList()
 {
 cout<<"\n ReverseList::Iter\n";
 	Node<T> *cur,*pre,*tmp;
-	pre=m_head;
-	cur= pre->next;
+	pre = m_head;
+	cur = pre->next;
 	tmp =  NULL;
 	while(cur)
 	{
 		pre->next = tmp;
-		pre = cur;
-		cur = cur->next;
 		tmp = pre;
+		pre = cur;
+		cur = cur->next;	
 	}
+	pre->next = tmp;
+    tmp = pre;
 	m_head = tmp;
 }
 
 template<typename T>
-void SLL<T>::reverseListRec()
+void SLL<T>::reverseListRec(Node<T> *first,Node<T> * second)
 {
+	
 	
 }
 
@@ -121,7 +127,9 @@ int main(void)
 	 SLL<int> sl;
 	 sl<1<2<3<4<5<6<7<8<9;
 	 sl.display();
-         sl.reverse(UP);
+     sl.reverse(ITER);
+	 sl.display();
+	 sl.reverse(REC);
 	 sl.display();
 	 return 0;
 }
