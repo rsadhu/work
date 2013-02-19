@@ -3,20 +3,22 @@
 #include<iostream>
 using namespace std;
 
-
+//enum for iterative and recursive reversal function
 typedef 
 enum type
 {
-		ITER,
-		REC
+	ITER,
+	REC
 }Type;
 
+//Link List Class
 template<typename T>	
 class Node
 {
 	public:
+	Node():next(NULL){}
 	Node(T d):next(NULL),data(d){}
-	~Node(){ next = NULL;cout<<"\n Node::~Node\n";}
+	~Node(){ next = NULL;}
 	Node *next;
 	T data;		
 };
@@ -35,7 +37,7 @@ class SLL
 	private:		
 	void inOrder();	
 	void reverseList();
-	Node<T> * reverseListRec(Node<T> *,Node<T>*);		
+	Node<T> * reverseListRec(Node<T> *);		
 };
 template<typename T>
 SLL<T>::~SLL()
@@ -81,25 +83,24 @@ void SLL<T>::reverse(Type t)
 { 
 	switch(t)
 	{
-		 case ITER:
-		 reverseList();
-		 break;
-		 case REC:
-		 {
-		  Node<T> *tra = m_head->next;
-	      m_head  = reverseListRec(m_head,tra);
-		  cout<<"\n";		  
-		 }
-		 break;
-		 default:
-		 break;
+	 case ITER:
+         	reverseList();
+	 break;
+	 case REC:
+	 {
+        	 m_head = reverseListRec(m_head);
+	         cout<<"\n";		  
+	 }
+	 break;
+	 default:
+         cout<<"	default  entered : try again\n";
+	 break;
 	}
 }
 
 template<typename T>
 void SLL<T>::reverseList()
 {
-cout<<"\n ReverseList::Iter\n";
 	Node<T> *cur,*pre,*tmp;
 	pre = m_head;
 	cur = pre->next;
@@ -109,18 +110,25 @@ cout<<"\n ReverseList::Iter\n";
 		pre->next = tmp;
 		tmp = pre;
 		pre = cur;
-	}
 		cur = cur->next;	
+        }
 	pre->next = tmp;
-    tmp = pre;
+        tmp = pre;
 	m_head = tmp;
 }
 
 
 template<typename T>
-Node<T>* SLL<T>::reverseListRec(Node<T> *tra,Node<T> *tail)
+Node<T>* SLL<T>::reverseListRec(Node<T> *tra)
 {	
-	
+    Node<T>* result;
+    if(!(tra && tra->next)) 
+        return tra;
+
+    result = reverseListRec(tra->next);
+    tra->next->next = tra;
+    tra->next = NULL;
+    return result;
 }
 
 #endif //
