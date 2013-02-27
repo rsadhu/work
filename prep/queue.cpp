@@ -6,32 +6,32 @@ template<typename T>
 class SQueue
 {
  public:
- SQueue(){ m_data = new T[m_size=100];front=rear=0;}
- T *operator[](int index);
- SQueue & operator<(T &);
+ SQueue(){ m_data = new T[m_size=100];m_front=m_rear=0;}
+ T *operator[](unsigned int index);
+ SQueue & operator<(unsigned int );
  
- inline bool isEmpty(){ bool ret(false);if(front == rear)ret=true;return ret;}
- inline bool isFull(){ bool ret(false);if(rear == m_size-1) ret = true; return ret;}
+ inline bool isEmpty(){ bool ret(false);if(m_front == m_rear)ret=true;return ret;}
+ inline bool isFull(){ bool ret(false);if(m_rear == m_size-1) ret = true; return ret;}
  protected:
  void push(T &);
  T &pop(); 
  private:
  T *m_data;
  unsigned m_size;
- unsigned int front ,rear;
+ unsigned int m_front ,m_rear;
 };
 
-SQueue & SQueue::operator<(T &d)
+
+template<typename T>
+SQueue<T> & SQueue<T>:: operator<(unsigned int )
 {
- if(!isFull())
-  push(d);
-  return *this;
+return *this;
 }
 
-
-T * SQueue::operator[](unsigned int i)
+template<typename T>
+T * SQueue<T>::operator[](unsigned int i)
 {
- if(i >=front && i <= rear)
+ if(i >=m_front && i <= m_rear)
  {
   return m_data[i];
  }
@@ -42,9 +42,17 @@ T * SQueue::operator[](unsigned int i)
 }
 
 
-T & SQueue::pop()
+template<typename T>
+T & SQueue<T>::pop()
 {
  
  return *this;
 }
 
+
+int main(void)
+{
+    SQueue<int > q;
+    q<1<2<3<4<5<6;
+    return 0;
+}
