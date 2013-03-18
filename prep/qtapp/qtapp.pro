@@ -10,9 +10,11 @@ TEMPLATE = app
 SOURCES += main.cpp \
     contact.cpp \
     contactMngr.cpp \
-    cachemngr.cpp
+    cachemngr.cpp \
+    qtdatabase.cpp
 HEADERS += contact.h \
     ../global.h \
     global.h \
     contactMngr.h \
-    cachemngr.h
+    cachemngr.h \
+    qtdatabase.h

@@ -10,13 +10,8 @@ public:
     void delContact(Contact &);
     Contact & findContact(Contact);
 private:
-//Cache<Contact *>m_cache;
-#ifdef FILE_DB
-            FILE *m_db;
-#elif
-   void *m_db;
-#endif//
-
+Cache<Contact *>m_cache;
+QtDataBase *m_db;
 };
 
 #endif // CONTACTMNGR_H
