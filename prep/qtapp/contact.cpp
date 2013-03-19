@@ -24,9 +24,11 @@ Contact::Contact(const Contact &rhs)
 Contact & Contact:: operator=(const Contact &rhs)
 {
     qDebug()<<"\n Contact::operator = \n";
+ if(!this->m_fname)
+     return *this;
  int tmplen = strlen(this->m_fname);
 
- if(tmplen!=0)
+ if(tmplen>=0)
  {
    delete this->m_fname;
    this->m_fname= new char[tmplen+1];

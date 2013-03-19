@@ -13,7 +13,6 @@ SOURCES += main.cpp \
     cachemngr.cpp \
     qtdatabase.cpp
 HEADERS += contact.h \
-    ../global.h \
     global.h \
     contactMngr.h \
     cachemngr.h \
