@@ -10,7 +10,6 @@ public:
     T *data;
 };
 
-
 template<typename T>
 class Cache
 {

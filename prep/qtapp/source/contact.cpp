@@ -1,8 +1,8 @@
-#include "contact.h"
+#include "../include/contact.h"
 
 Contact::Contact(uint mob, char *name):m_mob(mob)
 {
- qDebug()<<"\n Contact::Contact\n";
+ cout<<"\n Contact::Contact\n";
  int tmplen = strlen(name);
  if(tmplen!=0){
      m_fname = new char[tmplen+1];

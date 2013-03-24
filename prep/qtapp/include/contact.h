@@ -4,7 +4,7 @@
 class Contact
 {
  public:
-    Contact (){ m_fname=NULL,m_mob=0;}
+ Contact (){ m_fname=NULL,m_mob=0;}
  explicit Contact(uint mob,char *name = "");
  Contact(const Contact &rhs);
  Contact & operator=(const Contact &rhs);
