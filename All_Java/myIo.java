@@ -13,7 +13,7 @@ public class myIo
     {
 	try{
         int i=0;
-        while(argv[i]!=NULL){
+        while(argv[i].isEmpty()){
             arr.add(argv[i]);
             i++;
         }
