@@ -1,4 +1,12 @@
-public  static main(int argc,String argv[][])
+public class test{
+
+public  static void  main(String[] argv)
 {
-	System.out.println(" hello world\n");
+
+    myIo obj = new myIo();
+    obj.display("hello world");
+    myIo obj1 = new myIo(argv);
+    obj.displayAll();
+}
+
 }
