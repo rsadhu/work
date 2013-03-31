@@ -3,7 +3,6 @@
 #include<iostream>
 #include<string.h>
 #include<stdlib.h>
-#include"Contact.h"
-#include"ContactManager.h"
-#include"Cache.h"
+#include<stdio.h>
+using namespace std;
 #endif 

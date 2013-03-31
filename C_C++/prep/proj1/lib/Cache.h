@@ -1,5 +1,6 @@
 #ifndef __CACHE__H
 #define __CACHE__H
+#include"global.h"
 template<typename T>
 class Node
 {
@@ -20,4 +21,27 @@ class Cache
 	 private:
 	 Node<T> *m_root;
 };
+
+
+template<typename T>
+void Cache<T>::insert(Node<T> *d)
+{
+    if(m_root==NULL)
+    {
+        //m_root = new Node (
+    }
+
+}
+
+template<typename T>
+void Cache<T>::remove(Node<T> *d)
+{
+
+}
+
+template<typename T>
+Node<T> *Cache<T>::search(Node<T> *d)
+{
+
+}
 #endif //CACHE

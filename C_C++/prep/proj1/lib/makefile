@@ -1,11 +1,15 @@
 HEADER= global.h \
 	    Contact.h\
-		ContactManager.h\
-		Cache.h
-SOURCE=Cache.cpp
+		ContactManager.h
+SOURCE = server.cpp\
+        ContactManager.cpp
+    
 		
 		
-output:
-	g++ -g -c $(HEADER)  $(SOURCE)
+output:$(HEADER)
+	g++ -g   $(SOURCE)
 clean:
 	rm	*.*.gch  .*.*.swp *~ *.o
+
+distclean:
+	rm a.out
