@@ -7,7 +7,7 @@ SOURCE = server.cpp\
 		
 		
 output:$(HEADER)
-	g++ -g   $(SOURCE)
+	g++ -g  $(SOURCE)
 clean:
 	rm	*.*.gch  .*.*.swp *~ *.o
 

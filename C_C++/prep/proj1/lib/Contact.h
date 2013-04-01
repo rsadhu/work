@@ -19,6 +19,8 @@ public:
 	Contact operator=(const Contact &rhs)
 	{
 	}
+char *name(){ return m_name;}
+char *mobile(){ return m_mob;}
 private:
 char *m_name;
 char *m_mob;	

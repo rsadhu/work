@@ -4,20 +4,31 @@
 #include"Contact.h"
 #include"Cache.h"
 #include"global.h"
+#include<vector>
+
+//char Filter[2][] = {"Number","Name"};
+typedef enum
+{
+	NUMBER,
+	NAME
+}Filter;
 
 class ContactManager
 {
 	protected:
-	ContactManager(){ m_fp = fopen("contactdb.txt","a");}
+	ContactManager(){ init();}
 	ContactManager(const ContactManager &rhs);
 	ContactManager & operator =(const ContactManager &);	
+	private:
+	void init();
 	public:
 	static ContactManager * getInstance();	
 	void addContact(Contact &contact);
 	void deleteContact(Contact &contact);
+	vector<Contact *>* ContactManager::findContact(Filter filter);
 	private:
 	static ContactManager *m_obj;
 	FILE *m_fp;
-	Cache<Contact*> m_cache;
+	Cache<Contact> *m_cache;
 };
 #endif //

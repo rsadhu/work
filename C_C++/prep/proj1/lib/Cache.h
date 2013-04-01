@@ -15,32 +15,64 @@ class Cache
 {
 	 public:
 	 Cache():m_root(NULL){}
-	 void insert(Node<T> *d);
-	 void remove(Node<T> *d);
-	 Node<T> *search(Node<T> *);
+	 void readAll(FILE *fp);	 
+	 void insert(T *d);
+	 void remove(T *d);
+	 T  *search(T *);
 	 private:
 	 Node<T> *m_root;
 };
 
+template<typename T>
+void Cache<T>::readAll(FILE *fp)
+{
+	if(!fp) return;
+	fseek(fp,0,SEEK_SET);
+	Contact *c = new Contact();
+	char name[25],mob[25];	
+	while(feof(fp)==0)
+	{
+           fscanf(fp,"%s%s",name,mob);           
+           c = new Contact(name,mob);
+           insert(c);
+    }
+}
+
 
 template<typename T>
-void Cache<T>::insert(Node<T> *d)
+void Cache<T>::insert(T *d)
 {
     if(m_root==NULL)
     {
-        //m_root = new Node (
+		m_root =  new Node<Contact>(d);          
     }
+	else
+	{
+	    int key = atoi(d->mobile());
+		int tKey;
+		Node *tra= m_root;
+		while(tra)
+		{
+			tKey= atoi(tra->data->mobile());
+			if(key >tKey)
+			{
+				tra->right = d;
+			}
+			
+		}
+		 
+	}
 
 }
 
 template<typename T>
-void Cache<T>::remove(Node<T> *d)
+void Cache<T>::remove(T *d)
 {
 
 }
 
 template<typename T>
-Node<T> *Cache<T>::search(Node<T> *d)
+T *Cache<T>::search(T *d)
 {
 
 }
