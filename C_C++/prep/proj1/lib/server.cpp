@@ -5,8 +5,12 @@ int main(void)
     if(service)
     {
          cout<<" service is ready..";
+		 int i=0;
+		 while(i<10){
 		 Contact c("rakesh","1234567890");
 		 service->addContact(c);
+		 }
+		 service->displayAll();
 		}
     else
     {
