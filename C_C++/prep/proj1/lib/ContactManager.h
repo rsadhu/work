@@ -25,7 +25,7 @@ class ContactManager
 	static ContactManager * getInstance();	
 	void addContact(Contact &contact);
 	void deleteContact(Contact &contact);
-	vector<Contact *>* ContactManager::findContact(Filter filter);
+	vector<Contact *>* findContact(Filter filter);
 	void displayAll(){ m_cache->display();}
 	private:
 	static ContactManager *m_obj;

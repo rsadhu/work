@@ -26,7 +26,8 @@ class Cache
 		if(tra)
 		{
 			 inOrder(tra->left);
-			 cout<<tra->data;
+			 cout<<tra->m_data->name();
+			 cout<<"  "<<tra->m_data->mobile()<<"\n";
 			 inOrder(tra->right);
 		}	  
 	 }
@@ -38,11 +39,14 @@ void Cache<T>::readAll(FILE *fp)
 {
 	if(!fp) return;
 	fseek(fp,0,SEEK_SET);
-	Contact *c = new Contact();
+	Contact *c ;
 	char name[25],mob[25];	
+    memset(&name,0,25);
+    memset(&mob,0,25);   
 	while(feof(fp)==0)
 	{
-           fscanf(fp,"%s%s",name,mob);           
+           if(fscanf(fp,"%s%s",name,mob)<=0)
+               continue;
            c = new Contact(name,mob);
            insert(c);
     }
@@ -80,7 +84,11 @@ void Cache<T>::insert(T *d)
 					tra = tra->left;
 				else
 					break;					
-			}			
+			}
+            else{
+                f =3;
+                break;			
+            }
 		}
 		if(0==f)		
 			tra->left  = new Node<T>(d);		
@@ -104,6 +112,7 @@ T *Cache<T>::search(T *d)
 template<typename T>
 void Cache<T>::display()
 {
-	 
+    cout<<" \nCache ::display\n";
+    inOrder(m_root);	 
 }
 #endif //CACHE

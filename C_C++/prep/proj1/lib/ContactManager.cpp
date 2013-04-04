@@ -4,7 +4,7 @@ ContactManager *ContactManager::m_obj;
 
 void ContactManager::init()
 {
-	m_fp = fopen("contactdb.txt","a");
+	m_fp = fopen("contactdb.txt","a+");
 	m_cache =  new Cache<Contact>();
 	m_cache->readAll(m_fp);	
 }
