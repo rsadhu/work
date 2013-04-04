@@ -12,4 +12,4 @@ clean:
 	rm	*.*.gch  .*.*.swp *~ *.o
 
 distclean:
-	rm a.out
+	rm a.out *.txt

@@ -20,6 +20,7 @@ class Cache
 	 void remove(T *d);
 	 T  *search(T *);
 	 void display();
+     ~Cache();
 	 private:
 	 void inOrder(Node<T>*tra)
 	 {
@@ -33,6 +34,12 @@ class Cache
 	 }
 	 Node<T> *m_root;
 };
+
+template<typename T>
+Cache<T>::~Cache()
+{
+
+}
 
 template<typename T>
 void Cache<T>::readAll(FILE *fp)
@@ -106,7 +113,35 @@ void Cache<T>::remove(T *d)
 template<typename T>
 T *Cache<T>::search(T *d)
 {
-
+    Node<T> *tra = m_root;
+    int key = atoi(d->mobile());
+    int tKey;
+    cout<<" Cache :: search :: key ... "<<key;
+    while(tra)
+    {
+        tKey = atoi(tra->m_data->mobile());
+        cout<<" Cache :: search :: tKey. "<<tKey;
+        if(key > tKey)
+        {
+            if(tra->right)
+                tra =  tra->right;
+            else
+                break;
+                
+        }
+        else if(key < tKey)
+        {
+            if(tra->left)
+                tra = tra->left;
+            else
+                 break;
+        }
+        else
+        {
+             return  d;
+        }
+    }
+    return NULL;
 }
 
 template<typename T>

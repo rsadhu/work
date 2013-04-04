@@ -22,6 +22,7 @@ class ContactManager
 	private:
 	void init();
 	public:
+    ~ContactManager();
 	static ContactManager * getInstance();	
 	void addContact(Contact &contact);
 	void deleteContact(Contact &contact);
