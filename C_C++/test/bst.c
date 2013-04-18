@@ -30,22 +30,18 @@ void create(BST **root,int d)
  while(tra)
  {
      if(d > tra->data)
-     {
+     {  
+        f=1;
         if(tra->right)
-        {
-            tra->right  =  new (d);
-            f=1;
-        }
+            tra= tra->right;
         else
             break;
      }
      else  if( d < tra->data)
      {
+            f=2;
             if(tra->left)
-            {
-                tra->left = new(d);
-                f=2;
-            }
+                tra = tra->left ;
             else
                 break;
      }
@@ -56,6 +52,23 @@ void create(BST **root,int d)
 
    if(1 == f)
        tra->right = new(d);
+}
+
+
+void createRec(BST *root,int d)
+{
+    if(root)
+    {
+        if(d > root->data){
+            createRec(root->right,d);
+            root->right =  new (d);
+        }
+        else if(d < root->data){
+            createRec(root->left,d);
+            root->left =  new (d);
+        }
+    }
+      
 }
 
 void  inOrder(BST *tra)
@@ -101,7 +114,8 @@ main (void)
   int i,s=sizeof(arr)/sizeof(int), tmp[s];
   
   for(i=0;i<s;i++)
-      create(&root,arr[i]);
+     createRec(root,arr[i]);
+   //       create(&root,arr[i]);
 
   display(root,INORDER);
   return 0;
