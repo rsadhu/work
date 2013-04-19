@@ -31,27 +31,23 @@ void create(BST **root,int d)
  {
      if(d > tra->data)
      {  
-        f=1;
         if(tra->right)
             tra= tra->right;
-        else
+        else{
+            tra->right = new(d);
             break;
+        }
      }
      else  if( d < tra->data)
      {
-            f=2;
-            if(tra->left)
-                tra = tra->left ;
-            else
-                break;
+         if(tra->left)
+             tra = tra->left ;
+         else{
+             tra->left = new(d);                
+             break;
+         }
      }
    }
-  
-   if(2 == f)
-       tra->left = new(d);
-
-   if(1 == f)
-       tra->right = new(d);
 }
 
 
@@ -60,15 +56,16 @@ void createRec(BST *root,int d)
     if(root)
     {
         if(d > root->data){
+            printf("\n gone right%d %d \n",root->data,d);
             createRec(root->right,d);
             root->right =  new (d);
         }
         else if(d < root->data){
+            printf("\n gone left %d %d \n",root->data,d);
             createRec(root->left,d);
             root->left =  new (d);
         }
-    }
-      
+    }   
 }
 
 void  inOrder(BST *tra)
@@ -81,6 +78,16 @@ void  inOrder(BST *tra)
     }
 }
 
+void postOrder(BST *tra)
+{
+
+}
+
+void preOrder(BST *tra)
+{
+
+}
+
 void display(BST *root,Type t)
 {
     switch(t)
@@ -91,11 +98,11 @@ void display(BST *root,Type t)
             break;
         case POSTORDER:
             printf("\ndisplay :: POSTORDER \n");
-  //          postOrder(root);
+            postOrder(root);
             break;
         case PREORDER:
             printf("\ndisplay :: PREORDDER \n");
-    //        preOrder(root);
+            preOrder(root);
             break;
        default:
            printf("\ndisplay :: default \n");
@@ -111,6 +118,7 @@ main (void)
   BST *root = new(30);
 
   int arr[] = { 45, 15, 18, 12, 16, 50 };
+  printf("\n 45, 15, 18, 12, 16, 50  \n");
   int i,s=sizeof(arr)/sizeof(int), tmp[s];
   
   for(i=0;i<s;i++)
