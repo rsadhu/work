@@ -56,13 +56,15 @@ void createRec(BST *root,int d)
     if(root)
     {
         if(d > root->data){
-            printf("\n gone right%d %d \n",root->data,d);
+            if(root->right)
             createRec(root->right,d);
+            else
             root->right =  new (d);
         }
         else if(d < root->data){
-            printf("\n gone left %d %d \n",root->data,d);
+            if(root->left)
             createRec(root->left,d);
+            else
             root->left =  new (d);
         }
     }   
