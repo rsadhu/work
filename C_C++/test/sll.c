@@ -39,11 +39,13 @@ void display(Node *head)
 void deleteOne(Node **n)
 { 
     Node *tra =  *n;
+    Node *tmp;
     if(tra->next)
     {
         tra->data = tra->next->data;
+        tmp = tra->next;
         tra->next = tra->next->next;
-        free(tra->next);        
+        free(tmp);        
     }
     else
     {
@@ -67,16 +69,12 @@ int main(void)
    }
 
    display(head);
-
+   
    deleteOne(&tmp);
    display(head);
- //  deleteOne(arr[1]);
- //  display(head);
-  // deleteOne(arr[9]);
-  // display(head);
-
    
-
+   deleteOne(&head);
+   display(head);
 
    return 0;
 }
