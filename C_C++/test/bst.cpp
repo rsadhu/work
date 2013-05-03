@@ -319,7 +319,25 @@ dNode (BST ** root, int d)
 	      if (i == 0)
 		tmp->right = NULL;
 	    }
+      else if( tra->left || tra->right)
+      {
+            
+      }
 	}
+    }
+}
+
+void displayLeaves(BST *tra,int sum)
+{
+    if(tra)
+    {
+        sum +=tra->data;
+        displayLeaves(tra->left,sum);
+        displayLeaves(tra->right,sum);
+    }
+    else
+    {
+        printf("  %d  ",sum);
     }
 }
 
@@ -357,8 +375,10 @@ main (void)
   //display(root,SPIRAL);
 // display(root,POSTORDER);
   //display(root,INORDERITER);
-  display (root, PREORDER);
-  display (root, PREORDERITER);
-  display (root, POSTORDERITER);
+ // display (root, PREORDER);
+ // display (root, PREORDERITER);
+//  display (root, POSTORDERITER);
+
+displayLeaves(root,0);
   return 0;
 }
