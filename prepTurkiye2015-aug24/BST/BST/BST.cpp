@@ -26,7 +26,8 @@ BST & BST:: operator <(int d)
 	}
 	else
 	{
-		addItem(d);
+		//addItem(d);
+		addItemRec1(&mRoot,d);
 		 //mRoot 
 			//Node *tmp = addItemRec(mRoot,d);
 	}
@@ -59,6 +60,27 @@ void BST:: addItem(int d)
 			}
 		}
 
+	}
+}
+
+/*
+ t<9<5<13<11<15<7<3; 
+*/
+
+void BST::addItemRec1(Node **root,int d)
+{
+	if(!(*root))
+		*root =  new Node (d);
+	else
+	{
+		if(d < (*root)->data)
+		{
+			addItemRec1(&((*root)->left),d);
+		}
+		else
+		{
+			addItemRec1(&((*root)->right),d);
+		}
 	}
 }
 

@@ -32,6 +32,7 @@ public:
 protected:
 	void addItem(int d);
 	static Node * addItemRec(Node *root,int d);
+	static void addItemRec1(Node **root,int data);
 	static void inOrder(Node *);
 	static void preOrder(Node *);
 	static void postOrder(Node *);
