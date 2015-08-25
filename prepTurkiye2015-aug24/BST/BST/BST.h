@@ -19,7 +19,8 @@ enum Type
  R_INORDER,
  R_PREORDER,
  R_POSTORDER,
- LEVEL_ORDER
+ LEVEL_ORDER,
+ SPIRAL_ORDER
 };
 
 class BST
@@ -40,6 +41,7 @@ protected:
 	static void inOrderIter(Node *root);
 	static void preOrderIter(Node *root);
 	static void postOrderIter(Node *root);
+	static void spiralOrder(Node *root);
 private:
 	Node *mRoot;
 };

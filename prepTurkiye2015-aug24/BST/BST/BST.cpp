@@ -84,6 +84,8 @@ void BST::addItemRec1(Node **root,int d)
 	}
 }
 
+/* Below code needs change to mk it wrk */
+
 Node * BST::addItemRec(Node *root,int data)
 {
 	if(!root)
@@ -196,14 +198,31 @@ void BST:: postOrder(Node *root)
 }
 
 
+void BST::spiralOrder(Node *root)
+{
 
+}
+
+
+#define __HR__ 1
+
+#ifdef __HR__
+int hackerRank_stick();
+void caeserString();
+#endif
 
 int main(void)
 {
+#ifndef __HR__
 	BST t;
 	t<9<5<13<11<15<7<3;
 	//t.display(R_INORDER);
 	for(int i=0;i<7;i++)
 	t.display((Type)i);
+#elif __HR__
+	//hackerRank_stick();
+	caeserString();
+#endif
+
 	return 0;
 }
