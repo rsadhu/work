@@ -1,5 +1,6 @@
 #include"stdafx.h"
 #include<queue>
+#include<stack>
 #include<iostream>
 using namespace std;
 
@@ -123,10 +124,10 @@ void BST:: display(Type t)
 		inOrder(mRoot);
 		break;
 	case R_PREORDER:
-		inOrder(mRoot);
+		preOrder(mRoot);
 		break;
 	case R_POSTORDER:
-		inOrder(mRoot);
+		postOrder(mRoot);
 		break;
 	default:
 		inOrder(mRoot);
@@ -136,12 +137,40 @@ void BST:: display(Type t)
 
 void BST::inOrderIter(Node *root)
 {
-
+	stack<Node *>st;
+	
+	while(root ||!st.empty())
+	{
+		if(root){			
+			st.push(root);
+			root=root->left;
+		}
+		else
+		{			
+			root =  st.top();
+			cout<<root->data<<" ";
+			st.pop();		
+			root = root->right;
+		}		
+	}
 }
 
 void BST::preOrderIter(Node *root)
 {
 
+	stack<Node *>st;	
+	st.push(root);
+
+	while(!st.empty())
+	{
+		root =  st.top();
+		cout<<root->data<<" ";
+		st.pop();
+		if(root->right)
+			st.push(root->right);
+		if(root->left)
+			st.push(root->left);
+	}
 }
 
 void BST::postOrderIter(Node *root)
@@ -204,24 +233,32 @@ void BST::spiralOrder(Node *root)
 }
 
 
-#define __HR__ 1
+//#define __HR__  1
 
 #ifdef __HR__
 int hackerRank_stick();
 void caeserString();
+void cavityMap();
+void matrixMan();
 #endif
 
 int main(void)
-{
+{	
 #ifndef __HR__
 	BST t;
+	//jhj
 	t<9<5<13<11<15<7<3;
-	//t.display(R_INORDER);
-	for(int i=0;i<7;i++)
-	t.display((Type)i);
+	//t.display(I_INORDER);
+	t.display(R_PREORDER);
+	t.display(I_PREORDER);
+	//for(int i=0;i<7;i++)
+//	t.display((Type)i);
 #elif __HR__
+	jkjk
 	//hackerRank_stick();
-	caeserString();
+	//caeserString();
+	//cavityMap();
+	matrixMan();
 #endif
 
 	return 0;

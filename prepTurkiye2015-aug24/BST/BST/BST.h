@@ -32,8 +32,8 @@ public:
 	void display(Type t);
 protected:
 	void addItem(int d);
-	static Node * addItemRec(Node *root,int d);
-	static void addItemRec1(Node **root,int data);
+	static Node * addItemRec(Node *root,int d); //doesnt work , needs to change some logic in recursion... 
+	static void addItemRec1(Node **root,int data); //works well
 	static void inOrder(Node *);
 	static void preOrder(Node *);
 	static void postOrder(Node *);
