@@ -30,6 +30,8 @@ public:
 	~BST(void);
 	BST & operator <(int d);
 	void display(Type t);
+	double sumOfNodes();
+	double highBranch();
 protected:
 	void addItem(int d);
 	static Node * addItemRec(Node *root,int d); //doesnt work , needs to change some logic in recursion... 

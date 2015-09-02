@@ -21,17 +21,10 @@ BST::~BST(void)
 BST & BST:: operator <(int d)
 {
 	if(!mRoot)
-	{
-
-		mRoot  = new Node(d);
-	}
+		mRoot  = new Node(d);	
 	else
-	{
-		//addItem(d);
-		addItemRec1(&mRoot,d);
-		 //mRoot 
-			//Node *tmp = addItemRec(mRoot,d);
-	}
+		addItemRec1(&mRoot,d);	
+
 	return  *this;
 }
 
@@ -68,6 +61,56 @@ void BST:: addItem(int d)
  t<9<5<13<11<15<7<3; 
 */
 
+double BST::highBranch()
+{
+	stack<Node*>st;
+	vector<int>v;
+	Node *tra =  mRoot;
+	double sum=0;
+	while(tra || !st.empty())
+	{
+		if(tra)
+		{
+			st.push(tra);
+			//v.push_back(tra->data);
+			sum+=tra->data;
+			tra =  tra->left;
+		}
+		else
+		{
+			tra =  st.top();
+			sum-=tra->data;
+		}
+	}	
+
+	//double sum=0;
+	for(vector<int>::iterator it = v.begin();it!=v.end();it++)
+		sum+=*it;
+	return sum;
+}
+
+double BST::sumOfNodes()
+{
+	stack<Node *> st;
+	Node *tra=mRoot;
+	double sum=0;
+	while(tra ||!st.empty())
+	{
+		if(tra)
+		{
+			st.push(tra);
+			tra = tra->left;
+		}
+		else
+		{
+			tra = st.top();
+			sum+=tra->data;
+			st.pop();
+			tra =  tra->right;			
+		}
+	}
+	return sum;
+}
 void BST::addItemRec1(Node **root,int d)
 {
 	if(!(*root))
@@ -128,6 +171,9 @@ void BST:: display(Type t)
 		break;
 	case R_POSTORDER:
 		postOrder(mRoot);
+		break;
+	case SPIRAL_ORDER:
+		spiralOrder(mRoot);
 		break;
 	default:
 		inOrder(mRoot);
@@ -229,17 +275,51 @@ void BST:: postOrder(Node *root)
 
 void BST::spiralOrder(Node *root)
 {
+	stack<Node *>st1;
+	stack<Node *>st2;
+	st1.push(root);
+	while(!st1.empty()|| !st2.empty())
+	{		
+		Node *tmp;
+
+		while(!st1.empty())
+		{
+			tmp =  st1.top();
+			cout<<tmp->data<<" ";
+			st1.pop();
+			if(tmp->left)
+				st2.push(tmp->left);
+			if(tmp->right)
+				st2.push(tmp->right);
+		}
+
+		while(!st2.empty())
+		{
+			tmp =  st2.top();
+			cout<<tmp->data<<" ";
+			st2.pop();
+
+			if(tmp->right)
+				st1.push(tmp->right);
+			
+			if(tmp->left)
+				st1.push(tmp->left);
+		}
+	}
+
 
 }
 
-
-//#define __HR__  1
-
+#define __HR__ 1
 #ifdef __HR__
 int hackerRank_stick();
 void caeserString();
 void cavityMap();
 void matrixMan();
+void anagram();
+void twoStrings();
+void mcqs();
+
 #endif
 
 int main(void)
@@ -249,16 +329,20 @@ int main(void)
 	//jhj
 	t<9<5<13<11<15<7<3;
 	//t.display(I_INORDER);
-	t.display(R_PREORDER);
-	t.display(I_PREORDER);
+	//t.display(R_PREORDER);
+	//t.display(I_PREORDER);
 	//for(int i=0;i<7;i++)
 //	t.display((Type)i);
-#elif __HR__
-	jkjk
+	t.display(SPIRAL_ORDER);
+	cout<<endl<<"sum of nodes :: "<<t.sumOfNodes()<<endl;
+#elif __HR__	
 	//hackerRank_stick();
 	//caeserString();
 	//cavityMap();
-	matrixMan();
+	//matrixMan();
+	//anagram();
+	//twoStrings();
+	mcqs();
 #endif
 
 	return 0;

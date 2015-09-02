@@ -1,9 +1,135 @@
 #include"stdafx.h"
-#include<iostream>
 #include<string>
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
 using namespace std;
-
+using namespace std;
+#define __HR__  1
 #ifdef __HR__
+
+
+void mcqs()
+{
+
+	/*int x=10,y=15;
+	x=x++;
+	y=++y;
+	cout<<x<<" "<<y;
+	int z;
+	x=y=z=0;
+	cout<<x<<y<<z;*/
+
+	int val = 1;
+	cout<<~val;
+
+
+}
+
+ void  twoStrings() {
+
+	int T;
+    cin>>T;
+    char *alphabets="abcdefghijklmnopqrstuvwxyz";
+	int  cSet[120]={0};
+    while(T)
+    {
+        string s1,s2;
+        cin>>s1>>s2;
+        char *tmp1 =  (char *)s1.c_str();
+		char *tmp2 =  (char *)s2.c_str();
+
+        int f=0;
+		while(*tmp1!='\0')
+		{
+			if(cSet[*tmp1]!=1)
+				cSet[(int)*tmp1]=1;
+			tmp1++;
+		}
+		while(*tmp2!='\0')
+		{
+			cSet[(int)*tmp2]+=1;
+			tmp2++;
+		}
+
+		for(int i=0;i<120;i++)
+		{
+			if(cSet[i]>=2)
+				cout<<"YES"<<endl;
+			else 
+				cout<<"NO"<<endl;        				
+		}       
+				
+        T--;       
+	}
+        
+}
+
+
+void  anagram() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    int T;
+    cin>>T;
+    while(T)
+        {
+        string s;
+        cin>>s;
+        char *tmp =  (char *)s.c_str();
+        int cnt=0;
+        if(s.size()%2!=0)
+           cnt=-1;
+        else{
+			
+            int mid = (s.size())/2-1;            
+            for(int i=0;i<=mid;i++)
+            {
+				int f=0;
+                for(int j=mid+1;j<s.size();j++)    
+                    {
+                    if(tmp[i]==tmp[j])
+                        {
+                           tmp[j]='0';                        
+						   f=1;
+						   break;
+					}                    
+                }
+				if(f==0)
+					cnt++;
+            }            
+        }
+        T--;
+        cout<<cnt<<endl;
+    }    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int getSmallest(int *arr,int size)
 {
     int MIN=0;
@@ -65,8 +191,6 @@ int hackerRank_stick() {
     return 0;
 }
 
-
-
 void caeserString()
 {
 	int T;
@@ -110,8 +234,6 @@ void caeserString()
 	}
 
 }
-
-
 
 void cavityMap()
 {
@@ -163,7 +285,6 @@ void cavityMap()
 	}
 }
 
-
 void matrixMan()
 {
 	int arr1[][3]={ {1,2,3},{ 4,5,6},{7,8,9}};
@@ -196,15 +317,7 @@ void matrixMan()
 }
 
 
-void timePlease()
-{
-	char *words[]={ "one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","fourteen","fifteen","sixteen","seventeen","eighteen,"nineteen"};
-	char *spclWords[]={"quarter past" ,"half past","quarter to "};
-	char *others[]={"nineteen","twenty","thirty","forty","fifty"};
-	int hr ,min;
-	cin>>hr>>min;
 
-}
 
 #endif
 
