@@ -7,45 +7,65 @@
 #include<string>
 using namespace std;
  
-void foo(int *p)
+
+
+#include<stdio.h>
+#include<string.h>
+
+//Assume following return types while writing the code for this question. 
+int output1=0;
+
+int smallest(int cook[],int size,int *index)
 {
-	 p = new int;
-	 *p=90;
+  int min=0,i=0,j=0,k=0;
+  
+  while(cook[j++]!=0 &&  min==0 && j < size)
+  {
+    min =  cook[j];    
+  }
+  
+  while(i<size)
+  {
+    if(cook[i] !=0 && cook[i]<min)
+    {
+      min = cook[i];      
+      k=i;
+    }
+    i++;    
+  }
+  cook[k]=0;
+  *index = k;
+  return min;
 }
 
-void test()
+
+void Chef(int input1,int input2,int input3[],int input4[])
 {
-	int q=10;
-	foo(&q);
-	cout<<q<<endl;
-	int *r  = new int;
-	*r=200;
-	foo(r);
-	cout<<*r<<endl;
+  int i,j,n=0;
+  while(input1)
+  {
+	int minT1 =  smallest(input3,input2, &i);    
+    input1 =  input1 - minT1;
+    if(input1>0)
+      n++;
+    else
+      break;
+    int minT2 =  smallest(input3,input2, &j);    
+    input1 =  input2-minT2 - abs(input4[j]-input4[i]);    
+    if(input1>0)
+      n++;  
+    else
+      break;
+  }
+	//Write code here
 }
-
-class test
-{
-public:
-	test()
-	{
-		 p =  new int(9);
-	}
-
-	void display(){ cout<<*p<<endl;}
-	//void change() { 
-	int *p;
-};
-
 
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-   //test();
-	SLL sl;
-	sl<0<1<2<3<4<5<6<7<8<9;
-	sl.revDisplay();
-	sl.display();
+
+
+	Chef();
 	return 0;
 }
 

@@ -1,6 +1,6 @@
 #pragma once
 
-
+#ifdef __HR__
 class Node
 {
 public:
@@ -20,7 +20,8 @@ enum Type
  R_PREORDER,
  R_POSTORDER,
  LEVEL_ORDER,
- SPIRAL_ORDER
+ SPIRAL_ORDER,
+ PRINTALLPATHS
 };
 
 class BST
@@ -32,6 +33,7 @@ public:
 	void display(Type t);
 	double sumOfNodes();
 	double highBranch();
+	bool isBST();
 protected:
 	void addItem(int d);
 	static Node * addItemRec(Node *root,int d); //doesnt work , needs to change some logic in recursion... 
@@ -44,7 +46,10 @@ protected:
 	static void preOrderIter(Node *root);
 	static void postOrderIter(Node *root);
 	static void spiralOrder(Node *root);
+	static void printAllPaths(Node *root);
 private:
 	Node *mRoot;
 };
+
+#endif
 

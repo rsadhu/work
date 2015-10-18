@@ -6,6 +6,20 @@ using namespace std;
 
 #include "BST.h"
 
+#define __HR__ 1
+#ifdef __HR__
+
+int hackerRank_stick();
+void caeserString();
+void cavityMap();
+void matrixMan();
+void anagram();
+void twoStrings();
+void mcqs();
+void testChar();
+void anagramZpalindrome();
+
+#elif __HR__
 
 
 BST::BST(void):mRoot(0)
@@ -18,13 +32,13 @@ BST::~BST(void)
 
 }
 
+
 BST & BST:: operator <(int d)
 {
 	if(!mRoot)
 		mRoot  = new Node(d);	
 	else
 		addItemRec1(&mRoot,d);	
-
 	return  *this;
 }
 
@@ -175,6 +189,9 @@ void BST:: display(Type t)
 	case SPIRAL_ORDER:
 		spiralOrder(mRoot);
 		break;
+	case PRINTALLPATHS:
+		printAllPaths(mRoot);
+		break;
 	default:
 		inOrder(mRoot);
 		break;
@@ -307,18 +324,89 @@ void BST::spiralOrder(Node *root)
 		}
 	}
 
-
 }
 
-#define __HR__ 1
-#ifdef __HR__
-int hackerRank_stick();
-void caeserString();
-void cavityMap();
-void matrixMan();
-void anagram();
-void twoStrings();
-void mcqs();
+
+
+
+int  isBST(Node *root)
+{
+	static Node* prev  = NULL;
+
+  if(root==NULL)
+    return 1;
+
+  if(!isBST(root->left))
+    return 0;
+
+  if(prev!=NULL && root->data<=prev->data)
+    return 0;
+
+  prev = root;
+  return isBST(root->right);
+}
+
+
+bool BST::isBST()
+{
+
+	if(::isBST(mRoot)==0)
+	{
+		return 0;
+	}
+	else
+		return 1;
+
+	//bool ret(false);
+	queue<int> q;
+	stack<Node*> st;
+	Node *tra =  mRoot;
+	while(tra || !st.empty())
+	{
+		if(tra)
+		{
+			st.push(tra);
+			tra =  tra->left;
+		}
+		else
+		{
+			tra =  st.top();
+			//cout<<tra->data<<" ";
+			q.push(tra->data);
+			tra = tra->right;
+			st.pop();
+		}
+	}
+
+	cout<<endl;
+	int size =  q.size();
+	while(1){
+		int a,b;
+		if(!q.empty())
+		{
+			a =  q.front();
+			q.pop();
+		}
+		else
+			break;
+		if(!q.empty())
+		{
+			b  = q.front();
+			q.pop();
+		}
+		else
+			break;
+		if(a>b)
+			return false;		
+	}
+	return true;
+}
+
+
+void BST::printAllPaths(Node *root)
+{
+
+}
 
 #endif
 
@@ -326,15 +414,18 @@ int main(void)
 {	
 #ifndef __HR__
 	BST t;
-	//jhj
+	
 	t<9<5<13<11<15<7<3;
+	t.display(PRINTALLPATHS);
+
 	//t.display(I_INORDER);
 	//t.display(R_PREORDER);
 	//t.display(I_PREORDER);
 	//for(int i=0;i<7;i++)
-//	t.display((Type)i);
-	t.display(SPIRAL_ORDER);
-	cout<<endl<<"sum of nodes :: "<<t.sumOfNodes()<<endl;
+	//t.display((Type)i);
+	//t.display(SPIRAL_ORDER);
+	//cout<<t.isBST()<<endl;	
+	//cout<<endl<<"sum of nodes :: "<<t.sumOfNodes()<<endl;
 #elif __HR__	
 	//hackerRank_stick();
 	//caeserString();
@@ -342,7 +433,9 @@ int main(void)
 	//matrixMan();
 	//anagram();
 	//twoStrings();
-	mcqs();
+//	mcqs();
+//	 testChar();
+	 anagramZpalindrome();
 #endif
 
 	return 0;

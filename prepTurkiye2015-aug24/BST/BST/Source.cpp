@@ -10,6 +10,48 @@ using namespace std;
 #define __HR__  1
 #ifdef __HR__
 
+	int c[5005][5005];
+	string a,b;
+
+
+void anagramZpalindrome()
+{	
+	int m,n;
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    cin>>a;
+    cin>>b;
+    //cout<<a<<b<<endl;
+    m=a.length();
+    n=b.length();
+    for(int i=0;i<=m;i++) c[i][0]=0;
+    for(int i=0;i<=n;i++) c[0][i]=0;
+
+    for(int i=1;i<=m;i++){
+        for(int j=1;j<=n;j++){
+            if(a[i-1]==b[j-1]) c[i][j]=c[i-1][j-1]+1;
+            else c[i][j]= max(c[i][j-1],c[i-1][j]);
+            //cout<<c[i][j]<<" ";
+        }
+        //cout<<endl;
+    }
+    cout<<c[m][n]<<endl;
+
+}
+
+void testChar()
+{
+	char s1[10010],s2[10010];
+    cin>>s1>>s2;
+    int a[26]={0};
+    for(int i=0;i<strlen(s1);i++)
+        a[s1[i]-'a']++;
+    for(int i=0;i<strlen(s2);i++)
+        a[s2[i]-'a']--;
+    long long int ans = 0;
+    //for(int i=0;i<26;i++)
+      //  ans += ???;
+    cout<<ans<<endl;
+}
 
 void mcqs()
 {

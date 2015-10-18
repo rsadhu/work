@@ -14,6 +14,7 @@
     <ProjectGuid>{90C41650-C4E0-458B-8359-CE61ABE44E1A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>BST</RootNamespace>
+    <ProjectName>                               </ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
