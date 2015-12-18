@@ -1,7 +1,16 @@
 #include "server.h"
 
-server::server()
+MyServer::MyServer()
 {
-
+  server =  new QTcpServer();
+  QObject::connect(server, SIGNAL(newConnection()), this,SLOT(newConnection()));
 }
+
+
+void MyServer::newConnection()
+{
+    //QTcpSocket socket(this);
+}
+
+
 

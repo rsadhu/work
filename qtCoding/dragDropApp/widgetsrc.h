@@ -6,7 +6,7 @@
 class WidgetSrc : public Base
 {
 public:
-    WidgetSrc(Qwidget *parent =0);
+    WidgetSrc(QWidget *parent =0);
     void dragMoveEvent(QDragMoveEvent *event);
     void dragEnterEvent(QDragEnterEvent *event);
     void dragLeaveEvent(QDragLeaveEvent *event);

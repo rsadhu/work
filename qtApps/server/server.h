@@ -1,15 +1,22 @@
 #ifndef SERVER_H
 #define SERVER_H
+#include<QDebug>
+#include<QTcpServer>
+#include<QTcpSocket>
 
 
-class server
+
+
+class MyServer:public QObject
 {
+    Q_OBJECT
 public:
-    server();
-
-signals:
-
+    MyServer();
 public slots:
+    void newConnection();
+
+private:
+    QTcpServer *server;
 };
 
 #endif // SERVER_H

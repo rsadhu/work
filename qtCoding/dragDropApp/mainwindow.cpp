@@ -1,17 +1,20 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include<QPushButton>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    mDest =  new WidgetDest;
-    mSrc = new WidgetSrc;
+    QWidget *centralWidget = new  QWidget(this);
 
-    QGraphicsScene *scene =  new QGraphicsScene;
+    mDest =  new WidgetDest(this);
+    mSrc = new WidgetSrc(this);
+
+    QGraphicsScene *scene =  new QGraphicsScene(this);
     QImage * image = new QImage;
-    image->load("C:\\Users\\rsadhu\\Desktop\\desktop.jpg");
+    image->load("/home/rsadhu/Desktop/chick.jpg");
     QGraphicsPixmapItem *item =  new QGraphicsPixmapItem(QPixmap::fromImage(*image));
     scene->addItem(item);
 
@@ -20,17 +23,23 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QGraphicsScene *scene1 =  new QGraphicsScene;
     QImage * image1 = new QImage;
-    image->load("C:\\Users\\rsadhu\\Desktop\shiv-shakti.jpg");
+    image->load("/home/rsadhu/Desktop/horse.jpg");
     QGraphicsPixmapItem *item1 =  new QGraphicsPixmapItem(QPixmap::fromImage(*image));
     scene1->addItem(item1);
 
     mSrc->init(scene1,item,image);
 
 
-    layout =  new QHBoxLayout(this);
+
+
+    setCentralWidget(centralWidget);
+    layout =  new QHBoxLayout(centralWidget);
     layout->addWidget(mSrc);
     layout->addWidget(mDest);
-    setCentralWidget(layout);
+    QPushButton *button = new QPushButton(this);
+    connect(button, SIGNAL(clicked(bool)),this,SLOT(slotButtonPressed()));
+    layout->addWidget(button);
+
 
     mSrc->show();
     mDest->show();
@@ -41,4 +50,12 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+static bool toggle=false;
 
+void MainWindow::slotButtonPressed()
+{
+  if(layout->direction() == QBoxLayout::LeftToRight)
+      layout->setDirection(QBoxLayout::RightToLeft);
+  else
+      layout->setDirection(QBoxLayout::LeftToRight);
+}
