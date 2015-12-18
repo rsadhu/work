@@ -7,7 +7,12 @@
 #include<QGraphicsScene>
 #include<QDebug>
 #include<QWidget>
+#include<QMouseEvent>
+#include<QDrag>
+#include<QMimeData>
 
+class WidgetSrc;
+class WidgetDest;
 class  Base: public QGraphicsView
 {
     Q_OBJECT
@@ -18,5 +23,7 @@ private:
     QImage *mImage;
     QGraphicsPixmapItem *mPixmapItem;
     QGraphicsScene *mScene;
+    friend class WidgetSrc;
+    friend class WidgetDest;
 };
 #endif
