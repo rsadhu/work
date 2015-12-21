@@ -11,16 +11,22 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    delete ui;
+    delete ui;    
 }
 
 void MainWindow::init()
 {
   mCentralWidget = new QWidget(this);
+
   mLayout = new QHBoxLayout(mCentralWidget);
-  mSrcWidget = new SrcWidget(this);
-  mDestWidget = new DestWidget(this);
+
+  mSrcWidget = new SrcWidget(mCentralWidget);
+
+  mDestWidget = new DestWidget(mCentralWidget);
+
   mLayout->addWidget(mSrcWidget);
+
   mLayout->addWidget(mDestWidget);
+
   setCentralWidget(mCentralWidget);
 }

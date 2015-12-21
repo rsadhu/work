@@ -10,24 +10,31 @@
 #include<QImage>
 #include<QMimeData>
 #include<QGraphicsPixmapItem>
+#include<QDebug>
 
 class SrcWidget : public QWidget
 {
     Q_OBJECT
 public:
     explicit SrcWidget(QWidget *parent = 0);
-signals:
-public slots:
 public:
     void mousePressEvent(QMouseEvent *);
-    //void dragLeaveEvent(QDragLeaveEvent *);
-    void dragEnterEvent(QDragEnterEvent *);
-
+    void dragLeaveEvent(QDragLeaveEvent *);
+    void dragMoveEvent(QDragMoveEvent *);
+    void dragEnterEvent(QDragEnterEvent *);   
+    void dropEvent(QDropEvent *event);
+    void receivePixMap(QPixmap *);
+    ~SrcWidget()
+    {
+        qDebug()<<"SrcWidget::~SrcWidget\n";
+        delete mView;
+        delete mScene;
+        delete mPixmap;
+    }
 private:
     QGraphicsView *mView;
     QGraphicsScene *mScene;
-    QPixmap *mPixmap;
-    QGraphicsPixmapItem *mPixmapItem;
+    QPixmap *mPixmap;  
 };
 
 #endif // SRCWIDGET_H

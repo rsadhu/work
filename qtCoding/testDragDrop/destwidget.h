@@ -8,6 +8,8 @@
 #include<QGraphicsScene>
 #include<QGraphicsView>
 #include<QPixmap>
+#include"mygraphicsviewclass.h"
+
 
 
 class DestWidget : public QWidget
@@ -15,15 +17,21 @@ class DestWidget : public QWidget
     Q_OBJECT
 public:
     explicit DestWidget(QWidget *parent = 0);
-
-signals:
-public slots:
-
 public:
     void dragEnterEvent(QDragEnterEvent *);
     void dragLeaveEvent(QDragLeaveEvent *);
     void dragMoveEvent(QDragMoveEvent *);
     void dropEvent(QDropEvent *event);
+    void mousePressEvent(QMouseEvent *event);
+
+    void receivePixMap(QPixmap *);
+    ~DestWidget()
+    {
+        qDebug()<<"DestWidget::~DestWidget\n";
+        delete mView;
+        delete mScene;
+        delete mPixmap;
+    }
 private:
     QGraphicsView *mView;
     QGraphicsScene *mScene;
