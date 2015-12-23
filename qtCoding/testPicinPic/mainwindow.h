@@ -24,11 +24,15 @@ public:
     void mousePressEvent(QMouseEvent *);
     void dragEnterEvent(QDragEnterEvent *);
     void dropEvent(QDropEvent *);
+    void test();
+    void display2x2Layout();
 
 private:
     Ui::MainWindow *ui;
     QGridLayout *mGridLayout;
     QWidget *mCentralWidget;
+    QWidget *mWidgets[4];
+    QGridLayout  *anotherGLayout;
 };
 
 #endif // MAINWINDOW_H

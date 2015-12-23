@@ -8,13 +8,16 @@
 
 DestWidget::DestWidget(QWidget *parent) : QWidget(parent)
 {
- setAcceptDrops(true);
- mView =  new QGraphicsView(this);
+
+ /*mView =  new QGraphicsView(this);
  mScene = new QGraphicsScene(this);
  mView->setScene(mScene);
  mPixmap =  new QPixmap("C:\\Users\\rsadhu\\Desktop\\shiv-shakti.jpg");
  mScene->addPixmap(*mPixmap);
  mView->show();
+
+ mView->setAcceptDrops(true);*/
+ this->setAcceptDrops(true);
 }
 
 
@@ -51,7 +54,7 @@ void DestWidget::dropEvent(QDropEvent *event)
  if(event->source()== this)
      return ;
 
- if (event->mimeData()->hasFormat("image/x-puzzle-piece"))
+/* if (event->mimeData()->hasFormat("image/x-puzzle-piece"))
  {
      QByteArray pieceData = event->mimeData()->data("image/x-puzzle-piece");
      QDataStream dataStream(&pieceData, QIODevice::ReadOnly);
@@ -72,23 +75,23 @@ void DestWidget::dropEvent(QDropEvent *event)
      mView->update();
      mView->show();
 
-    /*QFile file("yourFile.png");
-    file.open(QIODevice::WriteOnly);
-    pixmap.save(&file, "JPG");
-    view.show();*/
-}
+    //QFile file("yourFile.png");
+   // file.open(QIODevice::WriteOnly);
+    //pixmap.save(&file, "JPG");
+    //view.show();
+}*/
 }
 
 void DestWidget ::receivePixMap(QPixmap *pixmap)
 {
   qDebug()<<"DestWidget::receivePixMap();\n";
-  if(pixmap)
+ /* if(pixmap)
   {
         mScene->addPixmap(*pixmap);
         delete mPixmap;
         mPixmap = new QPixmap(*pixmap);
         mView->show();
-  }
+  }*/
 }
 
 void DestWidget::mousePressEvent(QMouseEvent *event)
@@ -97,7 +100,7 @@ void DestWidget::mousePressEvent(QMouseEvent *event)
     if (!(event->buttons() & Qt::LeftButton))
         return;
 
-    QDrag *drag = new QDrag(this);
+  /*  QDrag *drag = new QDrag(this);
     QMimeData *mimeData = new QMimeData;
 
 
@@ -126,5 +129,6 @@ void DestWidget::mousePressEvent(QMouseEvent *event)
         break;
     }
     //update();
+    */
 }
 

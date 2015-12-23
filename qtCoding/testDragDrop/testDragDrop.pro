@@ -15,10 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     destwidget.cpp \
-    srcwidget.cpp
+    srcwidget.cpp \
+    wi.cpp
 
 HEADERS  += mainwindow.h \
     destwidget.h \
-    srcwidget.h
+    srcwidget.h \
+    wi.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    wi.ui

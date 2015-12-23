@@ -6,12 +6,14 @@
 SrcWidget::SrcWidget(QWidget *parent) : QWidget(parent)
 {
     setAcceptDrops(true);
-    mView =  new QGraphicsView(this);
+   /* mView =  new QGraphicsView(this);
     mScene = new QGraphicsScene(this);
     mView->setScene(mScene);
     mPixmap =  new QPixmap("C:\\Users\\rsadhu\\Desktop\\despicable.jpg");
     mScene->addPixmap(*mPixmap);
-    mView->show();
+    mView->show();*/
+
+   // mView->setAcceptDrops(true);
 }
 
 void SrcWidget::dragEnterEvent(QDragEnterEvent *event)
@@ -44,7 +46,7 @@ void SrcWidget::dropEvent(QDropEvent *event)
     if(event->source()==this)
         return ;
 
-    if (event->mimeData()->hasFormat("image/x-puzzle-piece1"))
+   /* if (event->mimeData()->hasFormat("image/x-puzzle-piece1"))
     {
         QByteArray pieceData = event->mimeData()->data("image/x-puzzle-piece1");
         QDataStream dataStream(&pieceData, QIODevice::ReadOnly);
@@ -67,11 +69,11 @@ void SrcWidget::dropEvent(QDropEvent *event)
         mView->update();
         mView->show();
 
-       /*QFile file("yourFile.png");
-       file.open(QIODevice::WriteOnly);
-       pixmap.save(&file, "JPG");
-       view.show();*/
-   }
+      // QFile file("yourFile.png");
+       //file.open(QIODevice::WriteOnly);
+       //pixmap.save(&file, "JPG");
+//       view.show();
+   }*/
 }
 
 
@@ -79,7 +81,7 @@ void SrcWidget::mousePressEvent(QMouseEvent *event)
 {
     qDebug()<<"SrcWidget::mousePressEvent\n";
 
-    if (!(event->buttons() & Qt::LeftButton))
+    /*if (!(event->buttons() & Qt::LeftButton))
         return;
 
     QDrag *drag = new QDrag(this);
@@ -109,17 +111,17 @@ void SrcWidget::mousePressEvent(QMouseEvent *event)
         qDebug()<<"SrcWidget::defaultAction\n";
         break;
     }
-    update();
+    update();*/
 }
 
 void SrcWidget::receivePixMap(QPixmap *sentPixmap)
 {
-  qDebug()<<"SrcWidget::receivePixMap();\n";
+ /* qDebug()<<"SrcWidget::receivePixMap();\n";
   if(sentPixmap)
   {
     mScene->addPixmap(*sentPixmap);
     delete mPixmap;
     mPixmap =  new QPixmap(*sentPixmap);
     mView->show();
-  }
+  }*/
 }

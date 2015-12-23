@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include "wi.h"
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -16,17 +18,28 @@ MainWindow::~MainWindow()
 
 void MainWindow::init()
 {
-  mCentralWidget = new QWidget(this);
+   //  mCentralWidget = new QWidget(this);
+   wi* w1 = new wi(0);
+   wi* w2 = new wi(0);
+   w1->setStyleSheet("background-color: rgb(0, 255, 0);");
+   w2->setStyleSheet("background-color: rgb(255, 0, 0);");
+   w1->setGeometry(0,0,300, 300);
+  w2->setGeometry(300,0,300, 300);
+   w1->show();
+   w2->show();
 
-  mLayout = new QHBoxLayout(mCentralWidget);
+  // setCentralWidget(mCentralWidget);
 
-  mSrcWidget = new SrcWidget(mCentralWidget);
 
-  mDestWidget = new DestWidget(mCentralWidget);
+ // mLayout = new QHBoxLayout(mCentralWidget);
 
-  mLayout->addWidget(mSrcWidget);
+ /* mSrcWidget = new SrcWidget(mCentralWidget);
 
-  mLayout->addWidget(mDestWidget);
+  mDestWidget = new DestWidget(mCentralWidget);*/
 
-  setCentralWidget(mCentralWidget);
+  //->addWidget(w1);
+
+ // mLayout->addWidget(w2);
+
+ /* setCentralWidget(mCentralWidget);*/
 }
