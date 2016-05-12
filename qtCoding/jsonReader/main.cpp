@@ -15,7 +15,6 @@ public:
     QString price;
 };
 
-
 class Products
 {
 public:
@@ -26,6 +25,12 @@ public:
     QString family;
 };
 
+class Result
+{
+public:
+ QString  productName;
+ QList<Listings> listing;
+};
 
 void getMeListings(char *fileName,QVector<Listings> &listingsArray)
 {
@@ -56,7 +61,6 @@ void getMeListings(char *fileName,QVector<Listings> &listingsArray)
 
     file.close();
 }
-
 void getMeProducts(char *fileName, QVector<Products>& productsArray)
 {
     QFile file(fileName);
@@ -90,16 +94,38 @@ void getMeProducts(char *fileName, QVector<Products>& productsArray)
 
 }
 
-
-
-
 int main(int argc, char *argv[])
 {
     QVector<Listings>  listingsArray;
     QVector<Products>  productsArray;
-
+#ifndef WIN32
     getMeListings("/home/syilmaz/rsadhu/coding/work/qtCoding/jsonReader/listings.txt",listingsArray);
     getMeProducts("/home/syilmaz/rsadhu/coding/work/qtCoding/jsonReader/products.txt",productsArray);
+#elif WIN32
+    getMeListings("C:\\Users\\KEREM\\Desktop\\work\\qtCoding\\jsonReader\\listings.txt",listingsArray);
+    getMeProducts("C:\\Users\\KEREM\\Desktop\\work\\qtCoding\\jsonReader\\products.txt",productsArray);
+#endif
+
+    QVector<Result> results;
+    for(int i=0;i<productsArray.size();i++)
+    {
+        Result r;
+        r.productName= productsArray.at(i).productName;
+        for(int j=0;j<listingsArray.size();j++)
+        {
+            if(
+              productsArray.at(i).manufacturer.compare(listingsArray.at(j).manufacturer,Qt::CaseInsensitive)
+           && listingsArray.at(j).title.contains(productsArray.at(i).family,Qt::CaseInsensitive)
+           && listingsArray.at(j).title.contains(productsArray.at(i).model,Qt::CaseInsensitive))
+            {
+                r.listing.append(listingsArray.at(j));
+            }
+        }
+        results.push_back(r);
+    }
+
+
+
 
     return 0;
 }
