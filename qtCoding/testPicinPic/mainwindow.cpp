@@ -83,12 +83,11 @@ void MainWindow::dropEvent(QDropEvent *event)
 {
 
     QWidget *thisWidget = mWidgets[0];
-    thisWidget->layout()->removeWidget(thisWidget);
+  //  thisWidget->layout()->removeWidget(thisWidget);
     //QWidget *thisCentralWidget = new QWidget;
     anotherGLayout = new QGridLayout(thisWidget);
     thisWidget->setLayout(anotherGLayout);
     anotherGLayout->addWidget(mWidgets[1],0,0,1,1);
-
 }
 
 
