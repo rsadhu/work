@@ -22,6 +22,7 @@ public slots:
 private:
 	ResourceFactory mFactory;
 	Ui::QCSClass ui;
+	QList<ResourceInterface *> mAllObjects;
 };
 
 #endif // QCS_H

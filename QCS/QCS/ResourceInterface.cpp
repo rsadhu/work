@@ -1,5 +1,5 @@
 #include "ResourceInterface.h"
-#include<qstring.h>
+
 
 ResourceInterface::ResourceInterface()
 {

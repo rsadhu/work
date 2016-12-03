@@ -1,6 +1,5 @@
 #pragma once
 #include"ResourceInterface.h"
-#include <qwidget.h>
 
 class ResourceText : public QWidget, public ResourceInterface
 {
@@ -8,6 +7,6 @@ class ResourceText : public QWidget, public ResourceInterface
 public:
 	ResourceText(const QString &src,QWidget *parent=0);
 	~ResourceText();
-	void showResource();
+	void showResource() final;
 };
 

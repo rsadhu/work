@@ -1,8 +1,10 @@
 #pragma once
 
-#include <QObject>
-#include<qdom.h>
 #include"ResourceInterface.h"
+#include"ResourceImage.h"
+#include"ResourceText.h"
+#include"ResourceWeb.h"
+
 
 class ResourceFactory
 {	

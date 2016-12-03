@@ -1,5 +1,5 @@
 #pragma once
-#include<qwebview.h>
+
 #include"ResourceInterface.h"
 
 class ResourceWeb :public QWidget, public ResourceInterface

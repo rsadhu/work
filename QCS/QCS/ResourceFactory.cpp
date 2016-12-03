@@ -1,32 +1,34 @@
 #include "ResourceFactory.h"
-#include"ResourceImage.h"
-#include"ResourceText.h"
-#include"ResourceWeb.h"
-#include<qfile.h>
-#include<iostream>
-#include<qdom.h>
 
 
 ResourceFactory::ResourceFactory()
 {
+	Logger::getInstance()->writeToFile("ResourceFactory::ResourceFactory\n");
 	mDom = new QDomDocument();
 	QFile f("D:\\rsadhu\\work\\CodeSnippet\\data.xml");
 	if (f.open(QIODevice::ReadOnly | QIODevice::Text))
 	{
 		QByteArray data = f.readAll();
 		mDom->setContent(data);		
+		Logger::getInstance()->writeToFile("ResourceFactory::ResourceFactory:: successfully  opened xml\n");
+	}
+	else
+	{
+		Logger::getInstance()->writeToFile("ResourceFactory::ResourceFactory:: failed to open xml\n");
 	}
 }
 
 
 ResourceFactory::~ResourceFactory()
 {
+	Logger::getInstance()->writeToFile("ResourceFactory::~ResourceFactory\n");
 	delete mDom;
 	mDom = nullptr;
 }
 
 ResourceInterface * ResourceFactory::getInstance(const QString &key) const
 {
+	Logger::getInstance()->writeToFile("ResourceFactory::getInstance::factory method\n");
 	QDomElement root = mDom->firstChildElement();
 	QDomNodeList nodes = root.elementsByTagName(key);
 	for (int i = 0; i < nodes.count(); i++)
@@ -47,12 +49,12 @@ ResourceInterface * ResourceFactory::getInstance(const QString &key) const
 			else
 			if (e.attribute("id") == "txt")
 			{
-				return new ResourceText(e.attribute("txt"));
+				return new ResourceText(e.attribute("src"));
 			}
 			else
 			if (e.attribute("id") == "url")
 			{
-				return new ResourceWeb(e.attribute("url"));
+				return new ResourceWeb(e.attribute("src"));
 			}			
 		}
 	}
