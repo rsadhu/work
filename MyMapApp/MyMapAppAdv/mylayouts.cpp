@@ -2,7 +2,7 @@
 #include<QDragEnterEvent>
 #include<QDropEvent>
 #include<qmimedata.h>
-#include<qsizepolicy.h>
+#include<QTreeWidgetItem>
 
 MyLayouts::MyLayouts(QWidget *parent,  int layoutId )
 	: QWidget(parent)
@@ -46,6 +46,16 @@ void MyLayouts::dropEvent(QDropEvent *event)
 {
 	if (event->mimeData()->hasFormat("application/x-qabstractitemmodeldatalist"))
 	{
-		
+		QString content;
+		QTreeWidget * tree = dynamic_cast<QTreeWidget*>(event->source());
+		if (tree)
+		{
+			QList<QTreeWidgetItem*> treeWidgetItemList = tree->selectedItems();
+
+			for (auto it = treeWidgetItemList.begin(); it != treeWidgetItemList.end(); it++)
+			{
+				content = (*it)->text(0);
+			}
+		}
 	}
 }
