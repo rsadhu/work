@@ -86,6 +86,7 @@ public:
         __qtreewidgetitem->setText(0, QStringLiteral("1"));
         treeWidget->setHeaderItem(__qtreewidgetitem);
         treeWidget->setObjectName(QStringLiteral("treeWidget"));
+        treeWidget->setDragEnabled(true);
 
         horizontalLayout->addWidget(treeWidget);
 

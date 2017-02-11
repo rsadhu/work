@@ -22,5 +22,5 @@ void MyWebVeiew::slotloadFinished(bool status)
 	{		
 		m_WebRunTime = new MyWebRuntime(nullptr);	
 	}
-	page()->mainFrame()->addToJavaScriptWindowObject("MyWebRumTime", m_WebRunTime);	
+	page()->mainFrame()->addToJavaScriptWindowObject("MyWebRunTime", m_WebRunTime);	
 }

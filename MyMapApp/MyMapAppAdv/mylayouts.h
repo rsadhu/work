@@ -14,7 +14,8 @@ public:
 	~MyLayouts();
 	void init();
 	void mousePressEvent(QMouseEvent *);
-
+	void dragEnterEvent(QDragEnterEvent *);
+	void dropEvent(QDropEvent *event);
 private:
 	Ui::MyLayouts ui;	
 	int mLayoutId;

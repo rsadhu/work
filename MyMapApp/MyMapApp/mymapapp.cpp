@@ -1,6 +1,7 @@
 #include "mymapapp.h"
 #include<qdir.h>
 
+
 MyMapApp::MyMapApp(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -8,7 +9,9 @@ MyMapApp::MyMapApp(QWidget *parent)
 	m_wView = new MyWebVeiew();
 	this->setCentralWidget(m_wView);
 	//QUrl url("http://www.google.com");
-	QUrl url(QDir::toNativeSeparators("file:\\\c:\\Users\\rsadhu\\Desktop\\maptest.html"));
+	//QUrl url(QDir::toNativeSeparators("file:\\\c:\\Users\\rsadhu\\Desktop\\maptest.html"));
+	QWebSettings::globalSettings()->setAttribute(QWebSettings::JavascriptEnabled,true);
+	QUrl url(QDir::toNativeSeparators("file:///c://Users//rsadhu//Desktop//maptest.html"));
 	m_wView->load(url);
 	m_wView->show();
 }
