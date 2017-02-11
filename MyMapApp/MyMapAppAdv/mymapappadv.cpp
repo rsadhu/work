@@ -31,7 +31,7 @@ void MyMapAppAdv::init()
 	QTreeWidgetItem *firstItem = new QTreeWidgetItem();
 	firstItem->setText(0, tr("Browser"));
 	QTreeWidgetItem *secondItem = new QTreeWidgetItem();
-	secondItem->setText(0, tr("Map App"));
+	secondItem->setText(0, tr("Map-App"));
 	QTreeWidgetItem *thirdItem = new QTreeWidgetItem();
 	thirdItem->setText(0, tr("Records"));
 	QTreeWidgetItem *editorItem = new QTreeWidgetItem();

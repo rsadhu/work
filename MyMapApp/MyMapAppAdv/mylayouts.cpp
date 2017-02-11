@@ -3,6 +3,7 @@
 #include<QDropEvent>
 #include<qmimedata.h>
 #include<QTreeWidgetItem>
+#include<qdebug.h>
 
 MyLayouts::MyLayouts(QWidget *parent,  int layoutId )
 	: QWidget(parent)
@@ -54,7 +55,27 @@ void MyLayouts::dropEvent(QDropEvent *event)
 
 			for (auto it = treeWidgetItemList.begin(); it != treeWidgetItemList.end(); it++)
 			{
-				content = (*it)->text(0);
+				content = (*it)->text(0);				
+			}
+	
+			if (content == "Editor")
+			{
+				qDebug() << content;
+			}
+			else 
+			if (content == "Browser")
+			{
+				qDebug() << content;
+			}
+			else
+			if (content == "Map-App")
+			{
+				qDebug() << content;
+			}
+			else
+			if (content == "Records")
+			{
+				qDebug() << content;
 			}
 		}
 	}
