@@ -28,19 +28,21 @@ void MyMapAppAdv::init()
 	
 	
 	ui.widget->show();
-	QTreeWidgetItem *firstItem = new QTreeWidgetItem();
-	firstItem->setText(0, tr("Browser"));
-	QTreeWidgetItem *secondItem = new QTreeWidgetItem();
-	secondItem->setText(0, tr("Map-App"));
+	QTreeWidgetItem *mapItem = new QTreeWidgetItem();
+	mapItem->setText(0, tr("Map-App"));
+
 	QTreeWidgetItem *thirdItem = new QTreeWidgetItem();
 	thirdItem->setText(0, tr("Records"));
+
 	QTreeWidgetItem *editorItem = new QTreeWidgetItem();
 	editorItem->setText(0, tr("Editor"));
-	
 
-	ui.treeWidget->addTopLevelItem(firstItem);
-	ui.treeWidget->addTopLevelItem(secondItem);
+	QTreeWidgetItem *webruntme = new QTreeWidgetItem();
+	webruntme->setText(0, tr("WebRunTime"));
+		
+	ui.treeWidget->addTopLevelItem(mapItem);
 	ui.treeWidget->addTopLevelItem(thirdItem);
 	ui.treeWidget->addTopLevelItem(editorItem);
-	
+	ui.treeWidget->addTopLevelItem(webruntme);	
+	showFullScreen();
 }

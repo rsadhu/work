@@ -4,30 +4,19 @@
 #include<qmimedata.h>
 #include<QTreeWidgetItem>
 #include<qdebug.h>
+#include<mywebviewer.h>
+#include<myruntime.h>
+
 
 MyLayouts::MyLayouts(QWidget *parent,  int layoutId )
 	: QWidget(parent)
 {
-	ui.setupUi(this);
-	init();
+	ui.setupUi(this);	
 	mLayoutId = layoutId;	
 	setAcceptDrops(true);
 }
 
 MyLayouts::~MyLayouts()
-{
-
-}
-
-
-
-void MyLayouts::init()
-{
-	setStyleSheet("background-color:red");
-}
-
-
-void MyLayouts::mousePressEvent(QMouseEvent *event)
 {
 
 }
@@ -41,6 +30,7 @@ void MyLayouts::dragEnterEvent(QDragEnterEvent *event)
 		event->accept();
 	}
 }
+
 
 
 void MyLayouts::dropEvent(QDropEvent *event)
@@ -61,21 +51,27 @@ void MyLayouts::dropEvent(QDropEvent *event)
 			if (content == "Editor")
 			{
 				qDebug() << content;
-			}
-			else 
-			if (content == "Browser")
-			{
-				qDebug() << content;
-			}
+			}			
 			else
 			if (content == "Map-App")
 			{
 				qDebug() << content;
+				mWebView = new MyWebViewer(this);
+				mWebView->loadPage("file:///c://Users//rsadhu//Desktop//maptest.html");
+				mWebView->show();
+				mContent = MAP_APP;
 			}
 			else
 			if (content == "Records")
 			{
 				qDebug() << content;
+			}
+			else if(content=="WebRunTime")
+			{
+				qDebug() << content;
+				mWebRunTime = new MyRunTime(this);
+				mWebRunTime->show();
+				mContent = WEB_RUNTIME;
 			}
 		}
 	}

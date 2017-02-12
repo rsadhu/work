@@ -12,7 +12,7 @@ class MyWebViewer : public QWebView
 public:
 	MyWebViewer(QWidget *parent = 0);
 	~MyWebViewer();
-
+	void loadPage(const QString &url);
 private:
 	Ui::MyWebViewer ui;
 };
