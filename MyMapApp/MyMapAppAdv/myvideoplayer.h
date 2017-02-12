@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "ui_myvideoplayer.h"
+#include <vlc/vlc.h>
 
 class MyVideoPlayer : public QWidget
 {
@@ -11,9 +12,15 @@ class MyVideoPlayer : public QWidget
 public:
 	MyVideoPlayer(QWidget *parent = 0);
 	~MyVideoPlayer();
-
+	void openFile();
+public slots :
+	void play();
+	void close();
 private:
 	Ui::MyVideoPlayer ui;
+
+	libvlc_instance_t *vlcInstance;
+	libvlc_media_player_t *vlcPlayer;
 };
 
 #endif // MYVIDEOPLAYER_H

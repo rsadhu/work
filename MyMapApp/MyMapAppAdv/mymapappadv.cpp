@@ -36,7 +36,7 @@ void MyMapAppAdv::init()
 	thirdItem->setText(0, tr("Records"));
 
 	QTreeWidgetItem *editorItem = new QTreeWidgetItem();
-	editorItem->setText(0, tr("Editor"));
+	editorItem->setText(0, tr("MediaPlayer"));
 
 	QTreeWidgetItem *webruntme = new QTreeWidgetItem();
 	webruntme->setText(0, tr("WebRunTime"));
