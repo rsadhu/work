@@ -35,7 +35,7 @@ private:
 	MyWebViewer *mWebView = nullptr;
 	MyRunTime *mWebRunTime = nullptr;
 	MyVideoPlayer *mVideolPlayer = nullptr;
-	MyLoggerViewer *mLoggerViewer = nullptr;
+	MyLoggerViewer *mLoggerViewer = nullptr;	
 };
 
 #endif // MYLAYOUTS_H

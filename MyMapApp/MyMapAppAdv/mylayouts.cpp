@@ -52,11 +52,11 @@ void MyLayouts::dropEvent(QDropEvent *event)
 			}
 	
 			if (content == "Logger")
-			{
+			{				
 				qDebug() << content;
 				mLoggerViewer = new MyLoggerViewer(this);
 				mLoggerViewer->show();
-				mContent = LOGGER;
+				mContent = LOGGER;				
 			}
 			else
 			if (content == "Map-App")
@@ -65,7 +65,7 @@ void MyLayouts::dropEvent(QDropEvent *event)
 				mWebView = new MyWebViewer(this);
 				mWebView->loadPage("file:///c://Users//rsadhu//Desktop//maptest.html");
 				mWebView->show();
-				mContent = MAP_APP;
+				mContent = MAP_APP;				
 			}
 			else
 			if (content == "MediaPlayer")
@@ -73,7 +73,7 @@ void MyLayouts::dropEvent(QDropEvent *event)
 				qDebug() << content;
 				mVideolPlayer = new MyVideoPlayer(this);
 				mVideolPlayer->show();
-				mContent = VIDEO_PLAYER;
+				mContent = VIDEO_PLAYER;				
 
 			}
 			else if(content=="WebRunTime")
@@ -81,7 +81,7 @@ void MyLayouts::dropEvent(QDropEvent *event)
 				qDebug() << content;
 				mWebRunTime = new MyRunTime(this);
 				mWebRunTime->show();
-				mContent = WEB_RUNTIME;
+				mContent = WEB_RUNTIME;				
 			}
 		}
 	}
