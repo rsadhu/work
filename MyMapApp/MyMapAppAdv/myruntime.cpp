@@ -8,6 +8,7 @@ MyRunTime::MyRunTime(QWidget *parent)
 	: QWidget(parent)
 {
 	init();
+	resize(500, 500);
 }
 
 void MyRunTime::init()
@@ -18,10 +19,6 @@ void MyRunTime::init()
 	QObject::connect(mWebView->page()->mainFrame(), SIGNAL(javaScriptWindowObjectCleared()),
 		this, SLOT(addJSObject()));
 	mWebView->loadPage("file:///D://rsadhu//work//MyMapApp//MyMapAppAdv//Resources//sysinfo.html");
-
-
-
-
 }
 
 void MyRunTime::getSysInfo()

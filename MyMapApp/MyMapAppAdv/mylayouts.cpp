@@ -17,6 +17,7 @@ MyLayouts::MyLayouts(QWidget *parent,  int layoutId )
 	ui.setupUi(this);	
 	mLayoutId = layoutId;	
 	setAcceptDrops(true);
+	setMinimumSize(QSize(500, 500));
 }
 
 MyLayouts::~MyLayouts()

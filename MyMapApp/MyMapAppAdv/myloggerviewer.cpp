@@ -10,6 +10,7 @@ MyLoggerViewer::MyLoggerViewer(QWidget *parent)
 	ui.tableWidget->setWordWrap(true);
 	ui.tableWidget->resizeRowsToContents();
 	ui.tableWidget->resizeColumnsToContents();
+	resize(500, 500);
 }
 
 MyLoggerViewer::~MyLoggerViewer()

@@ -6,8 +6,10 @@ MyVideoPlayer::MyVideoPlayer(QWidget *parent)
 	ui.setupUi(this);
 	vlcPlayer = NULL;	
 	vlcInstance = libvlc_new(0, NULL);	
+	connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(play()));
+	connect(ui.pushButton_2, SIGNAL(clicked()), this, SLOT(stop()));
 	openFile();
-	
+	resize(500, 500);
 }
 
 MyVideoPlayer::~MyVideoPlayer()
