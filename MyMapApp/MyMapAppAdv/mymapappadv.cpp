@@ -33,7 +33,7 @@ void MyMapAppAdv::init()
 	mapItem->setText(0, tr("Map-App"));
 
 	QTreeWidgetItem *thirdItem = new QTreeWidgetItem();
-	thirdItem->setText(0, tr("Records"));
+	thirdItem->setText(0, tr("Logger"));
 
 	QTreeWidgetItem *editorItem = new QTreeWidgetItem();
 	editorItem->setText(0, tr("MediaPlayer"));
@@ -46,6 +46,7 @@ void MyMapAppAdv::init()
 	ui.treeWidget->addTopLevelItem(editorItem);
 	ui.treeWidget->addTopLevelItem(webruntme);	
 
+#ifdef R
 	MyDatabaseContoller dbController(QString("test"));
 	//QString data = "INSERT INTO tbl_test (ID, NAME, AGE, ADDRESS) VALUES(1,'rakesh',34, 'ankara');";
 	QString query = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) "  \
@@ -70,6 +71,5 @@ void MyMapAppAdv::init()
 	dbController.insertData(sql);
 	QList<QStringList> d;
 	dbController.getAllData(d);
-
-	
+#endif	
 }

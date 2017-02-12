@@ -6,6 +6,9 @@
 #include<qdebug.h>
 #include<mywebviewer.h>
 #include<myruntime.h>
+#include"myvideoplayer.h"
+#include"myloggerviewer.h"
+
 
 
 MyLayouts::MyLayouts(QWidget *parent,  int layoutId )
@@ -48,10 +51,13 @@ void MyLayouts::dropEvent(QDropEvent *event)
 				content = (*it)->text(0);				
 			}
 	
-			if (content == "Editor")
+			if (content == "Logger")
 			{
 				qDebug() << content;
-			}			
+				mLoggerViewer = new MyLoggerViewer(this);
+				mLoggerViewer->show();
+				mContent = LOGGER;
+			}
 			else
 			if (content == "Map-App")
 			{
@@ -62,9 +68,13 @@ void MyLayouts::dropEvent(QDropEvent *event)
 				mContent = MAP_APP;
 			}
 			else
-			if (content == "Records")
+			if (content == "MediaPlayer")
 			{
 				qDebug() << content;
+				mVideolPlayer = new MyVideoPlayer(this);
+				mVideolPlayer->show();
+				mContent = VIDEO_PLAYER;
+
 			}
 			else if(content=="WebRunTime")
 			{

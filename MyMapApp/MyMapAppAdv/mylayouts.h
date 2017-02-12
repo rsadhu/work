@@ -7,12 +7,16 @@
 
 class MyWebViewer;
 class MyRunTime;
+class MyVideoPlayer;
+class MyLoggerViewer;
 
 typedef enum
 {
 	NONE=0,
 	MAP_APP,
-	WEB_RUNTIME
+	WEB_RUNTIME,
+	VIDEO_PLAYER, 
+	LOGGER
 }CONTENT;
 
 class MyLayouts : public QWidget
@@ -30,6 +34,8 @@ private:
 	CONTENT mContent;
 	MyWebViewer *mWebView = nullptr;
 	MyRunTime *mWebRunTime = nullptr;
+	MyVideoPlayer *mVideolPlayer = nullptr;
+	MyLoggerViewer *mLoggerViewer = nullptr;
 };
 
 #endif // MYLAYOUTS_H

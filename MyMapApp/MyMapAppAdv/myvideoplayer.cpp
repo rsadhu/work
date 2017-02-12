@@ -6,6 +6,7 @@ MyVideoPlayer::MyVideoPlayer(QWidget *parent)
 	ui.setupUi(this);
 	vlcPlayer = NULL;	
 	vlcInstance = libvlc_new(0, NULL);	
+	openFile();
 	
 }
 
@@ -18,7 +19,7 @@ MyVideoPlayer::~MyVideoPlayer()
 
 void MyVideoPlayer::openFile()
 {
-	QString fileName = "";
+	QString fileName = "D:\\rsadhu\\work\\MyMapApp\\MyMapAppAdv\\Resources\\vfile.avi";
 	
 	libvlc_media_t *vlcMedia = libvlc_media_new_path(vlcInstance, fileName.toUtf8().constData());
 	if (!vlcMedia)

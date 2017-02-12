@@ -1,9 +1,4 @@
-public class FirstJapp {
-
-static void main(String &argv[])
-{
-}
-
+public class FirstJApp {
 
 }
 
