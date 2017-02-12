@@ -30,11 +30,20 @@ void MyDatabaseContoller::init()
 		qDebug() << "database created..";
 
 		/* Create SQL statement */
-		char *sql = "CREATE TABLE if not exists tbl_test("  \
+		/*char *sql = "CREATE TABLE if not exists tbl_test("  \
 			"ID INT PRIMARY KEY     NOT NULL," \
 			"NAME           TEXT    NOT NULL," \
 			"AGE            INT     NOT NULL," \
-			"ADDRESS        CHAR(50));";
+			"ADDRESS        CHAR(50)\
+			);";*/
+
+		char *sql = "CREATE TABLE COMPANY("  \
+			"ID INT PRIMARY KEY     NOT NULL," \
+			"NAME           TEXT    NOT NULL," \
+			"AGE            INT     NOT NULL," \
+			"ADDRESS        CHAR(50)," \
+			"SALARY         REAL );";
+
 		char *errMsg = nullptr;
 		ret = sqlite3_exec(mDatabase,sql, dbCallBack,0,&errMsg);
 		if (ret != SQLITE_OK)
@@ -44,8 +53,8 @@ void MyDatabaseContoller::init()
 		else
 		{
 			qDebug() << "TableCreated Successfully..\n";
-		}
-	}
+		}	
+	}	
 }
 
 
@@ -53,7 +62,7 @@ void MyDatabaseContoller::insertData(QString &query)
 {
 	const char *sql = query.toStdString().c_str();
 	char *errMsg = nullptr;
-	int ret  = sqlite3_exec(mDatabase, sql, dbCallBack, 0, &errMsg);
+	int ret = sqlite3_exec(mDatabase, sql, dbCallBack, 0, &errMsg);
 	if (ret != SQLITE_OK)
 	{
 		sqlite3_free(errMsg);
@@ -78,7 +87,7 @@ void MyDatabaseContoller::updateData(QString &data, QString &key)
 
 
 void MyDatabaseContoller::getAllData(QList<QStringList> &content)
-{
+{	
 	const char *sql = "SELECT * FROM tbl_test";
 	char *errMsg = nullptr;
 	int ret = sqlite3_exec(mDatabase, sql, dbCallBack, 0, &errMsg);
@@ -89,5 +98,5 @@ void MyDatabaseContoller::getAllData(QList<QStringList> &content)
 	else
 	{
 		qDebug() << "Query runs  Successfully..\n";
-	}
+	}	
 }
