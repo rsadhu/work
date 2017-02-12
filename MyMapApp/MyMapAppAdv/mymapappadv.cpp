@@ -47,7 +47,7 @@ void MyMapAppAdv::init()
 	ui.treeWidget->addTopLevelItem(webruntme);	
 
 	MyDatabaseContoller dbController(QString("test"));
-	QString data = "INSERT INTO tbl_test ( name, address, age) VALUES(rakesh,ankara, 34)";
+	QString data = "INSERT INTO tbl_test (ID, NAME, AGE, ADDRESS) VALUES(1,'rakesh',34, 'ankara');";
 	dbController.insertData(data);
 	QList<QStringList> d;
 	dbController.getAllData(d);

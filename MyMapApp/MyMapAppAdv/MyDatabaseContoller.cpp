@@ -30,11 +30,11 @@ void MyDatabaseContoller::init()
 		qDebug() << "database created..";
 
 		/* Create SQL statement */
-		char *sql = "CREATE TABLE tbl_test("  \
+		char *sql = "CREATE TABLE if not exists tbl_test("  \
 			"ID INT PRIMARY KEY     NOT NULL," \
 			"NAME           TEXT    NOT NULL," \
 			"AGE            INT     NOT NULL," \
-			"ADDRESS        CHAR(50);";
+			"ADDRESS        CHAR(50));";
 		char *errMsg = nullptr;
 		ret = sqlite3_exec(mDatabase,sql, dbCallBack,0,&errMsg);
 		if (ret != SQLITE_OK)
