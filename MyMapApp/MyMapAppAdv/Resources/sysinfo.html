@@ -15,17 +15,48 @@
 </style>
 <body>
 
-<h1>JavaScript Progress Bar</h1>
+<h1>system info widget</h1>
 
-<div id="myProgress">
-  <div id="myBar"></div>
-</div>
+<div id="myProgress"> CPU USAGE <div id="myBar"></div></div>
 
-<br>
-<button onclick="move()">Click Me</button> 
+    <div id="name"></div>
+    <div id="cpu"></div>
+    <div id="build"></div>
+
+
 
 <script>
-function move() {
+
+    function callbackSystemInfo(a)
+    {
+        var cnt=0;
+        foreach(i in a)
+        {
+            if (cnt == 0)
+                MyRunTime.systemName = i;
+            if (cnt == 1)
+                MyRunTime.cpuArchitecture = i;
+            if (cnt == 2)
+                MyRunTime.productName = i;
+            cnt++;
+        }
+
+        document.getElementById("name").innerHTML = MyRunTime.systemName;
+        document.getElementById("cpu").innerHTML = MyRunTime.cpuArchitecture;
+        document.getElementById("build").innerHTML = MyRunTime.productName;
+    }
+
+    try
+    {
+        MyRunTime.signalSystemInfoDetails = callbackSystemInfo;
+        MyRunTime.getSysInfo();        
+    }
+    catch(e)
+    {
+        alert(e.toString());
+    }
+
+function cpuStatus(width) {
   var elem = document.getElementById("myBar");   
   var width = 1;
   var id = setInterval(frame, 10);

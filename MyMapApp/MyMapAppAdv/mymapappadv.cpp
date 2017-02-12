@@ -1,6 +1,7 @@
 #include "mymapappadv.h"
 #include"mylayouts.h"
 #include<QTreeWidgetItem>
+#include<MyDatabaseContoller.h>
 
 
 MyMapAppAdv::MyMapAppAdv(QWidget *parent)
@@ -44,5 +45,12 @@ void MyMapAppAdv::init()
 	ui.treeWidget->addTopLevelItem(thirdItem);
 	ui.treeWidget->addTopLevelItem(editorItem);
 	ui.treeWidget->addTopLevelItem(webruntme);	
-	showFullScreen();
+
+	MyDatabaseContoller dbController(QString("test"));
+	QString data = "INSERT INTO tbl_test ( name, address, age) VALUES(rakesh,ankara, 34)";
+	dbController.insertData(data);
+	QList<QStringList> d;
+	dbController.getAllData(d);
+
+	
 }
