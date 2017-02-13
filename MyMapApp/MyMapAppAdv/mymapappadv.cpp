@@ -4,6 +4,7 @@
 #include<MyDatabaseContoller.h>
 
 
+
 MyMapAppAdv::MyMapAppAdv(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -45,31 +46,10 @@ void MyMapAppAdv::init()
 	ui.treeWidget->addTopLevelItem(thirdItem);
 	ui.treeWidget->addTopLevelItem(editorItem);
 	ui.treeWidget->addTopLevelItem(webruntme);	
-
-#ifdef R
-	MyDatabaseContoller dbController(QString("test"));
-	//QString data = "INSERT INTO tbl_test (ID, NAME, AGE, ADDRESS) VALUES(1,'rakesh',34, 'ankara');";
-	QString query = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) "  \
-					"VALUES (1, 'Rakesh', 34, 'California' ); " \
-					"INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) "  \
-					"VALUES (2, 'Oguz', 25, 'Texas' ); "     \
-					"INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)" \
-					"VALUES (3, 'Rinku', 34, 'Norway' );" \
-					"INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)" \
-					"VALUES (4, 'Alper', 30, 'Rich-Mond ' );";
-
-
-	QString sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) "  \
-		"VALUES (1, 'Paul', 32, 'California', 20000.00 ); " \
-		"INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) "  \
-		"VALUES (2, 'Allen', 25, 'Texas', 15000.00 ); "     \
-		"INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)" \
-		"VALUES (3, 'Teddy', 23, 'Norway', 20000.00 );" \
-		"INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)" \
-		"VALUES (4, 'Mark', 25, 'Rich-Mond ', 65000.00 );";
-
-	dbController.insertData(sql);
+	//char *sql = sqlite3_mprintf("INSERT INTO LOG_TABLE VALUES(%Q,%Q,%Q)", "1","webapp", "testing");
+	QString query = "INSERT INTO  LOG_TABLE (ID, APPNAME, ACTIVITY) VALUES(1,'WebApp','Date Time :: logging ..');";
+	MyDatabaseContoller::getInstance()->insertData(QString(query));
 	QList<QStringList> d;
-	dbController.getAllData(d);
-#endif	
+	MyDatabaseContoller::getInstance()->getAllData(d);
+
 }

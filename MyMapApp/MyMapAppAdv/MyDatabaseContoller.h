@@ -1,11 +1,19 @@
 #pragma once
 #include"sqlite3.h"
 #include<qstring.h>
+#include<mutex>
+#include<condition_variable>
+#include<thread>
+
 class MyDatabaseContoller
 {
+	MyDatabaseContoller() ;
+	MyDatabaseContoller(const MyDatabaseContoller &) = delete;
+	MyDatabaseContoller & operator =(const MyDatabaseContoller &) = delete;	
+	virtual ~MyDatabaseContoller();// = delete;
 public:
-	MyDatabaseContoller(QString &dbName);
-	virtual ~MyDatabaseContoller();
+	static MyDatabaseContoller *  getInstance();
+	static void freeDatabase();
 protected:
 	void init();
 public:	
@@ -16,5 +24,9 @@ public:
 private:
 	sqlite3 *mDatabase = nullptr;
 	QString mDbName;
+	static MyDatabaseContoller *s_obj;	
+	bool mSignal = false;
+	std::condition_variable m_cond;
+	std::mutex mMutex;
 };
 

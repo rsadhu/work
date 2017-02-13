@@ -1,11 +1,28 @@
 #include "MyDatabaseContoller.h"
 #include<qdebug.h>
 
-MyDatabaseContoller::MyDatabaseContoller(QString &dbName) :mDbName(dbName)
+MyDatabaseContoller *MyDatabaseContoller::s_obj = nullptr;
+
+MyDatabaseContoller::MyDatabaseContoller()
 {
+	mDbName = "Log.db";
 	init();
 }
 
+
+MyDatabaseContoller * MyDatabaseContoller::getInstance()
+{
+	if (!s_obj)
+	{
+		s_obj = new MyDatabaseContoller();
+	}
+	return s_obj;
+}
+
+void MyDatabaseContoller::freeDatabase()
+{	
+	
+}
 
 MyDatabaseContoller::~MyDatabaseContoller()
 {
@@ -15,10 +32,11 @@ MyDatabaseContoller::~MyDatabaseContoller()
 static int dbCallBack(void *NotUsed, int argc, char **argv, char **azColName)
 {
 	int i;
+	char data[1000];
 	for (i = 0; i<argc; i++){
-		printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+		sprintf(data,"%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
 	}
-	printf("\n");
+	qDebug() << data;
 	return 0;
 }
 
@@ -27,22 +45,12 @@ void MyDatabaseContoller::init()
 	int ret = sqlite3_open(mDbName.toStdString().c_str(), &mDatabase);
 	if (ret==0)
 	{
-		qDebug() << "database created..";
+		qDebug() << "database created..";		
 
-		/* Create SQL statement */
-		/*char *sql = "CREATE TABLE if not exists tbl_test("  \
-			"ID INT PRIMARY KEY     NOT NULL," \
-			"NAME           TEXT    NOT NULL," \
-			"AGE            INT     NOT NULL," \
-			"ADDRESS        CHAR(50)\
-			);";*/
-
-		char *sql = "CREATE TABLE COMPANY("  \
-			"ID INT PRIMARY KEY     NOT NULL," \
-			"NAME           TEXT    NOT NULL," \
-			"AGE            INT     NOT NULL," \
-			"ADDRESS        CHAR(50)," \
-			"SALARY         REAL );";
+		char *sql = "CREATE TABLE IF NOT EXISTS LOG_TABLE("  \
+			"ID INT PRIMARY KEY			NOT NULL," \
+			"APPNAME            TEXT    NOT NULL,"\
+			"ACTIVITY            TEXT    NOT NULL); ";
 
 		char *errMsg = nullptr;
 		ret = sqlite3_exec(mDatabase,sql, dbCallBack,0,&errMsg);
@@ -60,9 +68,9 @@ void MyDatabaseContoller::init()
 
 void MyDatabaseContoller::insertData(QString &query)
 {
-	const char *sql = query.toStdString().c_str();
+	const char *sql = strdup(query.toStdString().c_str());
 	char *errMsg = nullptr;
-	int ret = sqlite3_exec(mDatabase, sql, dbCallBack, 0, &errMsg);
+	int ret = sqlite3_exec(mDatabase, sql, dbCallBack, "some data", &errMsg);
 	if (ret != SQLITE_OK)
 	{
 		sqlite3_free(errMsg);
@@ -71,24 +79,14 @@ void MyDatabaseContoller::insertData(QString &query)
 	{
 		qDebug() << "Query runs  Successfully..\n";
 	}
-}
 
-
-void MyDatabaseContoller::deleteData(QString &key)
-{
-
-}
-
-
-void MyDatabaseContoller::updateData(QString &data, QString &key)
-{
-
+	free((char*)sql);
 }
 
 
 void MyDatabaseContoller::getAllData(QList<QStringList> &content)
 {	
-	const char *sql = "SELECT * FROM tbl_test";
+	const char *sql = "SELECT * FROM LOG_TABLE";
 	char *errMsg = nullptr;
 	int ret = sqlite3_exec(mDatabase, sql, dbCallBack, 0, &errMsg);
 	if (ret != SQLITE_OK)
