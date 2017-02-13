@@ -29,14 +29,17 @@ MyDatabaseContoller::~MyDatabaseContoller()
 	sqlite3_close(mDatabase);
 }
 
+QStringList dataFromDb;
+
 static int dbCallBack(void *NotUsed, int argc, char **argv, char **azColName)
 {
+	dataFromDb.clear();
 	int i;
 	char data[1000];
 	for (i = 0; i<argc; i++){
 		sprintf(data,"%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+		dataFromDb.append(data);
 	}
-	qDebug() << data;
 	return 0;
 }
 
