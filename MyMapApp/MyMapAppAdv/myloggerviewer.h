@@ -11,7 +11,6 @@ class MyLoggerViewer : public QWidget
 public:
 	MyLoggerViewer(QWidget *parent = 0);
 	~MyLoggerViewer();
-
 private:
 	Ui::MyLoggerViewer ui;
 };

@@ -3,6 +3,7 @@
 
 MyDatabaseContoller *MyDatabaseContoller::s_obj = nullptr;
 int  MyDatabaseContoller::s_primaryKey;
+QStringList MyDatabaseContoller::s_content;
 
 MyDatabaseContoller::MyDatabaseContoller()
 {
@@ -21,8 +22,8 @@ MyDatabaseContoller * MyDatabaseContoller::getInstance()
 }
 
 void MyDatabaseContoller::freeDatabase()
-{	
-	
+{
+
 }
 
 MyDatabaseContoller::~MyDatabaseContoller()
@@ -30,23 +31,73 @@ MyDatabaseContoller::~MyDatabaseContoller()
 	sqlite3_close(mDatabase);
 }
 
-QStringList dataFromDb;
 
-static int dbCallBack(void *NotUsed, int argc, char **argv, char **azColName)
+static int primartKeyDetection(void *NotUsed, int argc, char **argv, char **azColName)
 {
-//	dataFromDb.clear();
+	for (int i = 0; i < argc; i++)
+	{
+		if (std::strcmp(azColName[i], "ID") == 0)
+		{
+			MyDatabaseContoller::setPrimaryKey(std::stoi(argv[i]));
+			break;
+		}
+	}
+	return 0;
+}
+
+
+void MyDatabaseContoller::setPrimaryKey(int key)
+{
+	s_primaryKey = key;
+}
+
+
+void MyDatabaseContoller::initPrimaryKey()
+{
+	char *query = "SELECT * FROM LOG_TABLE ORDER BY ID DESC LIMIT 1";
+	const char *sql = strdup(query);
+	char *errMsg = nullptr;
+	int ret = sqlite3_exec(mDatabase, sql, primartKeyDetection, "some data", &errMsg);
+	if (ret != SQLITE_OK)
+	{
+		sqlite3_free(errMsg);
+	}
+	else
+	{
+		qDebug() << "Query runs  Successfully..\n";
+	}
+}
+
+
+
+
+static int dbCallBack(void *this_ptr, int argc, char **argv, char **azColName)
+{
+	if (this_ptr)
+	{
+		MyDatabaseContoller * thisPtr = static_cast<MyDatabaseContoller*> (this_ptr);
+		if (thisPtr)
+		{
+			thisPtr->sqlite3callback(argc, argv, azColName);
+		}
+	}
+	return 0;
+}
+
+
+int MyDatabaseContoller::sqlite3callback(int argc, char **argv, char **azColName)
+{	
 	QString str;
 	int i;
 	char data[1000];
 	for (i = 0; i<argc; i++)
 	{
 		memset(data, 0, 1001);
-		sprintf(data,"%s  %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+		sprintf(data, "%s ", argv[i] ? argv[i] : "NULL");
 		qDebug() << data;
-		
 		str.append(data);
 	}
-	dataFromDb.append(str);
+	mCb(str);
 	return 0;
 }
 
@@ -79,6 +130,7 @@ void MyDatabaseContoller::init()
 		else
 		{
 			qDebug() << "TableCreated Successfully..\n";
+			initPrimaryKey();
 		}	
 	}	
 }
@@ -88,7 +140,7 @@ void MyDatabaseContoller::insertData(const char *query)
 {
 	const char *sql = strdup(query);
 	char *errMsg = nullptr;
-	int ret = sqlite3_exec(mDatabase, sql, dbCallBack, "some data", &errMsg);
+	int ret = sqlite3_exec(mDatabase, sql, dbCallBack, 0, &errMsg);
 	if (ret != SQLITE_OK)
 	{
 		sqlite3_free(errMsg);
@@ -102,11 +154,13 @@ void MyDatabaseContoller::insertData(const char *query)
 }
 
 
-void MyDatabaseContoller::getAllData(QList<QStringList> &content)
+void MyDatabaseContoller::getAllData(callBackForDbData cb)
 {	
+	mCb = cb;
 	const char *sql = "SELECT * FROM LOG_TABLE";
-	char *errMsg = nullptr;
-	int ret = sqlite3_exec(mDatabase, sql, dbCallBack, 0, &errMsg);
+	char *errMsg = nullptr;	
+	s_content.clear();
+	int ret = sqlite3_exec(mDatabase, sql, dbCallBack, this, &errMsg);
 	if (ret != SQLITE_OK)
 	{
 		sqlite3_free(errMsg);

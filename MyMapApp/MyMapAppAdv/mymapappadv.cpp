@@ -46,8 +46,5 @@ void MyMapAppAdv::init()
 	ui.treeWidget->addTopLevelItem(thirdItem);
 	ui.treeWidget->addTopLevelItem(editorItem);
 	ui.treeWidget->addTopLevelItem(webruntme);		
-	MyDatabaseContoller::getInstance()->writeData("MainApp","Starting ....");
-	QList<QStringList> d;
-	MyDatabaseContoller::getInstance()->getAllData(d);
-
+	MyDatabaseContoller::getInstance()->writeData("MainApp","Starting ....");	
 }
