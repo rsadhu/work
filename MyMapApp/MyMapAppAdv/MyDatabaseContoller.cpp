@@ -10,7 +10,7 @@ static int dbCallBack(void *this_ptr, int argc, char **argv, char **azColName)
 {
 	if (this_ptr)
 	{
-		MyDatabaseContoller * thisPtr = static_cast<MyDatabaseContoller*> (this_ptr);
+		Reader * thisPtr = static_cast<Reader*> (this_ptr);
 		if (thisPtr)
 		{
 			thisPtr->sqlite3callback(argc, argv, azColName);
@@ -43,7 +43,7 @@ void MyDatabaseContoller::freeDatabase()
 
 MyDatabaseContoller::~MyDatabaseContoller()
 {
-	sqlite3_close(mDatabase);
+	sqlite3_close(s_Database);
 }
 
 
@@ -72,7 +72,7 @@ void MyDatabaseContoller::initPrimaryKey()
 	char *query = "SELECT * FROM LOG_TABLE ORDER BY ID DESC LIMIT 1";
 	const char *sql = strdup(query);
 	char *errMsg = nullptr;
-	int ret = sqlite3_exec(mDatabase, sql, primartKeyDetection, "some data", &errMsg);
+	int ret = sqlite3_exec(s_Database, sql, primartKeyDetection, "some data", &errMsg);
 	if (ret != SQLITE_OK)
 	{
 		sqlite3_free(errMsg);
@@ -87,19 +87,19 @@ void MyDatabaseContoller::initPrimaryKey()
 
 
 // c++ call back called from sqlite calback
-int MyDatabaseContoller::sqlite3callback(int argc, char **argv, char **azColName)
+int Reader::sqlite3callback(int argc, char **argv, char **azColName)
 {	
-	QString str;
-	int i;
-	char data[1000];
-	for (i = 0; i<argc; i++)
+	Data data;
+	for (int i = 0; i<argc; i++)
 	{
-		memset(data, 0, 1001);
-		sprintf(data, "%s ", argv[i] ? argv[i] : "NULL");
-		qDebug() << data;
-		str.append(data);
+		if (std::strcmp(azColName[i], "ID") == 0)
+			data.mPrimaryKey = argv[i];
+		if (std::strcmp(azColName[i], "APPNAME") == 0)
+			data.mAppName = argv[i];
+		if (std::strcmp(azColName[i], "ACTIVITY") == 0)
+			data.mMessage = argv[i];	
 	}
-	mCb(str);
+	emit signalUpdateLogs(data);
 	return 0;
 }
 
@@ -115,7 +115,7 @@ void MyDatabaseContoller::writeData(const QString &appName, const QString &data)
 
 void MyDatabaseContoller::init()
 {
-	int ret = sqlite3_open(mDbName.toStdString().c_str(), &mDatabase);
+	int ret = sqlite3_open(mDbName.toStdString().c_str(), &s_Database);
 	if (ret==0)
 	{
 		qDebug() << "database created..";		
@@ -126,7 +126,7 @@ void MyDatabaseContoller::init()
 			"ACTIVITY            TEXT    NOT NULL); ";
 
 		char *errMsg = nullptr;
-		ret = sqlite3_exec(mDatabase, sql, dbCallBack, 0, &errMsg);
+		ret = sqlite3_exec(s_Database, sql, dbCallBack, 0, &errMsg);
 		if (ret != SQLITE_OK)
 		{
 			sqlite3_free(errMsg);
@@ -144,7 +144,7 @@ void MyDatabaseContoller::insertData(const char *query)
 {
 	const char *sql = strdup(query);
 	char *errMsg = nullptr;
-	int ret = sqlite3_exec(mDatabase, sql, dbCallBack, 0, &errMsg);
+	int ret = sqlite3_exec(s_Database, sql, dbCallBack, 0, &errMsg);
 	if (ret != SQLITE_OK)
 	{
 		sqlite3_free(errMsg);
@@ -158,13 +158,15 @@ void MyDatabaseContoller::insertData(const char *query)
 }
 
 
-void MyDatabaseContoller::getAllData(callBackForDbData cb)
-{	
-	mCb = cb;
+void Reader::run()
+{		
 	const char *sql = "SELECT * FROM LOG_TABLE";
 	char *errMsg = nullptr;	
-	//s_content.clear();
-	int ret = sqlite3_exec(mDatabase, sql, dbCallBack, this, &errMsg);	
+
+	mMutex.lock();
+	int ret = sqlite3_exec(s_Database, sql, dbCallBack, this, &errMsg);	
+	mMutex.lock();
+
 	if (ret != SQLITE_OK)
 	{
 		sqlite3_free(errMsg);
@@ -173,4 +175,5 @@ void MyDatabaseContoller::getAllData(callBackForDbData cb)
 	{
 		qDebug() << "Query runs  Successfully..\n";
 	}	
+	
 }

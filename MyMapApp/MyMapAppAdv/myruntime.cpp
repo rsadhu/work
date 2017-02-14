@@ -39,5 +39,5 @@ void MyRunTime::addJSObject()
 
 MyRunTime::~MyRunTime()
 {
-
+	MyDatabaseContoller::getInstance()->writeData("WebRunTime", "Logged out ");
 }

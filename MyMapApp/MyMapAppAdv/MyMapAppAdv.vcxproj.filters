@@ -98,6 +98,12 @@
     <ClCompile Include="GeneratedFiles\Release\moc_myloggerviewer.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MyDatabaseContoller.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MyDatabaseContoller.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mymapappadv.h">
@@ -136,6 +142,9 @@
     <CustomBuild Include="myloggerviewer.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="MyDatabaseContoller.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_mymapappadv.h">
@@ -143,9 +152,6 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_mylayouts.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MyDatabaseContoller.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_myvideoplayer.h">
       <Filter>Generated Files</Filter>

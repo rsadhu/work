@@ -10,7 +10,7 @@ MyWebViewer::MyWebViewer(QWidget *parent)
 
 MyWebViewer::~MyWebViewer()
 {
-
+	MyDatabaseContoller::getInstance()->writeData("WebViewer", "Logged out ");
 }
 
 void MyWebViewer::loadPage(const QString &path)

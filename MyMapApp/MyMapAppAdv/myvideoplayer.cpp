@@ -19,6 +19,7 @@ MyVideoPlayer::~MyVideoPlayer()
 {
 	if (vlcInstance)
 		libvlc_release(vlcInstance);
+	MyDatabaseContoller::getInstance()->writeData("VideoPlayer", "Logged out ");
 }
 
 
