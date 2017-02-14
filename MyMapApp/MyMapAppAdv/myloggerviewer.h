@@ -13,7 +13,7 @@ class MyLoggerViewer : public QWidget
 
 public:
 	MyLoggerViewer(QWidget *parent = 0);
-	~MyLoggerViewer();	
+	~MyLoggerViewer();		
 protected:
 	void initUI();
 public slots:

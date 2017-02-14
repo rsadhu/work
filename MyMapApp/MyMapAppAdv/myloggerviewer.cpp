@@ -23,7 +23,7 @@ MyLoggerViewer::MyLoggerViewer(QWidget *parent)
 	
 
 	MyDatabaseContoller::getInstance()->writeData("LoggerViewer::"," Starting ..");
-
+	slotCheckLogsAgain();
 	mTimer = new QTimer(this);
 	connect(mTimer, SIGNAL(timeout()), this, SLOT(slotCheckLogsAgain()));
 	mTimer->start(5000);
@@ -40,13 +40,18 @@ void MyLoggerViewer::initUI()
 	ui.tableWidget->setWordWrap(true);
 	ui.tableWidget->resizeRowsToContents();
 	ui.tableWidget->resizeColumnsToContents();
+	ui.tableWidget->setColumnWidth(0, this->width()*(0.1));
+	ui.tableWidget->setColumnWidth(1, this->width()*(0.2));
+	ui.tableWidget->setColumnWidth(2, this->width()*(0.7));
 	resize(500, 500);
 }
+
+
 
 void MyLoggerViewer::slotCheckLogsAgain()
 {	
 	m_tableCounter = 0;
-	ui.tableWidget->setColumnCount(0);
+	ui.tableWidget->setRowCount(0);
 
 	Reader *mReaderLogs = new Reader();
 	connect(mReaderLogs, SIGNAL(signalUpdateLogs(Data)), this, SLOT(slotUpdateLogs(Data)), Qt::QueuedConnection);
@@ -61,7 +66,7 @@ MyLoggerViewer::~MyLoggerViewer()
 void
 MyLoggerViewer::slotUpdateLogs(Data  result)
 {		
-	ui.tableWidget->setColumnCount(100);
+	ui.tableWidget->setRowCount(10000);
 	ui.tableWidget->setItem(m_tableCounter, 0, new QTableWidgetItem(result.mPrimaryKey));
 	ui.tableWidget->setItem(m_tableCounter, 1, new QTableWidgetItem(result.mAppName));
 	ui.tableWidget->setItem(m_tableCounter, 2, new QTableWidgetItem(result.mMessage));	
