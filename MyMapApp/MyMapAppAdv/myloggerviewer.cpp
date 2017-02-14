@@ -28,29 +28,28 @@ MyLoggerViewer::MyLoggerViewer(QWidget *parent)
 	ui.tableWidget->resizeColumnsToContents();
 	resize(500, 500);
 
-	
-
-	
+	MyDatabaseContoller::getInstance()->writeData("LoggerViewer::"," Starting ..");
 
 	mTimer = new QTimer(this);
 	connect(mTimer, SIGNAL(timeout()), this, SLOT(slotCheckLogsAgain()));
-
 	mTimer->start(5000);
-	//slotCheckLogsAgain();
+	
 }
 
 void MyLoggerViewer::slotCheckLogsAgain()
 {	
 	m_tableCounter = 0;
 	ui.tableWidget->setColumnCount(0);
-	mReaderLogs = new Reader();
-	connect(mReaderLogs, SIGNAL(signalUpdateLogs(Data)), this, SLOT(slotUpdateLogs(Data)));
+/*	if (mReaderLogs)
+		delete mReaderLogs;*/
+	Reader *mReaderLogs = new Reader();
+	connect(mReaderLogs, SIGNAL(signalUpdateLogs(Data)), this, SLOT(slotUpdateLogs(Data)), Qt::QueuedConnection);
 	QThreadPool::globalInstance()->start(mReaderLogs);	
 }
 
 MyLoggerViewer::~MyLoggerViewer()
 {
-	
+	MyDatabaseContoller::getInstance()->writeData("LoggerViewer::", " Shutting ..");
 }
 
 void

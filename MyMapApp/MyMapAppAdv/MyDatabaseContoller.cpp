@@ -165,7 +165,7 @@ void Reader::run()
 
 	mMutex.lock();
 	int ret = sqlite3_exec(s_Database, sql, dbCallBack, this, &errMsg);	
-	mMutex.lock();
+	mMutex.unlock();
 
 	if (ret != SQLITE_OK)
 	{

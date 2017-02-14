@@ -19,7 +19,7 @@ void slotUpdateLogs(Data);
 void slotCheckLogsAgain();
 private:
 	Ui::MyLoggerViewer ui;
-	Reader *mReaderLogs = nullptr;
+	//Reader *mReaderLogs = nullptr;
 	static int m_tableCounter;
 	QTimer *mTimer = nullptr;
 	QMutex mMutex;

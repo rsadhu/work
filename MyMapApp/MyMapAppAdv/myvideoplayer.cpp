@@ -10,8 +10,9 @@ MyVideoPlayer::MyVideoPlayer(QWidget *parent)
 	vlcInstance = libvlc_new(0, NULL);	
 	connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(play()));
 	connect(ui.pushButton_2, SIGNAL(clicked()), this, SLOT(stop()));
-	openFile();
 	resize(500, 500);
+	
+	openFile();	
 	MyDatabaseContoller::getInstance()->writeData("VideoPlayer", "Logged in ");
 }
 
@@ -21,7 +22,6 @@ MyVideoPlayer::~MyVideoPlayer()
 		libvlc_release(vlcInstance);
 	MyDatabaseContoller::getInstance()->writeData("VideoPlayer", "Logged out ");
 }
-
 
 void MyVideoPlayer::openFile()
 {
