@@ -14,15 +14,15 @@ class MyLoggerViewer : public QWidget
 public:
 	MyLoggerViewer(QWidget *parent = 0);
 	~MyLoggerViewer();	
+protected:
+	void initUI();
 public slots:
-void slotUpdateLogs(Data);
-void slotCheckLogsAgain();
-private:
-	Ui::MyLoggerViewer ui;
-	//Reader *mReaderLogs = nullptr;
+	void slotUpdateLogs(Data);
+	void slotCheckLogsAgain();
+private:		
+	Ui::MyLoggerViewer ui;	
 	static int m_tableCounter;
 	QTimer *mTimer = nullptr;
-	QMutex mMutex;
 };
 
 Q_DECLARE_METATYPE(Data);
