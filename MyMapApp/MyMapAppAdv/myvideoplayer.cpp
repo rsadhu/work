@@ -1,4 +1,6 @@
 #include "myvideoplayer.h"
+#include"MyDatabaseContoller.h"
+
 
 MyVideoPlayer::MyVideoPlayer(QWidget *parent)
 	: QWidget(parent)
@@ -10,6 +12,7 @@ MyVideoPlayer::MyVideoPlayer(QWidget *parent)
 	connect(ui.pushButton_2, SIGNAL(clicked()), this, SLOT(stop()));
 	openFile();
 	resize(500, 500);
+	MyDatabaseContoller::getInstance()->writeData("VideoPlayer", "Logged in ");
 }
 
 MyVideoPlayer::~MyVideoPlayer()

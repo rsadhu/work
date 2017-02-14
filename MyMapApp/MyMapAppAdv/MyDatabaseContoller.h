@@ -16,10 +16,10 @@ public:
 	static void freeDatabase();
 protected:
 	void init();
+	void insertData(const char *);	
+	//void updateData(QString &data, QString &key);
 public:	
-	void insertData(QString &data);
-	void deleteData(QString &key);
-	void updateData(QString &data, QString &key);	
+	void writeData(const QString &appName, const QString &data);
 	void getAllData(QList<QStringList> &);
 private:
 	sqlite3 *mDatabase = nullptr;
@@ -28,5 +28,6 @@ private:
 	bool mSignal = false;
 	std::condition_variable m_cond;
 	std::mutex mMutex;
+	static int  s_primaryKey;
 };
 

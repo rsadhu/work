@@ -3,12 +3,14 @@
 #include<qwebframe.h>
 #include<qwidget.h>
 #include"qwebpage.h"
+#include"MyDatabaseContoller.h"
 
 MyRunTime::MyRunTime(QWidget *parent)
 	: QWidget(parent)
 {
 	init();
 	resize(500, 500);
+	MyDatabaseContoller::getInstance()->writeData("WebRunTime", "Logged in ");
 }
 
 void MyRunTime::init()

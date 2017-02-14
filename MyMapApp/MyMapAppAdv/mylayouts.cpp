@@ -54,7 +54,7 @@ void MyLayouts::dropEvent(QDropEvent *event)
 	
 			if (content == "Logger")
 			{				
-				qDebug() << content;
+				qDebug() << content;				
 				mLoggerViewer = new MyLoggerViewer(this);
 				mLoggerViewer->show();
 				mContent = LOGGER;				

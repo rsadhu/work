@@ -2,6 +2,7 @@
 #include<qdebug.h>
 
 MyDatabaseContoller *MyDatabaseContoller::s_obj = nullptr;
+int  MyDatabaseContoller::s_primaryKey;
 
 MyDatabaseContoller::MyDatabaseContoller()
 {
@@ -33,15 +34,29 @@ QStringList dataFromDb;
 
 static int dbCallBack(void *NotUsed, int argc, char **argv, char **azColName)
 {
-	dataFromDb.clear();
+//	dataFromDb.clear();
+	QString str;
 	int i;
 	char data[1000];
-	for (i = 0; i<argc; i++){
-		sprintf(data,"%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
-		dataFromDb.append(data);
+	for (i = 0; i<argc; i++)
+	{
+		memset(data, 0, 1001);
+		sprintf(data,"%s  %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+		qDebug() << data;
+		
+		str.append(data);
 	}
+	dataFromDb.append(str);
 	return 0;
 }
+
+void MyDatabaseContoller::writeData(const QString &appName, const QString &data)
+{
+	s_primaryKey++;
+	char *sql = sqlite3_mprintf("INSERT INTO LOG_TABLE VALUES(%Q,%Q,%Q)", std::to_string(s_primaryKey).c_str(), appName.toStdString().c_str(), data.toStdString().c_str());
+	insertData(sql);
+}
+
 
 void MyDatabaseContoller::init()
 {
@@ -69,9 +84,9 @@ void MyDatabaseContoller::init()
 }
 
 
-void MyDatabaseContoller::insertData(QString &query)
+void MyDatabaseContoller::insertData(const char *query)
 {
-	const char *sql = strdup(query.toStdString().c_str());
+	const char *sql = strdup(query);
 	char *errMsg = nullptr;
 	int ret = sqlite3_exec(mDatabase, sql, dbCallBack, "some data", &errMsg);
 	if (ret != SQLITE_OK)

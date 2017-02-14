@@ -1,10 +1,11 @@
 #include "mywebviewer.h"
-
+#include "MyDatabaseContoller.h"
 MyWebViewer::MyWebViewer(QWidget *parent)
 	: QWebView(parent)
 {
 	ui.setupUi(this);
 	resize(500, 500);
+	MyDatabaseContoller::getInstance()->writeData("WebViewer", "Logged in ");
 }
 
 MyWebViewer::~MyWebViewer()

@@ -1,8 +1,10 @@
 #include "myloggerviewer.h"
+#include"MyDatabaseContoller.h"
 
 MyLoggerViewer::MyLoggerViewer(QWidget *parent)
 	: QWidget(parent)
 {
+	MyDatabaseContoller::getInstance()->writeData("LOGGER","Logged in ");
 	ui.setupUi(this);
 	ui.tableWidget->setColumnCount(9);
 	ui.tableWidget->setRowCount(100);

@@ -45,10 +45,8 @@ void MyMapAppAdv::init()
 	ui.treeWidget->addTopLevelItem(mapItem);
 	ui.treeWidget->addTopLevelItem(thirdItem);
 	ui.treeWidget->addTopLevelItem(editorItem);
-	ui.treeWidget->addTopLevelItem(webruntme);	
-	//char *sql = sqlite3_mprintf("INSERT INTO LOG_TABLE VALUES(%Q,%Q,%Q)", "1","webapp", "testing");
-	QString query = "INSERT INTO  LOG_TABLE (ID, APPNAME, ACTIVITY) VALUES(1,'WebApp','Date Time :: logging ..');";
-	MyDatabaseContoller::getInstance()->insertData(QString(query));
+	ui.treeWidget->addTopLevelItem(webruntme);		
+	MyDatabaseContoller::getInstance()->writeData("MainApp","Starting ....");
 	QList<QStringList> d;
 	MyDatabaseContoller::getInstance()->getAllData(d);
 
