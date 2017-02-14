@@ -1,9 +1,24 @@
 #include "MyDatabaseContoller.h"
 #include<qdebug.h>
+#include<qdatetime.h>
 
-MyDatabaseContoller *MyDatabaseContoller::s_obj = nullptr;
+MyDatabaseContoller *MyDatabaseContoller::s_instance = nullptr;
 int  MyDatabaseContoller::s_primaryKey;
-QStringList MyDatabaseContoller::s_content;
+
+
+static int dbCallBack(void *this_ptr, int argc, char **argv, char **azColName)
+{
+	if (this_ptr)
+	{
+		MyDatabaseContoller * thisPtr = static_cast<MyDatabaseContoller*> (this_ptr);
+		if (thisPtr)
+		{
+			thisPtr->sqlite3callback(argc, argv, azColName);
+		}
+	}
+	return 0;
+}
+
 
 MyDatabaseContoller::MyDatabaseContoller()
 {
@@ -14,11 +29,11 @@ MyDatabaseContoller::MyDatabaseContoller()
 
 MyDatabaseContoller * MyDatabaseContoller::getInstance()
 {
-	if (!s_obj)
+	if (!s_instance)
 	{
-		s_obj = new MyDatabaseContoller();
+		s_instance = new MyDatabaseContoller();
 	}
-	return s_obj;
+	return s_instance;
 }
 
 void MyDatabaseContoller::freeDatabase()
@@ -71,20 +86,7 @@ void MyDatabaseContoller::initPrimaryKey()
 
 
 
-static int dbCallBack(void *this_ptr, int argc, char **argv, char **azColName)
-{
-	if (this_ptr)
-	{
-		MyDatabaseContoller * thisPtr = static_cast<MyDatabaseContoller*> (this_ptr);
-		if (thisPtr)
-		{
-			thisPtr->sqlite3callback(argc, argv, azColName);
-		}
-	}
-	return 0;
-}
-
-
+// c++ call back called from sqlite calback
 int MyDatabaseContoller::sqlite3callback(int argc, char **argv, char **azColName)
 {	
 	QString str;
@@ -103,8 +105,10 @@ int MyDatabaseContoller::sqlite3callback(int argc, char **argv, char **azColName
 
 void MyDatabaseContoller::writeData(const QString &appName, const QString &data)
 {
-	s_primaryKey++;
-	char *sql = sqlite3_mprintf("INSERT INTO LOG_TABLE VALUES(%Q,%Q,%Q)", std::to_string(s_primaryKey).c_str(), appName.toStdString().c_str(), data.toStdString().c_str());
+	s_primaryKey++;	
+	std::string str = data.toStdString() + "  ::  " + QDateTime::currentDateTime().toString().toStdString();
+	char *sql =
+	sqlite3_mprintf("INSERT INTO LOG_TABLE VALUES(%Q,%Q,%Q)", std::to_string(s_primaryKey).c_str(), appName.toStdString().c_str(), str.c_str());
 	insertData(sql);
 }
 
@@ -122,7 +126,7 @@ void MyDatabaseContoller::init()
 			"ACTIVITY            TEXT    NOT NULL); ";
 
 		char *errMsg = nullptr;
-		ret = sqlite3_exec(mDatabase,sql, dbCallBack,0,&errMsg);
+		ret = sqlite3_exec(mDatabase, sql, dbCallBack, 0, &errMsg);
 		if (ret != SQLITE_OK)
 		{
 			sqlite3_free(errMsg);
@@ -159,8 +163,8 @@ void MyDatabaseContoller::getAllData(callBackForDbData cb)
 	mCb = cb;
 	const char *sql = "SELECT * FROM LOG_TABLE";
 	char *errMsg = nullptr;	
-	s_content.clear();
-	int ret = sqlite3_exec(mDatabase, sql, dbCallBack, this, &errMsg);
+	//s_content.clear();
+	int ret = sqlite3_exec(mDatabase, sql, dbCallBack, this, &errMsg);	
 	if (ret != SQLITE_OK)
 	{
 		sqlite3_free(errMsg);

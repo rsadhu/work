@@ -7,9 +7,10 @@
 
 MyMapAppAdv::MyMapAppAdv(QWidget *parent)
 	: QMainWindow(parent)
-{
+{	
+	MyDatabaseContoller::getInstance()->writeData("MainApp", "Starting ....");
 	ui.setupUi(this);	
-	init();
+	init();	
 }
 
 MyMapAppAdv::~MyMapAppAdv()
@@ -46,5 +47,5 @@ void MyMapAppAdv::init()
 	ui.treeWidget->addTopLevelItem(thirdItem);
 	ui.treeWidget->addTopLevelItem(editorItem);
 	ui.treeWidget->addTopLevelItem(webruntme);		
-	MyDatabaseContoller::getInstance()->writeData("MainApp","Starting ....");	
+	
 }
