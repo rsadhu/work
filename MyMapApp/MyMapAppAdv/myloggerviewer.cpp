@@ -26,7 +26,7 @@ MyLoggerViewer::MyLoggerViewer(QWidget *parent)
 	slotCheckLogsAgain();
 	mTimer = new QTimer(this);
 	connect(mTimer, SIGNAL(timeout()), this, SLOT(slotCheckLogsAgain()));
-	mTimer->start(5000);
+	mTimer->start(9000);
 	
 }
 

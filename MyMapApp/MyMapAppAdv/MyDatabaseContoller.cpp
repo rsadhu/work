@@ -2,7 +2,7 @@
 #include<qdebug.h>
 #include<qdatetime.h>
 
-MyDatabaseContoller *MyDatabaseContoller::s_instance = nullptr;
+MyDatabaseContoller MyDatabaseContoller::s_instance;
 int  MyDatabaseContoller::s_primaryKey;
 
 
@@ -29,21 +29,15 @@ MyDatabaseContoller::MyDatabaseContoller()
 
 MyDatabaseContoller * MyDatabaseContoller::getInstance()
 {
-	if (!s_instance)
-	{
-		s_instance = new MyDatabaseContoller();
-	}
-	return s_instance;
+	return &s_instance;
 }
 
-void MyDatabaseContoller::freeDatabase()
-{
 
-}
 
 MyDatabaseContoller::~MyDatabaseContoller()
 {
-	sqlite3_close(s_Database);
+	if (s_Database)
+		sqlite3_close(s_Database);
 }
 
 
@@ -72,14 +66,16 @@ void MyDatabaseContoller::initPrimaryKey()
 	char *query = "SELECT * FROM LOG_TABLE ORDER BY ID DESC LIMIT 1";
 	const char *sql = strdup(query);
 	char *errMsg = nullptr;
+	gMutex.lock();
 	int ret = sqlite3_exec(s_Database, sql, primartKeyDetection, "some data", &errMsg);
+	gMutex.unlock();
 	if (ret != SQLITE_OK)
 	{
 		sqlite3_free(errMsg);
 	}
 	else
 	{
-		qDebug() << "Query runs  Successfully..\n";
+		//qDebug() << "Query runs  Successfully..\n";
 	}
 }
 
@@ -115,10 +111,12 @@ void MyDatabaseContoller::writeData(const QString &appName, const QString &data)
 
 void MyDatabaseContoller::init()
 {
+	gMutex.lock();
 	int ret = sqlite3_open(mDbName.toStdString().c_str(), &s_Database);
+	gMutex.unlock();
 	if (ret==0)
 	{
-		qDebug() << "database created..";		
+		//qDebug() << "database created..";		
 
 		char *sql = "CREATE TABLE IF NOT EXISTS LOG_TABLE("  \
 			"ID INT PRIMARY KEY			NOT NULL," \
@@ -126,14 +124,16 @@ void MyDatabaseContoller::init()
 			"ACTIVITY            TEXT    NOT NULL); ";
 
 		char *errMsg = nullptr;
+		gMutex.lock();
 		ret = sqlite3_exec(s_Database, sql, dbCallBack, 0, &errMsg);
+		gMutex.unlock();
 		if (ret != SQLITE_OK)
 		{
 			sqlite3_free(errMsg);
 		}
 		else
 		{
-			qDebug() << "TableCreated Successfully..\n";
+//			qDebug() << "TableCreated Successfully..\n";
 			initPrimaryKey();
 		}	
 	}	
@@ -144,14 +144,17 @@ void MyDatabaseContoller::insertData(const char *query)
 {
 	const char *sql = strdup(query);
 	char *errMsg = nullptr;
+
+	gMutex.lock();
 	int ret = sqlite3_exec(s_Database, sql, dbCallBack, 0, &errMsg);
+	gMutex.unlock();
 	if (ret != SQLITE_OK)
 	{
 		sqlite3_free(errMsg);
 	}
 	else
 	{
-		qDebug() << "Query runs  Successfully..\n";
+		//qDebug() << "Query runs  Successfully..\n";
 	}
 
 	free((char*)sql);
@@ -163,9 +166,9 @@ void Reader::run()
 	const char *sql = "SELECT * FROM LOG_TABLE";
 	char *errMsg = nullptr;	
 
-	mMutex.lock();
+	gMutex.lock();
 	int ret = sqlite3_exec(s_Database, sql, dbCallBack, this, &errMsg);	
-	mMutex.unlock();
+	gMutex.unlock();
 
 	if (ret != SQLITE_OK)
 	{
@@ -173,7 +176,7 @@ void Reader::run()
 	}
 	else
 	{
-		qDebug() << "Query runs  Successfully..\n";
+		//qDebug() << "Query runs  Successfully..\n";
 	}	
 	
 }

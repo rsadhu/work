@@ -1,4 +1,6 @@
 #pragma once
+#ifndef MYDATABASECONTROLLER_H
+#define MYDATABASECONTROLLER_H
 #include"sqlite3.h"
 #include<qstring.h>
 #include<qrunnable.h>
@@ -19,6 +21,8 @@ public:
 
 static sqlite3 *s_Database = nullptr;
 
+static QMutex  gMutex;
+
 class MyDatabaseContoller 
 {		
 	MyDatabaseContoller();
@@ -26,8 +30,7 @@ class MyDatabaseContoller
 	MyDatabaseContoller(const MyDatabaseContoller &) = delete;
 	MyDatabaseContoller & operator =(const MyDatabaseContoller &) = delete;		
 public:
-	static MyDatabaseContoller *  getInstance();
-	static void freeDatabase();
+	static MyDatabaseContoller *  getInstance();	
 	static void setPrimaryKey(int);	
 	void writeData(const QString &appName, const QString &data);
 protected:
@@ -38,7 +41,7 @@ private:
 	QString mDbName;
 	callBackForDbData mCb;	
 	static int  s_primaryKey;
-	static MyDatabaseContoller *s_instance;	
+	static MyDatabaseContoller s_instance;	
 };
 
 
@@ -54,7 +57,7 @@ signals:
 	void signalUpdateLogs(Data);
 private:
 	bool mSignal = false;
-	std::condition_variable m_cond;
-	QMutex  mMutex;
+	std::condition_variable m_cond;	
 };
 
+#endif//

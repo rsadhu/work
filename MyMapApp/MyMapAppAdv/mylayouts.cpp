@@ -22,7 +22,10 @@ MyLayouts::MyLayouts(QWidget *parent,  int layoutId )
 
 MyLayouts::~MyLayouts()
 {
-
+	delete mLoggerViewer;
+	delete mWebRunTime;
+	delete mWebView;
+	delete mVideolPlayer;
 }
 
 

@@ -34,10 +34,10 @@ void MyRunTime::getSysInfo()
 void MyRunTime::addJSObject()
 {
 	mWebView->page()->mainFrame()->addToJavaScriptWindowObject("MyRunTime", this);	
-//	this->signalSystemInfoDetails.connect(getSysInfo);
 }
 
 MyRunTime::~MyRunTime()
 {
 	MyDatabaseContoller::getInstance()->writeData("WebRunTime", "Logged out ");
+	delete mWebView;
 }

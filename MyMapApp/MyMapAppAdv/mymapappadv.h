@@ -15,7 +15,7 @@ public:
 
 private:
 	Ui::MyMapAppAdvClass ui;	
-	QGridLayout *mLayout;	
+	QGridLayout *mLayout;		
 };
 
 #endif // MYMAPAPPADV_H
