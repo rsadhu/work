@@ -14,8 +14,13 @@ MyWebViewer::~MyWebViewer()
 }
 
 void MyWebViewer::loadPage(const QString &path)
-{
-	//path = "file:///c://Users//rsadhu//Desktop//maptest.html"
+{	
 	QUrl url(path);
 	this->load(url);
+}
+
+
+void MyWebViewer::permissionRequested(QWebFrame* frame, QWebPage::Feature feature)
+{
+	this->page()->setFeaturePermission(frame, feature, QWebPage::PermissionPolicy::PermissionGrantedByUser);
 }

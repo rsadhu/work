@@ -64,7 +64,7 @@ void MyLayouts::dropEvent(QDropEvent *event)
 			{
 				qDebug() << content;
 				mWebView = new MyWebViewer(this);
-				mWebView->loadPage("file:///c://Users//rsadhu//Desktop//maptest.html");
+				mWebView->loadPage("file:///D://rsadhu//work//MyMapApp//MyMapAppAdv//Resources//maptest.html");
 				mWebView->show();
 				mContent = MAP_APP;				
 			}

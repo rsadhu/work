@@ -13,6 +13,8 @@ public:
 	MyWebViewer(QWidget *parent = 0);
 	~MyWebViewer();
 	void loadPage(const QString &url);
+public slots:
+	void permissionRequested(QWebFrame*, QWebPage::Feature);
 private:
 	Ui::MyWebViewer ui;
 };
