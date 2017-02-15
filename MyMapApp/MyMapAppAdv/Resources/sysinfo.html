@@ -17,13 +17,9 @@
 
 <h1>system info widget</h1>
 
-<div id="myProgress"> CPU USAGE <div id="myBar"></div></div>
-
-    <div id="name"></div>
-    <div id="cpu"></div>
-    <div id="build"></div>
-
-
+    <div id="name"></div>   
+    <div id="cpu"></div>      
+    <div id="build"> </div>
 
 <script>
 
@@ -31,9 +27,9 @@
 
     function fromNativeCallback(a,b,c)
     {
-        document.getElementById("name").innerHTML = a;
-        document.getElementById("cpu").innerHTML = b;
-        document.getElementById("build").innerHTML = c;
+        document.getElementById("name").innerHTML =  "System Name :     " + a;
+        document.getElementById("cpu").innerHTML =   "CPU Type :        " + b;
+        document.getElementById("build").innerHTML = "Build System :    " + c;
     }
 
     try

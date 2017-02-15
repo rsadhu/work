@@ -33,8 +33,7 @@ void MyRunTime::getSysInfo()
 
 void MyRunTime::addJSObject()
 {
-	mWebView->page()->mainFrame()->addToJavaScriptWindowObject("MyRunTime", this);	
-	
+	mWebView->page()->mainFrame()->addToJavaScriptWindowObject("MyRunTime", this);		
 }
 
 MyRunTime::~MyRunTime()
