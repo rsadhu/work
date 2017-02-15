@@ -12,11 +12,11 @@ public:
 	MyVideoPlayer(QWidget *parent = 0);
 	~MyVideoPlayer();	
 	void openFile();
-public slots :
+/*public slots :
 	void play();
-	void close();
+	void close();*/
 private:
-	Ui::MyVideoPlayer ui;
+	//Ui::MyVideoPlayer ui;
 	// vlc members
 	libvlc_instance_t *vlcInstance;
 	libvlc_media_player_t *vlcPlayer;

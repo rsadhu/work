@@ -19,10 +19,6 @@ public:
 	QString mPrimaryKey = "";
 };
 
-static sqlite3 *s_Database = nullptr;
-
-static QMutex  gMutex;
-
 class MyDatabaseContoller 
 {		
 	MyDatabaseContoller();
@@ -56,8 +52,8 @@ public:
 signals:
 	void signalUpdateLogs(Data);
 private:
-	bool mSignal = false;
-	std::condition_variable m_cond;	
+	//bool mSignal = false;
+	//std::condition_variable m_cond;	
 };
 
 #endif//

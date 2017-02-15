@@ -9,6 +9,7 @@ MyMapAppAdv::MyMapAppAdv(QWidget *parent)
 	MyDatabaseContoller::getInstance()->writeData("MainApp", "Starting ....");
 	ui.setupUi(this);	
 	init();	
+	setStyleSheet("background-color:#515E5E");
 }
 
 MyMapAppAdv::~MyMapAppAdv()

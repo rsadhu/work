@@ -2,6 +2,9 @@
 #include<qdebug.h>
 #include<qdatetime.h>
 
+static sqlite3 *s_Database = nullptr;
+QMutex  gMutex;
+
 MyDatabaseContoller MyDatabaseContoller::s_instance;
 int  MyDatabaseContoller::s_primaryKey;
 

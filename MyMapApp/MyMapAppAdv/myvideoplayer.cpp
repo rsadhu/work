@@ -5,11 +5,11 @@
 MyVideoPlayer::MyVideoPlayer(QWidget *parent)
 	: QWidget(parent)
 {
-	ui.setupUi(this);
+	//ui.setupUi(this);
 	vlcPlayer = NULL;	
 	vlcInstance = libvlc_new(0, NULL);	
-	connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(play()));
-	connect(ui.pushButton_2, SIGNAL(clicked()), this, SLOT(stop()));
+//	connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(play()));
+	//connect(ui.pushButton_2, SIGNAL(clicked()), this, SLOT(stop()));
 	resize(500, 500);
 	
 	openFile();	
@@ -42,13 +42,14 @@ void MyVideoPlayer::openFile()
 #elif defined(Q_OS_UNIX)
 	libvlc_media_player_set_xwindow(vlcPlayer, videoWidget->winId());
 #elif defined(Q_OS_WIN)
-	libvlc_media_player_set_hwnd(vlcPlayer, (void *)ui.widget->winId());
+	libvlc_media_player_set_hwnd(vlcPlayer, (void *)this->winId());
 #endif
 
 	/* And start playback */
 	libvlc_media_player_play(vlcPlayer);
 
 }
+/*
 
 void MyVideoPlayer::play()
 {
@@ -69,4 +70,4 @@ void MyVideoPlayer::close()
 		libvlc_media_player_pause(vlcPlayer);
 		ui.pushButton->setText("Play");
 	}
-}
+}*/
