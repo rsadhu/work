@@ -27,13 +27,14 @@ void MyRunTime::getSysInfo()
 {
 	systemName = QSysInfo::buildAbi();
 	cpuArchitecture = QSysInfo::currentCpuArchitecture();
-	productName = QSysInfo::prettyProductName();
-
+	productName = QSysInfo::prettyProductName();	
+	emit signalCallBackToJsWorld(systemName,cpuArchitecture,productName);
 }
 
 void MyRunTime::addJSObject()
 {
 	mWebView->page()->mainFrame()->addToJavaScriptWindowObject("MyRunTime", this);	
+	
 }
 
 MyRunTime::~MyRunTime()

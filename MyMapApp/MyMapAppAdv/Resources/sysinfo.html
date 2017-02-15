@@ -27,28 +27,17 @@
 
 <script>
 
-    function callbackSystemInfo(a)
-    {
-        var cnt=0;
-        foreach(i in a)
-        {
-            if (cnt == 0)
-                MyRunTime.systemName = i;
-            if (cnt == 1)
-                MyRunTime.cpuArchitecture = i;
-            if (cnt == 2)
-                MyRunTime.productName = i;
-            cnt++;
-        }
+    MyRunTime.signalCallBackToJsWorld.connect(fromNativeCallback);
 
-        document.getElementById("name").innerHTML = MyRunTime.systemName;
-        document.getElementById("cpu").innerHTML = MyRunTime.cpuArchitecture;
-        document.getElementById("build").innerHTML = MyRunTime.productName;
+    function fromNativeCallback(a,b,c)
+    {
+        document.getElementById("name").innerHTML = a;
+        document.getElementById("cpu").innerHTML = b;
+        document.getElementById("build").innerHTML = c;
     }
 
     try
-    {
-        MyRunTime.signalSystemInfoDetails = callbackSystemInfo;
+    {        
         MyRunTime.getSysInfo();        
     }
     catch(e)

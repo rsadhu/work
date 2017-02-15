@@ -12,8 +12,7 @@ public:
 	~MyRunTime();
 	void init();
 signals:
-	void signalNetworkStrength(int);
-	void signalSystemInfoDetails(QVariant &);
+	void signalCallBackToJsWorld(QString ,QString ,QString);
 public slots:
 	void addJSObject(); 
 	void getSysInfo();
