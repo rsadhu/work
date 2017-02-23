@@ -1,1 +1,0 @@
-/usr/bin/c++      CMakeFiles/Thread.dir/Thread.cpp.o CMakeFiles/Thread.dir/Thread_P.cpp.o CMakeFiles/Thread.dir/main.cpp.o  -o Thread -rdynamic -lpthread 
