@@ -7,6 +7,8 @@
 #include<qlist.h>
 #include<qqueue.h>
 #include<QString>
+#include<qtcpsocket.h>
+#include<qtimer.h>
 
 class TcpServer : public QTcpServer
 {
@@ -18,10 +20,12 @@ public:
 
 public slots:
 	void slotNewConnection();
+signals:
+	void newSocketAdded();
 private:
-	QList<ConnectionThread *> mList;	
-	int mMaxThreads = 10;
+	QList<QTcpSocket *> mListOfSockets;		
 	QQueue<QString> mQueue;
+	QList<QByteArray> mAddresses;	
 };
 
 #endif // TCPSERVER_H
