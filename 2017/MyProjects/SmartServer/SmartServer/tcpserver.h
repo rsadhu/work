@@ -21,7 +21,7 @@ public:
 public slots:
 	void slotNewConnection();
 signals:
-	void newSocketAdded();
+	void newSocketAdded( );
 private:
 	QList<QTcpSocket *> mListOfSockets;		
 	QQueue<QString> mQueue;

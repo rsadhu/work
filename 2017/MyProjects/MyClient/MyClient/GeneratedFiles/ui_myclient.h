@@ -25,36 +25,52 @@ QT_BEGIN_NAMESPACE
 class Ui_MyClientClass
 {
 public:
+    QGridLayout *gridLayout_2;
     QGridLayout *gridLayout;
-    QVBoxLayout *verticalLayout;
     QLabel *label;
+    QVBoxLayout *verticalLayout;
     QPushButton *pushButton;
+    QPushButton *pushButton_2;
 
     void setupUi(QWidget *MyClientClass)
     {
         if (MyClientClass->objectName().isEmpty())
             MyClientClass->setObjectName(QStringLiteral("MyClientClass"));
         MyClientClass->resize(238, 183);
-        gridLayout = new QGridLayout(MyClientClass);
+        gridLayout_2 = new QGridLayout(MyClientClass);
+        gridLayout_2->setSpacing(6);
+        gridLayout_2->setContentsMargins(11, 11, 11, 11);
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        gridLayout = new QGridLayout();
         gridLayout->setSpacing(6);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setSpacing(6);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         label = new QLabel(MyClientClass);
         label->setObjectName(QStringLiteral("label"));
 
-        verticalLayout->addWidget(label);
+        gridLayout->addWidget(label, 0, 0, 1, 1);
 
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         pushButton = new QPushButton(MyClientClass);
         pushButton->setObjectName(QStringLiteral("pushButton"));
 
         verticalLayout->addWidget(pushButton);
 
+        pushButton_2 = new QPushButton(MyClientClass);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
 
-        gridLayout->addLayout(verticalLayout, 0, 0, 1, 1);
+        verticalLayout->addWidget(pushButton_2);
 
+
+        gridLayout->addLayout(verticalLayout, 1, 0, 1, 1);
+
+
+        gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
+
+        pushButton_2->raise();
+        pushButton_2->raise();
+        pushButton->raise();
 
         retranslateUi(MyClientClass);
 
@@ -65,7 +81,8 @@ public:
     {
         MyClientClass->setWindowTitle(QApplication::translate("MyClientClass", "MyClient", 0));
         label->setText(QString());
-        pushButton->setText(QApplication::translate("MyClientClass", "send Data", 0));
+        pushButton->setText(QApplication::translate("MyClientClass", "send Text", 0));
+        pushButton_2->setText(QApplication::translate("MyClientClass", "send media", 0));
     } // retranslateUi
 
 };

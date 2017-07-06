@@ -1,11 +1,14 @@
 #include "myclient.h"
 #include<qnetworkinterface.h>
+#include<qbuffer.h>
+
 
 MyClient::MyClient(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
 	mClientSocket = new QTcpSocket(this);
+	mClientSocket->setSocketDescriptor(10);
 	mClientSocket->connectToHost("127.0.0.1", 27482);
 	connect(mClientSocket, &QTcpSocket::connected, [=]()
 	{
@@ -14,7 +17,19 @@ MyClient::MyClient(QWidget *parent)
 
 	connect(mClientSocket, &QTcpSocket::readyRead, [=]()
 	{
-		ui.label->setText(mClientSocket->readAll());
+		//ui.label->setText(mClientSocket->readAll());
+		QByteArray data = mClientSocket->readAll();
+		QPixmap *pix1 = new QPixmap();
+		pix1->loadFromData(data);
+		
+
+		QPixmap *pix = new QPixmap("D:\\rsadhu\\work_git\\2017\\MyProjects\\SmartServer\\SmartServer\\dp.jpg");
+		if (!pix1->isNull())
+			ui.label->setPixmap(*pix1);
+		else
+		{
+			qDebug() << "pixmap is nuull";
+		}
 	});
 	connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(slotSendData()));
 	
@@ -35,7 +50,8 @@ MyClient::~MyClient()
 void MyClient::slotSendData()
 {
 	QByteArray data;
-	data.append(mIp);
-	data.append(":"+mPort);
+	/*data.append(mIp);
+	data.append(":"+mPort);*/
+	data.append("foto");
 	mClientSocket->write(data);
 }
