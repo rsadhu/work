@@ -24,6 +24,8 @@ TcpServer::TcpServer(QTcpServer*parent)
 				img.open(QIODevice::ReadOnly);
 				data = img.readAll();
 				socket->write(data);
+				socket->flush();
+
 			}
 		}
 	});	
@@ -45,14 +47,23 @@ void TcpServer::slotNewConnection()
 		mListOfSockets.push_back(socket);
 		connect(socket, &QIODevice::readyRead, [=]()
 		{
-			qDebug() << "socket des :   " << socket->socketDescriptor();
+			/*qDebug() << "socket des :   " << socket->socketDescriptor();
 			QByteArray d = socket->readAll();		
 		
 			if (!d.isEmpty())
 			{				
 				mAddresses.push_back(d);			
 				emit newSocketAdded();
-			}		
+			}*/
+			
+			QByteArray data;
+			QFile img("D:\\rsadhu\\work_git\\2017\\MyProjects\\SmartServer\\SmartServer\\dp.jpg");
+			img.open(QIODevice::ReadOnly);
+			data = img.readAll();
+			socket->write("length:");
+			QString size = QString::number(data.size());
+			socket->write(data);
+			socket->flush();
 		}
 		);
 

@@ -2,7 +2,7 @@
 #include<qnetworkinterface.h>
 #include<qbuffer.h>
 
-
+QByteArray data;
 MyClient::MyClient(QWidget *parent)
 	: QWidget(parent)
 {
@@ -16,19 +16,28 @@ MyClient::MyClient(QWidget *parent)
 	});
 
 	connect(mClientSocket, &QTcpSocket::readyRead, [=]()
-	{
-		//ui.label->setText(mClientSocket->readAll());
-		QByteArray data = mClientSocket->readAll();
-		QPixmap *pix1 = new QPixmap();
-		pix1->loadFromData(data);
+	{		
+		QByteArray d  = mClientSocket->readAll();
+		QStringList list = QString(d).split(':');
 		
-
-		QPixmap *pix = new QPixmap("D:\\rsadhu\\work_git\\2017\\MyProjects\\SmartServer\\SmartServer\\dp.jpg");
-		if (!pix1->isNull())
-			ui.label->setPixmap(*pix1);
-		else
+		for (auto it : list)
 		{
-			qDebug() << "pixmap is nuull";
+
+		}
+		data += d;
+		if (mClientSocket->bytesAvailable() == 0)
+		{
+			QPixmap *pix1 = new QPixmap();
+			pix1->loadFromData(data);
+
+
+			QPixmap *pix = new QPixmap("D:\\rsadhu\\work_git\\2017\\MyProjects\\SmartServer\\SmartServer\\dp.jpg");
+			if (!pix1->isNull())
+				ui.label->setPixmap(*pix1);
+			else
+			{
+				qDebug() << "pixmap is nuull";
+			}
 		}
 	});
 	connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(slotSendData()));

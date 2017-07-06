@@ -20,6 +20,7 @@ private:
 	bool g_connected = false;
 	QString mIp;
 	QString mPort;
+	QByteArray data;	
 };
 
 #endif // MYCLIENT_H
