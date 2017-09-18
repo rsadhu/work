@@ -1,40 +1,210 @@
-========================================================================
-    CONSOLE APPLICATION : HRQs Project Overview
-========================================================================
+#include <iostream>
+#include <vector>
+#include <string>
+#include <list>
+#include<vector>
+#include <limits> // for numeric_limits
+#include <set>
+#include <utility> // for pair
+#include <algorithm>
+#include <iterator>
+using namespace std;
 
-AppWizard has created this HRQs application for you.
 
-This file contains a summary of what you will find in each of the files that
-make up your HRQs application.
+struct Person
+{
+	string Name = "Unknown";
+
+	typedef pair<string, string> Trait;
+	vector<Trait> Traits;
+};
 
 
-HRQs.vcxproj
-    This is the main project file for VC++ projects generated using an Application Wizard.
-    It contains information about the version of Visual C++ that generated the file, and
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
+vector<string>split(string s, char tok)
+{
 
-HRQs.vcxproj.filters
-    This is the filters file for VC++ projects generated using an Application Wizard. 
-    It contains information about the association between the files in your project 
-    and the filters. This association is used in the IDE to show grouping of files with
-    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
-    "Source Files" filter).
+	std::istringstream ss1(s);
+	std::string token;
 
-HRQs.cpp
-    This is the main application source file.
+	vector<string> d1;
+	while (getline(ss1, token, tok)) {
+		d1.push_back(token);
+	}
+	return d1;
+}
 
-/////////////////////////////////////////////////////////////////////////////
-Other standard files:
+Person ConvertRawInputToPerson(string rawInput)
+{
+	Person person;
+	vector<string> traits = split(rawInput, ' ');
+	for (string trait : traits)
+	{
+		vector<string> keyValuePair = split(trait, '=');
+		if (keyValuePair.size() == 2)
+		{
 
-StdAfx.h, StdAfx.cpp
-    These files are used to build a precompiled header (PCH) file
-    named HRQs.pch and a precompiled types file named StdAfx.obj.
+			string key = keyValuePair[0];
+			string value = keyValuePair[1];
 
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
+			if (key == "Name") { person.Name = value; }
+			else { person.Traits.push_back(make_pair(key, value)); }
+		}
+		else
+		{
+			throw exception();
+		}
+	}
+	return person;
+}
 
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
+bool StringEquals(string left, string right)
+{
+	//if (left.size() == right.size())
+	{
+		for (int i = 0; i < left.length(); ++i)
+		{
+			if (left[i] != right[i]) { return false; }
+		}
+		return true;
+	}//return false;
+}
 
-/////////////////////////////////////////////////////////////////////////////
+bool HasTrait(vector<Person::Trait> & traits, Person::Trait & soughtTrait)
+{
+	return find_if(traits.begin(), traits.end(),
+		[soughtTrait](Person::Trait & trait)
+	{
+		return StringEquals(soughtTrait.first, trait.first) && StringEquals(soughtTrait.second, trait.second);
+	})
+		!= traits.end();
+}
+
+class Registry
+{
+	std::vector<Person> mPersons;
+
+public:
+	void Add(Person person)
+	{
+		mPersons.push_back(person);
+	}
+
+	Person FindMatchingPersonByRawTraits(string rawTraits)
+	{
+		Person soughtPerson;;
+
+		vector<string> traits = split(rawTraits, ' ');
+		for (string trait : traits)
+		{
+			vector<string> keyValuePair = split(trait, '=');
+
+			string key = keyValuePair[0];
+			string value = keyValuePair[1];
+
+			soughtPerson.Traits.push_back(make_pair(key, value));
+		}
+
+
+		for (Person & person : mPersons)
+		{
+			bool ret = false;
+
+			for (auto & soughtTrait : soughtPerson.Traits)
+			{
+				if (soughtTrait.first == "Name")
+				{
+					if (soughtTrait.second == person.Name)
+					{
+						return person;
+					}
+				}
+				else
+				{
+					if (HasTrait(person.Traits, soughtTrait))
+#include <iostream>
+#include <vector>
+#include <string>
+#include <list>
+#include<vector>
+#include <limits> // for numeric_limits
+#include <set>
+#include <utility> // for pair
+#include <algorithm>
+#include <iterator>
+						using namespace std;
+
+
+					struct Person
+					{
+						string Name = "Unknown";
+
+						typedef pair<string, string> Trait;
+						vector<Trait> Traits;
+					};
+
+
+					vector<string>split(string s, char tok)
+					{
+
+						std::istringstream ss1(s);
+						std::string token;
+
+						vector<string> d1;
+						while (getline(ss1, token, tok)) {
+							d1.push_back(token);
+						}
+						return d1;
+					}
+
+					Person ConvertRawInputToPerson(string rawInput)
+					{
+						Person person;
+						vector<string> traits = split(rawInput, ' ');
+						for (string trait : traits)
+						{
+							vector<string> keyValuePair = split(trait, '=');
+							if (keyValuePair.size() == 2)
+							{
+
+								string key = keyValuePair[0];
+								string value = keyValuePair[1];
+
+								if (key == "Name") { person.Name = value; }
+								else { person.Traits.push_back(make_pair(key, value)); }
+							}
+							else
+							{
+								throw exception();
+							}
+						}
+						return person;
+					}
+
+					bool StringEquals(string left, string right)
+					{
+						//if (left.size() == right.size())
+						{
+							for (int i = 0; i < left.length(); ++i)
+							{
+								if (left[i] != right[i]) { return false; }
+							}
+							return true;
+						}//return false;
+					}
+
+
+
+
+					7
+A,B,1
+A,D,3
+A,E,2
+B,C,1
+B,E,2
+C,E,2
+C,F,3
+D,E,1
+D,F,7
+D,G,5
+E,F,4
+F,G,9
