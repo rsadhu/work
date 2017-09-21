@@ -3,94 +3,43 @@
 
 #include "stdafx.h"
 #include"Functions.h"
-
+#include"MyMatrix.h"
 #include"QueByStacks.h"
 #include<map>
 #include<string>
-//using namespace std;
 
-
-void replace(char *str,int i)
-{
-	if (*(str+i)!= '\0')
-	{
-		str[i] = str[i] + 'z'-'Z'; 		
-		replace(str, ++i);
-	}
-}
 
 
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	////candles_bday();
-	////birthDay_bar_question();
-	////closest_numbers();
-	//QueByStacks<int> obj;
-
-	//for (int i = 0; i < 10; i++)
-	//	obj.enque(i);
-
-	//for (int i = 0; i < 5; i++)
-	//{
-	//	std::cout << obj.front() << "  ";
-	//	obj.deque();
-
-	//}
-
-	//for (int i = 0; i < 5; i++)
-	//	obj.enque(10+i);
-
-	//for (int i = 0; i < 10; i++)
-	//{
-	//	std::cout << obj.front() << "  ";
-	//	obj.deque();
-
-	//}
+	//vector<string> rawRegistry{
+	//	"Name=Johny Sex=Man Age=8 Country=UK",
+	//	"Name=Anna Sex=Woman Age=66 Country=US",
+	//	"Name=Fred Sex=Man Age=51 Country=NL",
+	//	"Name=Mirjam Sex=Woman Age=28 Country=BE",
+	//	"Name=Fred Sex=Man Age=61 Country=US",
+	//	"Name=Frederique Sex=Woman Age=6 Country=US" 
+	//};
+	//string soughtTraits("Age=6 Country=US");
 
 
-	//char  str[8]("TESTING");
+	////vector<string> rawRegistry{"Name=John Sex=Man Age=46 Country=UK", "Name=Anita Sex=Woman Age=22 Country=NL"};
+	////string soughtTraits("Sex=Woman");
 
-	//replace(str,0);
+	//string  r= GetNameFromRegistryByTraits(rawRegistry,soughtTraits);
+	//5 1 2 3 4
+	// 1 2 3 4 5 , 4
 
+	//	int N;
+	//cin >> N;
+	//MyGraph graph(N);
 
-
-	/*int i = 0;
-	int sum[9] = {0};
-
-	while (i<9)
-	{
-		int t;
-		cin >> t;
-		sum[(i + 9 - 4) % 9] = t;
-		i++;
-	}
-
+	/*MyMatrix<int> m(5, 5);
+	m.printSpiral();
 */
-
-	int T;
-	cin >> T;
-	map<string, int> v1;
-	while (T--)
-	{
-		string t;
-		cin >> t;
-	//	if (v1.count(t))
-		{
-		//	v1.insert(std::pair<string, int>(t, v1.count(t) + 1));
-			v1[t]= v1[t] + 1;
-		}
-	}
-
-	cin >> T;
-
-	while (T--)
-	{
-		string t;
-		cin >> t;
-		cout << v1[t] << "\n";
-	}
-
+	std::vector<int> a = { 8, 4, 6, 2, 6, 4, 7, 9, 5, 8 };
+	int res = firstDuplicate(a);
 	return 0;
 }
 

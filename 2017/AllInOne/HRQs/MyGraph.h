@@ -23,9 +23,8 @@ public:
 	void printDFS();
 
 private:
-	std::map<std::string, std::map<std::string, int>> mEdge; // EDGE DS
-	std::set<std::string> mVisitedNodes; // VISITED NODES
-	std::vector<std::map<int, std::string>> mOperationalArea; // OPERATIONAL DATA
+	std::set<std::string> mNodes; // VISITED NODES
+
 	int mVec;		
 };
 
