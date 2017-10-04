@@ -37,6 +37,12 @@
     <ClInclude Include="MyMatrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TsParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SLL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -52,6 +58,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MyMatrix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TsParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SLL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
