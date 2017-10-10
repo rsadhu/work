@@ -2,31 +2,15 @@
 //
 
 #include "stdafx.h"
-#include<iostream>
-#include<fstream>
-#include<exception>
+#include"FileReaderWriter.h"
+#include<vector>
+#include<string>
+
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	std::fstream fs;
-	fs.open("D:\\rsadhu\\codingPractice\\work_git\\2017\\AllInOne\\elephants.ts", std::fstream::in | std::fstream::out | std::fstream::app);
-	try
-	{
-		if (fs.is_open())
-		{
-			std::cout << " file opened\n";
-			throw std::exception("Testing file");
-		}
-		else
-		{
-			std::cout << "couldnt open the file\n";
-		}
-	}
-	catch (std::exception &e)
-	{
-		std::cout << "exception Thrown::" << e.what() << "\n";
-		fs.close();
-	}
+	FileReaderWriter fmgr(std::string("D:\\rsadhu\\codingPractice\\work_git\\2017\\AllInOne\\elephants.ts"));
+	fmgr.read();
 	return 0;
 }
 
