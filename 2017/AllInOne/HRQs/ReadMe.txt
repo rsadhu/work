@@ -11,6 +11,7 @@
 using namespace std;
 
 
+
 struct Person
 {
 	string Name = "Unknown";
@@ -121,17 +122,7 @@ public:
 				else
 				{
 					if (HasTrait(person.Traits, soughtTrait))
-#include <iostream>
-#include <vector>
-#include <string>
-#include <list>
-#include<vector>
-#include <limits> // for numeric_limits
-#include <set>
-#include <utility> // for pair
-#include <algorithm>
-#include <iterator>
-						using namespace std;
+
 
 
 					struct Person
@@ -195,7 +186,6 @@ public:
 
 
 
-					7
 A,B,1
 A,D,3
 A,E,2

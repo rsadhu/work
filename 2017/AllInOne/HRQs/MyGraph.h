@@ -23,7 +23,7 @@ public:
 	void printDFS();
 
 private:
-	std::set<std::string> mNodes; // VISITED NODES
+	std::set<std::string> mRoots; // VISITED NODES
 
 	int mVec;		
 };

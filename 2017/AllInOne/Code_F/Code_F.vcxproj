@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{921EDCD8-F2A5-49C4-8ABD-E8BA898B330C}</ProjectGuid>
+    <ProjectGuid>{FAB8049E-9885-4A7B-984E-0D16E572C58E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>HRQs</RootNamespace>
+    <RootNamespace>Code_F</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -76,30 +76,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="input.txt" />
     <Text Include="ReadMe.txt" />
+    <Text Include="Text.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Functions.h" />
-    <ClInclude Include="MyGraph.h" />
-    <ClInclude Include="MyMatrix.h" />
-    <ClInclude Include="QueByStacks.h" />
-    <ClInclude Include="SLL.h" />
+    <ClInclude Include="FileReaderWriter.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="TsParser.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="HRQs.cpp" />
-    <ClCompile Include="MyGraph.cpp" />
-    <ClCompile Include="MyMatrix.cpp" />
-    <ClCompile Include="QueByStacks.cpp" />
-    <ClCompile Include="SLL.cpp" />
+    <ClCompile Include="Code_F.cpp" />
+    <ClCompile Include="FileReaderWriter.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TsParser.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
