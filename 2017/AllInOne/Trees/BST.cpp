@@ -36,7 +36,7 @@ void BST::add(int d)
 				}
 				else
 				{
-					tra = tra->left;					
+					tra = tra->left;
 				}
 			}
 			else
@@ -48,14 +48,14 @@ void BST::add(int d)
 				}
 				else
 				{
-					tra = tra->right;					
+					tra = tra->right;
 				}
 			}
-		}	
+		}
 	}
 }
 
-BST & BST::operator<(int d)	
+BST & BST::operator<(int d)
 {
 	mRoot = add(mRoot, d);
 	return *this;
@@ -111,7 +111,7 @@ void BST::display(TYPE t)
 void BST::preOrderR(Node *root)
 {
 	if (root)
-	{	
+	{
 		std::cout << root->mData << "  ";
 		preOrderR(root->left);
 		preOrderR(root->right);
@@ -134,7 +134,7 @@ void BST::inOrderR(Node *root)
 	if (root)
 	{
 		inOrderR(root->left);
-		std::cout << root->mData<<"  ";
+		std::cout << root->mData << "  ";
 		inOrderR(root->right);
 	}
 }
@@ -150,7 +150,7 @@ void BST::bfs(Node *root)
 
 void BST::mirror(Node*root)
 {
-	
+
 }
 
 void BST::topView(Node *root)
@@ -163,7 +163,34 @@ void BST::topView(Node *root)
 void BST::spiral(Node *root)
 {
 	std::stack<Node*> st1, st2;
-	if
+	if (root)
+	{
+		st1.push(root);
+		Node *tmp;
+		while (!st1.empty() || !st2.empty())
+		{
+			while (!st1.empty())
+			{
+				tmp = st1.top();
+				std::cout << tmp->mData << "  ";
+				st1.pop();
+				if (tmp->left)
+					st2.push(tmp->left);
+				if (tmp->right)
+					st2.push(tmp->right);
+			}
+			while (!st2.empty())
+			{
+				tmp = st2.top();
+				st2.pop();
+				std::cout << tmp->mData << "  ";
+				if (tmp->right)
+					st1.push(tmp->right);
+				if (tmp->left)
+					st1.push(tmp->left);
+			}
+		}
+	}
 }
 
 
@@ -172,7 +199,7 @@ void BST::levelOrder(Node *root)
 	std::queue<Node *>q;
 	if (root)
 		q.push(root);
-	while(!q.empty())
+	while (!q.empty())
 	{
 		root = q.front();
 		q.pop();
@@ -206,7 +233,7 @@ void BST::postOrderI(Node *root)
 {
 	if (root)
 	{
-	
+
 	}
 }
 
@@ -214,11 +241,11 @@ void BST::inOrderI(Node *root)
 {
 	std::stack<Node *> st;
 	while (root || !st.empty())
-	{			
+	{
 		if (root)
 		{
 			st.push(root);
-			root = root->left;		
+			root = root->left;
 		}
 		else
 		{
