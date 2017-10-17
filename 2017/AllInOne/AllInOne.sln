@@ -21,6 +21,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Trees", "Trees\Trees.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Graphs", "Graphs\Graphs.vcxproj", "{25228B3D-490C-4D79-AE5B-9FB45150C080}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QtTestExample", "QtTestExample\QtTestExample.vcxproj", "{28D0D8D7-0B78-4887-BD01-5E26659F3270}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -123,6 +125,18 @@ Global
 		{25228B3D-490C-4D79-AE5B-9FB45150C080}.Release|Win32.ActiveCfg = Release|Win32
 		{25228B3D-490C-4D79-AE5B-9FB45150C080}.Release|Win32.Build.0 = Release|Win32
 		{25228B3D-490C-4D79-AE5B-9FB45150C080}.Release|x64.ActiveCfg = Release|Win32
+		{28D0D8D7-0B78-4887-BD01-5E26659F3270}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{28D0D8D7-0B78-4887-BD01-5E26659F3270}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{28D0D8D7-0B78-4887-BD01-5E26659F3270}.Debug|Win32.ActiveCfg = Debug|Win32
+		{28D0D8D7-0B78-4887-BD01-5E26659F3270}.Debug|Win32.Build.0 = Debug|Win32
+		{28D0D8D7-0B78-4887-BD01-5E26659F3270}.Debug|x64.ActiveCfg = Debug|x64
+		{28D0D8D7-0B78-4887-BD01-5E26659F3270}.Debug|x64.Build.0 = Debug|x64
+		{28D0D8D7-0B78-4887-BD01-5E26659F3270}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{28D0D8D7-0B78-4887-BD01-5E26659F3270}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{28D0D8D7-0B78-4887-BD01-5E26659F3270}.Release|Win32.ActiveCfg = Release|Win32
+		{28D0D8D7-0B78-4887-BD01-5E26659F3270}.Release|Win32.Build.0 = Release|Win32
+		{28D0D8D7-0B78-4887-BD01-5E26659F3270}.Release|x64.ActiveCfg = Release|x64
+		{28D0D8D7-0B78-4887-BD01-5E26659F3270}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

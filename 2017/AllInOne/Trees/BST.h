@@ -25,12 +25,26 @@ enum class TYPE
 	TOPVIEW
 };
 
+class  BinaryTree
+{
+	Node *mRoot = nullptr;
+public:
+	void addNode(int d);
+	void display()
+	{
+		inOrderDisplay(mRoot);
+	}
+	static void inOrderDisplay(Node *);
+	bool mLeft = true;
+};
+
+
 class BST
 {
 public:
 	BST();
 	~BST();
-	void add(int);
+	void add(int);	
 	BST & operator<(int d);
 	void display(TYPE t);
 	static void inOrderR(Node *);

@@ -1,8 +1,59 @@
 #include "stdafx.h"
 #include "BST.h"
-#include<iostream>
+#include<iostream>test
 #include<stack>
 #include<queue>
+
+
+void BinaryTree::addNode(int data)
+{
+	if (!mRoot)
+		mRoot = new Node(data);
+	else
+	{
+		Node *tra = mRoot;
+		while(tra)
+		{
+			if (!tra->left && mLeft)
+			{
+				tra->left = new Node(data);
+				mLeft = false;
+				break;
+			}
+
+			if (!tra->right)
+			{
+				tra->right = new Node(data);
+				mLeft = true;
+				break;
+			}
+
+			if (tra->left && mLeft)
+			{
+				tra = tra->left;
+				mLeft = false;
+			}
+			else
+			if (tra->right)
+			{
+				tra = tra->right;
+				mLeft = true;
+			}			
+		
+		}
+	}
+}
+
+
+void BinaryTree::inOrderDisplay(Node *root)
+{
+	if (root)
+	{
+		inOrderDisplay(root->left);
+		std::cout << root->mData << " ";
+		inOrderDisplay(root->right);
+	}
+}
 
 
 BST::BST()
@@ -104,6 +155,9 @@ void BST::display(TYPE t)
 	case TYPE::SPIRAL:
 		spiral(mRoot);
 		break;
+	case TYPE::MIRROR:
+		mirror(mRoot);
+		break;
 	}
 	std::cout << "\n";
 }
@@ -144,19 +198,7 @@ void BST::inOrderR(Node *root)
 
 void BST::bfs(Node *root)
 {
-
-}
-
-
-void BST::mirror(Node*root)
-{
-
-}
-
-void BST::topView(Node *root)
-{
-
-
+	levelOrder(root);
 }
 
 
@@ -210,6 +252,25 @@ void BST::levelOrder(Node *root)
 			q.push(root->right);
 	}
 }
+
+void BST::mirror(Node*root)
+{
+	if (root)
+	{
+		mirror(root->left);
+		mirror(root->right);
+		Node *tmp = root->left;
+		root->left = root->right;
+		root->right = tmp;
+	}
+}
+
+void BST::topView(Node *root)
+{
+
+}
+
+
 
 void BST::preOrderI(Node *root)
 {

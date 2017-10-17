@@ -7,6 +7,7 @@
 #include"QueByStacks.h"
 #include<map>
 #include<string>
+#include<regex>
 
 
 
@@ -38,8 +39,17 @@ int _tmain(int argc, _TCHAR* argv[])
 	/*MyMatrix<int> m(5, 5);
 	m.printSpiral();
 */
-	std::vector<int> a = { 8, 4, 6, 2, 6, 4, 7, 9, 5, 8 };
-	int res = firstDuplicate(a);
+	//std::vector<int> a = { 8, 4, 6, 2, 6, 4, 7, 9, 5, 8 };
+	//int res = firstDuplicate(a);
+
+	std::string inputString("0dsdksjskjs");
+	std::regex regex("[0-9]");
+	std::smatch match;
+	if (regex_search(inputString, match, regex)) {
+		std::ssub_match sub_match = match[0];
+		return sub_match.str()[0];
+	}
+
 	return 0;
 }
 

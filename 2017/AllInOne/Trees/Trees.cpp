@@ -24,6 +24,24 @@ int _tmain(int argc, _TCHAR* argv[])
 	t.display(TYPE::PREORDER_I);
 	t.display(TYPE::SPIRAL);
 	t.display(TYPE::LEVELORDER);
+	t.display(TYPE::MIRROR);
+	t.display(TYPE::INORDER_R);
+
+
+
+/*
+	BinaryTree bt;
+	bt.addNode(10);
+	bt.addNode(5);
+	bt.addNode(15);
+	bt.addNode(8);
+	bt.addNode(1);
+	bt.addNode(12);
+	bt.addNode(20);
+	bt.display();*/
+
+
+
 	return 0;
 }
 
