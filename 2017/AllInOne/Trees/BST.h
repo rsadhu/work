@@ -1,6 +1,10 @@
 #pragma once
 
-///template<typename T>
+#include<vector>
+#include<iostream>
+#include<stack>
+#include<queue>
+
 class Node
 {
 public:
@@ -68,6 +72,7 @@ private:
 	static void mirror(Node *);
 	static int findHeight(Node *);
 	static int depth(Node *,int);
+	static void printPathsRec(Node *root, std::vector<int> );
 protected:
 	static  Node *add(Node *, int);
 	Node *mRoot = nullptr;

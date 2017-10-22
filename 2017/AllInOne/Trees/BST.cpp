@@ -1,8 +1,5 @@
 #include "stdafx.h"
 #include "BST.h"
-#include<iostream>test
-#include<stack>
-#include<queue>
 
 
 void BinaryTree::addNode(int data)
@@ -343,36 +340,31 @@ int BST::findHeight(Node *root)
 }
 
 
-void BST::printAllPaths()
+void BST::printPathsRec(Node *root, std::vector<int> list)
 {
-	std::stack<Node *> st;
-	Node*tra = mRoot;
-	std::vector<int>checker;
-	while (!st.empty() || tra)
-	{
-		if (tra)
+	if (root)
+	{		
+		list.push_back(root->mData);
+		if (!root->left && !root->right)
 		{
-			st.push(tra);
-			checker.push_back(tra->mData);
-			tra = tra->left;			
+			for (auto it : list)
+			{
+				std::cout << it << "  ";
+			}
+			std::cout << "\n";
 		}
 		else
-		{	
-			tra = st.top();
-			st.pop();
-			tra = tra->right;
-
-			if (!tra)
-			{
-				for (auto it : checker)
-				{
-					std::cout << it << "  ";
-				}
-				checker.pop_back();
-				std::cout << "\n";
-			}			
+		{
+			printPathsRec(root->left,list);
+			printPathsRec(root->right,list);
 		}
 	}
+}
+
+void BST::printAllPaths()
+{
+	std::vector<int> list;
+	printPathsRec(mRoot,list);
 }
 
 void BST::printLargestSumPath()
