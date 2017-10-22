@@ -451,3 +451,31 @@ int BST::count()
 	}
 	return count;
 }
+
+bool BST::isBST()
+{
+	std::stack<Node *> st;
+	Node *tra = mRoot;
+	while (tra || !st.empty())
+	{
+		if (tra)
+		{
+			st.push(tra);
+			tra = tra->left;
+		}
+		else
+		{
+			tra = st.top();
+			if (tra->right && tra->left)
+			{
+				if (tra->right->mData < tra->left->mData)
+				{
+					return false;
+				}
+			}
+			st.pop();
+			tra = tra->right;
+		}
+	}
+	return true;
+}

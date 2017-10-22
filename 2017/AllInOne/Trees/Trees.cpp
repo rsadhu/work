@@ -59,6 +59,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	t.printLargestSumPath();
 	t.printSmallestSumPath();
 	std::cout<<"coun:: "<<t.count();
+	std::cout<<"isBST:: "<<t.isBST();
 	return 0;
 }
 

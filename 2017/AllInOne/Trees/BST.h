@@ -56,6 +56,7 @@ public:
 	int height();
 	int depth(int);
 	int count();
+	bool isBST();
 	void printAllPaths();
 	void printLargestSumPath();
 	void printSmallestSumPath();
