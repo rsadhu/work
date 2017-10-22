@@ -427,3 +427,27 @@ int  BST::depth(Node *root,int data)
 	return d;
 }
 
+
+
+int BST::count()
+{
+	std::stack<Node*> st;
+	Node *tra = mRoot;
+	int count = 0;
+	while (!st.empty() || tra)
+	{
+		if (tra)
+		{
+			st.push(tra);
+			tra = tra->left;
+		}
+		else
+		{
+			tra = st.top();
+			st.pop();
+			count++;
+			tra = tra->right;
+		}
+	}
+	return count;
+}

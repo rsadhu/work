@@ -55,6 +55,7 @@ public:
 	int min();	
 	int height();
 	int depth(int);
+	int count();
 	void printAllPaths();
 	void printLargestSumPath();
 	void printSmallestSumPath();

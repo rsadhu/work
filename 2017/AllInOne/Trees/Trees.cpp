@@ -16,7 +16,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	t.add(12);
 	t.add(20);*/
 	
-	t < 10<5 < 15 < 8 < 1 < 12 < 20;
+	t < 10 < 5 < 15 < 8 < 1 < 12 < 20 < 40 < 18 < 6 < 9;
 	t.display(TYPE::INORDER_R);	
 	t.display(TYPE::PREORDER_R);
 	t.display(TYPE::POSTORDER_R);
@@ -58,6 +58,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	t.printAllPaths();
 	t.printLargestSumPath();
 	t.printSmallestSumPath();
+	std::cout<<"coun:: "<<t.count();
 	return 0;
 }
 
