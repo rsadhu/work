@@ -56,6 +56,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	std::cout << "\ndepth :: 0" << t.depth(0);*/
 
 	t.printAllPaths();
+	t.printLargestSumPath();
+	t.printSmallestSumPath();
 	return 0;
 }
 

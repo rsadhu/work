@@ -339,6 +339,7 @@ int BST::findHeight(Node *root)
 		return -1;
 }
 
+int mSmallestSum =INT_MAX, mLargestSum = INT_MIN;
 
 void BST::printPathsRec(Node *root, std::vector<int> list)
 {
@@ -347,11 +348,17 @@ void BST::printPathsRec(Node *root, std::vector<int> list)
 		list.push_back(root->mData);
 		if (!root->left && !root->right)
 		{
+			int sum = 0;
 			for (auto it : list)
 			{
 				std::cout << it << "  ";
+				sum += it;
 			}
 			std::cout << "\n";
+			if (sum > mLargestSum)
+				mLargestSum = sum;
+			if (sum < mSmallestSum)
+				mSmallestSum = sum;
 		}
 		else
 		{
@@ -369,12 +376,12 @@ void BST::printAllPaths()
 
 void BST::printLargestSumPath()
 {
-
+	std::cout << "smallest Sum : " << mLargestSum;
 }
 
 void BST::printSmallestSumPath()
 {
-
+	std::cout << "smallest Sum : " << mSmallestSum;
 }
 
 int BST::depth(int data)
