@@ -292,3 +292,139 @@ void BST::inOrderI(Node *root)
 		}
 	}
 }
+
+int BST::max()
+{
+	Node *tra = mRoot;
+	if (tra->right)
+	{
+		while (tra->right)
+		{
+			tra = tra->right;
+		}
+		return tra->mData;
+	}
+	else
+	{
+		return tra ? tra->mData : 0;
+	}
+}
+
+int BST::min()
+{
+	Node *tra = mRoot;
+	if (tra->left)
+	{
+		while (tra->left)
+		{
+			tra = tra->left;
+		}
+		return tra->mData;
+	}
+	else
+	{
+		return tra ? tra->mData : 0;
+	}
+}
+
+int BST::height()
+{
+	return findHeight(mRoot);
+}
+
+int BST::findHeight(Node *root)
+{
+	if (root)
+	{
+		return std::max(findHeight(root->left), findHeight(root->right)) + 1;
+	}
+	else
+		return -1;
+}
+
+
+void BST::printAllPaths()
+{
+	std::stack<Node *> st;
+	Node*tra = mRoot;
+	std::vector<int>checker;
+	while (!st.empty() || tra)
+	{
+		if (tra)
+		{
+			st.push(tra);
+			checker.push_back(tra->mData);
+			tra = tra->left;			
+		}
+		else
+		{	
+			tra = st.top();
+			st.pop();
+			tra = tra->right;
+
+			if (!tra)
+			{
+				for (auto it : checker)
+				{
+					std::cout << it << "  ";
+				}
+				checker.pop_back();
+				std::cout << "\n";
+			}			
+		}
+	}
+}
+
+void BST::printLargestSumPath()
+{
+
+}
+
+void BST::printSmallestSumPath()
+{
+
+}
+
+int BST::depth(int data)
+{
+	/*int cnt = 0;
+	Node *tra = mRoot;
+	while (tra)
+	{
+		if (data == tra->mData)
+			return cnt;
+		else
+		if (data > tra->mData)
+			tra = tra->right;
+		else
+		if (data < tra->mData)
+			tra = tra->left;		
+
+		cnt++;
+	}
+	return 0;*/
+
+	int d = depth(mRoot, data);
+	return d;
+}
+
+int  BST::depth(Node *root,int data)
+{
+	int d = 0;
+	if (root)
+	{		
+		if (root->mData > data)
+			d =  1 + depth(root->left,data);
+		else
+		if (root->mData < data)
+			d =  1 + depth(root->right, data);
+		else
+		if (data == root->mData)
+		{
+			return d;
+		}		
+	}
+
+	return d;
+}
+

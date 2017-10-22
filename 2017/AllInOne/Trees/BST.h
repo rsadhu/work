@@ -47,6 +47,14 @@ public:
 	void add(int);	
 	BST & operator<(int d);
 	void display(TYPE t);
+	int max();
+	int min();	
+	int height();
+	int depth(int);
+	void printAllPaths();
+	void printLargestSumPath();
+	void printSmallestSumPath();
+private:
 	static void inOrderR(Node *);
 	static void preOrderR(Node *);
 	static void postOrderR(Node *);
@@ -58,6 +66,8 @@ public:
 	static void levelOrder(Node *);
 	static void topView(Node *);
 	static void mirror(Node *);
+	static int findHeight(Node *);
+	static int depth(Node *,int);
 protected:
 	static  Node *add(Node *, int);
 	Node *mRoot = nullptr;

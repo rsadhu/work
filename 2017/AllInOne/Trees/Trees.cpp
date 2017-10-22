@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include"BST.h"
+#include<iostream>
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -24,8 +25,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	t.display(TYPE::PREORDER_I);
 	t.display(TYPE::SPIRAL);
 	t.display(TYPE::LEVELORDER);
-	t.display(TYPE::MIRROR);
-	t.display(TYPE::INORDER_R);
+
+	std::cout << "min : " << t.min();
+	std::cout << "max: " << t.max();
+
+//	t.display(TYPE::MIRROR);
+	//t.display(TYPE::INORDER_R);
 
 
 
@@ -40,8 +45,17 @@ int _tmain(int argc, _TCHAR* argv[])
 	bt.addNode(20);
 	bt.display();*/
 
+	std::cout <<"\nmin : "<<t.min();
+	std::cout << "\nmax: " << t.max();
 
+	/*std::cout << "\nheight :: " << t.height();
+	std::cout << "\ndepth :: 8 " << t.depth(8);
+	std::cout << "\ndepth :: 5 " << t.depth(5);
+	std::cout << "\ndepth :: 10 " << t.depth(10);
+	std::cout << "\ndepth :: 20 " << t.depth(20);
+	std::cout << "\ndepth :: 0" << t.depth(0);*/
 
+	t.printAllPaths();
 	return 0;
 }
 
