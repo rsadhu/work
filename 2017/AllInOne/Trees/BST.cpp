@@ -13,32 +13,7 @@ void BinaryTree::addNode(int data)
 	{
 		Node *tra = mRoot;
 		while(tra)
-		{
-			if (!tra->left && mLeft)
-			{
-				tra->left = new Node(data);
-				mLeft = false;
-				break;
-			}
-
-			if (!tra->right)
-			{
-				tra->right = new Node(data);
-				mLeft = true;
-				break;
-			}
-
-			if (tra->left && mLeft)
-			{
-				tra = tra->left;
-				mLeft = false;
-			}
-			else
-			if (tra->right)
-			{
-				tra = tra->right;
-				mLeft = true;
-			}			
+		{			
 		
 		}
 	}

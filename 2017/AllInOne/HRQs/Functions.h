@@ -264,40 +264,40 @@ using namespace std;
 ////}
 
 //8, 4, 6, 2, 6, 4, 7, 9, 5, 8 
-int firstDuplicate(std::vector<int> a)
-{
-	//int *arr = new int[a.size()]();
-	int arr[10] = { 0 };
-
-	int i = 0;
-	for (auto ele : a)
-	{
-		i++;
-		if (arr[ele - 1] == 0)
-		{
-			arr[ele - 1] = 1;
-		}
-		else
-		{
-			arr[ele - 1] = i;
-		}
-
-	}
-
-	int min = INT_MAX;
-	for (int i = 0; i<a.size(); i++)
-	{
-		if (arr[i] > 1)
-		{
-			if (i<min)
-				min = arr[i] - 1;
-		}
-	}
-
-	delete[]arr;
-	if (min == INT_MAX)
-		return -1;
-	return a[min];
-}
-
-
+//int firstDuplicate(std::vector<int> a)
+//{
+//	//int *arr = new int[a.size()]();
+//	int arr[10] = { 0 };
+//
+//	int i = 0;
+//	for (auto ele : a)
+//	{
+//		i++;
+//		if (arr[ele - 1] == 0)
+//		{
+//			arr[ele - 1] = 1;
+//		}
+//		else
+//		{
+//			arr[ele - 1] = i;
+//		}
+//
+//	}
+//
+//	int min = INT_MAX;
+//	for (int i = 0; i<a.size(); i++)
+//	{
+//		if (arr[i] > 1)
+//		{
+//			if (i<min)
+//				min = arr[i] - 1;
+//		}
+//	}
+//
+//	delete[]arr;
+//	if (min == INT_MAX)
+//		return -1;
+//	return a[min];
+//}
+//
+//
