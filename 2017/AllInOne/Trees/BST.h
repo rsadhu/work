@@ -5,6 +5,21 @@
 #include<stack>
 #include<queue>
 
+
+//class  BinaryTree
+//{
+//	Node *mRoot = nullptr;
+//public:
+//	void addNode(int d);
+//	void display()
+//	{
+//		inOrderDisplay(mRoot);
+//	}
+//	static void inOrderDisplay(Node *);
+//	bool mLeft = true;
+//};
+
+
 class Node
 {
 public:
@@ -26,20 +41,8 @@ enum class TYPE
 	SPIRAL,
 	MIRROR,
 	LEVELORDER,
-	TOPVIEW
-};
-
-class  BinaryTree
-{
-	Node *mRoot = nullptr;
-public:
-	void addNode(int d);
-	void display()
-	{
-		inOrderDisplay(mRoot);
-	}
-	static void inOrderDisplay(Node *);
-	bool mLeft = true;
+	TOPVIEW,
+	REVERSE_LEVELORDER
 };
 
 
@@ -47,19 +50,20 @@ class BST
 {
 public:
 	BST();
-	~BST();
-	void add(int);	
-	BST & operator<(int d);
-	void display(TYPE t);
+	~BST(); // need to clean this 
+	void add(int);	 // iterative way 
+	BST & operator<(int d); // ease to add items
+	void display(TYPE t); 
 	int max();
 	int min();	
 	int height();
 	int depth(int);
 	int count();
-	bool isBST();
-	void printAllPaths();
+	bool isBST(); // needs reimplemented
+	void printAllPaths(); 
 	void printLargestSumPath();
 	void printSmallestSumPath();
+	void deleteItem(int); // todo : not done yet
 private:
 	static void inOrderR(Node *);
 	static void preOrderR(Node *);
@@ -70,6 +74,7 @@ private:
 	static void bfs(Node *);
 	static void spiral(Node *);
 	static void levelOrder(Node *);
+	static void reverseLevelOrder(Node *);
 	static void topView(Node *);
 	static void mirror(Node *);
 	static int findHeight(Node *);

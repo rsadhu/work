@@ -21,4 +21,11 @@ class Test:
         
         
 test = Test("rakesh","35","ankara turkey")
-print(test.displayAll())
+print(test.displayAll()
+
+try:
+    filehandler = open("test.txt","a")
+    write("this is a test program, rakesh here..")
+    filehandler.close()
+except:
+    print("file couldnt be open for writing")

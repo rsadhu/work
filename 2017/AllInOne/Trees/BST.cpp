@@ -1,44 +1,72 @@
 #include "stdafx.h"
 #include "BST.h"
 
+//
+//void BinaryTree::addNode(int data)
+//{
+//	if (!mRoot)
+//		mRoot = new Node(data);
+//	else
+//	{
+//		Node *tra = mRoot;
+//		while(tra)
+//		{			
+//		
+//		}
+//	}
+//}
+//
 
-void BinaryTree::addNode(int data)
-{
-	if (!mRoot)
-		mRoot = new Node(data);
-	else
-	{
-		Node *tra = mRoot;
-		while(tra)
-		{			
-		
-		}
-	}
-}
-
-
-void BinaryTree::inOrderDisplay(Node *root)
-{
-	if (root)
-	{
-		inOrderDisplay(root->left);
-		std::cout << root->mData << " ";
-		inOrderDisplay(root->right);
-	}
-}
+//void BinaryTree::inOrderDisplay(Node *root)
+//{
+//	if (root)
+//	{
+//		inOrderDisplay(root->left);
+//		std::cout << root->mData << " ";
+//		inOrderDisplay(root->right);
+//	}
+//}
 
 
 BST::BST()
 {
 }
 
+void cheanBST(Node *root)
+{
+	if (root)
+	{
+		cheanBST(root->left);
+		cheanBST(root->right);
+		delete root;
+		root = nullptr;
+	}
+}
 
 BST::~BST()
 {
+	//cheanBST(mRoot);
+	//mRoot = nullptr;
+	std::queue<Node *>queue;
+	queue.push(mRoot);
+	while (!queue.empty())
+	{
+		Node *tra = queue.front();
+		queue.pop();
+		if (tra)
+		{		
+			if (tra->left)
+				queue.push(tra->left);
+			if (tra->right)
+				queue.push(tra->right);
+			delete tra;
+		}
+	}
+	mRoot = nullptr;
 }
 
 
-
+// iteratively 
 void BST::add(int d)
 {
 	if (!mRoot)
@@ -80,7 +108,7 @@ void BST::add(int d)
 
 BST & BST::operator<(int d)
 {
-	mRoot = add(mRoot, d);
+	mRoot = add(mRoot, d); //recursive 
 	return *this;
 }
 
@@ -93,7 +121,7 @@ Node *BST::add(Node *root, int d)
 		if (d < root->mData)
 			root->left = add(root->left, d);
 		else
-			root->right = add(root->right, d);
+			root->right = add(root->right, d); // todo: when same key is found, dont add or handle it the way u want
 	}
 	return root;
 }
@@ -130,8 +158,65 @@ void BST::display(TYPE t)
 	case TYPE::MIRROR:
 		mirror(mRoot);
 		break;
+	case TYPE::REVERSE_LEVELORDER:
+		reverseLevelOrder(mRoot);
+		break;
 	}
 	std::cout << "\n";
+}
+
+void reverseLevelOrder_R(Node *root)
+{
+	if (root->left == nullptr || root->right == nullptr){
+		std::cout << root->mData << " - ";
+		return;
+	}
+	
+
+	reverseLevelOrder_R(root->left);
+	reverseLevelOrder_R(root->right);
+
+	std::cout << root->left->mData << " - ";
+	std::cout << root->right->mData << " - ";
+
+	return;
+}
+
+void BST::reverseLevelOrder(Node *root)
+{
+	reverseLevelOrder_R(root);
+
+	/*std::stack<std::vector<Node*>> st;
+	std::vector<Node*>list;
+	list.push_back(root);
+	st.push(list);
+
+	while (1)
+	{
+		list = st.top();
+		std::vector<Node *> subList;
+		for (auto it : list)
+		{			
+			if (it->left)
+				subList.push_back(it->left);
+			if (it->right)
+				subList.push_back(it->right);
+		}
+		if (!subList.empty())
+			st.push(subList);
+		else
+			break;
+	}
+
+	while (!st.empty())
+	{
+		std::vector<Node *> n = st.top();
+		for (auto it : n)
+		{
+			std::cout << it->mData << " ";
+		}
+		st.pop();
+	}*/
 }
 
 void BST::preOrderR(Node *root)
@@ -239,7 +324,7 @@ void BST::mirror(Node*root)
 
 void BST::topView(Node *root)
 {
-
+//todo: to be done
 }
 
 
@@ -478,4 +563,9 @@ bool BST::isBST()
 		}
 	}
 	return true;
+}
+
+void BST::deleteItem(int data)
+{
+
 }

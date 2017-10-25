@@ -51,6 +51,9 @@ public:
 
         retranslateUi(QtTestExampleClass);
 
+        tabWidget->setCurrentIndex(1);
+
+
         QMetaObject::connectSlotsByName(QtTestExampleClass);
     } // setupUi
 

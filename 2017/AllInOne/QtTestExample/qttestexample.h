@@ -3,26 +3,28 @@
 
 #include <QtWidgets/QWidget>
 #include "ui_qttestexample.h"
+#include<QDockWidget>
 
-class QtTestExample : public QWidget
+class MyDocks;
+class QtTestExample : public QTabWidget
 {
 	Q_OBJECT
-
 public:
-	QtTestExample(QWidget *parent = 0);
+	QtTestExample(QTabWidget *parent = 0);
 	~QtTestExample();
-	void dragMoveEvent(QDragMoveEvent *event);
-	void dragEnterEvent(QDragEnterEvent *event);
-	void dragLeaveEvent(QDragLeaveEvent *event);
-	
-	void dropEvent(QDropEvent *event);
-
-	void mousePressEvent(QMouseEvent *event);
+	void addDocks(MyDocks *);
+	bool eventFilter(QObject *sender, QEvent *event);
+	QPoint mPressEventPos;
+	MyDocks *m[5];	
+};
 
 
-private:
-	Ui::QtTestExampleClass ui;
-	QWidget w1;	
+class MyDocks : public QDockWidget
+{
+	Q_OBJECT
+public:
+	MyDocks(QDockWidget *parent = 0);
+	~MyDocks();
 };
 
 #endif // QTTESTEXAMPLE_H

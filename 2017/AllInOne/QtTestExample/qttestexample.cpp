@@ -1,12 +1,19 @@
 #include "qttestexample.h"
 #include<qdrag.h>
 #include"QMimeData.h"
+#include<QMouseEvent>
 
-QtTestExample::QtTestExample(QWidget *parent)
-	: QWidget(parent)
+QtTestExample::QtTestExample(QTabWidget *parent)
+	: QTabWidget(parent)
 {
-	ui.setupUi(this);
-	setAcceptDrops(true);	
+	
+//	tabBar()->installEventFilter(this);
+	setMinimumSize(QSize(500, 600));
+	for (int i = 0; i < 5; i++)
+	{
+		m[i] = new MyDocks();
+		addDocks(m[i]);
+	}
 }
 
 QtTestExample::~QtTestExample()
@@ -15,44 +22,58 @@ QtTestExample::~QtTestExample()
 }
 
 
-void QtTestExample::dragMoveEvent(QDragMoveEvent *event)
-{
+bool QtTestExample::eventFilter(QObject *sender, QEvent *event)
+{ 
+	if (sender == tabBar())
+	{
+		if (event->type() == QEvent::MouseButtonPress)
+		{
+			QMouseEvent *e = static_cast<QMouseEvent *>(event);
+			mPressEventPos = e->pos();
+		}
+		else if (event->type() == QEvent::MouseMove)
+		{
+			QMouseEvent *e = static_cast<QMouseEvent *>(event);
+			int movement = e->pos().x() - mPressEventPos.x();
+			if (movement == 20)
+			{
+				int in = currentIndex();
 
+				if (in >=0 && widget(in))
+				{
+					widget(in)->setMinimumSize(QSize(400, 400));
+					widget(in)->setParent(nullptr);
+					//removeTab(currentIndex());
+					widget(in)->show();
+				}
+			}
+		}
+	}
+	return false;
 }
 
 
-void QtTestExample::dragEnterEvent(QDragEnterEvent *event)
+void 
+QtTestExample::addDocks(MyDocks *dock)
 {
-
+	addTab(dock, "");;
+	connect(this, &QTabWidget::tabBarDoubleClicked, [=](int index)
+	{		
+		m[index]->setParent(nullptr);
+		m[index]->show();
+		m[index]->setGeometry(geometry());
+		removeTab(index);
+	});
 }
 
-void QtTestExample::dragLeaveEvent(QDragLeaveEvent *event)
+
+MyDocks::MyDocks(QDockWidget *parent) :QDockWidget(parent)
 {
-
-}
-
-void QtTestExample::dropEvent(QDropEvent *event)
-{
-
+	QDockWidget::setFloating(false);
 }
 
 
-void QtTestExample::mousePressEvent(QMouseEvent *event)
+MyDocks::~MyDocks()
 {
 
-	QMimeData *mimeData = new QMimeData;
-	mimeData->setText("test");
-
-	
-
-	QPixmap pixmap(ui.tabWidget->currentWidget()->size());
-
-	render(&pixmap);
-
-	QDrag *drag = new QDrag(this);
-	drag->setMimeData(mimeData);
-	drag->setPixmap(pixmap);
-
-	Qt::DropAction dropAction = drag->exec(Qt::CopyAction | Qt::MoveAction, Qt::CopyAction);
-
-}
+};
