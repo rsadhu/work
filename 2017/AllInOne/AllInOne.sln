@@ -23,6 +23,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Graphs", "Graphs\Graphs.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QtTestExample", "QtTestExample\QtTestExample.vcxproj", "{28D0D8D7-0B78-4887-BD01-5E26659F3270}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DragNDrop", "DragNDrop\DragNDrop.vcxproj", "{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -137,6 +139,18 @@ Global
 		{28D0D8D7-0B78-4887-BD01-5E26659F3270}.Release|Win32.Build.0 = Release|Win32
 		{28D0D8D7-0B78-4887-BD01-5E26659F3270}.Release|x64.ActiveCfg = Release|x64
 		{28D0D8D7-0B78-4887-BD01-5E26659F3270}.Release|x64.Build.0 = Release|x64
+		{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}.Debug|Win32.Build.0 = Debug|Win32
+		{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}.Debug|x64.ActiveCfg = Debug|x64
+		{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}.Debug|x64.Build.0 = Debug|x64
+		{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}.Release|Win32.ActiveCfg = Release|Win32
+		{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}.Release|Win32.Build.0 = Release|Win32
+		{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}.Release|x64.ActiveCfg = Release|x64
+		{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

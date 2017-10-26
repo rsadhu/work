@@ -1,3 +1,4 @@
+import PyQt5;
 def factorial(n):
     if n == 0:
         return 1
@@ -21,7 +22,7 @@ class Test:
         
         
 test = Test("rakesh","35","ankara turkey")
-print(test.displayAll()
+print(test.displayAll())
 
 try:
     filehandler = open("test.txt","a")
