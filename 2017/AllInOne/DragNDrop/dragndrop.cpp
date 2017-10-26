@@ -18,11 +18,10 @@ DragNDrop::DragNDrop(QWidget *parent)
 	tmp->show();
 	setMinimumSize(400, 500);
 	QPushButton * b = new QPushButton(this);
+
 	connect(b, &QPushButton::clicked, [=]()
 	{
-		SourceW *tmp = new SourceW(0);
-		//tmp->setStyleSheet("background:brown");
-		//m_hBoxLayout->addWidget(tmp);
+		SourceW *tmp = new SourceW(0, ++mCounter);
 		tmp->show();
 	});
 	m_hBoxLayout->insertWidget(0,b);
@@ -43,16 +42,21 @@ void DragNDrop::dragEnterEvent(QDragEnterEvent *event)
 	event->accept();
 }
 
-SourceW::SourceW(QWidget*parent) :QWidget(parent)
+QMap<int, QString> colorM = { {1,"blue"}, {2,"green"}, {3,"red"}, {4,"gray"}, {5,"white"}, {6,"yellow"}, {7,"brown"} };
+#define MAXC 7
+
+SourceW::SourceW(QWidget*parent,int count) :QWidget(parent)
 {
 	installEventFilter(this);
 	setWindowTitle("Target");
 	setFixedSize(300,400);
-	setStyleSheet("background:blue");
+
+	setStyleSheet("background:"+colorM[count%MAXC]);
+
 	m_hBoxLayout = new QHBoxLayout(this);
 	setLayout(m_hBoxLayout);
 	QLabel *l = new QLabel(this);
-	l->setText("Hello");
+	l->setText("Hello - "+QString::number(count));
 	m_hBoxLayout->addWidget(l);
 }
 

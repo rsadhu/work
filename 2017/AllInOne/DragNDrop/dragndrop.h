@@ -11,7 +11,7 @@ class SourceW :public QWidget
 {
 	Q_OBJECT
 public:
-	SourceW(QWidget*parent = 0);
+	SourceW(QWidget*parent = 0,int count=0);
 	~SourceW();
 	bool eventFilter(QObject *, QEvent *);	
 	QHBoxLayout *m_hBoxLayout;
@@ -32,6 +32,7 @@ private:
 private:
 	QHBoxLayout *m_hBoxLayout;
 	SourceW *srcPtr = nullptr;
+	int mCounter = 0;
 };
 
 
