@@ -64,6 +64,8 @@ public:
 	void printLargestSumPath();
 	void printSmallestSumPath();
 	void deleteItem(int); // todo : not done yet
+	bool areTreesSame(Node *, Node *);
+	Node *root(){ return mRoot; }
 private:
 	static void inOrderR(Node *);
 	static void preOrderR(Node *);
@@ -80,6 +82,7 @@ private:
 	static int findHeight(Node *);
 	static int depth(Node *,int);
 	static void printPathsRec(Node *root, std::vector<int> );
+	static Node* deleteAnItem(Node *, int);
 protected:
 	static  Node *add(Node *, int);
 	Node *mRoot = nullptr;

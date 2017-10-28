@@ -567,5 +567,46 @@ bool BST::isBST()
 
 void BST::deleteItem(int data)
 {
+	mRoot = deleteAnItem(mRoot, data);
+}
 
+Node * BST::deleteAnItem(Node *root, int data)
+{	
+	if (root)
+	{
+		if (root->mData == data   && !root->right  && !root->left)
+		{
+			delete root;
+			return nullptr;
+		}
+	
+		root->left = deleteAnItem(root->left, data);
+		root->right = deleteAnItem(root->right, data);	
+	}	
+	return root;
+}
+
+
+bool BST::areTreesSame(Node *root1, Node *root2)
+{
+
+	if (root1 == nullptr || root2 == nullptr)
+		return false;
+	if (root1 && root2)
+	{
+		if (root1->mData == root2->mData)
+		{
+			areTreesSame(root1->left, root2->left);
+			areTreesSame(root1->right, root2->right);
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		return false;
+	}
 }

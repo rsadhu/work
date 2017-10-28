@@ -7,7 +7,7 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	BST t;
+	BST t,t1;
 	t.add(10);
 	t.add(5);
 	t.add(15);
@@ -16,16 +16,17 @@ int _tmain(int argc, _TCHAR* argv[])
 	t.add(12);
 	t.add(20);
 	
-	//t < 10 < 5 < 15 < 8 < 1 < 12 < 20 < 40  < 6 < 9;
+	//t1 < 10 < 5 < 15 < 8 < 1 < 12 < 20 < 40  < 6 < 9;
 	t.display(TYPE::INORDER_R);	
+	//t1.display(TYPE::INORDER_R);
 	/*t.display(TYPE::PREORDER_R);
 	t.display(TYPE::POSTORDER_R);
 
 	t.display(TYPE::INORDER_I);
 	t.display(TYPE::PREORDER_I);
 	t.display(TYPE::SPIRAL);*/
-	t.display(TYPE::LEVELORDER);
-	t.display(TYPE::REVERSE_LEVELORDER);
+	//t.display(TYPE::LEVELORDER);
+	//t.display(TYPE::REVERSE_LEVELORDER);
 
 //	std::cout << "min : " << t.min();
 //	std::cout << "max: " << t.max();
@@ -61,8 +62,18 @@ int _tmain(int argc, _TCHAR* argv[])
 //	t.printSmallestSumPath();
 //	std::cout<<"coun:: "<<t.count();
 //	std::cout<<"isBST:: "<<t.isBST();
-//	t.deleteItem(20);
-//	t.display(TYPE::INORDER_I);
+//	
+	/*std::cout << t.count() << "   " << t1.count();
+	bool ret = t.areTreesSame(t.root(), t1.root());*/
+
+	t.deleteItem(20);
+	t.display(TYPE::INORDER_I);
+	t.deleteItem(12);
+	t.display(TYPE::INORDER_I);
+	t.deleteItem(8);
+	t.display(TYPE::INORDER_I);
+	t.deleteItem(1);
+	t.display(TYPE::INORDER_I);
 	return 0;
 }
 

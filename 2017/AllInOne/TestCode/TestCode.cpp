@@ -3,6 +3,9 @@
 
 #include "stdafx.h"
 #include<iostream>
+#include<vector>
+#include<string>
+
 #define N 2
 
 int arr[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
@@ -77,13 +80,46 @@ void sepPosNegNums()
 	}
 }
 
+
+int countNumber(std::vector<int>v, int n,int index)
+{
+	int c = 0;
+	if (index >= v.size() )
+		return c;
+	else
+	{
+		if (v[index] == 1)
+			c = 1 +  countNumber(v, n, ++index);
+		else
+			c =  countNumber(v, n, ++index);			
+	}
+	return c;	
+}
+
+std::string allStar(std::string str)
+{
+	std::string s="";
+	if (str.length() > 0)
+	{		 
+		 allStar(str.substr(1));
+		 s += str[0] + "*";
+		 std::cout << s;
+	}
+	return s;
+}
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	// one approach
 	//rotateArray();
 	//second approaach
 	//roatateArrayByReversing();
-	sepPosNegNums();
+	//sepPosNegNums();
+
+	std::vector<int> v = {1,2,4,0,5,2,3,5,1,3,1,9,1,0,10};
+	int c = countNumber(v, 1,0);
+
+	std::string s = allStar("hello");
 	return 0;
 }
 
