@@ -570,14 +570,50 @@ void BST::deleteItem(int data)
 	mRoot = deleteAnItem(mRoot, data);
 }
 
+int getMinFromRightSubTree(Node *root)
+{
+	int d = -1;
+	Node *tra = root;
+	while (root->left)
+	{
+		d = root->mData;
+		tra = root;
+		root = root->left;				
+	}
+
+	delete (root->left);
+	tra->left = nullptr;
+	return d;
+}
+
 Node * BST::deleteAnItem(Node *root, int data)
 {	
 	if (root)
 	{
-		if (root->mData == data   && !root->right  && !root->left)
+		if (root->mData == data )
 		{
-			delete root;
-			return nullptr;
+			if (root->left && root->right)
+			{
+				int d = getMinFromRightSubTree(root->right);
+				if (d != -1)
+				{
+					root->mData = d;
+				}
+			}
+			else
+			if (!root->left || !root->right)
+			{
+				Node *tmp = nullptr;
+				if (root->right)
+					tmp = root->right;
+
+				if (root->left)
+					tmp = root->left;
+
+				delete root;
+				return tmp;
+			}
+			
 		}
 	
 		root->left = deleteAnItem(root->left, data);

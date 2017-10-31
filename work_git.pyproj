@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{f44f9aa0-673d-445c-a3ac-1f3acc0f2391}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile />
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+    <InterpreterVersion />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="2017\AllInOne\Code_F\ReadMe.txt" />
+    <Content Include="2017\AllInOne\Code_F\Text.txt" />
+    <Content Include="2017\AllInOne\CPP11\input.txt" />
+    <Content Include="2017\AllInOne\CPP11\ReadMe.txt" />
+    <Content Include="2017\AllInOne\CppAdv\ReadMe.txt" />
+    <Content Include="2017\AllInOne\Graphs\ReadMe.txt" />
+    <Content Include="2017\AllInOne\HRQs\input.txt" />
+    <Content Include="2017\AllInOne\HRQs\ReadMe.txt" />
+    <Content Include="2017\AllInOne\Sorting\input.txt" />
+    <Content Include="2017\AllInOne\Sorting\ReadMe.txt" />
+    <Content Include="2017\AllInOne\TestCode\ReadMe.txt" />
+    <Content Include="2017\AllInOne\Trees\ReadMe.txt" />
+    <Content Include="2017\AllInOne\Vector\ReadMe.txt" />
+    <Content Include="2017\MyProjects\MyMapApp\MyMapAppAdv\Resources\maptest.html" />
+    <Content Include="2017\MyProjects\MyMapApp\MyMapAppAdv\Resources\sysinfo.html" />
+    <Content Include="2017\MyProjects\MyMapApp\MyMapAppAdv\Resources\_maptest.html" />
+    <Content Include="2017\MyProjects\SmartServer\SmartServer\dp.jpg" />
+    <Content Include="before_2017\Aims\HRank\Problems\Problems\input.txt" />
+    <Content Include="before_2017\Aims\HRank\Problems\Problems\ReadMe.txt" />
+    <Content Include="before_2017\CodeSnippet\test.png" />
+    <Content Include="before_2017\C_C++\beforeApril2013\misc\preRIM_june_12\logger\log.txt" />
+    <Content Include="before_2017\C_C++\beforeApril2013\pBook\contacts.txt" />
+    <Content Include="before_2017\C_C++\prepTurkiye2015-aug24\BST\BST\ReadMe.txt" />
+    <Content Include="before_2017\C_C++\prepTurkiye2015-aug24\codingPractice\codingPractice\input.txt" />
+    <Content Include="before_2017\C_C++\prepTurkiye2015-aug24\codingPractice\codingPractice\ReadMe.txt" />
+    <Content Include="before_2017\C_C++\prepTurkiye2015-aug24\myclass\ReadMe.txt" />
+    <Content Include="before_2017\C_C++\prepTurkiye2015-aug24\README.txt" />
+    <Content Include="before_2017\C_C++\prep\Clients\log.txt" />
+    <Content Include="before_2017\C_C++\prep\HRank\ConsoleApplication1\ConsoleApplication1\ReadMe.txt" />
+    <Content Include="before_2017\C_C++\prep\HRank\Problems\HRProbs\input.txt" />
+    <Content Include="before_2017\C_C++\prep\HRank\Problems\HRProbs\ReadMe.txt" />
+    <Content Include="before_2017\C_C++\prep\HRank\Problems\Problems\input.txt" />
+    <Content Include="before_2017\C_C++\prep\HRank\Problems\Problems\ReadMe.txt" />
+    <Content Include="before_2017\C_C++\prep\HRank\Problems\Threads_Cpp11\ReadMe.txt" />
+    <Content Include="before_2017\C_C++\qtapps\konylabs\download.jpg" />
+    <Content Include="before_2017\C_C++\qtapps\testUi\images\copy.png" />
+    <Content Include="before_2017\C_C++\qtapps\testUi\images\cut.png" />
+    <Content Include="before_2017\C_C++\qtapps\testUi\images\new.png" />
+    <Content Include="before_2017\C_C++\qtapps\testUi\images\open.png" />
+    <Content Include="before_2017\C_C++\qtapps\testUi\images\paste.png" />
+    <Content Include="before_2017\C_C++\qtapps\testUi\images\save.png" />
+    <Content Include="before_2017\C_C++\test\myThreads\CMakeLists.txt" />
+    <Content Include="before_2017\C_C++\test\test.png" />
+    <Content Include="before_2017\JFC\JFC\log.txt" />
+    <Content Include="before_2017\JFC\log.txt" />
+    <Content Include="before_2017\jsonreader\java\listings.txt" />
+    <Content Include="before_2017\jsonreader\java\output.txt" />
+    <Content Include="before_2017\jsonreader\java\products.txt" />
+    <Content Include="before_2017\jsonreader\java\tmp.txt" />
+    <Content Include="before_2017\jsonreader\listings.txt" />
+    <Content Include="before_2017\jsonreader\output.txt" />
+    <Content Include="before_2017\jsonreader\products.txt" />
+    <Content Include="before_2017\MyProjects\MyMaps\MyMapsQt\maptest.html" />
+    <Content Include="before_2017\MyProjects\QCS\QCS\test.png" />
+    <Content Include="before_2017\plugins\npsimple\test.html" />
+    <Content Include="before_2017\plugins\test\test.html" />
+    <Content Include="before_2017\QCS\log.txt" />
+    <Content Include="before_2017\QtCodeSnippet\QtCodeSnippet\test.png" />
+    <Content Include="before_2017\qtCoding\eventingForAll\example.jpg" />
+    <Content Include="before_2017\qtCoding\eventingForAll\images\boat.png" />
+    <Content Include="before_2017\qtCoding\eventingForAll\images\car.png" />
+    <Content Include="before_2017\qtCoding\eventingForAll\images\house.png" />
+    <Content Include="before_2017\qtCoding\jsonReader\listings.txt" />
+    <Content Include="before_2017\qtCoding\jsonReader\products.txt" />
+    <Content Include="before_2017\qtCoding\puzzle\example.jpg" />
+    <Content Include="before_2017\qtCoding\qtlearn\desktop.jpg" />
+    <Content Include="python\test.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="python\learn1.py" />
+    <Compile Include="python\sendEmail.py" />
+    <Compile Include="python\test.py" />
+    <Compile Include="python\thread.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="2017\AllInOne\Code_F" />
+    <Folder Include="2017\AllInOne\CPP11" />
+    <Folder Include="2017\AllInOne\CppAdv" />
+    <Folder Include="2017\AllInOne\Graphs" />
+    <Folder Include="2017\AllInOne\HRQs" />
+    <Folder Include="2017\AllInOne\Sorting" />
+    <Folder Include="2017\AllInOne\TestCode" />
+    <Folder Include="2017\AllInOne\Trees" />
+    <Folder Include="2017\AllInOne\Vector" />
+    <Folder Include="2017\MyProjects\MyMapApp\MyMapAppAdv\Resources" />
+    <Folder Include="2017\MyProjects\SmartServer\SmartServer" />
+    <Folder Include="before_2017\Aims\HRank\Problems\Problems" />
+    <Folder Include="before_2017\CodeSnippet" />
+    <Folder Include="before_2017\C_C++\beforeApril2013\misc\preRIM_june_12\logger" />
+    <Folder Include="before_2017\C_C++\beforeApril2013\pBook" />
+    <Folder Include="before_2017\C_C++\prepTurkiye2015-aug24" />
+    <Folder Include="before_2017\C_C++\prepTurkiye2015-aug24\BST\BST" />
+    <Folder Include="before_2017\C_C++\prepTurkiye2015-aug24\codingPractice\codingPractice" />
+    <Folder Include="before_2017\C_C++\prepTurkiye2015-aug24\myclass" />
+    <Folder Include="before_2017\C_C++\prep\Clients" />
+    <Folder Include="before_2017\C_C++\prep\HRank\ConsoleApplication1\ConsoleApplication1" />
+    <Folder Include="before_2017\C_C++\prep\HRank\Problems\HRProbs" />
+    <Folder Include="before_2017\C_C++\prep\HRank\Problems\Problems" />
+    <Folder Include="before_2017\C_C++\prep\HRank\Problems\Threads_Cpp11" />
+    <Folder Include="before_2017\C_C++\qtapps\konylabs" />
+    <Folder Include="before_2017\C_C++\qtapps\testUi\images" />
+    <Folder Include="before_2017\C_C++\test" />
+    <Folder Include="before_2017\C_C++\test\myThreads" />
+    <Folder Include="before_2017\JFC" />
+    <Folder Include="before_2017\JFC\JFC" />
+    <Folder Include="before_2017\jsonreader" />
+    <Folder Include="before_2017\jsonreader\java" />
+    <Folder Include="before_2017\MyProjects\MyMaps\MyMapsQt" />
+    <Folder Include="before_2017\MyProjects\QCS\QCS" />
+    <Folder Include="before_2017\plugins\npsimple" />
+    <Folder Include="before_2017\plugins\test" />
+    <Folder Include="before_2017\QCS" />
+    <Folder Include="before_2017\QtCodeSnippet\QtCodeSnippet" />
+    <Folder Include="before_2017\qtCoding\eventingForAll" />
+    <Folder Include="before_2017\qtCoding\eventingForAll\images" />
+    <Folder Include="before_2017\qtCoding\jsonReader" />
+    <Folder Include="before_2017\qtCoding\puzzle" />
+    <Folder Include="before_2017\qtCoding\qtlearn" />
+    <Folder Include="python" />
+  </ItemGroup>
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
+</Project>
