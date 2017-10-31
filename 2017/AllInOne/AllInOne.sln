@@ -25,6 +25,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QtTestExample", "QtTestExam
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DragNDrop", "DragNDrop\DragNDrop.vcxproj", "{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Recursion", "Recursion\Recursion.vcxproj", "{47808171-6A31-41CE-ACB9-9669057CEC7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -151,6 +153,16 @@ Global
 		{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}.Release|Win32.Build.0 = Release|Win32
 		{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}.Release|x64.ActiveCfg = Release|x64
 		{5292034B-DD96-4E13-B8E0-9E5A9FB7388E}.Release|x64.Build.0 = Release|x64
+		{47808171-6A31-41CE-ACB9-9669057CEC7D}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{47808171-6A31-41CE-ACB9-9669057CEC7D}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{47808171-6A31-41CE-ACB9-9669057CEC7D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{47808171-6A31-41CE-ACB9-9669057CEC7D}.Debug|Win32.Build.0 = Debug|Win32
+		{47808171-6A31-41CE-ACB9-9669057CEC7D}.Debug|x64.ActiveCfg = Debug|Win32
+		{47808171-6A31-41CE-ACB9-9669057CEC7D}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{47808171-6A31-41CE-ACB9-9669057CEC7D}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{47808171-6A31-41CE-ACB9-9669057CEC7D}.Release|Win32.ActiveCfg = Release|Win32
+		{47808171-6A31-41CE-ACB9-9669057CEC7D}.Release|Win32.Build.0 = Release|Win32
+		{47808171-6A31-41CE-ACB9-9669057CEC7D}.Release|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
