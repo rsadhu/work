@@ -1,4 +1,4 @@
-import PyQt5;
+
 def factorial(n):
     if n == 0:
         return 1
@@ -30,3 +30,6 @@ try:
     filehandler.close()
 except:
     print("file couldnt be open for writing")
+    
+    
+    

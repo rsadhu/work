@@ -98,6 +98,9 @@ bool isDerivedFrom(P *par, C *child)
 	return false;
 }
 
+
+
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	/*P par;

@@ -7,17 +7,17 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	BST t,t1;
+	/*BST t,t1;
 	t.add(10);
 	t.add(5);
 	t.add(15);
 	t.add(8);
 	t.add(1);
 	t.add(12);
-	t.add(20);
+	t.add(20);*/
 	
 	//t1 < 10 < 5 < 15 < 8 < 1 < 12 < 20 < 40  < 6 < 9;
-	t.display(TYPE::INORDER_R);	
+	//t.display(TYPE::INORDER_R);	
 	//t1.display(TYPE::INORDER_R);
 	/*t.display(TYPE::PREORDER_R);
 	t.display(TYPE::POSTORDER_R);
@@ -66,13 +66,29 @@ int _tmain(int argc, _TCHAR* argv[])
 	/*std::cout << t.count() << "   " << t1.count();
 	bool ret = t.areTreesSame(t.root(), t1.root());*/
 
+	BST t;
+	t.add(20);
+	t.add(6);
+	t.add(30);
+	t.add(2);
+	t.add(10);
+	t.add(1);
+	t.add(3);
+	t.add(8);
+	t.add(12);
+
+	t.display(TYPE::INORDER_I);
+	t.deleteItem(6);
+	t.display(TYPE::INORDER_I);
 	t.deleteItem(20);
 	t.display(TYPE::INORDER_I);
-	t.deleteItem(12);
+	t.deleteItem(2);
 	t.display(TYPE::INORDER_I);
-	t.deleteItem(8);
+	t.deleteItem(3);
 	t.display(TYPE::INORDER_I);
-	t.deleteItem(1);
+	t.deleteItem(10);
+	t.display(TYPE::INORDER_I);
+	t.deleteItem(30);
 	t.display(TYPE::INORDER_I);
 	return 0;
 }
