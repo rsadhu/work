@@ -80,6 +80,16 @@ int _tmain(int argc, _TCHAR* argv[])
 	t.display(TYPE::INORDER_I);
 	t.deleteItem(6);
 	t.display(TYPE::INORDER_I);
+	t.deleteItem(20);
+	t.display(TYPE::INORDER_I);
+	t.deleteItem(2);
+	t.display(TYPE::INORDER_I);
+	t.deleteItem(3);
+	t.display(TYPE::INORDER_I);
+	t.deleteItem(10);
+	t.display(TYPE::INORDER_I);
+	t.deleteItem(30);
+	t.display(TYPE::INORDER_I);
 	return 0;
 }
 

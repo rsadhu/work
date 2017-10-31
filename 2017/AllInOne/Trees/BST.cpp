@@ -574,15 +574,21 @@ int getMinFromRightSubTree(Node *root)
 {
 	int d = -1;
 	Node *tra = root;
+	root = root->right;
+	bool flag = false;
 	while (root->left)
-	{
-		d = root->mData;
+	{		
 		tra = root;
-		root = root->left;				
+		root = root->left;	
+		flag = true;
 	}
-
-	delete (root->left);
-	tra->left = nullptr;
+		
+	d = root->mData;
+	delete (root);
+	if (flag)
+		tra->left = nullptr;
+	else
+		tra->right = nullptr;
 	return d;
 }
 
@@ -594,7 +600,7 @@ Node * BST::deleteAnItem(Node *root, int data)
 		{
 			if (root->left && root->right)
 			{
-				int d = getMinFromRightSubTree(root->right);
+				int d = getMinFromRightSubTree(root);
 				if (d != -1)
 				{
 					root->mData = d;
@@ -612,8 +618,7 @@ Node * BST::deleteAnItem(Node *root, int data)
 
 				delete root;
 				return tmp;
-			}
-			
+			}			
 		}
 	
 		root->left = deleteAnItem(root->left, data);
