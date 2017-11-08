@@ -1,146 +1,129 @@
 // CPP11.cpp : Defines the entry point for the console application.
 //
-
 #include "stdafx.h"
+#include<iostream>
 #include"_template.h"
+#include<set>
+#include<map>
 
-#define N 10
+//template<typename T>
+//class LearnCpp11
+//{
+//	std::vector<T> mVector;
+//public:
+//	LearnCpp11(T &rhs) :v(rhs)
+//	{
+//
+//	}
+//	const T operator *()const { return mVector; }
+//	T operator *() { return mVector; }
+//	T * operator ->() { return &mVector; }
+//	T begin() { return mVector.begin(); }
+//	T end() { return mVector.end(); }
+//	T operator++() {return mVector++;}
+//};
 
-void sepPosNeg()
+template<typename T>
+void print(std::initializer_list<T> &rhs)
 {
-	int *arr = new int[N]{1,2,3,-9,7,-5,4,22,0,-99};
-	for (int i = 0; i < N;i++)
+	for (auto i : rhs)
 	{
-		std::cout << arr[i] << " ";
-	}	
-
-	delete[]arr;
-
-	for (int i = 0,j=N-1; i < j;)
-	{
-
+		std::cout << i << "  ";
 	}
 }
 
-std::mutex mu;
-std::condition_variable cv;
-std::vector<int > gvec = {1,2,3,4,5,6};
-bool g_ready = false;
-
-void threadFunc1()
-{
-	std::unique_lock<std::mutex> locker(mu);
-	//while ()
-
-}
-
-
-
-
-void threadFunc2()
-{
-
-}
-
-template<typename MyType>
-class Util
-{
-	public:
-		Util(MyType &obj);
-
-		void setData()const;
-	private:
-		mutable MyType *mData=nullptr;
-};
-
-class MutableConst
-{
-	mutable int mA = 0;
-	int mB = 9;
+class BaseTest
+{	
 public:
-	MutableConst(){}
-	//virtual ~MutableConst() = 0;
-	void setInt(const int val) const
-	{
-		mA = val;
-		//mB = val;
-		//val *= 10;
+	int a = 0;
+	virtual void foo() { std::cout << "BaseTest::Foo "  << a << "\n"; }
+};
+
+class DerTest 
+{
+public:
+	int a = 1;
+	virtual void foo() { std::cout << "DerTest::foo--"<<a<<"\n"; }
+};
+
+class DerTest1 :public BaseTest,public DerTest
+{
+public:
+	int a = 2;
+	void foo() { std::cout << "DerTest1::foo--" << a << "\n"; }
+};
+
+
+class A
+{
+public:
+	int a = 0;
+	void display() {
+		std::cout << "A:: a  " << a << "\n";
 	}
+};
 
-	void setAnotherInt(int &val) const
-	{
-		//mB = val;
-		val *= 10;
+class B:public A
+{
+public:
+	int b = 0;
+	void display() {
+		std::cout << "B:: b  " << b << "\n";
 	}
-
-
 };
-class P
-{
-
-};
-
-class C :public P
-{
-
-};
-
-
-class T
-{
-
-};
-
-bool isDerivedFrom(P *par, C *child)
-{
-	if (dynamic_cast<P*>(child))
-		return true;
-	return false;
-}
-
-
 
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	/*P par;
-	C child;
-	T tmp;
+	//codilityTest();
+	//LearnCpp11<std::initializer_list<int>> l={1,2,3,4,5,6,7};
+	/*auto i = { 1,2,3,4,5,6,7 };
+	print<int>(i);*/
 
-	cout << isDerivedFrom(&par, &child);*/
+	//DerTest dt;
+	//dt.a = 10;
+	//dt.foo();
+	//BaseTest *bt = &dt;
+	//bt->foo();
+	//bt->a = 100;
+	//dt.foo();
+	//bt->foo();
+	/*DerTest1 dt1;
+	dt1.foo();
+	try
+	{
+		DerTest &dt = dynamic_cast<DerTest &>(dt1);
+		dt.foo();
 
-	/*std::thread t1(threadFunc1);
-	std::thread t2(threadFunc2);*/
-/*	MutableConst m;
-	int a = 9;
-	m.setAnotherInt(a);
-	m.setInt(a);
+		BaseTest &bt = dynamic_cast<BaseTest &>(dt1);
+		bt.foo();
+	}
+	catch (std::exception e)
+	{
+		std::cout << e.what();
+	}
+*/
 
-	MutableConst  const cm;
-	cm.setInt(a);
-	cm.setAnotherInt(a);*/	
+	BaseTest bt;
+	DerTest *dt = dynamic_cast<DerTest*>(&bt);
+	if (dt)
+		dt->foo();
 
-	//int myints[] = { 10, 20, 30, 5, 15 };
-	//std::vector<int> v(myints, myints + 5);
+	A *a = new A();
+	a->display();
 
-	//std::make_heap(v.begin(), v.end());
-	//std::cout << "initial max heap   : " << v.front() << '\n';
+	//delete a;
 
-	//std::pop_heap(v.begin(), v.end());
-	//v.pop_back();
-	//std::cout << "max heap after pop : " << v.front() << '\n';
+	B b;
+	b.display();
 
-	//v.push_back(99);
-	//std::push_heap(v.begin(), v.end());
-	//std::cout << "max heap after push: " << v.front() << '\n';
+	B *bb = static_cast<B*>(a);
+	
+	bb->display();
 
-	//std::sort_heap(v.begin(), v.end());
+	a = static_cast<A*>(bb);
 
-	//std::cout << "final sorted range :";
-	//for (unsigned i = 0; i<v.size(); i++)
-	//	std::cout << ' ' << v[i];
-
-	//std::cout << '\n';
+	delete a;
 
 
 

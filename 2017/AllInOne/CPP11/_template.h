@@ -3,6 +3,7 @@
 #define TEMPLATE_H
 #include"CppAdvClass.h"
 #include<map>
+#include<set>
 #include<exception>
 #include<iostream>
 #include<thread>
