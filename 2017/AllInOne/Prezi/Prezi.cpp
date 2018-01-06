@@ -9,6 +9,8 @@
 #include<cmath>
 #include<vector>
 
+#include<string>
+
 
 typedef std::pair<int, int> pdd;
 
@@ -97,14 +99,19 @@ int  FindLineCircleIntersections(
         return 2;
     }
 }
-/*C 0 0 5
-L -2 1 12 6
-C 3 2 7
-C 3 10 1
-L -4 9 8 -4
-L 5 2 7 9
-C 8 2 2
-L -3 -3 -1 2*/
+
+
+void tokenizer(const std::string & input, const std::string &delim,std::vector<std::string> &tokens)
+{
+	std::stringstream  mySstream(input);
+	std::string  temp;
+
+	while (getline(mySstream, temp,delim )) 
+	{
+		tokens.push_back(temp);
+	}
+}
+
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -123,17 +130,36 @@ int _tmain(int argc, _TCHAR* argv[])
 	for (int i = 0; i < queries.size(); i++)
 	{
 		std::string  fQ = queries.at(i);
+		pdd intersection1, intersection2;
+
 		for (int j = i + 1; queries.size();j++)
 		{
+			std::vector<std::string> fs, ss;
 			std::string  sQ = queries.at(j);
+			tokenizer(fQ, " ", fs);
+			tokenizer(sQ, " ", ss);
 
-
+			if (fs.size() == ss.size())
+			{
+				if (fs.size() == 3)
+				{
+					// circles intersections
+					 // FindLineCircleIntersections(
+				}
+				else
+				{
+					// lines intersection
+					//circleCircleIntersection
+				}
+			}
+			else
+			{
+				// line and circle intersections
+				//pdd lineLineIntersection(pdd A, pdd B, pdd C, pdd D)
+				auto res = lineLineIntersection(std::make_pair(-2, 1), std::make_pair(12, 6), std::make_pair(-4, 9), std::make_pair(8, -4));
+			}
 		}
 	}
-
-	auto res = lineLineIntersection(std::make_pair(-2, 1), std::make_pair(12, 6), std::make_pair(-4, 9), std::make_pair(8, -4));
-
-
 
 	return 0;
 }
