@@ -8,8 +8,7 @@
 #include<utility>
 #include<cmath>
 #include<vector>
-
-#include<string>
+#include<sstream>
 
 
 typedef std::pair<int, int> pdd;
@@ -101,7 +100,7 @@ int  FindLineCircleIntersections(
 }
 
 
-void tokenizer(const std::string & input, const std::string &delim,std::vector<std::string> &tokens)
+void tokenizer(const std::string & input,  char delim,std::vector<std::string> &tokens)
 {
 	std::stringstream  mySstream(input);
 	std::string  temp;
@@ -115,19 +114,16 @@ void tokenizer(const std::string & input, const std::string &delim,std::vector<s
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	int n = 0;
-	std::cin >> n;
 	std::map<int, int> POI;
-	std::vector<std::string > queries;
-	while (n--)
-	{
-		std::string data;
-		std::cin >> data;		
-		queries.push_back(data);
-	}
 
+	std::vector<std::string > queries;
+
+	std::string data;		
+
+	while (getline(std::cin, data))
+		queries.push_back(data);
 	
-	for (int i = 0; i < queries.size(); i++)
+	for (int i = 1; i < queries.size(); i++)
 	{
 		std::string  fQ = queries.at(i);
 		pdd intersection1, intersection2;
@@ -136,12 +132,12 @@ int _tmain(int argc, _TCHAR* argv[])
 		{
 			std::vector<std::string> fs, ss;
 			std::string  sQ = queries.at(j);
-			tokenizer(fQ, " ", fs);
-			tokenizer(sQ, " ", ss);
+			tokenizer(fQ, ' ' , fs);
+			tokenizer(sQ, ' ' , ss);
 
 			if (fs.size() == ss.size())
 			{
-				if (fs.size() == 3)
+				if (fs.size() == 4)
 				{
 					// circles intersections
 					 // FindLineCircleIntersections(
