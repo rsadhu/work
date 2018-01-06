@@ -12,11 +12,16 @@
 
 
 std::mutex mut;
-
+int g_data = 0;
 void function_thread(int &s)
 {
-//	std::lock_guard<std::mutex> lock(mut);
-	s += 10;
+	while (1)
+	{
+		g_data++;
+		if (g_data >= INT_MAX)
+			g_data = 0;
+		s = g_data;
+	}
 }
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -25,10 +30,11 @@ int _tmain(int argc, _TCHAR* argv[])
 	int x = 0;
 
 	std::thread t1[1000];
-	for (int i = 0; i < 1000; i++)
+	//for (int i = 0; i < 1000; i++)
 	{
-		t1[i] = std::thread(function_thread, std::ref(x));
-		t1[i].join();
+		t1[0] = std::thread(function_thread, std::ref(x));
+		std::cout << x;
+		t1[0].join();
 	}
 	std::cout << x;
 
