@@ -140,19 +140,23 @@ int _tmain(int argc, _TCHAR* argv[])
 				if (fs.size() == 4)
 				{
 					// circles intersections
-					 // FindLineCircleIntersections(
+					auto res = circleCircleIntersection(std::stoi(ss.at(1)), std::stoi(ss.at(2)), std::stoi(ss.at(3)), std::stoi(fs.at(1)), std::stoi(fs.at(2)), std::stoi(fs.at(3)));					
 				}
 				else
-				{
-					// lines intersection
-					//circleCircleIntersection
+				{					
+					auto res = lineLineIntersection(std::pair<int, int>(std::stoi(ss.at(1)), std::stoi(ss.at(2))), std::pair<int, int>(std::stoi(ss.at(3)), std::stoi(ss.at(4)))
+						, std::pair<int, int>(std::stoi(fs.at(1)), std::stoi(fs.at(2))), std::pair<int, int>(std::stoi(fs.at(3)), std::stoi(fs.at(4))));
+					
 				}
 			}
 			else
 			{
-				// line and circle intersections
-				//pdd lineLineIntersection(pdd A, pdd B, pdd C, pdd D)
-				auto res = lineLineIntersection(std::make_pair(-2, 1), std::make_pair(12, 6), std::make_pair(-4, 9), std::make_pair(8, -4));
+				pdd p1, p2;
+				if (ss.size() == 4)
+					FindLineCircleIntersections(std::stoi(ss.at(1)), std::stoi(ss.at(2)), std::stoi(ss.at(3)), std::pair<int, int>(std::stoi(fs.at(1)), std::stoi(fs.at(2))), std::pair<int, int>(std::stoi(fs.at(3)), std::stoi(fs.at(4))), p1, p2);
+				else
+					FindLineCircleIntersections(std::stoi(fs.at(1)), std::stoi(fs.at(2)), std::stoi(fs.at(3)), std::pair<int, int>(std::stoi(ss.at(1)), std::stoi(ss.at(2))), std::pair<int, int>(std::stoi(ss.at(3)), std::stoi(ss.at(4))), p1, p2);
+
 			}
 		}
 	}
