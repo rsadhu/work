@@ -11,33 +11,25 @@
 
 
 
-std::mutex mut;
-int g_data = 0;
-void function_thread(int &s)
+void function_thread()
 {
-	while (1)
+	try
 	{
-		g_data++;
-		if (g_data >= INT_MAX)
-			g_data = 0;
-		s = g_data;
+		while (1)
+		{
+			std::cout << " function_Thread" << std::this_thread::get_id() << "\n";
+		}
+	}
+	catch (std::exception e)
+	{
+		std::cout << " exc " << e.what();
 	}
 }
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-
-	int x = 0;
-
-	std::thread t1[1000];
-	//for (int i = 0; i < 1000; i++)
-	{
-		t1[0] = std::thread(function_thread, std::ref(x));
-		std::cout << x;
-		t1[0].join();
-	}
-	std::cout << x;
-
+	std::thread t(function_thread);
+	//t.detach();
 	return 0;
 }
 

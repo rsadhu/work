@@ -19,7 +19,7 @@ DragNDrop::DragNDrop(QWidget *parent)
 	setMinimumSize(400, 500);
 	QPushButton * b = new QPushButton(this);
 
-	connect(b, &QPushButton::clicked, [=]()
+	connect(b, &QPushButton::click, [=]()
 	{
 		SourceW *tmp = new SourceW(0, ++mCounter);
 		tmp->show();

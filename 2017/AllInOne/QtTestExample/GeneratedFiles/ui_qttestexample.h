@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'qttestexample.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.0
+** Created by: Qt User Interface Compiler version 5.10.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -59,9 +59,9 @@ public:
 
     void retranslateUi(QWidget *QtTestExampleClass)
     {
-        QtTestExampleClass->setWindowTitle(QApplication::translate("QtTestExampleClass", "QtTestExample", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("QtTestExampleClass", "Tab 1", Q_NULLPTR));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("QtTestExampleClass", "Tab 2", Q_NULLPTR));
+        QtTestExampleClass->setWindowTitle(QApplication::translate("QtTestExampleClass", "QtTestExample", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("QtTestExampleClass", "Tab 1", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("QtTestExampleClass", "Tab 2", nullptr));
     } // retranslateUi
 
 };

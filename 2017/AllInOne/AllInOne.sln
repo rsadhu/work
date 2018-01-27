@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HRQs", "HRQs\HRQs.vcxproj", "{921EDCD8-F2A5-49C4-8ABD-E8BA898B330C}"
 EndProject
@@ -34,6 +34,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TC", "TC\TC.vcxproj", "{23B15C08-90D7-4D4B-838F-471069D455C0}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Prezi", "Prezi\Prezi.vcxproj", "{659930B2-C9C8-4608-8478-46D66255AC19}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Autox", "Autox\Autox.vcxproj", "{F97FF581-C02E-4EF0-BDDB-C797374783B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -214,8 +216,23 @@ Global
 		{659930B2-C9C8-4608-8478-46D66255AC19}.Release|Win32.ActiveCfg = Release|Win32
 		{659930B2-C9C8-4608-8478-46D66255AC19}.Release|Win32.Build.0 = Release|Win32
 		{659930B2-C9C8-4608-8478-46D66255AC19}.Release|x64.ActiveCfg = Release|Win32
+		{F97FF581-C02E-4EF0-BDDB-C797374783B2}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{F97FF581-C02E-4EF0-BDDB-C797374783B2}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{F97FF581-C02E-4EF0-BDDB-C797374783B2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F97FF581-C02E-4EF0-BDDB-C797374783B2}.Debug|Win32.Build.0 = Debug|Win32
+		{F97FF581-C02E-4EF0-BDDB-C797374783B2}.Debug|x64.ActiveCfg = Debug|x64
+		{F97FF581-C02E-4EF0-BDDB-C797374783B2}.Debug|x64.Build.0 = Debug|x64
+		{F97FF581-C02E-4EF0-BDDB-C797374783B2}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{F97FF581-C02E-4EF0-BDDB-C797374783B2}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{F97FF581-C02E-4EF0-BDDB-C797374783B2}.Release|Win32.ActiveCfg = Release|Win32
+		{F97FF581-C02E-4EF0-BDDB-C797374783B2}.Release|Win32.Build.0 = Release|Win32
+		{F97FF581-C02E-4EF0-BDDB-C797374783B2}.Release|x64.ActiveCfg = Release|x64
+		{F97FF581-C02E-4EF0-BDDB-C797374783B2}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {67768473-512A-4A2F-B576-056753129EC9}
 	EndGlobalSection
 EndGlobal
