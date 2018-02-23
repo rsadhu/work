@@ -15,6 +15,7 @@ signals:
 	void signalLogin();
 	void signalLoginSuccessful();
 	void signalLogoutSuccessful();
+	void signalClientListFetched( QStringList );
 private:
 	QTcpSocket * m_SocketClientToServer = nullptr;
 	QTcpSocket * m_SocketClientToClient = nullptr;

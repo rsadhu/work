@@ -2,11 +2,15 @@
 #include<qjsonvalue.h>
 #include<qjsonobject.h>
 #include<QJsonDocument>
+#include<qjsonarray.h>
 
 void ChatClientPriv::reConnect()
 {
-	if(m_SocketClientToServer)
+	if (m_SocketClientToServer)
+	{
+		m_SocketClientToServer->disconnectFromHost();
 		m_SocketClientToServer->connectToHost("127.0.0.1", 2704);
+	}
 }
 
 ChatClientPriv::ChatClientPriv()
@@ -32,7 +36,25 @@ ChatClientPriv::ChatClientPriv()
 
 	QObject::connect(m_SocketClientToServer, &QTcpSocket::readyRead, [=]()
 	{
-		qDebug() << " Data read :: " << m_SocketClientToServer->readAll();
+		auto data =   m_SocketClientToServer->readAll();
+
+		
+		QJsonDocument jsD;
+		jsD = QJsonDocument::fromJson(data);
+		QJsonObject jsonVal = jsD.object();
+
+		if (jsonVal["key"].toString().compare("onlineClients") == 0)
+		{
+			auto listClients = jsonVal["clients"];
+			QStringList list;
+			for (int i = 0; i < listClients.toArray().size(); i++)
+			{
+				qDebug() << " Data read :: " << listClients.toArray()[i];
+				list << listClients.toArray()[i].toString();
+
+			}
+			emit signalClientListFetched(list);
+		}
 	});
 
 	QObject::connect(m_SocketClientToServer, &QTcpSocket::stateChanged, [=](QAbstractSocket::SocketState st)
@@ -45,7 +67,7 @@ ChatClientPriv::ChatClientPriv()
 
 ChatClientPriv::~ChatClientPriv()
 {
-	m_SocketClientToServer->disconnect();
+	m_SocketClientToServer->disconnectFromHost();
 	delete m_SocketClientToServer;
 }
 

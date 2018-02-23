@@ -1,4 +1,6 @@
 #include "ChatClient.h"
+#include "qmessagebox.h"
+#include<QTreeWidgetItem>
 
 ChatClient::ChatClient(QWidget *parent)
 	: QMainWindow(parent)
@@ -10,9 +12,9 @@ ChatClient::ChatClient(QWidget *parent)
 	m_ChatClientPriv = new ChatClientPriv;	
 	
 	connect(m_ChatClientPriv, SIGNAL(signalLogin()), this, SLOT(slotLogin()));
-
-	//ui.actionLogin->setEnabled(false);
-	//ui.actionLogout->setEnabled(false);
+	
+	connect(m_ChatClientPriv, SIGNAL(signalClientListFetched(QStringList )), this, SLOT(slotClientListFetched(QStringList )));
+	
 }
 
 void ChatClient::connections()
@@ -31,32 +33,51 @@ void ChatClient::connections()
 
 	connect(ui.actionLogin, &QAction::triggered, [=]()
 	{
-		if (m_Dial)
+		
+		if (m_ServerConnected)
 		{
-			delete m_Dial;			
+			if (m_Dial)
+			{
+				delete m_Dial;
+			}
+
+			m_Dial = new QDialog(nullptr);
+			connect(m_Dial, &QDialog::accepted, [=]()
+			{
+				m_ChatClientPriv->login(loginUi.leUsername->text(), loginUi.lePassword->text());
+			});
+
+			loginUi.setupUi(m_Dial);
+			m_Dial->show();
 		}
-		
-		m_Dial = new QDialog(nullptr);			
-		connect(m_Dial, &QDialog::accepted, [=]()
+		else
 		{
-			m_ChatClientPriv->login(loginUi.leUsername->text(), loginUi.lePassword->text());
-		});
+			QMessageBox msg(nullptr);
+			msg.setText("Server isn't up..");
+			msg.exec();
+		}		
+	});
 
-		loginUi.setupUi(m_Dial);
-		m_Dial->show();
-
-		
+	connect(ui.chatClientList, &QTreeWidget::itemClicked, [=](QTreeWidgetItem *item, int col)
+	{
+	
 	});
 }
 
 
 void ChatClient::slotLogin()
 {
-	ui.actionLogin->setEnabled(true);
-	ui.actionLogout->setEnabled(true);
+	m_ServerConnected = true;	
 }
 
+void ChatClient::slotClientListFetched(QStringList  list)
+{
 
+	foreach(QString item, list)
+	{	
+		ui.chatClientList->addTopLevelItem(new QTreeWidgetItem(QStringList(item)));
+	}
+}
 
 ChatClient::~ChatClient()
 {

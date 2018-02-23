@@ -4,6 +4,7 @@
 #include<qjsonvalue.h>
 #include<qjsonobject.h>
 #include<QJsonDocument>
+#include<QJsonArray>
 
 
 
@@ -59,6 +60,18 @@ void ChatClientConnection::run()
 				auto password = jsonVal["password"].toString();
 				qDebug() << " username :: " << username;
 				qDebug() << " password :: " << password;			
+
+				QJsonObject val;
+
+				val["key"] = QJsonValue("onlineClients");
+				QJsonArray array;
+				array << "127.0.0.1" << "10.0.5.1" << "10.0.5.2" << "10.0.5.3";
+				val["clients"] = QJsonArray(array);
+				
+				QJsonDocument doc(val);
+				QByteArray data = doc.toJson();
+
+				m_Socket->write(data);
 			}
 			else
 			{				
@@ -69,7 +82,7 @@ void ChatClientConnection::run()
 
 			}
 			
-			m_Socket->write(QByteArray("socketId:: ")+QByteArray(QString::number(m_SocketDescriptor).toStdString().c_str()) + "  " + m_Socket->readAll());
+			//m_Socket->write(QByteArray("socketId:: ")+QByteArray(QString::number(m_SocketDescriptor).toStdString().c_str()) + "  " + m_Socket->readAll());
 			m_Socket->flush();
 			m_Socket->waitForBytesWritten(300);
 		});

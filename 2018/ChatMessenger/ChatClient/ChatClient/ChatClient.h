@@ -15,10 +15,11 @@ protected:
 	void connections();
 public slots:
 	void slotLogin();
-
+	void slotClientListFetched(QStringList  );
 private:
 	Ui::ChatClientClass ui;
 	Ui::Login loginUi;
 	QDialog *m_Dial = nullptr;
 	ChatClientPriv *m_ChatClientPriv = nullptr;
+	bool m_ServerConnected = false;
 };
