@@ -527,7 +527,9 @@ void threadedFunction()
 		}
 	}
 }
+
 #include<future>
+
 
 int _tmain(int argc, _TCHAR* argv[])
 {			
@@ -551,15 +553,18 @@ int _tmain(int argc, _TCHAR* argv[])
 	}
 	t.join();*/
 
-	std::future<int> ret = 	std::async(std::launch::async,[](int p) 
-	{
-		std::cout << p << " aysnc function called\n";
-		std::chrono::milliseconds(1000);
-		return p * p;
-	}, 9);
+	std::promise<int> input;
+	//std::future<int> ret =  std::async(std::launch::async,[=] ( std::promise<int> &input ) 
+	//{
+	//	auto i = input.get_future().get();
+	//	std::cout << i << " aysnc function called\n";
+	//	std::chrono::milliseconds(1000);
+	//	return i * i;
+	//},input );
+
+	input.set_value(10);	
 	
-	
-	std::cout << " return from asnc :: future" << ret.get() << "\n";
+	//std::cout << " return from asnc :: future" << ret.get() << "\n";
 	
 	return 0;
 }

@@ -53,7 +53,7 @@ void ChatClientConnection::run()
 			QJsonDocument jsD;
 			jsD = QJsonDocument::fromJson(data);
 			QJsonObject jsonVal = jsD.object();
-
+			
 			if (jsonVal["key"].toString().compare("Login") == 0)
 			{			
 				auto username = jsonVal["username"].toString();
@@ -74,12 +74,24 @@ void ChatClientConnection::run()
 				m_Socket->write(data);
 			}
 			else
-			{				
-				auto n = jsonVal["name"];
-				qDebug() << " name:: " << jsonVal["name"].toString();
-				qDebug() << " age:: " << jsonVal["age"].toInt();
-				qDebug() << " address:: " << jsonVal["address"].toString();		
+			if (jsonVal["key"].toString().compare("Refresh") == 0)
+			{
+				QJsonObject val;
 
+				val["key"] = QJsonValue("onlineClients");
+				QJsonArray array;
+				array << "127.0.0.1" << "10.0.5.1" << "10.0.5.2" << "10.0.5.3"<<"192.168.1.1"<<"192.168.1.2";
+				val["clients"] = QJsonArray(array);
+
+				QJsonDocument doc(val);
+				QByteArray data = doc.toJson();
+				m_Socket->write(data);
+				
+			}
+			else
+			{				
+				qDebug() << " data is " << data;
+				m_Socket->write(data);
 			}
 			
 			//m_Socket->write(QByteArray("socketId:: ")+QByteArray(QString::number(m_SocketDescriptor).toStdString().c_str()) + "  " + m_Socket->readAll());

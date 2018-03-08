@@ -3,6 +3,7 @@
 #include<qjsonobject.h>
 #include<QJsonDocument>
 #include<qjsonarray.h>
+#include<QHostAddress>
 
 void ChatClientPriv::reConnect()
 {
@@ -17,9 +18,18 @@ ChatClientPriv::ChatClientPriv()
 {
 	m_SocketClientToServer = new QTcpSocket();
 	m_SocketClientToServer->connectToHost("127.0.0.1", 2704);
-
+		
 	QObject::connect(m_SocketClientToServer, &QTcpSocket::connected, [=]() 
 	{
+		if (!m_Timer)
+		{
+			m_Timer = new QTimer();
+			connect(m_Timer, &QTimer::timeout, [=]()
+			{
+				refresh();
+			});
+			m_Timer->start(5000);
+		}
 		emit signalLogin();
 		qDebug() << " SOcket is connected \n";
 		QJsonObject val;
@@ -59,8 +69,7 @@ ChatClientPriv::ChatClientPriv()
 
 	QObject::connect(m_SocketClientToServer, &QTcpSocket::stateChanged, [=](QAbstractSocket::SocketState st)
 	{
-		qDebug() << " Socket State  " << st;
-		//m_SocketClientToServer->write("Hello Client Here");
+		qDebug() << " Socket State  " << st;		
 	});
 }
 
@@ -87,4 +96,61 @@ void ChatClientPriv::login(QString &username, QString&password)
 		m_SocketClientToServer->flush();
 		m_SocketClientToServer->waitForBytesWritten(100);
 	}
+}
+
+
+void ChatClientPriv::refresh()
+{
+	if (m_SocketClientToServer && m_SocketClientToServer->state() == QAbstractSocket::ConnectedState)
+	{
+		QJsonObject val;
+		val["key"] = QJsonValue("Refresh");
+		
+		QJsonDocument doc(val);
+		QByteArray data = doc.toJson();
+
+		m_SocketClientToServer->write(data);
+		m_SocketClientToServer->flush();
+		m_SocketClientToServer->waitForBytesWritten(100);
+	}
+}
+
+void ChatClientPriv::send(QString data)
+{
+	if (m_SocketClientToClient  && m_SocketClientToClient->state() == QAbstractSocket::SocketState::ConnectedState)
+	{
+		m_SocketClientToClient->write(data.toStdString().c_str());
+	}
+	else
+	{
+		qDebug() << " connecting state:: unconnected \n";
+	}
+}
+
+void ChatClientPriv::createChatClient(int port)
+{
+	if (m_SocketClientToClient)
+		delete m_SocketClientToClient;
+
+	m_SocketClientToClient = new QTcpSocket();
+	QHostAddress addr("127.0.0.1");
+	
+	m_SocketClientToClient->bind(addr, port);	
+	
+	QObject::connect(m_SocketClientToClient, &QTcpSocket::connected, [=]()
+	{		
+		qDebug() << " SOcket is connected \n";
+		m_SocketClientToClient->write("ChatClient-Connected");
+	});
+
+	QObject::connect(m_SocketClientToClient, &QTcpSocket::readyRead, [=]()
+	{
+		auto data = m_SocketClientToClient->readAll();
+		qDebug() << "data from Peer" << data;
+	});
+
+	QObject::connect(m_SocketClientToClient, &QTcpSocket::stateChanged, [=](QAbstractSocket::SocketState st)
+	{
+		qDebug() << " QAbstractSocket:: SocketState  " << st;
+	});
 }

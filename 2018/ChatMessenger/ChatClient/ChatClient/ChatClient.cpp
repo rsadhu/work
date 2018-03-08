@@ -1,6 +1,7 @@
 #include "ChatClient.h"
 #include "qmessagebox.h"
 #include<QTreeWidgetItem>
+#include<qpicture.h>
 
 ChatClient::ChatClient(QWidget *parent)
 	: QMainWindow(parent)
@@ -28,7 +29,8 @@ void ChatClient::connections()
 
 	connect(ui.btnRefresh, &QPushButton::pressed, [=]()
 	{
-
+		if (m_ChatClientPriv)
+			m_ChatClientPriv->refresh();
 	});
 
 	connect(ui.actionLogin, &QAction::triggered, [=]()
@@ -60,22 +62,60 @@ void ChatClient::connections()
 
 	connect(ui.chatClientList, &QTreeWidget::itemClicked, [=](QTreeWidgetItem *item, int col)
 	{
-	
+		if (item)
+		{
+			auto ip = item->text(0);		
+			m_ChatClientPriv->send("hello");
+		}
 	});
 }
 
 
 void ChatClient::slotLogin()
 {
-	m_ServerConnected = true;	
+	m_ChatClientPriv->createChatClient(2345);
+	m_ServerConnected = true;		
 }
 
 void ChatClient::slotClientListFetched(QStringList  list)
 {
-
-	foreach(QString item, list)
+	QTreeWidgetItem *item = nullptr;
+	ui.chatClientList->clear();
+	foreach(QString ip, list)
 	{	
-		ui.chatClientList->addTopLevelItem(new QTreeWidgetItem(QStringList(item)));
+		item = new QTreeWidgetItem();
+		
+	/*	QIcon    icon("D:\\rsadhu\\work\\2018\\ChatMessenger\\ChatClient\\ChatClient\\online.png");
+		QPixmap *pixmap = new QPixmap("D:\\rsadhu\\work\\2018\\ChatMessenger\\ChatClient\\ChatClient\\online.png");
+		
+		if (!icon.isNull())
+			item->setIcon(0, icon);
+		else
+			qDebug() << " icon couldnt created";
+
+		QLabel *label = new QLabel();
+		label->setText(ip);
+			
+		label->setStyleSheet("background-color:gray");
+
+		if (label->pixmap())
+		{
+			if (!label->pixmap()->isNull())
+			{
+				item->setIcon(1, *(label->pixmap()));
+			}
+			else
+			{
+				qDebug() << " Pixmap is null\n";
+			}
+		}
+		else
+		{
+			qDebug() << " Pixmap ptr is null\n";
+		}*/
+
+		item->setText(0, ip);
+		ui.chatClientList->addTopLevelItem(item);
 	}
 }
 

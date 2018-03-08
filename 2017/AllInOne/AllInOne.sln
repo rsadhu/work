@@ -37,6 +37,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Prezi", "Prezi\Prezi.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Autox", "Autox\Autox.vcxproj", "{F97FF581-C02E-4EF0-BDDB-C797374783B2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppExtended", "CppExtended\CppExtended.vcxproj", "{B5FBB5E2-71B6-4A90-A26B-8DF3521C443F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -239,6 +241,18 @@ Global
 		{F97FF581-C02E-4EF0-BDDB-C797374783B2}.Release|Win32.Build.0 = Release|Win32
 		{F97FF581-C02E-4EF0-BDDB-C797374783B2}.Release|x64.ActiveCfg = Release|x64
 		{F97FF581-C02E-4EF0-BDDB-C797374783B2}.Release|x64.Build.0 = Release|x64
+		{B5FBB5E2-71B6-4A90-A26B-8DF3521C443F}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{B5FBB5E2-71B6-4A90-A26B-8DF3521C443F}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{B5FBB5E2-71B6-4A90-A26B-8DF3521C443F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B5FBB5E2-71B6-4A90-A26B-8DF3521C443F}.Debug|Win32.Build.0 = Debug|Win32
+		{B5FBB5E2-71B6-4A90-A26B-8DF3521C443F}.Debug|x64.ActiveCfg = Debug|x64
+		{B5FBB5E2-71B6-4A90-A26B-8DF3521C443F}.Debug|x64.Build.0 = Debug|x64
+		{B5FBB5E2-71B6-4A90-A26B-8DF3521C443F}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{B5FBB5E2-71B6-4A90-A26B-8DF3521C443F}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{B5FBB5E2-71B6-4A90-A26B-8DF3521C443F}.Release|Win32.ActiveCfg = Release|Win32
+		{B5FBB5E2-71B6-4A90-A26B-8DF3521C443F}.Release|Win32.Build.0 = Release|Win32
+		{B5FBB5E2-71B6-4A90-A26B-8DF3521C443F}.Release|x64.ActiveCfg = Release|x64
+		{B5FBB5E2-71B6-4A90-A26B-8DF3521C443F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

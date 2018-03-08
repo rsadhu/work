@@ -31,6 +31,7 @@ public:
 	// and assign must do nothing.
 	void assign(K const& keyBegin, K const& keyEnd, const V& val) {
 
+		//m_map.insert
 	}
 
 	// look-up of the value associated with key
@@ -47,6 +48,9 @@ public:
 
 void IntervalMapTest()
 {
+	interval_map<int, char> map(10);
+	map.assign(10, 20,'a');
+	
 
 }
 
