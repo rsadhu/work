@@ -2,14 +2,16 @@
 #include "ClassCpp.h"
 
 
+
 ClassCpp::ClassCpp()
 {
+	std::cout << "ClassCpp::ClassCpp\n";
 }
 
 
 ClassCpp::~ClassCpp()
 {
-
+	std::cout << "ClassCpp::~ClassCpp\n";
 }
 
 int ClassCpp::display(int x)
@@ -69,3 +71,9 @@ int Der::sumUp(int x, int y, int d )
 	return x + y + d;
 }
 
+
+int GrandChild::sumUp(int x, int y, int z)
+{
+	std::cout << "GrandChild:: sumUp\n";
+	return x + y + z;
+}
