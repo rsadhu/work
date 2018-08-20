@@ -12,7 +12,6 @@ class MyThread
 {
         using callbackFunction = std::function<void (T)>;
     public:
-        void start();
         void start(T,callbackFunction cb);
         void wait();
     protected:
@@ -92,8 +91,6 @@ int main(void){
     int i=0;
     while(i++<10)
     std::cout<<" i am doing disco dance\n";
-
-
 
     t.wait();
 

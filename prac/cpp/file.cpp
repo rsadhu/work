@@ -9,20 +9,30 @@ main (int argc, char *argv[])
 {
   try
   {
-      std::fstream filereader ("classes.cpp");
+      std::fstream filereader;
+      filereader.open("log.txt", filereader.binary | filereader.trunc | filereader.in | filereader.out) ;
 
-      filereader<< "// *****************    disco dance **************  ";
-      while (!filereader.eof ())
+      if(filereader.is_open())
       {
-          std::string data;
-          filereader >> data;;
-          std::cout << data;
+          std::cout<<" file opened\n";
+          filereader<< "// *****************    disco dance **************  ";
+          while (!filereader.eof ())
+          {
+              std::string data;
+              filereader >> data;;
+              std::cout << data;
 
+          }
+      }
+      else
+      {
+          std::string str ="File not Found\n";
+          throw new std::exception();
       }
   }
   catch (std::exception e)
   {
-        std::cout < " Exception: " << e.what ();
+        std::cout << " Exception: "<<e.what() ;
   }
   return 0;
 }
