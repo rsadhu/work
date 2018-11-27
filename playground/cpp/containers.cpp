@@ -7,6 +7,27 @@
 //#include<multimap>
 #include<set>
 //#include<multiset>
+#include<tuple>
+
+
+class Test
+{
+    public:
+    Test()=default;
+    Test(int , double ) { std::cout<<" Test::para called\n";}
+    Test(const Test &)
+    {
+        std::cout<<"Test::copy\n";
+    }
+    Test(const Test &&rhs)
+    {
+        std::cout<<"Test::move\n";
+    }
+    ~Test()
+    {
+        std::cout<<"Test::~Test\n";
+    }
+};
 
 int main(void)
 {
@@ -69,5 +90,12 @@ int main(void)
         lmultiset.insert(i+j);
     }
 
+    struct Def{};
+
+    std::tuple<int, double,std::string ,Def,char> obj (9,  9.9,"Rakesh",Def(),'c');
+
+    std::vector<Test> l;
+    l.push_back(Test(9,10.0));
+    l.emplace_back(9,9.9);
     return 0;
 }

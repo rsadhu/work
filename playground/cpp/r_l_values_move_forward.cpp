@@ -53,10 +53,22 @@ void play(Test  &t)
  std::cout<<" Play :: ref\n";
 }*/
 
-void play(Test  t)
+/*void play(Test  t)
 {
  std::cout<<" Play :: copy\n";
+}*/
+
+void testPF( Test )
+{
+
 }
+
+template<typename T>
+void funcArg(T &&arg)
+{
+    testPF(std::forward(arg));
+}
+
 
 int main(void)
 {
@@ -68,5 +80,8 @@ int main(void)
     //Test t;
     //play(t);
     play(std::move(retTest()));
+
+    funcArg<Test>(Test());
+
     return 0;
 }
