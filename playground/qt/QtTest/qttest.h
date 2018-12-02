@@ -2,7 +2,7 @@
 #define QTTEST_H
 
 #include <QObject>
-
+#include <QDebug>
 
 class Data :public QObject
 {
@@ -12,8 +12,25 @@ class Data :public QObject
         Q_UNUSED(parent)
     }
 
-    Data(const Data &rhs){}
-    Data operator = (const Data &rhs){}
+    Data(const Data &rhs)    
+    {
+        qDebug()<<" Data::copy Constructor";    
+    }
+
+    Data&  operator = (const Data &rhs)
+    {
+        qDebug()<<" Data::= operator";    
+    }
+
+    Data(Data &&rhs)
+    {
+        qDebug()<<" Data::move constuctor ";
+    }
+
+    Data & operator = (Data &&rhs)
+    {
+        qDebug()<<"Data::move operator";
+    }
 
     QString mStr;
     int mInt;
@@ -32,7 +49,9 @@ class QtTest : public QObject
 public:
     explicit QtTest(QObject *parent = nullptr);
 signals:
-    void  sendMessage(Data *,QString *, QString,Data);
+    void sendMessage(Data *,QString *, QString,Data);
+    void changeSomethinWithCRefs(const Data &);
+    void changeSomethingWithCopy(Data);
 public slots:
     void onMessageArrived(Data * ,QString *, QString , Data );
 };

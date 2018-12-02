@@ -1,7 +1,7 @@
 #include "qttest.h"
 #include<QTimer>
-#include<QDebug>
 
+auto connectionType = Qt::QueuedConnection;
 
 QtTest::QtTest(QObject *parent) : QObject(parent)
 {
@@ -9,17 +9,38 @@ QtTest::QtTest(QObject *parent) : QObject(parent)
   qRegisterMetaType<Data>();
 
   QTimer *m = new QTimer(this);
+    
+  qDebug()<<"========== Constructor-1 ===============";
 
-  connect(this,&QtTest::sendMessage, this, &QtTest::onMessageArrived,Qt::QueuedConnection);
+  connect(this, &QtTest::sendMessage, this, &QtTest::onMessageArrived, connectionType);
+  
+//  connectionType = Qt::DirectConnection;
+
+  connect(this, &QtTest::changeSomethingWithCopy, this, [] (Data d) {
+    qDebug()<<" copy slot called==== >>1 ";
+  },connectionType);
+ 
+
+
+ connect(this, &QtTest::changeSomethinWithCRefs, this, [](const Data &refDa) {
+    qDebug()<<" ref const  slot called ====> 2";
+ }, connectionType); 
+ 
+
+  qDebug()<<"========== Constructor-2 ===============";
 
   connect(m,&QTimer::timeout, [=]()
   {
       Data *obj = new Data();
 
-      QString  *st = new QString("Rakesh sadhu ");
-      QString strrrr("Const String");
+  //    QString  *st = new QString("Rakesh sadhu ");
+    //  QString strrrr("Const String");
 
-      emit sendMessage(obj,st,strrrr,*obj);
+     // emit sendMessage(obj,st,strrrr,*obj);
+  
+//  emit changeSomethingWithCopy(*obj);
+
+  emit changeSomethinWithCRefs(*obj);
   });
 
   m->setInterval(2000);

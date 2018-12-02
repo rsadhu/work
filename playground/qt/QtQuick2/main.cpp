@@ -1,9 +1,9 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QDir>
-#include <QDebug>
 #include "qmlnetworkclass.h"
 #include <QtQml>
+#include<QDebug>
 
 enum class TestEnum
 {

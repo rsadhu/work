@@ -33,14 +33,15 @@ public:
   Compositor ()
   {
     m_obj = std::make_unique < T > ();
+   // m_obj = new T();
   } 
   ~Compositor ()
   {
       std::cout<<"Compositor::~Compositor\n";
   }
-  void setImplementation (T * d)
+  void setImplementation (std::unique_ptr<T> d)
   {
-    m_obj = std::make_unique<T>(*d);
+    m_obj = d;
   }
 private:
   std::unique_ptr < T > m_obj;
