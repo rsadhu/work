@@ -70,7 +70,7 @@ void Vector<T>::resize()
     T * tmp = new T[m_capacity];
     for(int i = 0;i < oldsize;i++)
     {
-        tmp[i] = std::move(m_arr[i]);
+        //tmp[i] = std::move(m_arr[i]);
     }
     delete [] m_arr;
     m_arr = tmp;
