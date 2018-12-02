@@ -55,9 +55,15 @@ int main(int argc, char *argv[])
     qDebug()<<obj;
 
     QmlNetworkClass nwc;
+
     nwc.connectToHost(QString("http://www.google.com"),1);
 
     qmlRegisterType<QmlNetworkClass>("NetworkMngr.qml", 1, 0, "NetworkMngr");
+
+    TestEnum obj = TestEnum::FRIDAY;
+    qDebug()<<obj;
+
+
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())

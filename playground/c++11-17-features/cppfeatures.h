@@ -6,7 +6,6 @@
 
 namespace utl
 {
-
 enum  class NumberSystem
 {
     DEC,
@@ -14,7 +13,6 @@ enum  class NumberSystem
     BIN,
     OCT
 };
-
 class CppFeatureSet
 {
 public:
@@ -30,5 +28,6 @@ private:
     int m_index = 0;
     NumberSystem m_numsys  = NumberSystem::DEC;
 };
-
 }
+
+

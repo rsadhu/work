@@ -24,8 +24,13 @@ public:
   }
   static int s_ref;
 };
+<<<<<<< 457f50887f0f26938f0505fe6e0307fe575f3f6c
 
 
+=======
+
+
+>>>>>>> add example code
 template < typename T > 
 class Compositor
 {
@@ -85,6 +90,7 @@ main (void)
 
   //Test < int > t;
   //t.receive (sp);
+<<<<<<< 457f50887f0f26938f0505fe6e0307fe575f3f6c
 
   //Test < Data > s;
   //auto sd = std::make_shared < Data > ();
@@ -100,6 +106,16 @@ main (void)
 
   std::cout<<"jjjjjjjjj===>>  "<< *(p.get());
   std::cout<<"jjjjjjjjj===>>  "<< *(p.get());
+=======
+
+  //Test < Data > s;
+  //auto sd = std::make_shared < Data > ();
+  //s.receive (sd);
+
+    
+  Compositor<Data> cmp;
+  cmp.setImplementation((std::unique_ptr<Data>()).release());
+>>>>>>> add example code
 
   return 0;
 }

@@ -9,9 +9,6 @@ CppFeatureSet create()
     return obj;
 }
 
-
-
-
 void test(CppFeatureSet buglu)
 {
 
@@ -52,6 +49,20 @@ void refvaluefunc(DataType &&rhs)
 }
 
 
+
+
+void refvaluefunc(const int &rhs)
+{
+ std::cout<<"constRefValue:: func\n";
+}
+
+
+void refvaluefunc(int &&rhs)
+{
+	std::cout<< "rvaluefunc:: func\n";
+}
+
+
 void testing(int &&rhs)
 {
     std::cout<<" testing:: func   "<<rhs<<"\n";
@@ -85,7 +96,6 @@ public:
         std::cout<<"\nTest::assignment oeprator\n";
         return *this;
     }
-
 
 
     Test(Test &&rhs)
@@ -168,8 +178,9 @@ int main(void)
         }
         return res;
     };
-
     std::cout<<"\ndec 2 bin === >> "<< dec2bin("111111111")<<"\n";
 
     return 0;
 }
+
+
