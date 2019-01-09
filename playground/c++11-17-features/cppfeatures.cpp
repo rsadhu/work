@@ -29,7 +29,7 @@ CppFeatureSet::CppFeatureSet(const CppFeatureSet &rhs)
 }
 
 
-CppFeatureSet::CppFeatureSet(const CppFeatureSet &&rhs)
+CppFeatureSet::CppFeatureSet(CppFeatureSet &&rhs)
 {
  std::cout<<" \nCppFeatureSet::CppFeatureSet::move\n";
 	for(auto &it:rhs.m_array)
