@@ -16,7 +16,6 @@ QmlNetworkClass::QmlNetworkClass(QObject *parent) : QObject(parent)
     {
         QByteArray data = reply->readAll();
         emit responseArrived(data);
-        //qDebug()<<" response  "<<data;
     });
 }
 

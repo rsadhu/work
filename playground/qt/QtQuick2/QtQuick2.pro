@@ -14,7 +14,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp \
     qmlnetworkclass.cpp \
-    datamodel.cpp
+    testdata.cpp
 
 RESOURCES += qml.qrc
 
@@ -31,4 +31,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     qmlnetworkclass.h \
-    datamodel.h
+    testdata.h
