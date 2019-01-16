@@ -2,6 +2,8 @@
 #include<QNetworkConfigurationManager>
 #include<QUrl>
 
+Q_LOGGING_CATEGORY(testLog, "testLogs.qtlearning")
+
 
 QmlNetworkClass::QmlNetworkClass(QObject *parent) : QObject(parent)
 {
@@ -9,7 +11,7 @@ QmlNetworkClass::QmlNetworkClass(QObject *parent) : QObject(parent)
     connect(m_networkManager.get(),&QNetworkAccessManager::networkSessionConnected,[this]()
     {
         emit resultArrived(Result::PASSED);
-        qDebug()<<" sessionconnected";
+        qCWarning(testLog)<<" sessionconnected";
     });
 
     connect(m_networkManager.get(),&QNetworkAccessManager::finished,[this](QNetworkReply *reply)
@@ -27,7 +29,7 @@ QmlNetworkClass::connectToHost(const QString &h,int port)
         m_networkManager->get(QNetworkRequest(url));
     }
     else {
-        qDebug()<<" network manager is null"   ;
+        qCWarning(testLog)<<" network manager is null"   ;
     }
 }
 
@@ -43,10 +45,10 @@ QQmlListProperty<QString> QmlNetworkClass::networkadaptors() const
     QList<QNetworkConfiguration> list = manager.allConfigurations();
 
     for(int i = 0; i < list.length(); ++i) {
-        qDebug() << list[i].isValid();
-        qDebug() << list[i].bearerTypeName();
-        qDebug() << list[i].bearerType();
-        qDebug() << list[i].bearerTypeFamily();
+        qCDebug(testLog) << list[i].isValid();
+        qCDebug(testLog) << list[i].bearerTypeName();
+        qCDebug(testLog) << list[i].bearerType();
+        qCWarning(testLog) << list[i].bearerTypeFamily();
         QString *newS =  new QString (list[i].bearerTypeName());
         listOfAdaptors << newS;
     }

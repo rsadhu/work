@@ -8,6 +8,11 @@
 #include<QNetworkReply>
 #include<memory>
 #include<QQmlListProperty>
+#include<qlogging.h>
+#include<QLoggingCategory>
+
+Q_DECLARE_LOGGING_CATEGORY(testLog)
+
 
 enum class Result{
     FAILED,

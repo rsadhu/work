@@ -16,7 +16,7 @@ class [[deprecated("Wakka wakka this isn't supposed to be used")]] Test
     public:
     void display()
     {
-        std::cout<<"sum(1,3,5)"<< mPtr.add(1, 3, 5);
+        std::cout<<"sum(1,3,5)"<< mPtr->add(1, 3, 5);
     }
     private:
     std::unique_ptr<Base> mPtr;
