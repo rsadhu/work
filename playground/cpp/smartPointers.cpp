@@ -93,5 +93,12 @@ main (void)
   Compositor<Data> cmp;
   cmp.setImplementation(new Data());
 
+  std::unique_ptr<int> p = std::make_unique<int>();
+
+  *p = 10;
+
+  std::cout<<"jjjjjjjjj===>>  "<< *(p.get());
+  std::cout<<"jjjjjjjjj===>>  "<< *(p.get());
+
   return 0;
 }

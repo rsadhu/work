@@ -1,8 +1,9 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QDir>
-#include<QDebug>
-
+#include <QDebug>
+#include "qmlnetworkclass.h"
+#include <QtQml>
 
 enum class TestEnum
 {
@@ -53,6 +54,10 @@ int main(int argc, char *argv[])
     TestEnum obj = TestEnum::FRIDAY;
     qDebug()<<obj;
 
+    QmlNetworkClass nwc;
+    nwc.connectToHost(QString("http://www.google.com"),1);
+
+    qmlRegisterType<QmlNetworkClass>("NetworkMngr.qml", 1, 0, "NetworkMngr");
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
