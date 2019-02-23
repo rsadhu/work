@@ -15,7 +15,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp \
     qmlnetworkclass.cpp \
     testdata.cpp \
-    qmlcppplugin.cpp
+    qmlcppplugin.cpp \
+    testplugin.cpp
 
 RESOURCES += qml.qrc
 
@@ -34,4 +35,5 @@ HEADERS += \
     qmlnetworkclass.h \
     testdata.h \
     qmlcppplugin.h \
-    common.h
+    common.h \
+    testplugin.h

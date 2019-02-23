@@ -22,6 +22,13 @@ Rectangle {
             text: name
             font.pixelSize: 30
 
+            MouseArea {
+                anchors.fill: parent;
+                onClicked: {
+                    //model
+                }
+            }
+
         }
 
         footer: Rectangle {

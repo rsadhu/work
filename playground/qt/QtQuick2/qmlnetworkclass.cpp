@@ -20,6 +20,7 @@ QmlNetworkClass::QmlNetworkClass(QObject *parent) : QObject(parent)
 void
 QmlNetworkClass::connectToHost(const QString &h,int port)
 {
+    (void) port;
     if(m_networkManager){
         QUrl url(h);
         m_networkManager->get(QNetworkRequest(url));
