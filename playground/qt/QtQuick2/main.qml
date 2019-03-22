@@ -4,37 +4,27 @@ import QtQuick.Controls 1.4
 import NetworkMngr.qml 1.0
 import EmployeeCard 1.0
 
-
 Window {
     id: root
     visible: true
+
     minimumWidth : 300
-    minimumHeight: 300
     maximumWidth : 300
+
+    minimumHeight: 200
     maximumHeight: 300
 
-    title: qsTr("Hello World")
 
-    AnimatedImage {
-        anchors.fill: parent
-        source:"file:///home/rsadhu/Desktop/giphy.gif"
+//    AnimatedImage {
+//        anchors.fill: parent
+//        source:"file:///home/rsadhu/Desktop/giphy.gif"
+//    }
+
+    MyModel {
+        anchors.fill:  root
+        visible: true
     }
 
-
-    //    ListModel {
-    //        id:myModel
-    //        ListElement{
-    //            name: "rakesh"
-    //            //            age: 37
-    //            //            address: "Kashmir"
-    //        }
-
-    //        ListElement {
-    //            name: "Ashwani"
-    //            //            age: 41
-    //            //            address: "Kashmir"
-    //        }
-    //    }
 
     EmployeeCard {
         id: ic
@@ -107,6 +97,8 @@ Window {
                 ic.fireCall();
                 ic.eAddr = "Turkey"
                 ic.eName = "Rakesh";
+
+                listModel.name[0]= "DiscoDance"
             }catch(e) {
                 console.log(e.toString())
             }
@@ -150,3 +142,5 @@ Window {
     //    }
 
 }
+
+
