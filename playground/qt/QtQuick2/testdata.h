@@ -51,18 +51,6 @@ public:
 };
 
 
-//class qmlPlugin: public QObject
-//{
-//    Q_PROPERTY(const QString name READ pluginName)
-//    //Q_PROPERTY(type name READ name WRITE setName NOTIFY nameChanged)
-
-//    Q_OBJECT
-//public:
-//    inline const QString pluginName() const {return m_pluginName;}
-//private:
-//    const QString m_pluginName ="qmlPlugin.test.learning";
-//};
-
 class DataModel : public QObject
 {
     Q_OBJECT

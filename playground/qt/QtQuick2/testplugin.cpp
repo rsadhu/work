@@ -6,7 +6,6 @@ TestPlugin::TestPlugin(QObject *parent) : QObject(parent)
     m_listIntegers = {1, 2, 3, 4, 5, 6};
 }
 
-
 void TestPlugin::setThisProperty( int newProperty)
 {
     if(m_thisProperty != newProperty)
@@ -16,12 +15,10 @@ void TestPlugin::setThisProperty( int newProperty)
     }
 }
 
-
 int TestPlugin::thisProperty() const
 {
     return m_thisProperty;
 }
-
 
 void TestPlugin::setobjectProperty(QVariant val)
 {
@@ -30,13 +27,10 @@ void TestPlugin::setobjectProperty(QVariant val)
     emit objectPropertyChanged(val);
 }
 
-
 QVariant TestPlugin::objectProperty() const
 {
     return m_objectProperty;
 }
-
-
 
 void TestPlugin::setListIntegers(QList<int> list)
 {

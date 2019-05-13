@@ -4,6 +4,7 @@ import QtQuick.Controls 1.4
 import NetworkMngr.qml 1.0
 import EmployeeCard 1.0
 import TestPlugin 1.0
+import AccessType 1.0
 
 Window {
     id: root
@@ -20,18 +21,20 @@ Window {
         onThisPropertyChanged: {
             console.log("<<<< this propertyChanged >> +"+thisProperty)
         }
+
         onObjectPropertyChanged: {
             console.log("<<<< object property changed >>>> " + ObjectProperty);
         }
+
+//        onTypeChanged: {
+//     //       console.log("<<<<<<<<<<<<<< MyType Changed >>>>>> "+type)
+//        }
     }
 
-
-
-
-    MyModel {
-      //  anchors.fill:  root
-        visible: true
-    }
+//    MyModel {
+//      //  anchors.fill:  root
+//        visible: true
+//    }
 
 
     EmployeeCard {
@@ -99,23 +102,9 @@ Window {
             var date = new Date;
             thisPlugin.thisProperty =  10;
             thisPlugin.ObjectProperty = date;
+            AccessType.type = AccessType.STRING;
+            console.log("<<<<<<<<<<< enum is >>>>>>>>>> "+AccessType.type.toString())
 
-            //foreach(var  i in thisPlugin.list)
-          //  {
-                console.log("list >>>>>>>   "+thisPlugin.listIntegers);
-
-
-
-                  TestPlugin.listIntegers =  [10 , 11, 12, 13, 14, 15]
-//                TestPlugin.listIntegers[0] = 7
-//                TestPlugin.listIntegers[1] = 8
-//                TestPlugin.listIntegers[2] = 9
-//                TestPlugin.listIntegers[3] = 10
-//                TestPlugin.listIntegers[4] = 11
-//                TestPlugin.listIntegers[5] = 12
-
-                console.log("list >>>>>>>   "+thisPlugin.listIntegers);
-           // }
 
             try {
                 //   myModel.append({name:"new" ,age: 1, address:"Turkey"})
