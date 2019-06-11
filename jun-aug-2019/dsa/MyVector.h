@@ -1,0 +1,173 @@
+#pragma once
+#include <initializer_list>
+#include <utility>
+#include <algorithm>
+
+constexpr int N = 10;
+
+template<typename T>
+class MyVector
+{
+public:
+    MyVector();
+    MyVector(const std::initializer_list<T> & rhs);
+    void push(const T &rhs);
+    void prepend(const T&);
+    void insert(const int index, const T &item);
+    void remove(const T &item);
+    void delIndex(const int index);
+    int find(const T &item);
+    T at(const int index);
+    T pop();
+    const bool is_empty();
+    const int size();
+    const int capacity();
+private:
+    void resize(const int newCapacity);
+    T m_arr[N];
+    int m_size = 0;
+    int m_capacity = N;
+};
+
+template<typename T>
+MyVector<T>::MyVector()
+{
+
+}
+
+template<typename T>
+MyVector<T>::MyVector(const std::initializer_list<T> & rhs)
+{
+    for (auto it: rhs)
+    {
+        m_arr[m_size++] = it;
+    }
+}
+
+template<typename T>
+void MyVector<T>::push(const T &rhs)
+{
+    if (m_size <= m_capacity)
+    {
+        m_arr[m_size++] = rhs;
+    }
+    else {
+        resize(2*m_capacity);
+        push(rhs);
+    }
+}
+
+template<typename T>
+void MyVector<T>::prepend(const T& rhs)
+{
+    for (int i = m_size; i >= 0; i--)
+        m_arr[i+1] = m_arr[i];
+
+    m_arr[0] = rhs;
+    m_size++;
+}
+
+template<typename T>
+void MyVector<T>::insert(const int index, const T &item)
+{
+    if (index < 0 )
+        return ;
+
+    if (index == 0)
+    {
+        prepend(item);
+    }
+    else if (index == m_size)
+    {
+        push(item);
+    }
+    else {
+        for(int i =  m_size ; i >= index ; i--)
+            m_arr[i+1] =  m_arr[i];
+        m_arr[index] =  item;
+        m_size++;
+    }
+}
+
+template<typename T>
+void MyVector<T>::remove(const T &item)
+{
+    for(int i = 0; i < m_size; i++)
+    {
+        if(m_arr[i] == item)
+        {
+            delIndex(i);
+            break;
+        }
+    }
+}
+
+template<typename T>
+void MyVector<T>::delIndex(const int index)
+{
+    if (index < 0 || index > m_size)
+        return ;
+
+    for(int i = 0; i < m_size; i++)
+    {
+        if( i == index)
+        {
+            for(int j = i ; j < m_size ;j++)
+                m_arr[j] = m_arr[j+1];
+            m_size--;
+        }
+    }
+}
+
+template<typename T>
+int MyVector<T>::find(const T &item)
+{
+    for (int i = 0; i<m_size; i++)
+    {
+        if (m_arr[i] == item)
+            return i;
+    }
+    return -1;
+}
+
+template<typename T>
+T MyVector<T>::at(const int index)
+{
+    if ( index >=0 && index <= m_size)
+    {
+        return m_arr[index];
+    }
+    return T(0);
+}
+
+template<typename T>
+T MyVector<T>::pop()
+{
+    return m_arr[m_size--];
+}
+
+template<typename T>
+const bool MyVector<T>::is_empty()
+{
+    return m_size == 0;
+}
+
+template<typename T>
+const int MyVector<T>::size()
+{
+    return m_size;
+}
+
+template<typename T>
+const int MyVector<T>::capacity()
+{
+    return m_capacity;
+}
+
+template<typename T>
+void MyVector<T>::resize(const int newCapacity)
+{
+    T tmpArr[newCapacity]={};
+    std::copy(m_arr, m_arr+m_size, tmpArr);
+    m_arr =  std::move(tmpArr);
+}
