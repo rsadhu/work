@@ -3,7 +3,7 @@
 #include <utility>
 #include <algorithm>
 
-constexpr int N = 10;
+constexpr int N = 2;
 
 template<typename T>
 class MyVector
@@ -23,8 +23,8 @@ public:
     const int size();
     const int capacity();
 private:
-    void resize(const int newCapacity);
-    T m_arr[N];
+    void resize(bool increase=true);
+    T *m_arr=nullptr;
     int m_size = 0;
     int m_capacity = N;
 };
@@ -32,15 +32,23 @@ private:
 template<typename T>
 MyVector<T>::MyVector()
 {
-
+    m_arr = new T[m_capacity]();
 }
 
 template<typename T>
 MyVector<T>::MyVector(const std::initializer_list<T> & rhs)
 {
+    if(m_capacity < rhs.size())
+        m_capacity = rhs.size();
+
+    if (!m_arr) {
+        m_arr =  new T[m_capacity]();
+    }
+
     for (auto it: rhs)
     {
-        m_arr[m_size++] = it;
+        m_arr[m_size] = it;
+        m_size++;
     }
 }
 
@@ -49,10 +57,11 @@ void MyVector<T>::push(const T &rhs)
 {
     if (m_size <= m_capacity)
     {
-        m_arr[m_size++] = rhs;
+        m_arr[m_size] = rhs;
+        m_size++;
     }
     else {
-        resize(2*m_capacity);
+        resize();
         push(rhs);
     }
 }
@@ -60,6 +69,10 @@ void MyVector<T>::push(const T &rhs)
 template<typename T>
 void MyVector<T>::prepend(const T& rhs)
 {
+    if(m_capacity== m_size)
+    {
+        resize();
+    }
     for (int i = m_size; i >= 0; i--)
         m_arr[i+1] = m_arr[i];
 
@@ -165,9 +178,17 @@ const int MyVector<T>::capacity()
 }
 
 template<typename T>
-void MyVector<T>::resize(const int newCapacity)
+void MyVector<T>::resize(bool increase)
 {
-    T tmpArr[newCapacity]={};
-    std::copy(m_arr, m_arr+m_size, tmpArr);
-    m_arr =  std::move(tmpArr);
+    if(increase)
+        m_capacity = 2* m_capacity;
+
+    T *tmp = m_arr;
+
+    m_arr =  new T[m_capacity]();
+
+    //std::copy(tmp, tmp + m_size, m_arr);
+    for(int i=0;i<m_size;i++)
+        m_arr[i] = tmp[i];
+    delete []tmp;
 }
