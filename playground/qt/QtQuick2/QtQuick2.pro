@@ -37,3 +37,6 @@ HEADERS += \
     qmlcppplugin.h \
     common.h \
     testplugin.h
+
+DISTFILES += \
+    testModel.qml
