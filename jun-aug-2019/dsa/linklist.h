@@ -59,6 +59,7 @@ public:
     T value_n_from_end(int n);
     void reverse();
     void remove_value(const T &rhs);
+    void removeAllSentItems(const T &rhs);
 private:
     Node<T> *m_root=nullptr;
     unsigned int  m_size = 0;
@@ -221,16 +222,17 @@ void LinkList<T>::reverse()
 {
     if(!m_root)
         return;
-    Node<T> *tra =  m_root->next, *prev = m_root, *tmp = nullptr;
 
-    while(tra)
+    Node<T> *cur =  m_root->next, *prev = m_root, *tmp = nullptr;
+    while(cur)
     {
         prev->next = tmp;
-        tmp = prev;
-        prev =  tra;
-        tra =  tra->next;
+        tmp =  prev;
+        prev = cur;
+        cur = cur->next;
     }
 
+    prev->next=tmp;
     m_root = prev;
 }
 
@@ -250,8 +252,8 @@ void LinkList<T>::remove_value(const T &rhs)
                     break;
                 }
             }
-            m_size--;
         }
+        m_size--;
     }
 }
 
@@ -259,8 +261,38 @@ void LinkList<T>::remove_value(const T &rhs)
 template<typename T>
 void LinkList<T>::display()
 {
-    for(auto tmp = m_root;tmp->next;tmp = tmp->next)
+    std::cout<<"\n";
+
+    for(auto tmp = m_root;tmp;tmp = tmp->next)
         std::cout<< tmp->data <<" ";
+
+    std::cout<<"\n";
+}
+
+template<typename T>
+void LinkList<T>::removeAllSentItems(const T &rhs)
+{
+    for(Node<T>* prev = nullptr, *cur = m_root; cur; cur=cur->next)
+    {
+        if(cur->data == rhs)
+        {
+            if(prev==nullptr)
+            {
+                m_root = cur->next;
+                Node<T> *tmp  = cur;
+                delete tmp;
+            }
+            else{
+                //prev = cur;
+                prev->next = cur->next;
+                delete cur;
+            }
+            m_size--;
+        }
+        else {
+            prev = cur;
+        }
+    }
 }
 
 
