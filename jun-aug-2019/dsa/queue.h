@@ -2,6 +2,21 @@
 #define Queue_H
 #pragma once
 namespace MyQueue {
+/*enqueue(value) - adds item at end of available storage
+dequeue() - returns value and removes least recently added element
+empty()
+full()*/
+
+template<typename T>
+class QueueIntf {
+public:
+    virtual void enQueue(const T &) = 0;
+    virtual T deQueue() const = 0;
+    virtual bool empty() const = 0;
+    virtual bool full() const  {}
+    virtual ~QueueIntf(){}
+};
+
 template<typename T>
 class Node
 {
@@ -12,18 +27,20 @@ public:
 };
 
 template<typename T>
-class Queue
+class DQueue: public QueueIntf<T>
 {
 public:
     void enQueue(const T &rhs);
-    T deQueue();
-    bool empty();
+    T deQueue() const;
+    bool empty() const;
+    ~DQueue(){}
+
 private:
     Node<T> *m_root =  nullptr, *m_tail= nullptr;
 };
 
 template<typename T>
-void Queue<T>::enQueue(const T &rhs)
+void DQueue<T>::enQueue(const T &rhs)
 {
     if (m_root == nullptr) {
         m_root = new Node<T>(rhs);
@@ -38,41 +55,77 @@ void Queue<T>::enQueue(const T &rhs)
 }
 
 template<typename T>
-T Queue<T>::deQueue()
+T DQueue<T>::deQueue() const
 {
-    if (empty())
+    if (empty()){
+        m_tail = nullptr;
         return T() ;
-
-    if(m_root == nullptr)
-    {
-        auto d =  m_root->data;
-        delete m_root;
-        m_root =  nullptr;
-
-        delete m_tail;
-        m_tail =  nullptr;
-        return  d;
     }
 
-    Node<T> *cur = m_root, *prev = cur;
-
-    while (cur->next) {
-        prev = cur;
-        cur = cur->next;
-    }
-
-    m_tail = prev;
-    auto val = cur->data;
-    delete cur;
-    prev->next = nullptr;
-    return val;
+    auto d =  m_root->data;
+    auto tmp = m_root;
+    m_root =  m_root->next;
+    delete tmp;
+    return d;
 }
 
 template<typename T>
-bool Queue<T>::empty()
+bool DQueue<T>::empty() const
 {
     return m_root == nullptr;
 }
+
+constexpr int N = 10;
+template<typename T>
+class SQueue : public QueueIntf<T>
+{
+ public:
+    void enQueue(const T &rhs);
+    T deQueue(void )const;
+    bool empty() const;
+    bool full() const;
+    ~SQueue(){}
+private:
+    T m_arr[N];
+    mutable int m_index = -1;
+};
+
+template<typename T>
+void SQueue<T>::enQueue(const T &rhs)
+{
+    if(!full())
+    {
+        m_arr[++m_index] = rhs;
+    }
 }
+
+template<typename T>
+T SQueue<T>::deQueue(void )const
+{
+    if(!empty())
+    {
+        return m_arr[m_index--];
+    }
+    return T();
+}
+
+template<typename T>
+bool SQueue<T>::empty() const
+{
+  return m_index == -1;
+}
+
+template<typename T>
+bool SQueue<T>::full() const
+{
+    return m_index == N-1;
+}
+
+}
+
+
+
+
+
 
 #endif // Queue_H

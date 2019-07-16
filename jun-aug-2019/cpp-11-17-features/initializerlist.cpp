@@ -16,7 +16,7 @@ using mystruct = struct stud;
 class Test
 {
 
- int age;
+ int age = 0;
  string name;
  mystruct comp;
 
@@ -24,6 +24,7 @@ public:
 
  Test (const std::initializer_list<int> &l)
 {
+     (void)l;
 }
 
 /*emplate<> 
@@ -80,10 +81,16 @@ int main(void)
 	Test t2 = { 1, 3, 5 , 7, 9 };
 
     auto aa = add(9, 1);
+    (void)aa;
     auto bb = add(9.1, 0.9);
 	auto cc = add(string("test"), string(" me"));
 
     Abc c{3};
+
+    (void)aa;
+    (void)bb;
+    (void)cc;
+    (void)c;
   
 
  return 0;

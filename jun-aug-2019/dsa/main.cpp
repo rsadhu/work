@@ -2,6 +2,7 @@
 #include "linklist.h"
 #include "queue.h"
 #include <vector>
+#include <stack>
 
 void testVector()
 {
@@ -105,24 +106,37 @@ void testLinkList()
 
 void testQueue()
 {
-    MyQueue::Queue<bool> q;
-    std::string e("is empty "), ne("not empty");
-    std::cout<< (q.empty() ? e: ne);
-    q.enQueue(false);
-    q.enQueue(false);
-    q.enQueue(false);
-    q.enQueue(false);
-    q.enQueue(false);
-    q.enQueue(false);
+    MyQueue::QueueIntf<int> * q =   new MyQueue::SQueue<int>();
 
-    std::cout<< (q.empty() ? e: ne);
+    for(int i=0;i<10;i++)
+        q->enQueue(i);
 
-    for(auto i = 1; i<=10;i++)
-        std::cout<<q.deQueue();
-    std::cout<< (q.empty() ? e: ne);
+
+    for(int i=0;i<10;i++)
+        std::cout<<q->deQueue()<<" ";
+
+    delete q;
+
+
+
+//    MyQueue::Queue<bool> q;
+//    std::string e("is empty "), ne("not empty");
+//    std::cout<< (q.empty() ? e: ne);
+//    q.enQueue(false);
+//    q.enQueue(false);
+//    q.enQueue(false);
+//    q.enQueue(false);
+//    q.enQueue(false);
+//    q.enQueue(false);
+
+//    std::cout<< (q.empty() ? e: ne);
+
+//    for(auto i = 1; i<=10;i++)
+//        std::cout<<q.deQueue();
+//    std::cout<< (q.empty() ? e: ne);
 }
 
-#include<stack>
+
 
 template<typename T>
 class ListNode
@@ -187,9 +201,7 @@ ListNode<int> * addTwoHugeNumbers(ListNode<int> * a, ListNode<int> * b) {
         s2.pop();
     }
 
-    ListNode<int> *head = nullptr, *cur;
-
-    int cnt  = 0;
+    ListNode<int> *head = nullptr, *cur=nullptr;
 
     do
     {
@@ -280,7 +292,8 @@ void addIntsFromLists()
 
 }
 
-std::vector<std::vector<std::string>> groupingDishes(std::vector<std::vector<std::string>> dishes) {
+std::vector<std::vector<std::string>> groupingDishes(std::vector<std::vector<std::string>> dishes)
+{
     std::multimap<std::string , std::string> lookup;
 
     for(auto it: dishes)
@@ -301,87 +314,47 @@ std::vector<std::vector<std::string>> groupingDishes(std::vector<std::vector<std
     std::vector<std::vector<std::string>> ret;
     //std::map<std::string, std::string> final;
 
-    auto i = lookup.equal_range("Cheese");
+    // auto i = lookup.equal_range("Cheese");
 
 
     std::cout<<" ggggggggggggggggggggggg ";
- //   std::cout<<" i:: >> " << i;
+    //   std::cout<<" i:: >> " << i;
 
-//    for(auto it: lookup)
-//    {
-//        for(auto subIt lookup)
-//        {
-//            int len = lookup.count(subIt.first);
-//            final[subIt.first] = subIt.second;
-//            while(len--)
-//            {
-//                subIt++;
-//            }
-//        }
-//    }
+    //    for(auto it: lookup)
+    //    {
+    //        for(auto subIt lookup)
+    //        {
+    //            int len = lookup.count(subIt.first);
+    //            final[subIt.first] = subIt.second;
+    //            while(len--)
+    //            {
+    //                subIt++;
+    //            }
+    //        }
+    //    }
 
-//    for(auto it: lookup)
-//    {
-//       std::vector<std::string> item;
-//       item.push_back(it.first);
-//       if (lookup.count(it.first) >= 2 ) {
+    //    for(auto it: lookup)
+    //    {
+    //       std::vector<std::string> item;
+    //       item.push_back(it.first);
+    //       if (lookup.count(it.first) >= 2 ) {
 
-//       for(auto value: lookup.equal_range(it.first))
-//       {
-//        item.push_back(value);
-//       }
+    //       for(auto value: lookup.equal_range(it.first))
+    //       {
+    //        item.push_back(value);
+    //       }
 
-//        ret.push_back(item);
-//       }
-//    }
+    //        ret.push_back(item);
+    //       }
+    //    }
+
 }
 
 
 int main(void)
 {
-    //  testVector();
-    testLinkList();
-    //std::vector<int> a  = {13, 20, 7, 4};
-
-    //a = digitalSumSort(a);
-
-    //testQueue();
-
-    /*a: [123, 4, 5]
-b: [100, 100, 100]*/
-
-//        ListNode<int> *q, *r;
-//        ListNode<int> *tmp =  new ListNode<int> (123);
-//        q = tmp;
-//        tmp->next =  new ListNode<int> (4);
-//        tmp->next->next = new ListNode<int>(5);
-
-
-//        tmp =  new ListNode<int> (100);
-//        r = tmp;
-//        tmp->next =  new ListNode<int> (100);
-//        tmp->next->next = new ListNode<int>(100);
-
-//        addTwoHugeNumbers(q, r);
-
-    std::vector<std::vector<std::string>> input ={
-                    {"Salad", "Tomato", "Cucumber", "Salad", "Sauce"},
-                    {"Pizza", "Tomato", "Sausage", "Sauce", "Dough"},
-                    {"Quesadilla", "Chicken", "Cheese", "Sauce"},
-                    {"Sandwich", "Salad", "Bread", "Tomato", "Cheese"}
-    };
-
-///    auto ret =  groupingDishes(input);
-
-    //    int A[] = {1,2,3,4,5};
-    //    int N = 5;
-    //    int Total = 1 << N;
-    //    for ( int i = 0; i < Total; i++ ) {
-    //    for ( int j = 0; j < N; j++) {
-    //    if ( (i >> j) & 1 )
-    //    std::cout <<" "<< A[j];
-    //    }
-    //    std::cout << std::endl;
-    //    }
+    // testVector();
+    // testLinkList();
+    testQueue();
     return 0;
 }
