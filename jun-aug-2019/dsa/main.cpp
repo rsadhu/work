@@ -3,6 +3,9 @@
 #include "queue.h"
 #include <vector>
 #include <stack>
+#include <map>
+#include <memory>
+#include "binarysearch.h"
 
 void testVector()
 {
@@ -52,56 +55,14 @@ void testLinkList()
     {
         j = i;
         list.push_back(j*2);
-        //     //   list.push_back(j*2);
-        //        list.push_back(j*3);
-        //        list.push_back(j*5);
     }
 
-    //std::cout<<"\nsize of list >>> "<< list.size()<<"\n";
-
-
-    //    for(int i = 0;i<5;i++)
-    //        std::cout<<list.pop_front();
-
-
-    //    std::cout<<"\nsize of list >>> "<< list.size()<<"\n";
-
-    //    list.display();
-
-    //    list.remove_value(9);
-    //    std::cout<<"\nsize of list >>> "<< list.size()<<"\n";
-    //    list.display();
-    //    list.remove_value(6);
-    //    std::cout<<"\nsize of list >>> "<< list.size()<<"\n";
-    //    list.display();
 
     list.reverse();
 
-    //    for(int i = 1; i <= 10;i++){
-    //        list.display();
-    //        std::cout<<"\nsize of list >>> "<< list.size()<<"\n";
-    //        list.removeAllSentItems(i*3);
-    //        list.removeAllSentItems(i*2);
-    //        list.removeAllSentItems(i*5);
-
-    //    }
 
     list.display();
     std::cout<<"\nsize of list >>> "<< list.size()<<"\n";
-    //    list.removeAllSentItems(10);
-    //    list.display();
-    //    std::cout<<"\nsize of list >>> "<< list.size()<<"\n";
-    //    list.removeAllSentItems(30);
-    //    list.display();
-    //    std::cout<<"\nsize of list >>> "<< list.size()<<"\n";
-
-    //    list.removeAllSentItems(12);
-    //    list.display();
-    //    std::cout<<"\nsize of list >>> "<< list.size()<<"\n";
-
-    //    list.removeAllSentItems(20);
-    //    list.display();
-    //    std::cout<<"\nsize of list >>> "<< list.size()<<"\n";
 }
 
 void testQueue()
@@ -118,22 +79,16 @@ void testQueue()
     delete q;
 
 
+    std::unique_ptr<MyQueue::QueueIntf<int>> bb;
 
-//    MyQueue::Queue<bool> q;
-//    std::string e("is empty "), ne("not empty");
-//    std::cout<< (q.empty() ? e: ne);
-//    q.enQueue(false);
-//    q.enQueue(false);
-//    q.enQueue(false);
-//    q.enQueue(false);
-//    q.enQueue(false);
-//    q.enQueue(false);
+    bb =  std::make_unique<MyQueue::DQueue<int>>();
 
-//    std::cout<< (q.empty() ? e: ne);
+    for(int i=0;i<10;i++)
+       bb->enQueue(i);
 
-//    for(auto i = 1; i<=10;i++)
-//        std::cout<<q.deQueue();
-//    std::cout<< (q.empty() ? e: ne);
+
+    for(int i=0;i<10;i++)
+        std::cout<<bb->deQueue()<<" ";
 }
 
 
@@ -256,7 +211,6 @@ void competitiveQuestions()
 
 }
 
-#include<map>
 
 std::vector<int> digitalSumSort(std::vector<int> a)
 {
@@ -272,9 +226,6 @@ std::vector<int> digitalSumSort(std::vector<int> a)
         lookup.insert(std::pair<int,int>(sum,b));
     }
 
-
-
-
     std::vector<int> res;
     for(auto it: lookup)
     {
@@ -288,8 +239,6 @@ void addIntsFromLists()
 {
     std::vector<int> n1 =  { 9, 0, 0, 1};
     std::vector<int> n2 =  {1};
-
-
 }
 
 std::vector<std::vector<std::string>> groupingDishes(std::vector<std::vector<std::string>> dishes)
@@ -309,45 +258,29 @@ std::vector<std::vector<std::string>> groupingDishes(std::vector<std::vector<std
             }
         }
     }
+}
+
+void testSearch()
+{
+    Searching<int> finder = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  //  std::cout<<"\n item found ::"<<finder.findRecItem(1);
 
 
-    std::vector<std::vector<std::string>> ret;
-    //std::map<std::string, std::string> final;
+    std::cout<<"\n item  4 is :: "<< finder.findRecItem(4);
+    std::cout<<"\n item  1 is :: "<< finder.findRecItem(1);
+    std::cout<<"\n item  10 is :: "<< finder.findRecItem(10);
+    std::cout<<"\n item  5 is :: "<< finder.findRecItem(5);
+    std::cout<<"\n item  6 is :: "<< finder.findRecItem(6);
+    std::cout<<"\n item  100 is :: "<< finder.findRecItem(109);
 
-    // auto i = lookup.equal_range("Cheese");
 
 
-    std::cout<<" ggggggggggggggggggggggg ";
-    //   std::cout<<" i:: >> " << i;
-
-    //    for(auto it: lookup)
-    //    {
-    //        for(auto subIt lookup)
-    //        {
-    //            int len = lookup.count(subIt.first);
-    //            final[subIt.first] = subIt.second;
-    //            while(len--)
-    //            {
-    //                subIt++;
-    //            }
-    //        }
-    //    }
-
-    //    for(auto it: lookup)
-    //    {
-    //       std::vector<std::string> item;
-    //       item.push_back(it.first);
-    //       if (lookup.count(it.first) >= 2 ) {
-
-    //       for(auto value: lookup.equal_range(it.first))
-    //       {
-    //        item.push_back(value);
-    //       }
-
-    //        ret.push_back(item);
-    //       }
-    //    }
-
+    std::cout<<"\n item  4 is :: "<< finder.findIterItem(4);
+    std::cout<<"\n item  1 is :: "<< finder.findIterItem(1);
+    std::cout<<"\n item  10 is :: "<< finder.findIterItem(10);
+    std::cout<<"\n item  5 is :: "<< finder.findIterItem(5);
+    std::cout<<"\n item  6 is :: "<< finder.findIterItem(6);
+    std::cout<<"\n item  100 is :: "<< finder.findIterItem(109)<<"\n\n";
 }
 
 
@@ -355,6 +288,7 @@ int main(void)
 {
     // testVector();
     // testLinkList();
-    testQueue();
+    //testQueue();
+    testSearch();
     return 0;
 }

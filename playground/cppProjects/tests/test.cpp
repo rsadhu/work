@@ -73,5 +73,14 @@ int main(void)
 
    func(1,2,3,4);
 
+   int x (1), y(2);
+
+  int  *xp =nullptr, ynp = 10;
+
+  std::cout<<"\nx : "<< x <<" y : "<<y<<std::endl;
+  xp = &ynp;
+  std::cout<<"\nxp : "<< *xp <<" ynp : "<<ynp<<std::endl;
+ 
+
     return 0;
 }
