@@ -26,8 +26,8 @@ private:
     void resize(bool increase=true);
     T *m_arr=nullptr;
     int m_index = -1;
-    int m_size = 0;
-    int m_capacity = N;
+    size_t m_size = 0;
+    size_t m_capacity = N;
 };
 
 template<typename T>

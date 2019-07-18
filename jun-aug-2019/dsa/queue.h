@@ -9,7 +9,7 @@ public:
     virtual void enQueue(const T &) = 0;
     virtual T deQueue() = 0;
     virtual bool empty() const = 0;
-    virtual bool full() const  {}
+    virtual bool full() const  { return false;}
     virtual ~QueueIntf(){}
 };
 

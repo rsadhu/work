@@ -5,7 +5,7 @@
 #include <stack>
 #include <map>
 #include <memory>
-#include "binarysearch.h"
+#include "searchAlgos.h"
 
 void testVector()
 {
@@ -98,7 +98,7 @@ class ListNode
 {
 public:
     ListNode(T rhs):value(rhs), next(nullptr){}
-    int value;
+    int value = 0;
     ListNode<T> *next =  nullptr;
 
 };
@@ -185,7 +185,7 @@ ListNode<int> * addTwoHugeNumbers(ListNode<int> * a, ListNode<int> * b) {
 void sortColors(std::vector<int>& nums)
 {
     int arr[3]= {0};
-    for(auto it: nums)
+    for(const auto &it: nums)
     {
         arr[it]+=1;
     }
@@ -243,6 +243,7 @@ void addIntsFromLists()
 
 std::vector<std::vector<std::string>> groupingDishes(std::vector<std::vector<std::string>> dishes)
 {
+    std::vector<std::vector<std::string>> res;
     std::multimap<std::string , std::string> lookup;
 
     for(auto it: dishes)
@@ -258,29 +259,34 @@ std::vector<std::vector<std::string>> groupingDishes(std::vector<std::vector<std
             }
         }
     }
+    return res;
 }
 
 void testSearch()
 {
-    Searching<int> finder = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    //Searching<int> finder = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    Searching<int> finder = {7, 2, 8, 6, 5, 3, 10, 1, 9, 4};
+
+    for(int i = 1;i<=10;i++)
+    std::cout<<"\n"<< i << "    ===== "<< finder.findItem(i, SEARCH_TYPE::BINARY_TREE_SEARCH_ITER);
   //  std::cout<<"\n item found ::"<<finder.findRecItem(1);
 
 
-    std::cout<<"\n item  4 is :: "<< finder.findRecItem(4);
-    std::cout<<"\n item  1 is :: "<< finder.findRecItem(1);
-    std::cout<<"\n item  10 is :: "<< finder.findRecItem(10);
-    std::cout<<"\n item  5 is :: "<< finder.findRecItem(5);
-    std::cout<<"\n item  6 is :: "<< finder.findRecItem(6);
-    std::cout<<"\n item  100 is :: "<< finder.findRecItem(109);
+//    std::cout<<"\n item  4 is :: "<< finder.findItem(4, SEARCH_TYPE::BINARY_LINEAR_SEARCH_RECU);
+//    std::cout<<"\n item  1 is :: "<< finder.findItem(1, SEARCH_TYPE::BINARY_LINEAR_SEARCH_RECU);
+//    std::cout<<"\n item  10 is :: "<< finder.findItem(10, SEARCH_TYPE::BINARY_LINEAR_SEARCH_RECU);
+//    std::cout<<"\n item  5 is :: "<< finder.findItem(5, SEARCH_TYPE::BINARY_LINEAR_SEARCH_RECU);
+//    std::cout<<"\n item  6 is :: "<< finder.findItem(6, SEARCH_TYPE::BINARY_LINEAR_SEARCH_RECU);
+//    std::cout<<"\n item  100 is :: "<< finder.findItem(109, SEARCH_TYPE::BINARY_LINEAR_SEARCH_RECU);
 
 
 
-    std::cout<<"\n item  4 is :: "<< finder.findIterItem(4);
-    std::cout<<"\n item  1 is :: "<< finder.findIterItem(1);
-    std::cout<<"\n item  10 is :: "<< finder.findIterItem(10);
-    std::cout<<"\n item  5 is :: "<< finder.findIterItem(5);
-    std::cout<<"\n item  6 is :: "<< finder.findIterItem(6);
-    std::cout<<"\n item  100 is :: "<< finder.findIterItem(109)<<"\n\n";
+//    std::cout<<"\n item  4 is :: "<< finder.findIterItem(4);
+//    std::cout<<"\n item  1 is :: "<< finder.findIterItem(1);
+//    std::cout<<"\n item  10 is :: "<< finder.findIterItem(10);
+//    std::cout<<"\n item  5 is :: "<< finder.findIterItem(5);
+//    std::cout<<"\n item  6 is :: "<< finder.findIterItem(6);
+//    std::cout<<"\n item  100 is :: "<< finder.findIterItem(109)<<"\n\n";
 }
 
 
