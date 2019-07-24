@@ -4,7 +4,6 @@
 
 #include <initializer_list>
 #include <memory>
-#include<stack>
 
 constexpr int M = 100;
 
@@ -23,14 +22,13 @@ public:
 
     U data;
     MyNode<U> *left =  nullptr, *right =  nullptr;
-    //    std::unique_ptr<MyNode<U>> left =  nullptr, right =  nullptr;
 };
 
 enum class SEARCH_TYPE
 {
     BINARY_LINEAR_SEARCH_ITER,
     BINARY_LINEAR_SEARCH_RECU,
-    BINARY_TREE_SEARCH_ITER,
+    //BINARY_TREE_SEARCH_ITER,
     BINARY_TREE_SEARCH_RECU,
 };
 
@@ -42,7 +40,6 @@ public:
     bool findItem(const T &rhs, SEARCH_TYPE type);
 private:
     void createBST(const T &rhs);
-    //void heapSort(const T &rhs);
 protected:
     bool findIterItem(const T &rhs);
     bool findRecItem(const T &rhs);
@@ -56,7 +53,6 @@ protected:
 private:
     T m_arr[M];
     int m_index = -1;
-    //std::unique_ptr<MyNode<T>> m_root = nullptr;
     MyNode<T> *m_root = nullptr;
 };
 
@@ -86,31 +82,6 @@ void Searching<T>::createBST(const T &rhs)
                     it->left = new MyNode<T>(rhs);
                     break;
                 }
-            }
-        }
-    }
-}
-
-template <typename T>
-bool Searching<T>::inOrderIter(MyNode<T> *root, const T &rhs)
-{
-    bool ret = false;
-    std::stack<MyNode<T>*> st;
-    st.push(root);
-    while(root || !st.empty())
-    {
-        if(root->left){
-            st.push(root->left);
-            root =  root->left;
-        }
-        else{
-            root = st.top();
-            st.pop();
-            std::cout<< root->data;
-            if(root->right)
-            {
-                st.push(root->right);
-                root =  root->right;
             }
         }
     }
@@ -201,9 +172,6 @@ bool Searching<T>::findItem(const T &rhs, SEARCH_TYPE type)
     bool ret =  false;
     switch(type)
     {
-    case SEARCH_TYPE::BINARY_TREE_SEARCH_ITER:
-        ret = inOrderIter(m_root, rhs);
-        break;
     case SEARCH_TYPE::BINARY_TREE_SEARCH_RECU:
         ret = inOrderRec(m_root, rhs);
         break;

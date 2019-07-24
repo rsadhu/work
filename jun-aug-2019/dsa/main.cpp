@@ -268,7 +268,7 @@ void testSearch()
     Searching<int> finder = {7, 2, 8, 6, 5, 3, 10, 1, 9, 4};
 
     for(int i = 1;i<=10;i++)
-    std::cout<<"\n"<< i << "    ===== "<< finder.findItem(i, SEARCH_TYPE::BINARY_TREE_SEARCH_ITER);
+    std::cout<<"\n"<< i << "    ===== "<< finder.findItem(i, SEARCH_TYPE::BINARY_TREE_SEARCH_RECU);
   //  std::cout<<"\n item found ::"<<finder.findRecItem(1);
 
 
