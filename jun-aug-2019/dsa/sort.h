@@ -84,7 +84,7 @@ void Sorter<T>::bubbleSort()
     auto flag = false;
     for(int i=0;i<m_index;i++)
     {
-        for(int j = 0;j<m_index-i+1;j++)
+        for(int j = 0; j < (m_index-i-1);j++)
         {
             if(m_arr[j] > m_arr[j+1])
             {
