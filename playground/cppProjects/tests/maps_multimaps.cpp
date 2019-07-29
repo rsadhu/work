@@ -48,15 +48,5 @@ auto index = std::hash<std::string> {}("this is a test");
 std::cout<<" index is >> "<< index<<"\n";
 }
 
-{
- class t{public: int  a; std::string str;};
-  t aa;
- auto index = std::hash<t> {}(aa);
-std::cout<<" index is >> "<< index<<"\n";
-
-}
-
-
-
   return 0;
 }

@@ -118,10 +118,8 @@ Searching<T>::Searching(const std::initializer_list<T> &rhs, bool dyn)
 template<typename T>
 bool Searching<T>::findBsRec(T *arr, const T &item, int start, int end)
 {
-    if(start > end){
-        return false;
-    }
-    else {
+    if(start <= end) {
+
         auto mid  =  (start+end)/2;
         if(item > arr[mid])
         {
@@ -135,6 +133,7 @@ bool Searching<T>::findBsRec(T *arr, const T &item, int start, int end)
             return true;
         }
     }
+    return false;
 }
 
 template<typename T>

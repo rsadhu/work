@@ -1,11 +1,14 @@
-#include "MyVector.h"
-#include "linklist.h"
-#include "queue.h"
 #include <vector>
 #include <stack>
 #include <map>
 #include <memory>
+
+#include "MyVector.h"
+#include "linklist.h"
+#include "queue.h"
 #include "searchAlgos.h"
+#include "bitwise.h"
+#include "sort.h"
 
 void testVector()
 {
@@ -289,6 +292,18 @@ void testSearch()
 //    std::cout<<"\n item  100 is :: "<< finder.findIterItem(109)<<"\n\n";
 }
 
+void testBits(int a)
+{
+    std::cout<<" number of bits for "<< a <<"set are " << countBits(a) << "\n";
+}
+
+void testSorting()
+{
+    Sorter<int> sort =  {6, 0, 1, 9, 2, 5, 3, 7, -1, 19};
+    sort.exec(Type::BUBBLESORT);
+    sort.display();
+}
+
 
 int main(void)
 {
@@ -296,5 +311,7 @@ int main(void)
     // testLinkList();
     //testQueue();
     testSearch();
+    testBits(1024);
+    testSorting();
     return 0;
 }

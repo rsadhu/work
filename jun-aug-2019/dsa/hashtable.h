@@ -3,7 +3,7 @@
 
 const int N =  1000;
 
-template<typename T, typename U>
+template<typename T=int, typename U>
 class Map
 {
 public:
