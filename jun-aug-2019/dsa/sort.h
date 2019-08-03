@@ -27,10 +27,49 @@ protected:
     void quickSort();
     void heapSort();
     void bubbleSort();
+
+    // utility recursive functions
+    static void mergeSortRec(T arr, int n);
+    static void merge(T arr1, int , T arr2, int );
 private:
     T m_arr[NN];
     int m_index = 0;
 };
+
+template <typename T>
+void Sorter<T>::mergeSortRec(T arr, int n)
+{
+    if ( n == 1 )
+        return arr;
+
+    T arr1[n/2], arr2[n/2];
+
+    for(int i = 0;i<n;i++)
+    {
+        if(i<n/2)
+        {
+            arr1[i]= arr[i];
+        }
+        else {
+            arr2[i]= arr[i];
+        }
+    }
+
+    arr1 = mergesort(arr1);
+    arr2 = mergesort(arr2 );
+    return merge(arr1, n/2, arr2, n/2);
+}
+
+template <typename T>
+void Sorter<T>::merge(T a,int n1, T b,int n2)
+{
+    T c[n1+n2];
+    for(int i=0;i<(n1+n2);i++)
+    {
+        if(a[i])
+    }
+    return c
+}
 
 template<typename T>
 Sorter<T>::Sorter(const std::initializer_list<T> &rhs)
@@ -55,6 +94,7 @@ void Sorter<T>::exec(Type type)
     case Type::INSERTION:
         break;
     case Type::MERGESORT:
+        mergeSort();
         break;
     case Type::QUICKSORT:
         break;
@@ -122,7 +162,7 @@ void Sorter<T>::insertion()
 template <typename T>
 void Sorter<T>::mergeSort()
 {
-
+    mergeSortRec(m_arr, m_index);
 }
 
 template <typename T>

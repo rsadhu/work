@@ -5,6 +5,8 @@ import NetworkMngr.qml 1.0
 import EmployeeCard 1.0
 import TestPlugin 1.0
 import AccessType 1.0
+import QtQml.Models 2.1
+import QtQuick.XmlListModel 2.0
 
 Window {
     id: root
@@ -13,79 +15,79 @@ Window {
     height: 200
     title: qsTr("Hello World")
 
-    ListModel {
+    ObjectModel {
 
-        id:mymodel
+        id: myVisualModel
 
-        ListElement {
-            name : "Rakesh";
-            age: 37
-            address: "MUC, DE"
-            hometown: "Kmr, India"
-        }
 
-        ListElement {
-            name : "Ashwani";
-            age: 41
-            address: "Zpur, India"
-            hometown: "Kmr, India"
-        }
-
-        ListElement {
-            name : "Jotika";
-            age: 44
-            address: "Jmu, India"
-            hometown: "Kmr, India"
-        }
-
-        ListElement {
-            name : "JLS";
-            age: 69
-            address: "Kmr, India"
-            hometown: "Kmr, India"
-        }
-    }
-
-    Component {
-
-        id: mydelegate
-
-        Row {
+        Rectangle {
+            color: "red"
+            width: 100
+            height: 50
 
             Text {
-                text: name
+                anchors.centerIn: parent
+                text :"1"
+                color:"blue"
             }
+        }
+
+        Rectangle {
+            color: "blue"
+            width: 100
+            height: 50
 
             Text {
-                text: age
+                anchors.centerIn: parent
+                text :"2"
+                color:"red"
             }
+        }
+
+        Rectangle {
+
+            color: "yellow"
+            width: 100
+            height: 50
 
             Text {
-                text: address
-            }
-
-            Text {
-                text: hometown
+                anchors.centerIn: parent
+                text :"3"
+                color:"cyan"
             }
         }
     }
 
     ListView {
         id:view
-        height: root.height*0.9
-        model: mymodel
-        delegate: mydelegate
-    }
+        anchors.fill: parent
+       // property string fruits: ["PineApple", "Avacado", "Mango", "WaterMelon"]
+       // property int count: 0
+       // model: myVisualModel
+        /*model: ["Apple", "Orange", "Pear", "Grapes"]
+        delegate: Text {
+            text: modelData
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    console.log("=============onClicked=========="+modelData)
+                    modelData = view.fruits[root.count]//++%root.fruit.length]
+                }
+            }
+        }*/
 
-    Button {
-        id: btn
-        text: "Ok"
-        onClicked: {
-            for(var i = 0;i<4;i++) {
-                console.log("===>"+mymodel.data(mymodel.index(i,0),0))
-                console.log("===>"+mymodel.data(mymodel.index(i,0),1))
-                console.log("===>"+mymodel.data(mymodel.index(i,0),2))
-                console.log("===>"+mymodel.data(mymodel.index(i,0),3))
+        model: XmlListModel {
+            id: feedModel
+            source: "http://rss.news.yahoo.com/rss/oceania"
+            query: "/rss/channel/item"
+            XmlRole { name: "title"; query: "title/string()" }
+            XmlRole { name: "link"; query: "link/string()" }
+            XmlRole { name: "description"; query: "description/string()" }
+       }
+
+        delegate: Rectangle{
+            Text {
+                text : source  +"  "+query
             }
         }
     }
