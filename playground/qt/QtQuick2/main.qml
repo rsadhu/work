@@ -37,7 +37,8 @@ Window {
         Button { text: "4" ;}
         Text { text: "row"; font.strikeout: true }
         Button { text: "5" ;}
-    }
+
+    }   
 }
 
 
