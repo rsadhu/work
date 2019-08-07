@@ -16,6 +16,7 @@ SOURCES += main.cpp \
     qmlnetworkclass.cpp \
     testdata.cpp \
     qmlcppplugin.cpp \
+    testmodel.cpp \
     testplugin.cpp
 
 RESOURCES += qml.qrc
@@ -36,6 +37,7 @@ HEADERS += \
     testdata.h \
     qmlcppplugin.h \
     common.h \
+    testmodel.h \
     testplugin.h
 
 DISTFILES += \

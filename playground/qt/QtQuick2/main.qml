@@ -91,6 +91,24 @@ Window {
             }
         }
     }
+
+
+    Button {
+        id: btn
+        text: "Ok"
+        anchors.bottom: root
+        onClicked: {
+
+            for(var i = 0;i<4;i++) {
+                console.log(mymodel.data(mymodel.index(i,0), 0));
+                console.log(mymodel.data(mymodel.index(i,0), 1));
+                console.log(mymodel.data(mymodel.index(i,0), 2));
+                console.log(mymodel.data(mymodel.index(i,0), 3));
+
+            }
+        }
+    }
+
 }
 
 
