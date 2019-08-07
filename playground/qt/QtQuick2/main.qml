@@ -9,106 +9,30 @@ import QtQml.Models 2.1
 import QtQuick.XmlListModel 2.0
 
 Window {
-    id: root
     visible: true
-    width: 300
-    height: 200
+    id: root
     title: qsTr("Hello World")
+    width: _img.width
+    height: _img.height + _btn.height
 
-    ObjectModel {
+    Column {
+        BorderImage {
+            id: _img
+            border { left: 30; top: 30; right: 30; bottom: 30 }
+            horizontalTileMode: BorderImage.Repeat
+            verticalTileMode: BorderImage.Repeat
+            source: "file:///home//rsadhu//Desktop//pic1.jpeg"
 
-        id: myVisualModel
-
-
-        Rectangle {
-            color: "red"
-            width: 100
-            height: 50
-
-            Text {
-                anchors.centerIn: parent
-                text :"1"
-                color:"blue"
-            }
         }
 
-        Rectangle {
-            color: "blue"
-            width: 100
-            height: 50
-
-            Text {
-                anchors.centerIn: parent
-                text :"2"
-                color:"red"
-            }
-        }
-
-        Rectangle {
-
-            color: "yellow"
-            width: 100
-            height: 50
-
-            Text {
-                anchors.centerIn: parent
-                text :"3"
-                color:"cyan"
-            }
-        }
-    }
-
-    ListView {
-        id:view
-        anchors.fill: parent
-       // property string fruits: ["PineApple", "Avacado", "Mango", "WaterMelon"]
-       // property int count: 0
-       // model: myVisualModel
-        /*model: ["Apple", "Orange", "Pear", "Grapes"]
-        delegate: Text {
-            text: modelData
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    console.log("=============onClicked=========="+modelData)
-                    modelData = view.fruits[root.count]//++%root.fruit.length]
-                }
-            }
-        }*/
-
-        model: XmlListModel {
-            id: feedModel
-            source: "http://rss.news.yahoo.com/rss/oceania"
-            query: "/rss/channel/item"
-            XmlRole { name: "title"; query: "title/string()" }
-            XmlRole { name: "link"; query: "link/string()" }
-            XmlRole { name: "description"; query: "description/string()" }
-       }
-
-        delegate: Rectangle{
-            Text {
-                text : source  +"  "+query
-            }
-        }
-    }
-
-
-    Button {
-        id: btn
-        text: "Ok"
-        anchors.bottom: root
-        onClicked: {
-
-            for(var i = 0;i<4;i++) {
-                console.log(mymodel.data(mymodel.index(i,0), 0));
-                console.log(mymodel.data(mymodel.index(i,0), 1));
-                console.log(mymodel.data(mymodel.index(i,0), 2));
-                console.log(mymodel.data(mymodel.index(i,0), 3));
+        Button {
+            id:  _btn
+            text: "press"
+            onClicked: {
 
             }
         }
     }
-
 }
 
 

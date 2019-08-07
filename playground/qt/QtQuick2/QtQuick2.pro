@@ -41,4 +41,5 @@ HEADERS += \
     testplugin.h
 
 DISTFILES += \
+    MyKeyboard.qml \
     testModel.qml
