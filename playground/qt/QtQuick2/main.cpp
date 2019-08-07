@@ -2,6 +2,8 @@
 #include <QQmlApplicationEngine>
 #include <QDir>
 #include <QtQml>
+#include <set>
+#include <unordered_map>
 #include <QDebug>
 #include "testdata.h"
 #include "qmlnetworkclass.h"
@@ -9,6 +11,7 @@
 #include "testplugin.h"
 #include <QQmlEngine>
 #include <QJSEngine>
+#include <stack>
 
 static QObject* example_qobject_singletontype_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
 {
@@ -21,7 +24,10 @@ static QObject* example_qobject_singletontype_provider(QQmlEngine *engine, QJSEn
 
 int main(int argc, char *argv[])
 {
+
+
     QGuiApplication app(argc, argv);
+
 
     qmlRegisterType<QmlNetworkClass>("NetworkMngr.qml", 1, 0, "NetworkMngr");
     qmlRegisterType<EmployeeCard>("EmployeeCard", 1, 0, "EmployeeCard");
@@ -36,3 +42,4 @@ int main(int argc, char *argv[])
 
     return app.exec();
 }
+
