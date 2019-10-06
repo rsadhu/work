@@ -300,7 +300,7 @@ void testBits(int a)
 void testSorting()
 {
     Sorter<int> sort =  {6, 0, 1, 9, 2, 5, 3, 7, -1, 19};
-    sort.exec(Type::BUBBLESORT);
+    sort.exec(Type::INSERTION);
     sort.display();
 }
 
@@ -310,8 +310,8 @@ int main(void)
     // testVector();
     // testLinkList();
     //testQueue();
-    testSearch();
-    testBits(1024);
+    //testSearch();
+    //testBits(1024);
     testSorting();
     return 0;
 }
