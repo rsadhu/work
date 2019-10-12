@@ -74,4 +74,80 @@ Item {
     Component.onCompleted:  {
         root.messageSent.connect(messageReceived);
     }
+
+    visible: true
+    id: root
+    title: qsTr("Hello World")
+    width: 400 + _list.width
+    height : 300
+
+    property MouseArea areaReceivingEvents: MouseArea {
+        onClicked: {
+            console.log("================================>>> ")
+        }
+    }
+
+    ListModel {
+        id: _model
+
+        ListElement {
+            dest: "Wroclaw"
+            start: "Munich"
+            airlines: "Lufthansa"
+            date: "17/09/2019"
+            time: "06:00"
+        }
+
+        ListElement {
+            dest: "Munich"
+            start: "Wroclaw"
+            airlines: "Lufthansa"
+            date: "13/09/2019"
+            time: "17:00"        }
+
+        ListElement {
+            dest: "San Francisco , CA"
+            start: "Munich"
+            airlines: "Lufthansa"
+            date: "12/10/2019"
+            time: "16:00"
+        }
+
+
+        ListElement {
+            dest: "Munich"
+            start: "San Francisco , CA"
+            airlines: "Lufthansa"
+            date: "03/11/2019"
+            time: "12:00"
+        }
+    }
+
+    Row {
+
+        ListView {
+            id: _list
+            width: 400
+            model: _model
+
+            delegate:
+                Label {
+                text: start + "\n" + dest + "\n" + airlines + "\n" + date + "\n" + time;
+                color: "#21be2b"
+                font.pixelSize: 22
+                font.italic: true
+            }
+        }
+
+
+        Button {
+            //   anchors.right: root
+            onClicked:{
+                root.update();
+            }
+        }
+    }
+
+
+
 }
