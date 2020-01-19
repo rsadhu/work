@@ -5,14 +5,14 @@ class IBase
 {
     public:
     IBase(){ std::cout<<"IBase::IBase\n";}
-    virtual void setData(const int & )=0;
+    virtual void setData(const int & ){}
     virtual ~IBase(){std::cout<<"IBase::~IBase\n";}
 };
 
 class Der:public IBase
 {
  public:
- void setData(const  int &){ std::cout<<" Der::setData\n";}
+ //void setData(const  int &){ std::cout<<" Der::setData\n";}
  ~Der()
  {
       std::cout<<"Der::~Der\n";

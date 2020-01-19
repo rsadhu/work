@@ -10,6 +10,7 @@
 #include <memory>
 #include <iterator>
 #include <algorithm>
+#include "catch.hpp"
 
 template<typename T>
 class ListNode
@@ -32,7 +33,6 @@ ListNode<int> * reverseNodesInKGroups(ListNode<int> * l, int k) {
 
     std::stack<ListNode<int>*> st;
     int i = 0;
-    bool stacked(false);
     ListNode<int> *tra = new ListNode<int> (0);
 
     auto res =  tra;
@@ -40,7 +40,7 @@ ListNode<int> * reverseNodesInKGroups(ListNode<int> * l, int k) {
     while(l)
     {
         i++;
-        if(i<=k)
+        if(i <=k )
         {
             st.push(l);
         }
@@ -52,7 +52,6 @@ ListNode<int> * reverseNodesInKGroups(ListNode<int> * l, int k) {
                 tra->next = st.top();
                 st.pop();
                 tra = tra->next;
-                stacked  = true;
             }
             continue;
         }
@@ -374,11 +373,11 @@ bool checkEqualFrequency(std::vector<int> inputArray) {
 
 int cal(int n)
 {
+    int sum = 0;
     if(n > 0)
     {
-        int sum = 0;
         std::vector<int> l;
-        for(int i =2; i<=n;)
+        for(int i =2; i <= n;)
         {
             if(n%i==0) {
                 l.push_back(i);
@@ -388,28 +387,16 @@ int cal(int n)
             else {
                 i++;
             }
-        }
-        return sum;
+        }        
     }
-}
-
-int factorSum(int n) {
-
-    int m = n;
-    while(1)
-    {
-        m = cal(n);
-        if(m==n)
-            break;
-        n = m;
-    }
+    return sum;
 }
 
 int deleteDigit(int n) {
     std::string str = std::to_string(n);
 
     std::string str1;
-    int c = 0;
+
     int min = 10, i=0,j=0;
     for(auto it: str)
     {
@@ -503,49 +490,6 @@ std::string reduceString(std::string inputString) {
 }
 
 
-std::string simplifyPath(std::string path)
-{
-    int st=-1, end=0;
-    std::stack<std::string> stk;
-    for(int i = 0;i<path.length();i++)
-    {
-        if(st == -1 && path[i]=='/') {
-            st = i;
-        }
-        else
-            if(path[i]=='/' && end==0){
-                end =  i;
-                stk.push(path.substr(st+1, end-st-1));
-                st = end;
-                end = 0;
-            }
-    }
-
-    std::vector<std::string> result;
-
-    while(!stk.empty()){
-        if(stk.top()=="..")
-            stk.pop();
-        else if(stk.top()=="." || stk.top()==""){
-            //  stk.pop();
-            // continue;
-        }else{
-            result.push_back(stk.top());
-        }
-        stk.pop();
-    }
-
-    std::reverse(std::begin(result), std::end(result));
-    std::string rest;
-    for(auto it: result)
-    {
-        rest+="/"+it;
-    }
-
-}
-
-
-
 void rotateArray(){
     int k = 3;
     std::vector<int> arr =  { 1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
@@ -557,7 +501,7 @@ void rotateArray(){
     std::cout<<"\n";
     for(int i = 0;i< k;i++){
         auto tmp = arr[0];
-        for(int j = 0;j <arr.size()-1;j++)
+        for(uint16_t j = 0;j <arr.size()-1;j++)
         {
             arr[j] = arr[j+1];
         }
@@ -593,48 +537,137 @@ void rotateArrayOptimized()
 }
 
 
-/*6
-7 10 4 3 20 15
-3*/
+int parkingCost(std::string timeIn, std::string timeOut) {
 
-void printSmallestKthElement()
-{
-    std::vector<int> ll= {7 ,10, 4, 3, 20, 15};
-    std::set<int> lk;
-    int T=1;
-    while(T--){
+    int hourDiff, minDiff;
+    hourDiff = std::stoi(timeOut.substr(0,2))  - std::stoi(timeIn.substr(0,2)) ;
+    minDiff =  std::stoi(timeOut.substr(3,4))  - std::stoi(timeIn.substr(3,4)) ;
 
-        for(auto it: ll) {
-            lk.insert(it);
-        }
-        int k = 3;
+    auto totalMins =  hourDiff * 60 + minDiff;
+    auto totalPrice = 0;
 
-
-        for(auto it: lk)
-        {
-            if(k==0){
-                std::cout<<it;
-                break;
+    while( totalMins > 30 ) {
+        if(totalMins > 120) {
+            auto tmp = totalMins -  120;
+            totalPrice += (tmp/10) * 2;
+            if(tmp % 10 != 0){
+                totalPrice+=2;
             }
-            k--;
+
+            totalMins = 120;
         }
-        std::cout<<"\n";
+        else
+            if(totalMins > 30){
+                auto tmp = totalMins- 30;
+                totalPrice += tmp/10 ;
+                if(tmp % 10 !=0 )
+                    totalPrice+=1;
+
+                totalMins = 30;
+            }
+    }
+
+    return totalPrice;
+}
+
+
+std::string htmlEndTagByStartTag(std::string startTag) {
+
+    std::string retString("</") ;
+    bool tagBegan = false;
+    for(ulong i = 0; i < startTag.length(); ++i)
+    {
+        if (startTag[i]=='<') {
+            tagBegan = true;
+            continue;
+        }
+        if (startTag[i] == ' ')
+            tagBegan = false;
+        if (tagBegan) {
+            retString+=startTag[i];
+
+        }
+        else {
+            retString+=">";
+            break;
+        }
+    }
+    return retString;
+}
+
+std::vector<int> processArray(std::vector<int> arr, int k)
+{
+    std::vector<int> res;
+    size_t i = k;
+    for(;i < arr.size(); i+=k)
+    {
+        for(size_t j = i ; j > i-k; --j) {
+            res.push_back(arr.at(j-1));
+        }
+    }
+    return res;
+}
+
+
+std::vector<std::string> tokenize(std::string str, std::string token)
+{
+    std::vector<std::string> res;
+    auto index = 0;
+    while((index = str.find(token))!= -1)
+    {
+        std::string str1 = str.substr(0, index);
+        if ( str1 == "..") {
+            if( !res.empty() )
+                res.pop_back();
+        }
+        else
+            if( str1 != ""  && !str1.empty() && str1 != ".")
+                res.push_back(str1);
+
+        str = str.substr(index + 1, str.length()-1);
+    }
+    return res;
+}
+
+std::vector<std::string> splitAddress(std::string address) {
+    auto protocol =  address.substr(0, address.find("//"));
+    address =  address.substr(address.find("//")+2);
+
+    auto domain =  address.substr(0, address.find("."));
+    address =  address.substr(address.find(".")+1);
+
+    auto ind =  address.find("/");
+    if ( ind!=std::string::npos) {
+        auto context =  address.substr(ind+1);
+        return {protocol.substr(0, protocol.find(":")), domain, context};
+    }
+    else{
+        return {protocol.substr(0, protocol.find(":")), domain};
     }
 }
 
+int giftSafety(std::string gift) {
+    int sum = 0;
+    for(size_t i = 0 ; i <=gift.length()-3; i++)
+    {
+        auto substr  = gift.substr(i, 3);
+        for(size_t j =0 ;j < 3; j++)
+        {
+            if( substr[j%3] == substr[(j+1) % 3])
+                sum++;
+        }
+    }
+    return sum;
+}
+
+TEST_CASE("Test1", "Check")
+{
+
+}
+
+
 int main(void)
 {
-    std::cout<<" \nStarts";
-    reverseInParentheses("foo(bar(baz))blim");
-    //        createLists();
-    //reduceString("12133221");
-    //simplifyPath("/home/a/./x/../b//c/");
-    //rotateArray();
-    std::cout<<"\n";
-    //rotateArrayOptimized();
-    //printSmallestKthElement();
-    //differentSubstringsTrie("abac");
-    std::cout<<" \nEnds\n";
-
+    giftSafety("dolll");
     return 0;
 }
