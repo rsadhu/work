@@ -10,7 +10,7 @@
 #include <memory>
 #include <iterator>
 #include <algorithm>
-#include "catch.hpp"
+//#include "catch.hpp"
 
 template<typename T>
 class ListNode
@@ -387,7 +387,7 @@ int cal(int n)
             else {
                 i++;
             }
-        }        
+        }
     }
     return sum;
 }
@@ -660,14 +660,228 @@ int giftSafety(std::string gift) {
     return sum;
 }
 
-TEST_CASE("Test1", "Check")
-{
+bool isCryptSolution(std::vector<std::string> crypt, std::vector<std::vector<char>> solution) {
+    std::map<char, int> lu ;
+    for(uint i = 0; i < solution.size(); i++)
+    {
+        lu[solution[i][0]] = solution[i][1] - '0';
+    }
 
+    std::string first, second, third;
+
+    for ( auto it: crypt[0])
+    {
+        first+= std::to_string((char)lu[it]);
+    }
+
+    if ( first[0] == '0')
+        return false;
+
+    for ( auto it: crypt[1])
+    {
+        second+= std::to_string((char)lu[it]);
+    }
+
+    if ( second[0] == '0')
+        return false;
+
+    for ( auto it: crypt[2])
+    {
+        third += std::to_string((char)lu[it]);
+    }
+
+    if ( third[0] == '0')
+        return false;
+
+    auto tmp = std::stoi(first) + std::stoi(second);
+    if ( std::to_string(tmp) == third)
+        return true;
+    else {
+        return false;
+    }
 }
+
+
+
+std::vector<std::vector<int>> spiralNumbers(uint n) {
+
+    std::vector<int> output;
+
+    int nRow = 0, nCol = 0, row=0, col=0;
+
+    int i = 0;
+
+    while( output.size() <= n)
+    {
+        // go right
+        while(  col < n - nCol )
+        {
+            output.push_back(++i);
+            col++;
+        }
+
+        row++;
+        col--;
+
+        // go down
+        while(  row < n - nRow )
+        {
+            output.push_back(++i);
+            row++;
+        }
+
+        col--;
+        row--;
+
+        // go left
+        while(  col >= nCol )
+        {
+            output.push_back(++i);
+            col--;
+        }
+
+
+        row--;
+        col++;
+        // go up
+        while( row > nRow )
+        {
+            output.push_back(++i);
+            row--;
+        }
+
+        col++;
+        row++;
+
+        nCol++;
+        nRow++;
+    }
+    output.push_back(++i);
+
+    std::vector<std::vector<int>> matrix (n, std::vector<int> (n, 0));
+
+    int line = 0, j = 0, k = 0;
+
+    for(auto it: output)
+    {
+        matrix[j][k++] = it;
+        if (++line % n == 0)
+        {
+            k = 0;
+            j++;
+        }
+    }
+
+    return matrix;
+}
+
+
+void convert(std::vector<int> &res, std::string ver)
+{
+    uint i = 0;
+    std::string tmp;
+    while (i < ver.size())
+    {
+        if (ver[i] == '.')
+        {
+            res.push_back(std::stoi(tmp));
+            tmp = "";
+        }
+        else {
+            tmp+=ver[i];
+        }
+        i++;
+    }
+    res.push_back(std::stoi(tmp));
+}
+
+int higherVersion2(std::string ver1, std::string ver2) {
+    int ret (0);
+
+    std::vector<int> res1;
+    std::vector<int>  res2;
+
+    convert (res1, ver1);
+    convert (res2, ver2);
+
+    for(int i = 0;i < res1.size(); i++)
+    {
+        if ( res1[i] > res2[i] )
+        {
+            ret =  1;
+        }
+        else
+            if (res1[i] == res2[i]) {
+                continue;
+            }
+            else {
+                return -1;
+            }
+    }
+    return ret;
+}
+
+
+std::vector<std::vector<int>> spiralNumbersFromN(int n) {
+
+    std::vector<std::vector<int>> output(n , std::vector<int>(n, 0));
+
+    int nRow = 0, nCol = 0, row=0, col=0;
+
+    int i = 1;
+
+    while( i <= n)
+    {
+        // go right
+        while(  col < n - nCol )
+        {
+            output[row][col] = i++;
+            col++;
+        }
+
+        row++;
+        col--;
+
+        // go down
+        while(  row < n - nRow )
+        {
+            output[row][col] = i++;
+            row++;
+        }
+
+        col--;
+        row--;
+
+        // go left
+        while(  col >= nCol )
+        {
+            output[row][col] = i++;
+            col--;
+        }
+
+
+        row--;
+        col++;
+        // go up
+        while( row > nRow )
+        {
+            output[row][col] = i++;
+            row--;
+        }
+
+        col++;
+        row++;
+
+        nCol++;
+        nRow++;
+    }
+    return output;
+}
+
 
 
 int main(void)
 {
-    giftSafety("dolll");
+    auto ret = spiralNumbersFromN(3);
     return 0;
 }
