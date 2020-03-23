@@ -1,0 +1,55 @@
+{
+  "map": "CJ-001, Round Trip (NDS)",
+  "description": "My Scenemator Test Scenario",
+  "environment": null,
+  "objectPool": {
+    "hostVehicle": {
+      "objectId": 0,
+      "model": {
+        "type": "CAR"
+      },
+      "x": 164.44,
+      "y": -50.4,
+      "heading": 0.18,
+      "width": 1.87,
+      "length": 4.08,
+      "velocity": 9.23,
+      "longitudinal_acceleration": -1.66,
+      "lateral_acceleration": 0
+    },
+    "vehicles": [
+      {
+        "objectId": 1,
+        "model": {
+          "type": "CAR"
+        },
+        "x": 164.44,
+        "y": -50.4,
+        "heading": 0.18,
+        "width": 1.87,
+        "length": 4.08,
+        "velocity": 9.23,
+        "longitudinal_acceleration": -1.66,
+        "lateral_acceleration": 0
+      },
+      {
+        "objectId": 2,
+        "model": {
+          "type": "CAR"
+        },
+        "x": 203.35741152078072,
+        "y": -43.645454147579684,
+        "heading": 3.0388627861711246,
+        "width": 2,
+        "length": 5,
+        "velocity": 5,
+        "longitudinal_acceleration": 0,
+        "lateral_acceleration": 0
+      }
+    ]
+  },
+  "fileVersion": {
+    "major": "0",
+    "minor": "3"
+  }
+}
