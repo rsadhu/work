@@ -109,18 +109,5 @@ main (int argc, char *argv[])
 
   }
 
-  // 2. Modify it by DOM.
-
-/*  Value & t = d["arr"];
-  for (auto i = 0; t.IsArray () && i < t.Size (); i++)
-    {
-      std::cout << t[i].GetInt () << "  ";
-    }
-
-  std::cout<< d["fileVersion"]["type"].GetString();
-  std::cout<< d["fileVersion"]["major"].GetString();
-  std::cout<< d["fileVersion"]["minor"].GetInt();*/
-
-
   return 0;
 }
