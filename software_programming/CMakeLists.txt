@@ -25,3 +25,6 @@ add_executable(software_programming
         practice/prog.cpp
         main.cpp
         test.cpp)
+
+
+add_executable(leetCode practice/coding.cpp)
