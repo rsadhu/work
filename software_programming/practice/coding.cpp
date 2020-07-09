@@ -67,8 +67,27 @@ public:
   }
 };
 
+
+int hammingDistance(int x, int y) {
+  int cnt = 0;
+  auto x1 = std::min(x, y);
+  auto y1 = std::max(x, y);
+  while(y1)
+  {
+    x = x1 &1;
+    y = y1 &1;
+    if ((x1 & 1) != (y1 & 1))
+      cnt++;
+
+    x1>>=1;
+    y1>>=1;
+  }
+  return cnt;
+}
+
 int main(void) {
   Solution s;
+  hammingDistance(1, 4);
   TreeNode *root = new TreeNode(10);
   root->left = new TreeNode(5);
   root->right = new TreeNode(15);
