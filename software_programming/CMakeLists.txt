@@ -23,8 +23,12 @@ add_executable(software_programming
         practice/CrackingCodingInterviewQuestions.cpp
         practice/MockInterviewOzi.cpp
         practice/prog.cpp
+        #practice/wk2.cpp
         main.cpp
-        test.cpp)
+        test.cpp practice/wk2.cpp)
 
 
-add_executable(leetCode practice/coding.cpp)
+#add_executable(leetCode practice/coding.cpp)
+
+
+add_executable(leetcode practice/wk2.cpp)
