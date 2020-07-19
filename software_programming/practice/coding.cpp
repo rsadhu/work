@@ -213,6 +213,7 @@ struct Node {
     int data;
 };
 
+<<<<<<< HEAD
 struct LinkList {
     LinkList(int d) : data(d), next(nullptr) {}
 
@@ -330,3 +331,42 @@ int main(void) {
     auto nn = getNthUglynumber(1000);
     return 0;
 }
+
+
+/*
+int hammingDistance(int x, int y) {
+  int cnt = 0;
+  auto x1 = std::min(x, y);
+  auto y1 = std::max(x, y);
+  while(y1)
+  {
+    x = x1 &1;
+    y = y1 &1;
+    if ((x1 & 1) != (y1 & 1))
+      cnt++;
+
+    x1>>=1;
+    y1>>=1;
+  }
+  return cnt;
+}
+
+int main(void) {
+  Solution s;
+  hammingDistance(1, 4);
+  TreeNode *root = new TreeNode(10);
+  root->left = new TreeNode(5);
+  root->right = new TreeNode(15);
+
+  root->left->left = new TreeNode(2);
+  root->left->right = new TreeNode(8);
+
+  root->right->left = new TreeNode(12);
+  root->right->right = new TreeNode(18);
+
+  auto res = s.levelOrderBottom(root);
+
+  std::vector<int> p = {1,0,0,1,0,0,1,0};
+  auto r = s.prisonAfterNDays(p, 4000);
+  return 0;
+}*/
