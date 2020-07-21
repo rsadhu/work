@@ -40,13 +40,27 @@ if (lookup.count (it.first) == 2)
 
 */
 
-auto index = std::hash<int> {}(199);
-std::cout<<" index is >> "<< index<<"\n";
+auto index1 = std::hash<int> {}(199);
+std::cout<<" index is >> "<< index1<<"\n";
 
+
+auto index2 = std::hash<std::string> {}("this is a test");
+std::cout<<" index is >> "<< index2<<"\n";
+
+std::map<int, int> lu;
+
+for(int i = 0;i < 10;i++)
 {
-auto index = std::hash<std::string> {}("this is a test");
-std::cout<<" index is >> "<< index<<"\n";
+ lu[i]+= i;;
 }
+
+
+auto it1 =  lu.lower_bound(-11);
+auto it2 =  lu.lower_bound(19);
+
+
+
+
 
   return 0;
 }
