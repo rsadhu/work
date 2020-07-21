@@ -76,6 +76,21 @@ Base copy()
     return Base();
 }
 
+void process()
+{
+}
+
+
+
+template<typename FirstPara, typename ...Params>
+void process(FirstPara firstArg, Params ...args)
+{
+    std::cout<<"parameter pack gesendet:  "<<firstArg<<"\n";
+    
+    process(args...);
+
+}
+
 
 
 int
@@ -101,6 +116,8 @@ main (void)
 
 
   Base b = copy();
+
+  process("hello", 1234, 4.555, 3.1f);
 
   return 0;
 }
