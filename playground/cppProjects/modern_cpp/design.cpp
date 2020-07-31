@@ -1,13 +1,10 @@
 #include <iostream>
 
-
-struct stud
-{
- int i=0;
- float f=0.0f;
- double d=0.0;
+struct stud {
+    int i = 0;
+    float f = 0.0f;
+    double d = 0.0;
 };
-
 
 /*class Test;
 template <typename T>
@@ -27,10 +24,10 @@ friend Base<Test> ;
 */
 int main(void)
 {
-//static 
-constexpr struct stud d;
-std::cout<<d.i<< "  "<< d.d <<"  "<< d.f;
+    //static
+    constexpr struct stud d;
+    std::cout << d.i << "  " << d.d << "  " << d.f;
 
-// Test t;
- return 0;
+    // Test t;
+    return 0;
 }
