@@ -25,10 +25,11 @@ add_executable(software_programming
         practice/prog.cpp
         #practice/wk2.cpp
         main.cpp
-        test.cpp practice/wk2.cpp)
+        practice/wk2.cpp)
 
 
 #add_executable(leetCode practice/coding.cpp)
 
 
+add_executable(testCode test.cpp)
 add_executable(leetcode practice/wk2.cpp)
