@@ -66,7 +66,7 @@ void testPF( Test )
 template<typename T>
 void funcArg(T &&arg)
 {
-    testPF(std::forward(arg));
+   // testPF(std::forward(arg));
 }
 
 
@@ -82,6 +82,8 @@ int main(void)
     play(std::move(retTest()));
 
     funcArg<Test>(Test());
+
+    int &&rr = 5;
 
     return 0;
 }
