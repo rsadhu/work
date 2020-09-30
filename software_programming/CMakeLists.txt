@@ -32,3 +32,5 @@ add_executable(software_programming
 
 add_executable(test_exe test.cpp)
 add_executable(leetcode practice/wk2.cpp)
+
+add_executable(main main.cpp)

@@ -80,7 +80,6 @@ int main(void)
   std::cout<<"\nx : "<< x <<" y : "<<y<<std::endl;
   xp = &ynp;
   std::cout<<"\nxp : "<< *xp <<" ynp : "<<ynp<<std::endl;
- 
-
-    return 0;
+    
+  return 0;
 }
