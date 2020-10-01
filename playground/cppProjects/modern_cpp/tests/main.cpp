@@ -1,74 +1,106 @@
-#include<iostream>
-#include<memory>
+#include <iostream>
+#include <string>
+#include <vector>
 
-template<typename T>
-void foo(T a)
-{
-    std::cout<< a<<"\n";
+struct comp {
+  char z;
+  int x;
+  char y;
+  //  std::string str;
+};
+
+using Data = struct comp;
+
+Data setData(Data &d) {
+  Data t;
+  t = d;
+  // memset (d,t, sizeof(d));
+  return t;
 }
 
-template<typename T, typename U=float>
-void fOver(T a, U  b)
-{
-    std::cout<< a<<"  " <<b <<"\n";
+class Base {
+public:
+  Base() { std::cout << "\nBase::Base\n"; }
+
+  Base(const Base &rhs) { std::cout << "\nBase::copy\n"; }
+
+  Base(Base &&rhs) {
+    std::cout << "\n Base::move\n";
+    ;
+  }
+  virtual void foo(int a) { std::cout << "Base : " << a << "\n"; }
+
+  virtual ~Base() { std::cout << "\n~Base\n"; }
+};
+
+class Der : public Base {
+public:
+  void foo(int a) { std::cout << "Der" << a << "\n"; }
+
+  ~Der() { std::cout << "\n ~Der\n"; }
+};
+
+Base copy() { return Base(); }
+
+void process() {}
+
+template <typename FirstPara, typename... Params>
+void process(FirstPara firstArg, Params... args) {
+  std::cout << "parameter pack gesendet:  " << firstArg << "\n";
+
+  process(args...);
 }
 
+class BBase {
+public:
+  virtual void foo(void) { std::cout << "\nBBase::foo\n"; }
 
-template<typename T>
-class Base
-{
-    public:
-        virtual void display(T )=0;
+  virtual void run(void) {}
 
+  void start() { foo(); }
 };
 
+class DDer : public BBase {
+public:
+  void foo(void) { std::cout << "\nDDer::foo\n"; }
 
-class IDer: public Base<int>
-{
-    public:
-    void display(int arg) {
-        std::cout<< " Der: int"<<arg<<"\n";
-    }
+  void run() { foo(); }
 };
 
-
-class SDer: public Base<std::string>
-{
-    public:
-    void display(std::string  arg) {
-        std::cout<<" SDer::string "<<arg<<"\n";
-    }
+class DDer1 : public DDer {
+public:
+  void foo() { std::cout << " DDer1::foo\n"; }
 };
 
+int main(void) {
 
+  Data tt;
+  tt.x = 1;
+  tt.y = 'b';
+  tt.z = 'a';
+  auto xx = setData(tt);
+  std::cout << xx.x << "\n";
+  std::cout << xx.y << "\n";
+  std::cout << xx.z << "\n";
 
-int main(int argc, char *argv[])
-{
-    std::cout<<argv[0];
-    foo('a');
-    foo(9);
-    foo(std::string("test"));
-    foo<float>(9.5f);
-    foo<double>(9.9);
-    foo(0.123);
+  std::cout << "char-> " << sizeof(char) << "\n";
+  std::cout << "int-> " << sizeof(int) << "\n";
+  std::cout << "double-> " << sizeof(double) << "\n";
+  std::cout << "float-> " << sizeof(float) << "\n";
+  std::cout << "string-> " << sizeof(std::string) << "\n";
 
+  std::cout << "\nsize is" << sizeof(tt);
 
-    fOver(1,0.4);
-    fOver(9.9,"String");
+  std::cout << "\nsizeof BBase -> " << sizeof(BBase) << "\n";
+  std::cout << "\nsizeof DDer -> " << sizeof(DDer) << "\n";
 
-    std::unique_ptr<Base<int>> uBptr = std::make_unique<IDer>();
-    uBptr->display(9);
+  Base b = copy();
 
-/*    std::unique_ptr<Base<std::string>> uBptr_s = std::make_unique<SDer>();
-    uBptr_s->display("TEstttt ...");*/
+  process("hello", 1234, 4.555, 3.1f);
 
+  BBase *bb = new DDer1();
+  bb->start();
+  bb->run();
 
-    Base<int> *p = new IDer();
-    p->display(9);
-
-    Base<std::string > *s  = new SDer();
-    std::string str="Hello";
-    s->display(str);
-
-    return 0;
+  return 0;
 }

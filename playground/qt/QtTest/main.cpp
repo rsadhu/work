@@ -1,12 +1,10 @@
+#include "qttest.h"
 #include <QCoreApplication>
-#include"qttest.h"
 
-int main(int argc, char *argv[])
-{
-    QCoreApplication a(argc, argv);
+int main(int argc, char *argv[]) {
+  QCoreApplication a(argc, argv);
 
-    QtTest test;
+  QtTest test;
 
-    return a.exec();
-
+  return a.exec();
 }

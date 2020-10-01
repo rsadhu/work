@@ -1,186 +1,129 @@
-#include<iostream>
-#include"cppfeatures.h"
+#include "cppfeatures.h"
+#include <iostream>
 
 using namespace utl;
 
-CppFeatureSet create()
-{
-    CppFeatureSet obj;
-    return obj;
+CppFeatureSet create() {
+  CppFeatureSet obj;
+  return obj;
 }
 
-void test(CppFeatureSet buglu)
-{
+void test(CppFeatureSet buglu) {}
 
+template <typename DataType> void passByvalue(DataType t) { (void)t; }
+
+template <typename DataType> DataType returnByValue() { return DataType(); }
+
+template <typename DataType> void refvaluefunc(DataType &rhs) {
+  std::cout << "lvaluefunc:: func " << rhs << "\n";
 }
 
-template<typename DataType>
-void passByvalue(DataType t)
-{
- (void) t;
+template <typename DataType> void refvaluefunc(const DataType &rhs) {
+  std::cout << "constRefValue:: func " << rhs << "\n";
 }
 
-template<typename DataType>
-DataType returnByValue()
-{
- return DataType();
+template <typename DataType> void refvaluefunc(DataType &&rhs) {
+  std::cout << "rvaluefunc:: func " << rhs << "\n";
 }
 
+void refvaluefunc(const int &rhs) { std::cout << "constRefValue:: func\n"; }
 
-template<typename DataType>
-void refvaluefunc(DataType &rhs)
-{
-    std::cout<< "lvaluefunc:: func "<<rhs<<"\n";
-}
+void refvaluefunc(int &&rhs) { std::cout << "rvaluefunc:: func\n"; }
 
+void testing(int &&rhs) { std::cout << " testing:: func   " << rhs << "\n"; }
 
+constexpr int funConstExpr(int x) { return x * x; }
 
-template<typename DataType>
-void refvaluefunc(const DataType &rhs)
-{
-    std::cout<<"constRefValue:: func "<<rhs<<"\n";
-}
-
-
-template<typename DataType>
-void refvaluefunc(DataType &&rhs)
-{
-    std::cout<< "rvaluefunc:: func "<<rhs<<"\n";
-}
-
-
-
-
-void refvaluefunc(const int &rhs)
-{
- std::cout<<"constRefValue:: func\n";
-}
-
-
-void refvaluefunc(int &&rhs)
-{
-	std::cout<< "rvaluefunc:: func\n";
-}
-
-
-void testing(int &&rhs)
-{
-    std::cout<<" testing:: func   "<<rhs<<"\n";
-}
-
-constexpr int funConstExpr(int x )
-{
-    return x*x;
-}
-
-class Test{
+class Test {
 public:
-    Test()
-    {
-        std::cout<<"\nTest::Test"<<"\n";
-    }
+  Test() {
+    std::cout << "\nTest::Test"
+              << "\n";
+  }
 
-    Test(const Test &rhs)
-    {
-        std::cout<<"\nTest::Copy Constructor\n";
-    }
+  Test(const Test &rhs) { std::cout << "\nTest::Copy Constructor\n"; }
 
-    Test & operator = (const Test &rhs)
-    {
-        std::cout<<"\nTest::assignment oeprator\n";
-        return *this;
-    }
+  Test &operator=(const Test &rhs) {
+    std::cout << "\nTest::assignment oeprator\n";
+    return *this;
+  }
 
-    Test & operator = (Test &&rhs)
-    {
-        std::cout<<"\nTest::assignment oeprator\n";
-        return *this;
-    }
+  Test &operator=(Test &&rhs) {
+    std::cout << "\nTest::assignment oeprator\n";
+    return *this;
+  }
 
+  Test(Test &&rhs) { std::cout << "\nTest::move\n"; }
+  ~Test() {
+    std::cout << "\nDestructor:: ~Test"
+              << "\n";
+  }
 
-    Test(Test &&rhs)
-    {
-        std::cout<<"\nTest::move\n";
-    }
-    ~Test()
-    {
-        std::cout<<"\nDestructor:: ~Test"<<"\n";
-    }
-
-    void foo()
-    {
-        std::cout<<" Test::foo\n";
-    }
+  void foo() { std::cout << " Test::foo\n"; }
 };
 
+int main(void) {
+  //    CppFeatureSet cs = { 1, 2, 3, 4, 5, 6, 7, 8, 9};
+  //    cs.workOnArray();
 
+  //    float xf = 9.0f;
 
-int main(void)
-{
-//    CppFeatureSet cs = { 1, 2, 3, 4, 5, 6, 7, 8, 9};
-//    cs.workOnArray();
+  //    CppFeatureSet c(xf);
 
-//    float xf = 9.0f;
+  //    CppFeatureSet sss = create();
 
-//    CppFeatureSet c(xf);
+  //    test(create());
 
-//    CppFeatureSet sss = create();
+  //    int x = 100;
 
-//    test(create());
+  //    refvaluefunc(x);
 
-//    int x = 100;
+  //    refvaluefunc(100);
 
-//    refvaluefunc(x);
+  //    refvaluefunc(1000);
+  //    refvaluefunc(int(10));
 
-//    refvaluefunc(100);
+  //    refvaluefunc(std::string("==== Hello ====="));
+  //    testing(1000);
+  //    //testing (x);
+  //    constexpr int xc = 10;
+  //    std::cout<< funConstExpr(xc);
 
-//    refvaluefunc(1000);
-//    refvaluefunc(int(10));
+  Test t;
+  Test u = t;
+  Test v(t);
+  Test nn;
+  nn = std::move(t);
 
-//    refvaluefunc(std::string("==== Hello ====="));
-//    testing(1000);
-//    //testing (x);
-//    constexpr int xc = 10;
-//    std::cout<< funConstExpr(xc);
+  auto lambda = []() -> Test { return Test(); };
+  lambda().foo();
 
-    Test t;
-    Test u = t;
-    Test v(t);
-    Test nn;
-    nn = std::move(t);
+  auto dosomething = [](Test t) {
+    (void)t;
+    std::cout << " called dosomething\n";
+    t.foo();
+  };
 
-    auto lambda = []() -> Test{ return Test();};
-    lambda().foo();
+  std::cout << " call dosomething\n";
+  dosomething(lambda());
 
-    auto dosomething = [](Test t)
-    {
-     (void) t;
-      std::cout<<" called dosomething\n"; t.foo();
-    };
+  std::cout << "\n===== DISCO=====\n";
 
-    std::cout<<" call dosomething\n";
-    dosomething(lambda());
+  passByvalue(std::move(t));
+  auto res = returnByValue<Test>();
 
-    std::cout<<"\n===== DISCO=====\n";
+  std::cout << "\n===== DANCE=====\n";
 
-    passByvalue(std::move(t));
-    auto res = returnByValue<Test>();
+  auto dec2bin = [](const std::string &dec) {
+    int res = 0;
+    for (char ch : dec) {
+      res = res << 1;
+      if (ch == '1')
+        res += 1;
+    }
+    return res;
+  };
+  std::cout << "\ndec 2 bin === >> " << dec2bin("111111111") << "\n";
 
-    std::cout<<"\n===== DANCE=====\n";
-
-    auto dec2bin = [] (const std::string  &dec ) {
-
-        int res = 0;
-        for (char ch : dec) {
-            res = res << 1;
-            if ( ch == '1')
-                res+=1;
-        }
-        return res;
-    };
-    std::cout<<"\ndec 2 bin === >> "<< dec2bin("111111111")<<"\n";
-
-    return 0;
+  return 0;
 }
-
-

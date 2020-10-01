@@ -1,18 +1,12 @@
 #include "testqtqml.h"
 
-TestQtQml::TestQtQml()
-{
+TestQtQml::TestQtQml() {
 
-    connect(this, &TestQtQml::changeAddress, &m_kvr, &KVR::changeAddress);
+  connect(this, &TestQtQml::changeAddress, &m_kvr, &KVR::changeAddress);
 }
 
-
-KVR::KVR(QObject *parent):QObject(parent)
-{
-    connect(this, &KVR::changeAddress, this , &KVR::onAddressChanged);
+KVR::KVR(QObject *parent) : QObject(parent) {
+  connect(this, &KVR::changeAddress, this, &KVR::onAddressChanged);
 }
 
-void KVR::onAddressChanged(QString address)
-{
-    m_addr = address;
-}
+void KVR::onAddressChanged(QString address) { m_addr = address; }

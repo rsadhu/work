@@ -1,12 +1,5 @@
 #include "codingprac.h"
 
-codingPrac::codingPrac()
-{
+codingPrac::codingPrac() {}
 
-}
-
-
-bool codingPrac::wailingGhosts(std::string &sounds)
-{
-
-}
+bool codingPrac::wailingGhosts(std::string &sounds) {}

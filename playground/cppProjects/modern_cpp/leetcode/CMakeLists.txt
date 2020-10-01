@@ -1,0 +1,6 @@
+project(leetcode_weekly)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set( CMAKE_CXX_FLAGS "-Wall  -fno-elide-constructors" )
+SET(SRCS leetcode_source.cpp main.cpp)
+add_executable(leetcode_weeklies ${SRCS})

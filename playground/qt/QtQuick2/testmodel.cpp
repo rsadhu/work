@@ -1,6 +1,3 @@
 #include "testmodel.h"
 
-TestModel::TestModel()
-{
-
-}
+TestModel::TestModel() {}

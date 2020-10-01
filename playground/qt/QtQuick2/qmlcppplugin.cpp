@@ -1,6 +1,3 @@
 #include "qmlcppplugin.h"
 
-QmlCppPlugin::QmlCppPlugin()
-{
-
-}
+QmlCppPlugin::QmlCppPlugin() {}
