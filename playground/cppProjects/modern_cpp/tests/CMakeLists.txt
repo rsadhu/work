@@ -1,0 +1,2 @@
+add_executable(reader_writer threads.cpp)
+target_link_libraries(reader_writer pthread)
