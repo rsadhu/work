@@ -1,7 +1,6 @@
 FILE(GLOB SRCS *.cpp)
 FILE(GLOB HDRS *.h)
-
-add_library(adv_dsa ${SRCS} test.cpp)
+add_library(adv_dsa ${SRCS})
 
 add_executable(test_adv_dsa test.cpp)
 
