@@ -1,4 +1,6 @@
-project(test)
 cmake_minimum_required(VERSION 3.16)
-
-add_subdirectory(cppProjects)
+project(software_programming)
+set(CMAKE_CXX_STANDARD 14)
+include_directories(dsa_algo)
+include_directories(cpp)
+include_directories(practice)
