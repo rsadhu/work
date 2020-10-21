@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="learnCmake" targetName="fooLib" />
+      <config projectName="learnCmake" targetName="learnCmake" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e9b38e35-099c-48bf-acc9-3f81680eb8ee" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="ProjectId" id="1bVWLFrtfpsrVyol0r02hElRaUw" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager" selected="CMake Application.learnCmake">
+    <configuration name="fooLib" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="learnCmake" TARGET_NAME="fooLib" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="learnCmake" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="learnCmake" TARGET_NAME="learnCmake" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="learnCmake" RUN_TARGET_NAME="learnCmake">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.fooLib" />
+      <item itemvalue="CMake Application.learnCmake" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e9b38e35-099c-48bf-acc9-3f81680eb8ee" name="Default Changelist" comment="" />
+      <created>1588717683129</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588717683129</updated>
+      <workItem from="1588717684950" duration="969000" />
+      <workItem from="1588718668221" duration="1830000" />
+      <workItem from="1589535351081" duration="626000" />
+      <workItem from="1589820634054" duration="1342000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1589535365167">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1589535365167" />
+    <state width="1797" height="277" key="GridCell.Tab.0.bottom" timestamp="1589206442350">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1797" height="277" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1589206442350" />
+    <state width="1797" height="277" key="GridCell.Tab.0.center" timestamp="1589206442349">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1797" height="277" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1589206442349" />
+    <state width="1797" height="277" key="GridCell.Tab.0.left" timestamp="1589206442349">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1797" height="277" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1589206442349" />
+    <state width="1797" height="277" key="GridCell.Tab.0.right" timestamp="1589206442349">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1797" height="277" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1589206442349" />
+    <state width="1797" height="343" key="GridCell.Tab.1.bottom" timestamp="1589206418738">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1797" height="343" key="GridCell.Tab.1.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1589206418738" />
+    <state width="1797" height="343" key="GridCell.Tab.1.center" timestamp="1589206418737">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1797" height="343" key="GridCell.Tab.1.center/67.27.1853.1053@67.27.1853.1053" timestamp="1589206418737" />
+    <state width="1797" height="343" key="GridCell.Tab.1.left" timestamp="1589206418737">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1797" height="343" key="GridCell.Tab.1.left/67.27.1853.1053@67.27.1853.1053" timestamp="1589206418737" />
+    <state width="1797" height="343" key="GridCell.Tab.1.right" timestamp="1589206418738">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1797" height="343" key="GridCell.Tab.1.right/67.27.1853.1053@67.27.1853.1053" timestamp="1589206418738" />
+    <state width="640" height="204" key="ImportCMakeProjectWizard.bottomPanel" timestamp="1589535375018">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="640" height="204" key="ImportCMakeProjectWizard.bottomPanel/67.27.1853.1053@67.27.1853.1053" timestamp="1589535375018" />
+    <state width="640" height="476" key="ImportCMakeProjectWizard.topPanel" timestamp="1589535375018">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="640" height="476" key="ImportCMakeProjectWizard.topPanel/67.27.1853.1053@67.27.1853.1053" timestamp="1589535375018" />
+    <state x="482" y="187" key="SettingsEditor" timestamp="1589820767868">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1589820767868" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>32</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>20</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>10</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
