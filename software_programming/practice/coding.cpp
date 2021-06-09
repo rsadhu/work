@@ -213,7 +213,7 @@ struct Node {
     int data;
 };
 
-<<<<<<< HEAD
+
 struct LinkList {
     LinkList(int d) : data(d), next(nullptr) {}
 

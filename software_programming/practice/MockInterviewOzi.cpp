@@ -33,8 +33,9 @@ void planks()
     std::cout<<cnt;
 }
 
-//int main()
-//{
-// planks();
-// return 0;
-//}
+
+int main()
+{
+    planks();
+    return 0;
+}

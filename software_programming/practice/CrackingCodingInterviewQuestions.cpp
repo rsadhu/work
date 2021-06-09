@@ -174,7 +174,7 @@ void cci_matrix() {
     print();
 }
 
-void cci_queue_from_stacks()
+inline void cci_queue_from_stacks()
 {
     class MyQueue{
         public:
@@ -227,18 +227,13 @@ void cci_queue_from_stacks()
         std::cout<< q.deque()<<"  ";
     }
 
-
-
-
-
-
 }
-//
-//int main(void) {
-//
-//
-//    //   cci_matrix();
-////    cci_linklist();
-//    cci_queue_from_stacks();
-//    return 0;
-//}
+
+int main(void) {
+
+
+   //   cci_matrix();
+//    cci_linklist();
+   //cci_queue_from_stacks();
+   return 0;
+}
