@@ -48,7 +48,7 @@ public:
             std::ignore = postincrement;
             auto tmp = this;
             _ptr--;
-            return *this;
+            return *tmp;
         }
 
         Iterator operator--()
@@ -67,7 +67,7 @@ public:
             return *_ptr;
         }
 
-        T operator->()
+        T* operator->()
         {
             return _ptr;
         }
@@ -129,8 +129,20 @@ int main(void)
 
     MyList<Animal> animals = { Animal("Dog"), Animal("Cat"), Animal("Cow") };
 
-    for (auto it : animals) {
-        it.display();
+    // for (auto it : animals) {
+    //     it.display();
+    // }
+
+
+    // for (auto it = animals.begin(); it != animals.end(); it++)
+    // {
+    //  it->display();
+    // }
+
+    std::cout<<"\n\n";
+    for (auto it = animals.rbegin(); it!=animals.rend(); it--)
+    {
+        it->display();
     }
 
     return 0;
