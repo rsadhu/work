@@ -1,3 +1,14 @@
+#include <queue>
+
+struct Node
+{
+  int val;
+  Node *left = nullptr;
+  Node *right = nullptr;  
+};
+
+
+
 std::queue<Node*> q1, q2;
 
 q1.push(root);
