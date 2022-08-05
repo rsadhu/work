@@ -101,7 +101,7 @@ class MySmartPointer
     private:
     T *m_ptr;
 
-    static_
+    //static 
 };
 
 
@@ -137,5 +137,8 @@ int main(void)
 
     pass_my_pointer(pp);
 
+    std::string sss("xyz");
+
+    std::cout<<"\n str size is "<<sizeof(sss)<<"\n";
     return 0;
 }
