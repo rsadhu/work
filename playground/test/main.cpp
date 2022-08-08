@@ -45,7 +45,14 @@ int main(void)
     std::chrono::duration < double,std::milli > ms = t2 - t1;
 
 
-    printf("%*d", 30, 100);
+    printf("%*d\n", 30, 100);
+
+
+    std::string str =  "{\n name: \"rakesh\",\n";
+    str+="num:";
+    str+= "\"" + std::to_string(6) + "\" \n}";
+
+    std::cout<<str;
 
 
     return 0;

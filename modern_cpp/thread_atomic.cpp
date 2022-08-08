@@ -4,12 +4,16 @@
 class Test
 {
     public:
-    Test() = default;
-    Test(int d, std::string &rhs):m_data(d), m_str(rhs)
+    Test() {}
+    Test(int d, std::string rhs):m_data(d), m_str(rhs)
     {
 
     }
 
+    Test(const Test &rhs)
+    {
+        
+    }
     std::string  str()const { return m_str;}
     int data()const { return m_data;}
 
@@ -18,11 +22,14 @@ class Test
     std::string m_str;
 };
 
-std::atomic<Test> t;
-t.store({10, "hello this is Rakesh"});
 
 int main(void)
 {
+std::atomic<bool > tmp;
+
+//Test x{10, "hello this is Rakesh"};
+
+tmp.store(false);
 
 
     return 0;
