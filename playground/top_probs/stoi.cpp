@@ -1,6 +1,6 @@
+#include <cmath>
 #include <iostream>
 #include <vector>
-#include <cmath>
 
 using namespace std;
 
@@ -48,12 +48,10 @@ int p_myAtoi(std::string s, bool& ret)
     }
 
     if (over_flow) {
-        return sign * (std::pow(2, 32-1) -1);
+        return sign * (std::pow(2, 32 - 1) - 1);
+    } else {
+        return sign * final_num;
     }
-    else
-    {
-           return sign * final_num;   
-    } 
 }
 
 int myAtoi(std::string s)

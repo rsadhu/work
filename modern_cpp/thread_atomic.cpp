@@ -1,5 +1,5 @@
-#include <iostream>
 #include <atomic>
+#include <iostream>
 
 class Test
 {
@@ -7,7 +7,6 @@ class Test
     Test() {}
     Test(int d, std::string rhs):m_data(d), m_str(rhs)
     {
-
     }
 
     Test(const Test &rhs)
@@ -17,7 +16,7 @@ class Test
     std::string  str()const { return m_str;}
     int data()const { return m_data;}
 
-    private:
+private:
     int m_data;
     std::string m_str;
 };
@@ -30,7 +29,6 @@ std::atomic<bool > tmp;
 //Test x{10, "hello this is Rakesh"};
 
 tmp.store(false);
-
 
     return 0;
 }

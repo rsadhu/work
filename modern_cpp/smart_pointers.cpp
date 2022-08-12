@@ -15,12 +15,12 @@ public:
 
     Base(const Base& rhs)
     {
-        std::cout << "\nBase::Base::copy:: "<<++m_ref<<"\n";
+        std::cout << "\nBase::Base::copy:: " << ++m_ref << "\n";
     }
 
     Base& operator=(const Base& rhs)
     {
-        std::cout << "\nBase::Base::= operator :: "<<++m_ref<<"\n";
+        std::cout << "\nBase::Base::= operator :: " << ++m_ref << "\n";
         return *this;
     }
 
@@ -37,7 +37,7 @@ public:
 
     void display()
     {
-        std::cout<<"\nBase::display \n";
+        std::cout << "\nBase::display \n";
     }
 
 private:
@@ -72,47 +72,39 @@ Base createTempFromTemp(Base&& r)
 //     return s;
 // }
 
-
-template<typename T>
-class MySmartPointer
-{
-    public:
-    MySmartPointer(T *ptr):m_ptr(ptr)
+template <typename T>
+class MySmartPointer {
+public:
+    MySmartPointer(T* ptr)
+        : m_ptr(ptr)
     {
-
     }
-
 
     ~MySmartPointer()
     {
         delete m_ptr;
     }
 
-    T & operator *()
+    T& operator*()
     {
         return *m_ptr;
     }
 
-    T * operator ->()
+    T* operator->()
     {
         return m_ptr;
     }
 
-    private:
-    T *m_ptr;
+private:
+    T* m_ptr;
 
     //static 
 };
 
-
-template<typename T>
-void pass_my_pointer(MySmartPointer<T> &p)
+template <typename T>
+void pass_my_pointer(MySmartPointer<T>& p)
 {
-
 }
-
-
-
 
 int main(void)
 {
@@ -124,13 +116,11 @@ int main(void)
 
     // std::cout << "\nmain:: ends\n";
 
-
-    MySmartPointer pp (new Base);
+    MySmartPointer pp(new Base);
     pp->display();
 
-
-    std::unique_ptr<Base> up ( std::make_unique<Base>());
-    //throw std::exception ();
+    std::unique_ptr<Base> up(std::make_unique<Base>());
+    // throw std::exception ();
     (*pp).display();
 
     up->display();

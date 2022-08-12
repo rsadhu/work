@@ -3,6 +3,7 @@
 #include <vector>
 #include <chrono>
 #include <ctime>
+#include <sstream>
 
 
 void shiftonesandzeros(std::vector<int> &rhs)
@@ -31,6 +32,24 @@ void shiftonesandzeros(std::vector<int> &rhs)
 }
 
 
+// C++ conversion functions between integers (or floats) to std::string.
+template <typename T>
+std::string toString(T t)
+{
+    std::ostringstream out;
+    out << t;
+    return out.str();
+}
+
+
+template <typename T>
+T fromString(std::string t)
+{
+    T out;
+    std::istringstream in(t);
+    in >> out;
+    return out;
+}
 
 int main(void)
 {
@@ -54,6 +73,36 @@ int main(void)
 
     std::cout<<str;
 
+    int val = 10;
+    std::cout<<"\n str for "<<val<< " is "<< toString(val);
+
+    std::cout<<"\n str for "<<val<< " is "<< fromString<std::string>(std::string("1982"));
+
+    int a = 10;
+
+    auto eq = [&a] ()
+    {
+        assert(a==10);
+
+    };
+
+    auto le = [&a] ()
+    {
+
+    assert (a > 10);
+
+
+    };
+
+    auto gt =  [&a]()
+    {
+        assert(a < 10);
+    };
+
+
+    eq();
+    //le();
+    gt();
 
     return 0;
 }
