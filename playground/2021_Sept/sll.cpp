@@ -1,53 +1,46 @@
 #include <iostream>
 
-
-struct Node
-{
+struct Node {
     Node(int d)
     {
         val = d;
         next = nullptr;
     }
 
-  int val;
-  struct Node *next = nullptr;  
+    int val;
+    struct Node* next = nullptr;
 };
 
-Node * create(int d)
+Node* create(int d)
 {
-    return new Node (d);
+    return new Node(d);
 }
 
-
-void display(Node *root)
+void display(Node* root)
 {
-    std::cout<<"\n";
-    while(root)
-    {
-        std::cout<<root->val <<" ";
+    std::cout << "\n";
+    while (root) {
+        std::cout << root->val << " ";
         root = root->next;
     }
-    std::cout<<"\n";
+    std::cout << "\n";
 }
 
-
-void reverse(Node *root)
+void reverse(Node* root)
 {
-    Node *tmp = nullptr;
-    Node *cur = root;
-    Node *prev;
-    while(cur)
-    {
+    Node* tmp = nullptr;
+    Node* cur = root;
+    Node* prev;
+    while (cur) {
         prev = cur;
-        cur = cur->next ;
+        cur = cur->next;
         prev->next = tmp;
-        
     }
 }
 
 int main(void)
 {
-    Node *root = create(10);
+    Node* root = create(10);
     root->next = create(20);
     root->next->next = create(30);
     root->next->next->next = create(40);
@@ -59,5 +52,3 @@ int main(void)
 
     return 0;
 }
-
-

@@ -1,26 +1,25 @@
 #include <iostream>
 
-
-class DataType
-{
-    public:
+class DataType {
+public:
     // explicit DataType(int d):m_data(d)
     // {
     //     std::cout<<"\nExplicit DataType::int\n";
     // }
 
-    DataType(int c):m_data(c)
+    DataType(int c)
+        : m_data(c)
     {
-        std::cout<<"\nDataType::int\n";
+        std::cout << "\nDataType::int\n";
     }
 
-    //private:
-        int m_data {};
+    // private:
+    int m_data {};
 };
 
 void foo(DataType d)
 {
-    std::cout<<d.m_data;
+    std::cout << d.m_data;
 }
 
 int main(void)

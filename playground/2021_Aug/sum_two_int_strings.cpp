@@ -7,7 +7,7 @@ public:
     {
         int c = 0;
         int sum = 0;
-        for (int i = num1.size()-1, j = num2.size()-1; i >= 0 && j >= 0; i--, j--) {
+        for (int i = num1.size() - 1, j = num2.size() - 1; i >= 0 && j >= 0; i--, j--) {
             int tmp = c + (num1[i] - '0') + (num2[j] - '0');
 
             if (tmp / 10) {

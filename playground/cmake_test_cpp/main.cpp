@@ -1,6 +1,5 @@
 #include <iostream>
 
-
 /*
 
 Add the following extension for EvtTxt:
@@ -22,88 +21,71 @@ Otherwise the functionality of EvtTxt will remain the same as it already is.
 
 */
 
-
-template<typename T>
-class Base
-{
-    public:
-    Base(T r):m_r(r)
+template <typename T>
+class Base {
+public:
+    Base(T r)
+        : m_r(r)
     {
-
     }
     T m_r;
 
-
     void Der()
     {
-
-   }
-};
-
-
-
-class Der: public Base<int>
-{
-    public:
-    Der():Base(1)
-    {
-
     }
 };
 
+class Der : public Base<int> {
+public:
+    Der()
+        : Base(1)
+    {
+    }
+};
 
-class A
-{
-    public:
+class A {
+public:
     A()
     {
-
     }
 
-   virtual  ~A()
+    virtual ~A()
     {
-
     }
 
     void B()
     {
-
     }
 };
 
-
-class B:public A
-{
-    public:
+class B : public A {
+public:
     B()
     {
-
     }
 
     ~B()
     {
-
     }
 };
 
 int main(void)
 {
-    int *p = new int [20];
-    for (int i = 0; i < 20;i++)
-    {
+    int* p = new int[20];
+    for (int i = 0; i < 20; i++) {
         p[i] = i;
     }
-    delete []p;
+    delete[] p;
 
     Der d;
 
-    A *a = new A();
+    A* a = new A();
 
-    B *b = new B();
+    B* b = new B();
     delete a;
     a = b;
     delete a;
 
-    //b->B();
+    // b->B();
     return 0;
 }

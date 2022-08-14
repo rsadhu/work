@@ -117,32 +117,32 @@ int countDistinct_brute(std::string str)
         }
     }
 
-    //std::cout << " \n number of distinct  strings are  " << lookup.size() << "\n";
+    // std::cout << " \n number of distinct  strings are  " << lookup.size() << "\n";
 
-    //std::cout << "\n general count of strings is " << cnt << "\n";
+    // std::cout << "\n general count of strings is " << cnt << "\n";
     return lookup.size();
 }
 
 // Driver program to test above function
-int main(int argc , char *argv[])
+int main(int argc, char* argv[])
 {
     string str = "asjhjahsjahjshjdhsjhdjshdsjkjdksjdksjdksjkdsjkdsjdksjdksjkdjskdjkdjshdjshdjshjdshjababhjshjcxhjchxjoiwuqyuwqyuwya";
     if (argc == 2)
         str = argv[1];
-    
+
     std::time_t start = std::time(nullptr);
     cout << "\nCount of  substrings is "
-         << countDistinctSubstring(str)<<"\n";
+         << countDistinctSubstring(str) << "\n";
 
-    //std::cout << "time diff:  "
-      //        << std::difftime(std::time(nullptr), start) << " s.\n";
+    // std::cout << "time diff:  "
+    //         << std::difftime(std::time(nullptr), start) << " s.\n";
 
-    //std::time_t start1 = std::time(nullptr);
+    // std::time_t start1 = std::time(nullptr);
 
-    std::cout << "count of distinct substrings is "<<countDistinct_brute(str) <<"\n";
+    std::cout << "count of distinct substrings is " << countDistinct_brute(str) << "\n";
 
-    //std::cout << "time diff1:  "
-      //        << std::difftime(std::time(nullptr), start1) << " s.\n";
+    // std::cout << "time diff1:  "
+    //         << std::difftime(std::time(nullptr), start1) << " s.\n";
 
     return 0;
 }

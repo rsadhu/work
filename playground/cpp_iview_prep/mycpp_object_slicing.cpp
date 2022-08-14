@@ -1,31 +1,29 @@
-#include <iostream>
 #include <any>
+#include <iostream>
 
-//struct B;
+// struct B;
 
-struct A
-{
+struct A {
     int x = 10;
 };
 
-struct B : public A
-{
+struct B : public A {
     int y = 20;
 };
 
-
 void test(struct A a)
 {
-    std::cout<<"\n"<< a.x<<"\n";
+    std::cout << "\n"
+              << a.x << "\n";
 }
 
 int main(void)
 {
     A a;
     B b;
-    std::cout<<b.x<<" "<<b.y<<"\n";
+    std::cout << b.x << " " << b.y << "\n";
     a = b;
-     std::cout<<a.x<<" "<<b.y<<"\n";
+    std::cout << a.x << " " << b.y << "\n";
 
     test(b);
     return 0;

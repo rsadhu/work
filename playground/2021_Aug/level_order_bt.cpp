@@ -1,13 +1,10 @@
 #include <queue>
 
-struct Node
-{
-  int val;
-  Node *left = nullptr;
-  Node *right = nullptr;  
+struct Node {
+    int val;
+    Node* left = nullptr;
+    Node* right = nullptr;
 };
-
-
 
 std::queue<Node*> q1, q2;
 

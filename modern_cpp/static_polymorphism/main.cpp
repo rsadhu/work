@@ -1,42 +1,38 @@
 #include <iostream>
 
-
-
 // template<>
 // class Base
 // {
 
 // };
-template<typename T>
-class Base
-{
-    public:
+template <typename T>
+class Base {
+public:
     Base()
     {
-        std::cout<<"\nBase::Base\n";
+        std::cout << "\nBase::Base\n";
     }
 
-    Base(int p):m_data(p)
+    Base(int p)
+        : m_data(p)
     {
-        std::cout<<"\nBAse::Base::int \n";
+        std::cout << "\nBAse::Base::int \n";
     }
 
     virtual ~Base()
     {
-        std::cout<<"\nBase::~Base\n";
+        std::cout << "\nBase::~Base\n";
     }
-
 
     virtual void foo()
     {
-        std::cout<<" Base::foo\n";
+        std::cout << " Base::foo\n";
     }
     void test()
     {
-        std::cout<<"\nBase::test\n";
+        std::cout << "\nBase::test\n";
         foo();
     }
-
 
     void run()
     {
@@ -45,12 +41,11 @@ class Base
 
     void processDer()
     {
-        std::cout<<"Base::processDer\n";
+        std::cout << "Base::processDer\n";
         static_cast<T*>(this)->processDer();
     }
 
-
-    Base & operator +(Base &rhs)
+    Base& operator+(Base& rhs)
     {
         m_data += rhs.m_data;
         return *this;
@@ -58,38 +53,35 @@ class Base
 
     void display()
     {
-        std::cout<<"\nBase::display  "<<m_data<<"\n";
+        std::cout << "\nBase::display  " << m_data << "\n";
     }
 
-    private:
+private:
     int m_data;
 };
 
-
-class Der: public Base<Der>
-{
-    public:
-
-    Der():Base(100)
+class Der : public Base<Der> {
+public:
+    Der()
+        : Base(100)
     {
-        std::cout<<"\nDer:Der\n";
+        std::cout << "\nDer:Der\n";
     }
 
     ~Der()
     {
-        std::cout<<"\nDer::~Der\n";
+        std::cout << "\nDer::~Der\n";
     }
 
     void foo()
     {
-        std::cout<<"Der::foo\n";
+        std::cout << "Der::foo\n";
     }
 
     void processDer()
     {
-        std::cout<<"Der::processDer\n";
+        std::cout << "Der::processDer\n";
     }
-
 };
 
 int main(void)
@@ -103,12 +95,11 @@ int main(void)
     // delete b;
 
     Base<int> bb(10);
-    Base<int> cc (10);
+    Base<int> cc(10);
     bb = bb + cc;
 
     bb.display();
 
-
-    //bb.test();
+    // bb.test();
     return 0;
 }

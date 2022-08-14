@@ -98,7 +98,7 @@ public:
 private:
     T* m_ptr;
 
-    //static 
+    // static
 };
 
 template <typename T>
@@ -129,6 +129,6 @@ int main(void)
 
     std::string sss("xyz");
 
-    std::cout<<"\n str size is "<<sizeof(sss)<<"\n";
+    std::cout << "\n str size is " << sizeof(sss) << "\n";
     return 0;
 }
