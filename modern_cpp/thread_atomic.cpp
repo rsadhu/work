@@ -12,6 +12,10 @@ public:
 
     Test(const Test& rhs)
     {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 04cbe58 (add cpp iview folder)
     }
     std::string str() const { return m_str; }
     int data() const { return m_data; }
