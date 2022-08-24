@@ -63,11 +63,13 @@ public:
         pushButton_4->setText(QApplication::translate("MainMenu", "Mini Statement", 0));
         pushButton_3->setText(QApplication::translate("MainMenu", "Pin Change", 0));
     } // retranslateUi
-
 };
 
-namespace Ui {
-    class MainMenu: public Ui_MainMenu {};
+namespace Ui
+{
+    class MainMenu : public Ui_MainMenu
+    {
+    };
 } // namespace Ui
 
 QT_END_NAMESPACE

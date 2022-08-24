@@ -1,8 +1,8 @@
 /* MyMEXFunction
- * Adds second input to each  
+ * Adds second input to each
  * element of first input
  * a = MyMEXFunction(a,b);
-*/
+ */
 
 #include "lzmacodec.h"
 #include "mex.hpp"
@@ -11,7 +11,8 @@
 using namespace matlab::data;
 using matlab::mex::ArgumentList;
 
-class MexFunction : public matlab::mex::Function {
+class MexFunction : public matlab::mex::Function
+{
 public:
     void operator()(ArgumentList outputs, ArgumentList inputs)
     {
@@ -30,11 +31,16 @@ public:
         TypedArrayRef<MATLABString> inArrayRef3 = imageCell[2];
         std::string operation = std::string(inArrayRef3[0]);
 
-        if (operation == "compress") {
+        if (operation == "compress")
+        {
             compress(src_file_with_path, target_file_with_path);
-        } else if (operation == "decompress") {
+        }
+        else if (operation == "decompress")
+        {
             decompress(src_file_with_path, target_file_with_path);
-        } else {
+        }
+        else
+        {
             std::cout << "\n wrong argument\n";
         }
     }

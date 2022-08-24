@@ -1,10 +1,10 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 class Base
 {
 public:
-  virtual void display () = 0;
-    virtual ~ Base ()
+  virtual void display() = 0;
+  virtual ~Base()
   {
     cout << " Base::~Base\n";
   }
@@ -12,28 +12,25 @@ public:
 
 void Base::display()
 {
- cout<<" BAse:: Display:: \n";
+  cout << " BAse:: Display:: \n";
 }
-class Der:public Base
+class Der : public Base
 {
 public:
-  void display ()
+  void display()
   {
     cout << " Der::display\n";
   }
-   ~Der ()
+  ~Der()
   {
     cout << "Der::~Der\n";
   }
 };
 
-
-
-int
-main (void)
+int main(void)
 {
   Base *b = new Der;
-  b->display ();
+  b->display();
   delete b;
   return 0;
 }

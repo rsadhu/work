@@ -1,10 +1,8 @@
 #pragma once
 
-
-class ResourceWeb :	
+class ResourceWeb:
 {
 public:
 	ResourceWeb();
 	~ResourceWeb();
 };
-

@@ -1,5 +1,5 @@
 #pragma once
-#include"stdafx.h"
+#include "stdafx.h"
 
 namespace ARRAY
 {
@@ -10,14 +10,15 @@ namespace ARRAY
 		~Matrix();
 		void hackerRank2DSearch();
 		void spiralDisplay();
+
 	private:
-		int ** init(int, int);
+		int **init(int, int);
 		void del(int row, int **);
 		void search();
 		void searchGlassHour();
+
 	private:
 		int **mMat, **mSubMat;
 		int mMatRow, mMatCol, mSubMatRow, mSubMatcol;
 	};
 }
-

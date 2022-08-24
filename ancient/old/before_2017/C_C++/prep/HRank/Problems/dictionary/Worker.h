@@ -1,5 +1,5 @@
 #pragma once
-#include"MyThreads.h"
+#include "MyThreads.h"
 class Worker
 {
 public:
@@ -7,4 +7,3 @@ public:
 	~Worker();
 	void run();
 };
-

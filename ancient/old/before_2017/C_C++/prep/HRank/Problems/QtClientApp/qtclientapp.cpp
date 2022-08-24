@@ -1,11 +1,11 @@
 #include "qtclientapp.h"
-#include<QGraphicsScene>
+#include <QGraphicsScene>
 
 QtClientApp::QtClientApp(QString host, QString datatobewritten, int portNumber, QWidget *parent)
-: QWidget(parent), mIsConnected(false), isReadFromServer(false)
+	: QWidget(parent), mIsConnected(false), isReadFromServer(false)
 {
 	ui.setupUi(this);
-	connect(&mClient, SIGNAL(connected()), this, SLOT(slotIsConnectedToHost()));	
+	connect(&mClient, SIGNAL(connected()), this, SLOT(slotIsConnectedToHost()));
 	connect(&mClient, SIGNAL(readyRead()), SLOT(slotReadyRead()));
 	connect(ui.Connect, SIGNAL(clicked()), this, SLOT(slotConnectToHost()));
 	connect(ui.SendData, SIGNAL(clicked()), this, SLOT(slotWriteDate()));
@@ -16,15 +16,13 @@ QtClientApp::QtClientApp(QString host, QString datatobewritten, int portNumber, 
 
 QtClientApp::~QtClientApp()
 {
-
 }
 
 void QtClientApp::slotWriteDate()
-{	
+{
 	if (mIsConnected)
-		mClient.write(mDataToBeWritten.toStdString().c_str(), mDataToBeWritten.size());	
+		mClient.write(mDataToBeWritten.toStdString().c_str(), mDataToBeWritten.size());
 }
-
 
 void QtClientApp::slotReadyRead()
 {
@@ -46,7 +44,6 @@ void QtClientApp::slotConnectToHost()
 {
 	mClient.connectToHost(mHostAddress, mPortNumber);
 }
-
 
 void QtClientApp::slotIsConnectedToHost()
 {

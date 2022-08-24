@@ -1,6 +1,7 @@
 #include <iostream>
 
-class DataType {
+class DataType
+{
 public:
     // explicit DataType(int d):m_data(d)
     // {
@@ -14,7 +15,7 @@ public:
     }
 
     // private:
-    int m_data {};
+    int m_data{};
 };
 
 void foo(DataType d)

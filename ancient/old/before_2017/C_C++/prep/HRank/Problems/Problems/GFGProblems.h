@@ -9,5 +9,3 @@ namespace GEEKFORGEEKS
 		static void reOrder(int arr[], int size);
 	};
 }
-
-

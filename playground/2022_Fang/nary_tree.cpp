@@ -3,7 +3,8 @@
 #include <string>
 #include <vector>
 
-struct Human {
+struct Human
+{
     Human(std::string name)
         : name_(name)
     {
@@ -12,12 +13,14 @@ struct Human {
     std::vector<Human> children_;
     std::string name_;
 };
-enum class HumanType {
+enum class HumanType
+{
     FATHER,
     SON
 };
 
-class FamilyTree {
+class FamilyTree
+{
 public:
     FamilyTree();
     void addHuman(std::string name, HumanType type);
@@ -29,10 +32,13 @@ private:
 
 void FamilyTree::addHuman(std::string name, HumanType type)
 {
-    if (root_) {
+    if (root_)
+    {
         root_ = std::make_shared<Human>(name);
         root_->children_.resize(2);
-    } else {
+    }
+    else
+    {
     }
 }
 

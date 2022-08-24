@@ -3,11 +3,13 @@
 
 // struct B;
 
-struct A {
+struct A
+{
     int x = 10;
 };
 
-struct B : public A {
+struct B : public A
+{
     int y = 20;
 };
 

@@ -5,18 +5,20 @@
 #include <set>
 #include <vector>
 
-struct Data {
+struct Data
+{
     int _indentifier;
     std::string _content;
 };
 
-std::ostream& operator<<(std::ostream& os, const struct Data& s)
+std::ostream &operator<<(std::ostream &os, const struct Data &s)
 {
     os << s._indentifier << " " << s._content << "\n";
     return os;
 }
 
-class Test {
+class Test
+{
 public:
     Test()
     {
@@ -25,9 +27,7 @@ public:
     }
 
     Test(int a, char ch, std::string str)
-        : _int(a)
-        , _char(ch)
-        , _str(str)
+        : _int(a), _char(ch), _str(str)
     {
         std::cout << "\n constructor :: int a, char ch, std::string str   "
                   << _counter << " \n";
@@ -44,12 +44,13 @@ public:
     {
         _counter++;
         std::cout << "\n constructor :: initializer_list\n";
-        for (auto it : rs) {
+        for (auto it : rs)
+        {
             _arr.push_back(it);
         }
     }
 
-    void foo(const std::string& str = "test")
+    void foo(const std::string &str = "test")
     {
         std::cout << "Test::foo " << str << "\n";
     }
@@ -57,13 +58,14 @@ public:
     void displayItems() const
     {
         std::cout << "\n";
-        for (auto it : _arr) {
+        for (auto it : _arr)
+        {
             std::cout << it << "  ";
         }
         std::cout << "\n";
     }
 
-    Test& operator+(const Test& rhs) { return *this; }
+    Test &operator+(const Test &rhs) { return *this; }
 
 private:
     int _int;
@@ -77,7 +79,7 @@ private:
 int Test::_counter = 0;
 
 template <typename T>
-void print(T arg, std::map<int, T>& rhs)
+void print(T arg, std::map<int, T> &rhs)
 {
     static int cnt = 0;
     rhs[cnt++] = arg;
@@ -87,16 +89,19 @@ void printMatrixBySize()
 {
 
     std::vector<std::vector<int>> arr = {
-        { 0, 1, 2, 3 },
-        { 4, 5, 6, 7 },
-        { 8, 9, 10, 11 },
-        { 12, 13, 14, 15 },
+        {0, 1, 2, 3},
+        {4, 5, 6, 7},
+        {8, 9, 10, 11},
+        {12, 13, 14, 15},
     };
     std::cout << "\n";
 
-    for (int i = 0; i < arr.size(); i++) {
-        for (int j = i; j < static_cast<size_t>(sqrt(arr.size())); j++) {
-            for (int k = 0; k < static_cast<size_t>(sqrt(arr.size())); k++) {
+    for (int i = 0; i < arr.size(); i++)
+    {
+        for (int j = i; j < static_cast<size_t>(sqrt(arr.size())); j++)
+        {
+            for (int k = 0; k < static_cast<size_t>(sqrt(arr.size())); k++)
+            {
                 std::cout << arr[j % 3][k % 3] << " ";
             }
         }
@@ -125,8 +130,8 @@ int main(void)
 {
     std::cout << "\nMain\n";
 
-    char* arr[2] = { "abc", "def" };
-    char brr[2][4] = { "abc", "def" };
+    char *arr[2] = {"abc", "def"};
+    char brr[2][4] = {"abc", "def"};
 
     std::cout << "\n"
               << arr[0] << "   " << arr[1] << "\n";
@@ -134,7 +139,8 @@ int main(void)
     std::cout << "\n"
               << brr[0] << "   " << brr[1] << "\n";
 
-    struct Data d {
+    struct Data d
+    {
         1234, "This is the testing going on"
     };
 
@@ -154,7 +160,7 @@ int main(void)
 
     std::cout << handleArgs<std::string, int>("a");
 
-    const int* p;
+    const int *p;
     int z = 10;
 
     p = &z;
@@ -164,7 +170,7 @@ int main(void)
 
     //*p =10;
 
-    int* const q = &z;
+    int *const q = &z;
 
     *q = 100;
 
@@ -174,10 +180,10 @@ int main(void)
     Test uu;
     uu.foo("This is a non const object's call to foo");
 
-    const Test* c_t = new Test();
+    const Test *c_t = new Test();
     delete c_t;
 
-    Test* const d_t = new Test();
+    Test *const d_t = new Test();
     delete d_t;
     c_t = new const Test();
 

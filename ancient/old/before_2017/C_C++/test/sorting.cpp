@@ -1,13 +1,9 @@
-#include<stdio.h>
+#include <stdio.h>
 
-
-void sort(int arr[],int size)
+void sort(int arr[], int size)
 {
-
 }
 
 int main(void)
 {
-
 }
-

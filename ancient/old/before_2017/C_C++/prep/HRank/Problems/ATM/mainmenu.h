@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include "ui_mainmenu.h"
-#include"restapiconsumer.h"
+#include "restapiconsumer.h"
 
 class MainMenu : public QWidget
 {
@@ -18,6 +18,7 @@ public slots:
 	void slotWithDraw();
 	void slotChangePin();
 	void slotMiniStatement();
+
 private:
 	Ui::MainMenu ui;
 	RestApiConsumer *mRestApiConsumer;

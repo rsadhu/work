@@ -1,8 +1,8 @@
-#include<iostream>
-#include"RecursionUtility.h"
+#include <iostream>
+#include "RecursionUtility.h"
 
 int main(void)
 {
- utl::RecursionUtility rc;
- return 0;
+    utl::RecursionUtility rc;
+    return 0;
 }

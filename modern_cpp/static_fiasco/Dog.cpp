@@ -9,7 +9,7 @@ void Dog::bark()
     std::cout << _name << " Dog :: barks \n";
 }
 
-Dog::Dog(char* name)
+Dog::Dog(char *name)
 {
     this->_name = name;
     c.meow();

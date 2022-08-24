@@ -4,12 +4,13 @@
 
 using namespace std;
 
-vector<string> split(const char* str, char c = ' ')
+vector<string> split(const char *str, char c = ' ')
 {
     vector<string> result;
 
-    do {
-        const char* begin = str;
+    do
+    {
+        const char *begin = str;
 
         while (*str != c && *str)
             str++;
@@ -20,15 +21,17 @@ vector<string> split(const char* str, char c = ' ')
     return result;
 }
 
-int p_myAtoi(std::string s, bool& ret)
+int p_myAtoi(std::string s, bool &ret)
 {
     int final_num = 0;
     //  bool fail_it = false;
     bool over_flow = false;
     int j = -1, sign = 1;
     int i = s.size() - 1;
-    for (; i >= 0; i--) {
-        if (s[i] >= '0' && s[i] <= '9') {
+    for (; i >= 0; i--)
+    {
+        if (s[i] >= '0' && s[i] <= '9')
+        {
             long int tmp_sum = (final_num + (s[i] - '0') * std::pow(10, j);
             if ( tmp_sum >= (std::pow(2, 32))) {
                 over_flow = true;
@@ -37,19 +40,26 @@ int p_myAtoi(std::string s, bool& ret)
 
             j++;
             final_num += (s[i] - '0') * std::pow(10, j);
-        } else if (s[i] == '+' || s[i] == '-') {
+        }
+        else if (s[i] == '+' || s[i] == '-')
+        {
             if (s[i] == '-')
                 sign = -1;
             break;
-        } else {
+        }
+        else
+        {
             ret = true;
             return 0;
         }
     }
 
-    if (over_flow) {
+    if (over_flow)
+    {
         return sign * (std::pow(2, 32 - 1) - 1);
-    } else {
+    }
+    else
+    {
         return sign * final_num;
     }
 }
@@ -59,8 +69,10 @@ int myAtoi(std::string s)
 
     std::vector<std::string> ss = split(s.c_str());
     int x = 0;
-    for (auto it : ss) {
-        if (it.length() > 0) {
+    for (auto it : ss)
+    {
+        if (it.length() > 0)
+        {
             bool ret = false;
             x = p_myAtoi(it, ret);
 

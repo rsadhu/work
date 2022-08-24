@@ -1,12 +1,14 @@
 #include <iostream>
 #include <list>
 
-template<typename T>
-class Stack {
+template <typename T>
+class Stack
+{
 public:
     void push(T d) { __data.push_back(d); }
 
-    T pop() {
+    T pop()
+    {
         auto d = __data.front();
         __data.pop_back();
     }

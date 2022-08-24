@@ -1,35 +1,32 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-
 
 class T
 {
 public:
-  T ()
+  T()
   {
     cout << "T::T\n";
     f = 3.17;
   }
-  void display ()
+  void display()
   {
     cout << "T::display\n";
   }
-  ~T ()
+  ~T()
   {
     cout << "T::~T\n";
   }
+
 private:
   int *d;
   float f;
 };
 
-
-
-int
-main (void)
+int main(void)
 {
   T *t = NULL;
-  t->display ();
+  t->display();
   delete t;
   return 0;
 }

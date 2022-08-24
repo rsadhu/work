@@ -1,17 +1,16 @@
 #pragma once
-#include"stdafx.h"
+#include "stdafx.h"
 
 namespace TREES
 {
 	class Node
 	{
 	public:
-		Node(int d) :mData(d), right(0), left(0)
+		Node(int d) : mData(d), right(0), left(0)
 		{
-
 		}
 		int mData;
-		Node  *right, *left;
+		Node *right, *left;
 	};
 	typedef enum
 	{
@@ -25,7 +24,7 @@ namespace TREES
 		DFS,
 		SPIRAL,
 		PRINTALLPATHS
-	}TYPE;
+	} TYPE;
 
 	class BST
 	{
@@ -35,20 +34,22 @@ namespace TREES
 		BST &operator<(int d);
 		void display(TYPE t = INORDER_REC);
 		void deleteNode(int data);
+
 	protected:
-		void addElement(int data); //iterative way
-		Node * appendElement(Node *, int); // recursive way
+		void addElement(int data);		  // iterative way
+		Node *appendElement(Node *, int); // recursive way
 	public:
 		static void inOrderRec(Node *);
-		static void preOrderRec(Node*);
-		static void postOrderRec(Node*);
-		static void inOrderIter(Node*);
-		static void preOrderIter(Node*);
-		static void postOrderIter(Node*);
-		static void spiralOrder(Node*);
-		static void bfs(Node*);
-		static void dfs(Node*);
-		static void printAllPaths(Node*);
+		static void preOrderRec(Node *);
+		static void postOrderRec(Node *);
+		static void inOrderIter(Node *);
+		static void preOrderIter(Node *);
+		static void postOrderIter(Node *);
+		static void spiralOrder(Node *);
+		static void bfs(Node *);
+		static void dfs(Node *);
+		static void printAllPaths(Node *);
+
 	private:
 		Node *mRoot;
 	};

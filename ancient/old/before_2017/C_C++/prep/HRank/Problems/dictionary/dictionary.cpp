@@ -8,5 +8,4 @@ dictionary::dictionary(QWidget *parent)
 
 dictionary::~dictionary()
 {
-
 }

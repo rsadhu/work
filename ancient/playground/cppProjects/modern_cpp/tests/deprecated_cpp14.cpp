@@ -1,32 +1,31 @@
-#include<iostream>
-#include<memory>
+#include <iostream>
+#include <memory>
 
-struct[[deprecated ("deprecated")]] S;
+struct [[deprecated("deprecated")]] S;
 
 class Base
 {
-    public:
-    Base(){std::cout<<"Base::Base\n";}
-    ~Base(){ std::cout<<"Base::~Base\n";}
-    int add(int a, int b, int c) { return a+b+c;}
+public:
+    Base() { std::cout << "Base::Base\n"; }
+    ~Base() { std::cout << "Base::~Base\n"; }
+    int add(int a, int b, int c) { return a + b + c; }
 };
 
-class [[deprecated("Wakka wakka this isn't supposed to be used")]] Test 
+class [[deprecated("Wakka wakka this isn't supposed to be used")]] Test
 {
-    public:
+public:
     void display()
     {
-        std::cout<<"sum(1,3,5)"<< mPtr->add(1, 3, 5);
+        std::cout << "sum(1,3,5)" << mPtr->add(1, 3, 5);
     }
-    private:
+
+private:
     std::unique_ptr<Base> mPtr;
 };
 
-
-[[deprecated()]]
-int  add(int b, int a)
+[[deprecated()]] int add(int b, int a)
 {
- return a+b;
+    return a + b;
 }
 
 struct sttt
@@ -36,12 +35,11 @@ struct sttt
 
 [[deprecated]] typedef sttt s;
 
-int
-main (void)
+int main(void)
 {
-   std::cout<<add(1,1);  
-   Test t;   
-   t.display();
-   s a;
-   return 0;
+    std::cout << add(1, 1);
+    Test t;
+    t.display();
+    s a;
+    return 0;
 }

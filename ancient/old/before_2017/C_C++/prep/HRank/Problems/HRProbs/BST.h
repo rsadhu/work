@@ -3,9 +3,8 @@
 class Node
 {
 public:
-	Node(int d = 0): left(nullptr), right(nullptr), mData(d)
+	Node(int d = 0) : left(nullptr), right(nullptr), mData(d)
 	{
-
 	}
 
 	Node *left, *right;
@@ -17,10 +16,9 @@ class BST
 public:
 	BST();
 	~BST();
-	BST &operator <(int d);
+	BST &operator<(int d);
 	bool isBST(Node *);
-	//friend Node* giveMeRoot();
+	// friend Node* giveMeRoot();
 private:
 	Node *mRoot;
 };
-

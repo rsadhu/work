@@ -1,19 +1,17 @@
 #ifndef CODESNIPPET_H
 #define CODESNIPPET_H
 
+#include "ResourceFactory.h"
 
-#include"ResourceFactory.h"
-
-class CodeSnippet 
+class CodeSnippet
 {
 public:
 	CodeSnippet();
 	~CodeSnippet();
 
 private:
-	//Ui::CodeSnippetClass ui;
+	// Ui::CodeSnippetClass ui;
 	ResourceFactory mFactory;
-
 };
 
 #endif // CODESNIPPET_H

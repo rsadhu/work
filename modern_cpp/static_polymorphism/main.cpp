@@ -6,7 +6,8 @@
 
 // };
 template <typename T>
-class Base {
+class Base
+{
 public:
     Base()
     {
@@ -42,10 +43,10 @@ public:
     void processDer()
     {
         std::cout << "Base::processDer\n";
-        static_cast<T*>(this)->processDer();
+        static_cast<T *>(this)->processDer();
     }
 
-    Base& operator+(Base& rhs)
+    Base &operator+(Base &rhs)
     {
         m_data += rhs.m_data;
         return *this;
@@ -60,7 +61,8 @@ private:
     int m_data;
 };
 
-class Der : public Base<Der> {
+class Der : public Base<Der>
+{
 public:
     Der()
         : Base(100)

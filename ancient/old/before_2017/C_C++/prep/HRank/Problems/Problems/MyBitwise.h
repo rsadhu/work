@@ -7,7 +7,7 @@ public:
 	int countBitOne();
 	void leftCircularRotation(int k);
 	void rightCircularRoation(int k);
+
 private:
 	int mData;
 };
-

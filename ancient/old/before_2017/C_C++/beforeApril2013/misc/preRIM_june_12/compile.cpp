@@ -1,47 +1,40 @@
-#include<iostream>
+#include <iostream>
 
 using namespace std;
-
 
 class Base
 {
   int a;
+
 public:
   int b;
-    Base ()
+  Base()
   {
     a = 10;
     b = 11;
   }
-  virtual ~ Base ()
-  {
-  };
- friend class Derived;
+  virtual ~Base(){};
+  friend class Derived;
 };
 
-class Derived:private Base
+class Derived : private Base
 {
 public:
-  Derived ()
+  Derived()
   {
     cout << b << endl;
   }
-  void p (Base b)
+  void p(Base b)
   {
     cout << b.a << endl;
   };
-  virtual ~ Derived ()
-  {
-  };
+  virtual ~Derived(){};
 };
 
-
-
-int
-main ()
+int main()
 {
   Base b;
   Derived d;
-  d.p (b);
+  d.p(b);
   return 0;
 }

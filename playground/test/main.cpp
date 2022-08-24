@@ -5,18 +5,24 @@
 #include <stdio.h>
 #include <vector>
 
-void shiftonesandzeros(std::vector<int>& rhs)
+void shiftonesandzeros(std::vector<int> &rhs)
 {
     int i = 0, j = rhs.size() - 1;
 
-    while (i <= j) {
-        if (rhs[i] == 1 && rhs[j] == 0) {
+    while (i <= j)
+    {
+        if (rhs[i] == 1 && rhs[j] == 0)
+        {
             std::swap(rhs[i], rhs[j]);
             i++;
             j--;
-        } else if (rhs[i] == 0) {
+        }
+        else if (rhs[i] == 0)
+        {
             i++;
-        } else if (rhs[j] == 1) {
+        }
+        else if (rhs[j] == 1)
+        {
             j--;
         }
     }
@@ -42,7 +48,7 @@ T fromString(std::string t)
 
 int main(void)
 {
-    std::vector<int> v = { 0, 1, 1, 0, 1, 0, 1, 0, 1, 0 };
+    std::vector<int> v = {0, 1, 1, 0, 1, 0, 1, 0, 1, 0};
 
     auto t1 = std::chrono::high_resolution_clock::now();
 
@@ -67,15 +73,18 @@ int main(void)
 
     int a = 10;
 
-    auto eq = [&a]() {
+    auto eq = [&a]()
+    {
         assert(a == 10);
     };
 
-    auto le = [&a]() {
+    auto le = [&a]()
+    {
         assert(a > 10);
     };
 
-    auto gt = [&a]() {
+    auto gt = [&a]()
+    {
         assert(a < 10);
     };
 

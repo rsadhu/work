@@ -22,7 +22,8 @@ Otherwise the functionality of EvtTxt will remain the same as it already is.
 */
 
 template <typename T>
-class Base {
+class Base
+{
 public:
     Base(T r)
         : m_r(r)
@@ -35,7 +36,8 @@ public:
     }
 };
 
-class Der : public Base<int> {
+class Der : public Base<int>
+{
 public:
     Der()
         : Base(1)
@@ -43,7 +45,8 @@ public:
     }
 };
 
-class A {
+class A
+{
 public:
     A()
     {
@@ -58,7 +61,8 @@ public:
     }
 };
 
-class B : public A {
+class B : public A
+{
 public:
     B()
     {
@@ -71,17 +75,18 @@ public:
 
 int main(void)
 {
-    int* p = new int[20];
-    for (int i = 0; i < 20; i++) {
+    int *p = new int[20];
+    for (int i = 0; i < 20; i++)
+    {
         p[i] = i;
     }
     delete[] p;
 
     Der d;
 
-    A* a = new A();
+    A *a = new A();
 
-    B* b = new B();
+    B *b = new B();
     delete a;
     a = b;
     delete a;

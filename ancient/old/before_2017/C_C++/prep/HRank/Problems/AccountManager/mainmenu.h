@@ -17,9 +17,10 @@ public slots:
 	void slotWithDraw();
 	void slotChangePin();
 	void slotMiniStatement();
+
 private:
 	Ui::MainMenu ui;
-	//RestApiConsumer *mRestApiConsumer;
+	// RestApiConsumer *mRestApiConsumer;
 };
 
 #endif // MAINMENU_H

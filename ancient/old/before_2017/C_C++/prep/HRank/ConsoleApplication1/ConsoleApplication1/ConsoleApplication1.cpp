@@ -2,7 +2,7 @@
 //
 
 #include "stdafx.h"
-//Pelco Headers
+// Pelco Headers
 #include "PelcoSDK/System.h"
 #include "PelcoSDK/SystemCollection.h"
 using namespace PelcoSDK;
@@ -14,7 +14,6 @@ int main()
 	std::string password = "admin";
 	std::string nvrIp = "10.0.5.5";
 	int portNumber = 8000;
-
 
 	SystemCollection systemCollection;
 	if (systemCollection.GetCount())
@@ -28,7 +27,7 @@ int main()
 			PelcoSDK::PString u(username);
 			PelcoSDK::PString p(password);
 
-			//Login In
+			// Login In
 			system.Login(u, p);
 		}
 		catch (...)
@@ -36,6 +35,5 @@ int main()
 			throw;
 		}
 	}
-    return 0;
+	return 0;
 }
-

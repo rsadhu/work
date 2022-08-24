@@ -4,13 +4,12 @@
 MainMenu::MainMenu(QWidget *parent)
 	: QWidget(parent)
 {
-	QVBoxLayout  *layout = new QVBoxLayout(this);
+	QVBoxLayout *layout = new QVBoxLayout(this);
 	ui.setupUi(this);
 	ui.pushButton->setStyleSheet("background-color:cyan");
 	ui.pushButton_2->setStyleSheet("background-color:cyan");
 	ui.pushButton_3->setStyleSheet("background-color:cyan");
 	ui.pushButton_4->setStyleSheet("background-color:cyan");
-		
 
 	ui.lineEdit->setWordWrapMode(QTextOption::WrapMode::WordWrap);
 	mRestApiConsumer = new RestApiConsumer(this);
@@ -22,7 +21,6 @@ MainMenu::MainMenu(QWidget *parent)
 
 MainMenu::~MainMenu()
 {
-	
 }
 
 void MainMenu::drawData(QByteArray &d)
@@ -32,10 +30,9 @@ void MainMenu::drawData(QByteArray &d)
 	ui.lineEdit->setText(d.data());
 }
 
-
 void MainMenu::slotGetBalance()
 {
-	mRestApiConsumer->GetBalance();	
+	mRestApiConsumer->GetBalance();
 }
 
 void MainMenu::slotWithDraw()

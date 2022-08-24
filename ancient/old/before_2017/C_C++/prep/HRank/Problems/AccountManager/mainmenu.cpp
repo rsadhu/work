@@ -9,34 +9,29 @@ MainMenu::MainMenu(QWidget *parent)
 	ui.pushButton_3->setStyleSheet("background-color:cyan");
 	ui.pushButton_4->setStyleSheet("background-color:cyan");
 
-	//mRestApiConsumer = new RestApiConsumer(this);
+	// mRestApiConsumer = new RestApiConsumer(this);
 
 	connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(slotGetBalance()));
-
 }
 
 MainMenu::~MainMenu()
 {
-	//delete mRestApiConsumer;
+	// delete mRestApiConsumer;
 }
-
 
 void MainMenu::slotGetBalance()
 {
-	//mRestApiConsumer->GetBalance();
+	// mRestApiConsumer->GetBalance();
 }
 
 void MainMenu::slotWithDraw()
 {
-
 }
 
 void MainMenu::slotChangePin()
 {
-
 }
 
 void MainMenu::slotMiniStatement()
 {
-
 }

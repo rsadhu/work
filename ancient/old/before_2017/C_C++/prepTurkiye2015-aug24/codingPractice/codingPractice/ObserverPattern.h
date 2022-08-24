@@ -1,19 +1,18 @@
 #pragma once
-#include<iostream>
-#include<list>
-#include<vector>
+#include <iostream>
+#include <list>
+#include <vector>
 using namespace std;
-
 
 class ObserverPattern
 {
 public:
-	ObserverPattern(){}
-	virtual ~ObserverPattern(){}
+	ObserverPattern() {}
+	virtual ~ObserverPattern() {}
 	virtual void notify() = 0;
 };
 
-class Observee1 :public ObserverPattern
+class Observee1 : public ObserverPattern
 {
 public:
 	void notify()
@@ -22,7 +21,7 @@ public:
 	}
 };
 
-class Observee2 :public ObserverPattern
+class Observee2 : public ObserverPattern
 {
 public:
 	void notify()
@@ -30,7 +29,6 @@ public:
 		cout << "I am notified ..." << this << endl;
 	}
 };
-
 
 class Subject
 {
@@ -39,7 +37,7 @@ public:
 	void attach(ObserverPattern *observer);
 	void detach(ObserverPattern *observer);
 	void updateAll();
+
 private:
 	vector<ObserverPattern *> mlist;
-
 };

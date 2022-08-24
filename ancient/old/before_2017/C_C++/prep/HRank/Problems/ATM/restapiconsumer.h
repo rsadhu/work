@@ -14,12 +14,12 @@ public:
 public slots:
 	void slotReplyFinished(QNetworkReply *);
 	void slotReadyRead();
-	void onAuthenticationRequestSlot(QNetworkReply*, QAuthenticator*);
+	void onAuthenticationRequestSlot(QNetworkReply *, QAuthenticator *);
+
 private:
 	QNetworkAccessManager *m_netman;
 	QNetworkReply *m_netReply;
 	QObject *super;
-	
 };
 
 #endif // RESTAPICONSUMER_H

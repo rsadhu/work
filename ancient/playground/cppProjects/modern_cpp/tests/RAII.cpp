@@ -1,122 +1,122 @@
-#include<iostream>
-#include<memory>
+#include <iostream>
+#include <memory>
 
-#define PRINTF(obj)  std::cout <<typeid(obj).name()<<"::"<< __func__ << "\n";
+#define PRINTF(obj) std::cout << typeid(obj).name() << "::" << __func__ << "\n";
 
 class Base
 {
 public:
-  Base ()
+  Base()
   {
-  PRINTF (*this)
-  func();
+    PRINTF(*this)
+    func();
   }
 
-  void testFire(){
- func();
-}
- 
-
-  //copy constructor
-  Base (const Base & rhs)
+  void testFire()
   {
-  PRINTF (*this)}
+    func();
+  }
 
-  //move constructor
-  Base (Base && rhs)
-  {
-  PRINTF (*this)}
+  // copy constructor
+  Base(const Base &rhs){
+      PRINTF(*this)}
+
+  // move constructor
+  Base(Base &&rhs){
+      PRINTF(*this)}
 
   // assignment operator
-  Base & operator = (const Base & rhs)
+  Base &
+  operator=(const Base &rhs)
   {
-    PRINTF (*this) return *this;
+    PRINTF(*this)
+    return *this;
   }
 
   // move assignment operator
-  Base & operator = (Base && rhs)
+  Base &operator=(Base &&rhs)
   {
-    PRINTF (*this) return *this;
+    PRINTF(*this)
+    return *this;
   }
 
-
- // virtual 
- void func() {
-   PRINTF(*this);
-	}
-
-
-  virtual ~ Base ()
+  // virtual
+  void func()
   {
-  PRINTF (*this)}
-};
-
-
-class Der1:public Base
-{
-public:
-  Der1 ()
-  {
-  PRINTF (*this)
-  Base::func();
-  }
-   ~Der1 ()
-  {
-  PRINTF (*this)
+    PRINTF(*this);
   }
 
-  void func() 
+  virtual ~Base()
   {
- PRINTF(*this);
- }
+    PRINTF(*this)
+  }
 };
 
-class Der2:public Base
+class Der1 : public Base
 {
 public:
-  Der2 ()
+  Der1()
   {
-  PRINTF (*this)}
-   ~Der2 ()
+    PRINTF(*this)
+    Base::func();
+  }
+  ~Der1()
   {
-  PRINTF (*this)}
+    PRINTF(*this)
+  }
+
+  void func()
+  {
+    PRINTF(*this);
+  }
 };
 
-
-class GrandChild:public Der1, public Der2
+class Der2 : public Base
 {
 public:
-  GrandChild ()
+  Der2()
   {
-  PRINTF (*this)}
-   ~GrandChild ()
+    PRINTF(*this)
+  }
+  ~Der2()
   {
-  PRINTF (*this)}
+    PRINTF(*this)
+  }
 };
 
-int
-main (void)
+class GrandChild : public Der1, public Der2
 {
-//  Base *b = new Base ();
-  //Base anotherBPtrCPy = *b;
- // auto *anotherBPtr = std::move (b);
+public:
+  GrandChild()
+  {
+    PRINTF(*this)
+  }
+  ~GrandChild()
+  {
+    PRINTF(*this)
+  }
+};
 
- // std::unique_ptr < Base > ubptr = std::make_unique < Base > ();
+int main(void)
+{
+  //  Base *b = new Base ();
+  // Base anotherBPtrCPy = *b;
+  // auto *anotherBPtr = std::move (b);
 
-/*  Der1 *d1 = new Der1 ();
+  // std::unique_ptr < Base > ubptr = std::make_unique < Base > ();
 
-  Der2 *d2 = new Der2 ();
+  /*  Der1 *d1 = new Der1 ();
 
-  std::shared_ptr < GrandChild > sgptr = std::make_shared < GrandChild > ();
-*/
-  //delete b;
- // delete anotherBPtr;
+    Der2 *d2 = new Der2 ();
+
+    std::shared_ptr < GrandChild > sgptr = std::make_shared < GrandChild > ();
+  */
+  // delete b;
+  // delete anotherBPtr;
   // delete d1;
   // delete d2;
-   std::unique_ptr<Base> p = std::make_unique<Der1>();
-   p->testFire();
-  
-
+  std::unique_ptr<Base> p = std::make_unique<Der1>();
+  p->testFire();
 
   return 0;
 }

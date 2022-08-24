@@ -3,11 +3,11 @@
 
 namespace utl
 {
-class RecursionUtility
-{
- public:
- static void reverseString(char *s);
-};
+    class RecursionUtility
+    {
+    public:
+        static void reverseString(char *s);
+    };
 }
 
-#endif// RECURSION_UTILITY_H
+#endif // RECURSION_UTILITY_H

@@ -1,37 +1,36 @@
 #pragma once
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 class interface
 {
 public:
 	virtual void display() = 0;
-	//virtual ~interface();
+	// virtual ~interface();
 };
 
-class RealClass :public interface
+class RealClass : public interface
 {
 public:
 	void display();
-	~RealClass(){
-
+	~RealClass()
+	{
 	}
-
 };
 
-class ProxyClass:public interface 
+class ProxyClass : public interface
 {
 	interface *mInt;
+
 public:
 	ProxyClass()
 	{
 		this->mInt = new RealClass;
 	}
 
-	void  display();
+	void display();
 	~ProxyClass()
 	{
 		delete mInt;
 	}
 };
-

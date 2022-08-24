@@ -5,8 +5,10 @@
 #include <queue>
 #include <stack>
 
-namespace Trees {
-    struct Node {
+namespace Trees
+{
+    struct Node
+    {
     public:
         Node(int d = 0) : __data(d), __left(nullptr), __right(nullptr) {}
 
@@ -14,7 +16,8 @@ namespace Trees {
         Node *__left = nullptr, *__right = nullptr;
     };
 
-    class BST {
+    class BST
+    {
     public:
         BST &operator<(int d);
 
@@ -32,7 +35,8 @@ namespace Trees {
 
         int min() const { return min(__root); }
 
-        int totalSum() const {
+        int totalSum() const
+        {
             return (totalSumIter(__root) + totalSumRec(__root)) / 2;
         }
 
@@ -81,35 +85,45 @@ namespace Trees {
         Node *__root = nullptr;
     };
 
-    bool BST::isBST(Node *root) const {
-        if (!root) {
+    bool BST::isBST(Node *root) const
+    {
+        if (!root)
+        {
             return true;
         }
-        if (root->__left && root->__left->__data > root->__data) {
+        if (root->__left && root->__left->__data > root->__data)
+        {
             return false;
         }
 
-        if (root->__right && root->__right->__data < root->__data) {
+        if (root->__right && root->__right->__data < root->__data)
+        {
             return false;
         }
 
-        if (isBST(root->__left) || isBST(root->__right)) return false;
+        if (isBST(root->__left) || isBST(root->__right))
+            return false;
 
         return true;
     }
 
-    int BST::countRec(Node *root) {
-        if (root) {
+    int BST::countRec(Node *root)
+    {
+        if (root)
+        {
             return 1 + countRec(root->__left) + countRec(root->__right);
         }
         return 0;
     }
 
-    int BST::countIter(Node *root) {
+    int BST::countIter(Node *root)
+    {
         std::stack<Node *> stack;
         int count = 0;
-        while (root || !stack.empty()) {
-            while (root) {
+        while (root || !stack.empty())
+        {
+            while (root)
+            {
                 stack.push(root);
                 root = root->__left;
             }
@@ -122,19 +136,24 @@ namespace Trees {
         return count;
     }
 
-    int BST::totalSumRec(Node *root) {
-        if (root) {
+    int BST::totalSumRec(Node *root)
+    {
+        if (root)
+        {
             return root->__data + totalSumRec(root->__left) +
                    totalSumRec(root->__right);
         }
         return 0;
     }
 
-    int BST::totalSumIter(Node *root) {
+    int BST::totalSumIter(Node *root)
+    {
         std::stack<Node *> stack;
         int sum = 0;
-        while (root || !stack.empty()) {
-            while (root) {
+        while (root || !stack.empty())
+        {
+            while (root)
+            {
                 stack.push(root);
                 root = root->__left;
             }
@@ -157,36 +176,55 @@ namespace Trees {
 
     Node *BST::createBST(std::vector<int>, std::vector<int>) {}
 
-    Node *BST::createBSTRec(Node *root, int d) {
-        if (!root) {
+    Node *BST::createBSTRec(Node *root, int d)
+    {
+        if (!root)
+        {
             return new Node(d);
         }
-        if (d < root->__data) {
+        if (d < root->__data)
+        {
             root->__left = createBSTRec(root->__left, d);
-        } else {
+        }
+        else
+        {
             root->__right = createBSTRec(root->__right, d);
         }
     }
 
-    BST &BST::operator<(int d) {
-        if (!__root) {
+    BST &BST::operator<(int d)
+    {
+        if (!__root)
+        {
             __root = new Node(d);
-        } else {
+        }
+        else
+        {
             //__root = createBSTRec(__root, d); for recursive coding
 
             Node *tra = __root;
-            while (tra) {
-                if (tra->__data < d) {
-                    if (tra->__right) {
+            while (tra)
+            {
+                if (tra->__data < d)
+                {
+                    if (tra->__right)
+                    {
                         tra = tra->__right;
-                    } else {
+                    }
+                    else
+                    {
                         tra->__right = new Node(d);
                         break;
                     }
-                } else {
-                    if (tra->__left) {
+                }
+                else
+                {
+                    if (tra->__left)
+                    {
                         tra = tra->__left;
-                    } else {
+                    }
+                    else
+                    {
                         tra->__left = new Node(d);
                         break;
                     }
@@ -196,7 +234,8 @@ namespace Trees {
         return *this;
     }
 
-    void BST::dfs() {
+    void BST::dfs()
+    {
         std::cout << "\n inOrderRec \n";
         inOrderRec(__root);
         std::cout << "\n preOrderRec \n";
@@ -216,46 +255,59 @@ namespace Trees {
         postOrderIter(__root);
     }
 
-    void BST::bfs() {
+    void BST::bfs()
+    {
         std::queue<Node *> queue;
         queue.push(__root);
-        while (!queue.empty()) {
+        while (!queue.empty())
+        {
             Node *cur = queue.front();
             std::cout << cur->__data << " ";
-            if (cur->__left) queue.push(cur->__left);
-            if (cur->__right) queue.push(cur->__right);
+            if (cur->__left)
+                queue.push(cur->__left);
+            if (cur->__right)
+                queue.push(cur->__right);
             queue.pop();
         }
     }
 
-    void BST::inOrderRec(Node *root) {
-        if (root) {
+    void BST::inOrderRec(Node *root)
+    {
+        if (root)
+        {
             inOrderRec(root->__left);
             std::cout << root->__data << " ";
             inOrderRec(root->__right);
         }
     }
 
-    void BST::preOrderRec(Node *root) {
-        if (root) {
+    void BST::preOrderRec(Node *root)
+    {
+        if (root)
+        {
             std::cout << root->__data << " ";
             preOrderRec(root->__left);
             preOrderRec(root->__right);
         }
     }
 
-    void BST::postOrderRec(Node *root) {
-        if (root) {
+    void BST::postOrderRec(Node *root)
+    {
+        if (root)
+        {
             postOrderRec(root->__left);
             postOrderRec(root->__right);
             std::cout << root->__data << " ";
         }
     }
 
-    void BST::inOrderIter(Node *root) {
+    void BST::inOrderIter(Node *root)
+    {
         std::stack<Node *> stack;
-        while (root || !stack.empty()) {
-            while (root) {
+        while (root || !stack.empty())
+        {
+            while (root)
+            {
                 stack.push(root);
                 root = root->__left;
             }
@@ -271,38 +323,47 @@ namespace Trees {
 
     void BST::postOrderIter(Node *root) {}
 
-    int BST::max(Node *root) {
-        while (root->__right) {
+    int BST::max(Node *root)
+    {
+        while (root->__right)
+        {
             root = root->__right;
         }
         return root->__data;
     }
 
-    int BST::min(Node *root) {
-        while (root->__left) {
+    int BST::min(Node *root)
+    {
+        while (root->__left)
+        {
             root = root->__left;
         }
         return root->__data;
     }
 
-    bool BST::isInBST(int ele) const {
+    bool BST::isInBST(int ele) const
+    {
         std::stack<Node *> st;
         Node *cur = __root;
 
-        while (cur || !st.empty()) {
-            while (cur) {
-                if (cur->__data == ele) return true;
+        while (cur || !st.empty())
+        {
+            while (cur)
+            {
+                if (cur->__data == ele)
+                    return true;
                 st.push(cur);
                 cur = cur->__left;
             }
 
             cur = st.top();
             st.pop();
-            if (cur->__data == ele) return true;
+            if (cur->__data == ele)
+                return true;
             cur = cur->__right;
         }
         return false;
     }
 
-}  // namespace Trees
+} // namespace Trees
 #endif

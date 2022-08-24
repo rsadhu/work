@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 
-
 /*
 You are given an array prices where prices[i] is the price of a given stock on the ith day.
 
@@ -14,21 +13,17 @@ Return the maximum profit you can achieve from this transaction. If you cannot a
 
  */
 
-
-//prices = { 10, 19, 20, 15, 12, 1}
+// prices = { 10, 19, 20, 15, 12, 1}
 int max_profil(std::vector<int> &prices)
 {
-     int min = INT_MAX, max= 0;
-        for (auto it: prices)
-        {
-            min = std::min(it, min);
-            max = std::max(max, it-min);
-        }
-        return max;
+    int min = INT_MAX, max = 0;
+    for (auto it : prices)
+    {
+        min = std::min(it, min);
+        max = std::max(max, it - min);
+    }
+    return max;
 }
-
-
-
 
 /*
 We say that two strings are twins if they have the same number of letters
@@ -40,15 +35,14 @@ the capital L. Write a function isTwin that returns true if two strings are
 twins and
 false otherwise.
 */
-bool isTwin(std::string a, std::string b){
-// write your code here
+bool isTwin(std::string a, std::string b)
+{
+    // write your code here
 }
-
-
 
 int main(int argc, char argv[][3])
 {
-    std::vector<int> prices = { 10, 19, 20, 15, 12, 1};
-    std::cout<<max_profil(prices);
+    std::vector<int> prices = {10, 19, 20, 15, 12, 1};
+    std::cout << max_profil(prices);
     return 0;
 }

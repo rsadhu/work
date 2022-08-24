@@ -1,27 +1,24 @@
-#include"stdafx.h"
-#include"BST.h"
-#include<iostream>
-#include<stack>
-#include<queue>
+#include "stdafx.h"
+#include "BST.h"
+#include <iostream>
+#include <stack>
+#include <queue>
 
 using namespace std;
 using namespace TREES;
 
-BST::BST() :mRoot(0)
+BST::BST() : mRoot(0)
 {
-
 }
-
 
 BST::~BST()
 {
 }
 
-
 BST &BST::operator<(int d)
 {
-	//addElement(d); //iterative method of Adding Elements
-	mRoot =  appendElement(mRoot, d); // recursive method of adding elements
+	// addElement(d); //iterative method of Adding Elements
+	mRoot = appendElement(mRoot, d); // recursive method of adding elements
 	return *this;
 }
 
@@ -42,34 +39,34 @@ void BST::addElement(int d)
 			{
 				if (tra->left)
 					tra = tra->left;
-				else {
+				else
+				{
 					tra->left = new Node(d);
 					break;
 				}
 			}
-			else
-				if (d > tra->mData)
+			else if (d > tra->mData)
+			{
+				if (tra->right)
 				{
-					if (tra->right)
-					{
-						tra = tra->right;
-					}
-					else
-					{
-						tra->right = new Node(d);
-						break;
-					}
+					tra = tra->right;
 				}
+				else
+				{
+					tra->right = new Node(d);
+					break;
+				}
+			}
 		}
 	}
 }
 
-Node * BST::appendElement(Node *root, int data)
+Node *BST::appendElement(Node *root, int data)
 {
 	if (root)
 	{
 		if (data > root->mData)
-			root->right= appendElement(root->right, data);
+			root->right = appendElement(root->right, data);
 		else if (data < root->mData)
 			root->left = appendElement(root->left, data);
 	}
@@ -153,12 +150,13 @@ void BST::postOrderRec(Node *root)
 
 void BST::inOrderIter(Node *root)
 {
-	stack<Node *>st;
-	//Node *root = mRoot;
+	stack<Node *> st;
+	// Node *root = mRoot;
 
 	while (root || !st.empty())
 	{
-		if (root) {
+		if (root)
+		{
 			st.push(root);
 			root = root->left;
 		}
@@ -172,11 +170,10 @@ void BST::inOrderIter(Node *root)
 	}
 }
 
-
 void BST::preOrderIter(Node *root)
 {
-	stack<Node*> st;
-	//Node *root = mRoot;
+	stack<Node *> st;
+	// Node *root = mRoot;
 	st.push(root);
 
 	while (!st.empty())
@@ -187,14 +184,14 @@ void BST::preOrderIter(Node *root)
 		if (root->right)
 			st.push(root->right);
 		if (root->left)
-			st.push(root->left);	
+			st.push(root->left);
 	}
 }
 
 void BST::postOrderIter(Node *root)
 {
-	stack<Node *>st1, st2;
-	//Node *root = mRoot;
+	stack<Node *> st1, st2;
+	// Node *root = mRoot;
 	st1.push(root);
 
 	while (!st1.empty())
@@ -208,7 +205,6 @@ void BST::postOrderIter(Node *root)
 			st1.push(root->right);
 	}
 
-
 	while (!st2.empty())
 	{
 		cout << st2.top()->mData << " ";
@@ -218,26 +214,22 @@ void BST::postOrderIter(Node *root)
 
 void BST::spiralOrder(Node *root)
 {
-	queue<Node *>q1, q2;
-	//Node *root = mRoot;
+	queue<Node *> q1, q2;
+	// Node *root = mRoot;
 	q1.push(root);
 	while (!q1.empty() || q2.empty())
 	{
-
 	}
 }
 
-
 void BST::dfs(Node *root)
 {
-
 }
-
 
 void BST::bfs(Node *root)
 {
-	queue<Node*>q;
-	//Node *root = mRoot;
+	queue<Node *> q;
+	// Node *root = mRoot;
 	q.push(root);
 	while (!q.empty())
 	{
@@ -253,13 +245,13 @@ void BST::bfs(Node *root)
 	}
 }
 
-int arr[1000] = { 0 };
+int arr[1000] = {0};
 int cnt = 0;
 void BST::printAllPaths(Node *root)
 {
 	if (root == NULL)
 		return;
-	if (root->left == NULL&& root->right == NULL)
+	if (root->left == NULL && root->right == NULL)
 	{
 		for (int i = 0; i < cnt; i++)
 		{
@@ -272,7 +264,7 @@ void BST::printAllPaths(Node *root)
 		arr[cnt++] = root->mData;
 		printAllPaths(root->left);
 		printAllPaths(root->right);
-	}	
+	}
 }
 
 void BST::deleteNode(int data)
@@ -281,17 +273,14 @@ void BST::deleteNode(int data)
 	Node *act = 0;
 	if (par->mData > data)
 		act = par->left;
-	else
-		if (par->mData < data)
-			act = par->right;
+	else if (par->mData < data)
+		act = par->right;
 	while (par)
 	{
 		if (par->mData == data)
 		{
-
 		}
-		else 
-		if(data > par->mData)
+		else if (data > par->mData)
 		{
 			act = par->right;
 		}

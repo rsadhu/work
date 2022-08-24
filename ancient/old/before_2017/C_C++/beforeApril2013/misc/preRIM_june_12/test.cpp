@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 #define MAX 40
@@ -6,55 +6,58 @@ using namespace std;
 class A
 {
 public:
-  A ()
+  A()
   {
     c++;
-    cout << "\nA::A\n" << c << endl;
+    cout << "\nA::A\n"
+         << c << endl;
     for (int i = 0; i < MAX; i++)
       arr[i] = i * 3;
   }
-  virtual ~ A ()
+  virtual ~A()
   {
     cout << "A::~A" << c-- << endl;
-    //call ();
+    // call ();
   }
-  virtual void call ()
+  virtual void call()
   {
     cout << "A::call\n";
   }
-  A (const A & rhs)
+  A(const A &rhs)
   {
-    cout << "A::copy\n" << &rhs;
+    cout << "A::copy\n"
+         << &rhs;
   }
-  A & operator  = (const A & rhs)
+  A &operator=(const A &rhs)
   {
     cout << " A::operator = \n";
     c = rhs.c * 11;
     return *this;
   }
-  int operator [] (int unsigned i)
+  int operator[](int unsigned i)
   {
     if (i >= 0 && i < MAX)
       return arr[i];
   }
-  //virtual void display () = 0;
-  bool operator == (const A & rhs)
+  // virtual void display () = 0;
+  bool operator==(const A &rhs)
   {
     if (this == &rhs)
       return true;
     return false;
   }
 
-  virtual void overloaded (int x, int y = 9)
+  virtual void overloaded(int x, int y = 9)
   {
     cout << "\nA :: overloaded 1\n";
   }
-  virtual void overloaded (int x, int y, int z)
+  virtual void overloaded(int x, int y, int z)
   {
     cout << "\nA :: overloaded -3\n";
   }
+
 protected:
-  static void check ()
+  static void check()
   {
     cout << " A::static :: check\n";
   }
@@ -63,116 +66,114 @@ protected:
 };
 
 int
-  A::c = 0;
-
-
+    A::c = 0;
 
 class
-  B:
-  public
-  A
+    B : public A
 {
 public:
   void
-  overloaded (int x, int y, int z)
+  overloaded(int x, int y, int z)
   {
     cout << "\n B:: overlaoded -3\n";
   }
-  //void overloaded(int x , int y=0){ cout<<"\n B:: overlaoded -2\n";}
+  // void overloaded(int x , int y=0){ cout<<"\n B:: overlaoded -2\n";}
   void
-  overloaded (int x)
+  overloaded(int x)
   {
     cout << "\n B:: overlaoded -1\n";
   }
+
 public:
-B ():A ()
+  B() : A()
   {
-    cout << " B::B\n" << this << endl;
+    cout << " B::B\n"
+         << this << endl;
     //  call ();
   }
-  ~B ()
+  ~B()
   {
     cout << "B::~B\n";
-    //call ();
+    // call ();
   }
 
   virtual void
-  display ()
+  display()
   {
     cout << "B::Display\n";
   }
-  B (const B & rhs)
+  B(const B &rhs)
   {
     cout << " B::B Copy \n";
-
   }
-  B & operator = (const B & rhs)
+  B &operator=(const B &rhs)
   {
     cout << "\nB:: operator\n";
     return *this;
   }
   void
-  accessor ();
+  accessor();
+
 protected:
 private:
   virtual void
-  call ()
+  call()
   {
-    cout << "B::call :: A::c :: \n" << c;
+    cout << "B::call :: A::c :: \n"
+         << c;
   }
 };
 
-
-
-void
-B::accessor ()
+void B::accessor()
 {
-  A::check ();
+  A::check();
 }
 
-int
-main (void)
+int main(void)
 {
-//  B b;
-  //b.accessor ();
-  //A *a = new B ();
-  //a->call ();
-//  A c[10];// = new A;
+  //  B b;
+  // b.accessor ();
+  // A *a = new B ();
+  // a->call ();
+  //  A c[10];// = new A;
   //*a = *c;
-  //a->call ();
-  //delete a;
-//A *a = new A;
-//  a->~A();
+  // a->call ();
   // delete a;
-/*  A b;
-  if (b == b)
-    cout << " same ";
-  else
-    cout << " n ottttttttttttt";
+  // A *a = new A;
+  //   a->~A();
+  //  delete a;
+  /*  A b;
+    if (b == b)
+      cout << " same ";
+    else
+      cout << " n ottttttttttttt";
 
- for(int i=0;i< MAX;i++)
-  cout<<" :: "<< b[i];
-*/
+   for(int i=0;i< MAX;i++)
+    cout<<" :: "<< b[i];
+  */
   /*A *a = new B;
   a->overloaded (4);
   a->overloaded (4, 3);
   a->overloaded (4, 3, 4);
 */
- class B
-{
- public:
-  	B(){ s= "testng";a =9;}
-	void display(void)
-{
- cout<<" a:: "<<a<<endl;
-}
-	int a;
-	char *s;
-};
- B *b = NULL;
- b->display();
- delete b;
-  
+  class B
+  {
+  public:
+    B()
+    {
+      s = "testng";
+      a = 9;
+    }
+    void display(void)
+    {
+      cout << " a:: " << a << endl;
+    }
+    int a;
+    char *s;
+  };
+  B *b = NULL;
+  b->display();
+  delete b;
 
   return 0;
 }

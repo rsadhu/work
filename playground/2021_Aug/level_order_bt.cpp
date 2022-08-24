@@ -1,18 +1,21 @@
 #include <queue>
 
-struct Node {
+struct Node
+{
     int val;
-    Node* left = nullptr;
-    Node* right = nullptr;
+    Node *left = nullptr;
+    Node *right = nullptr;
 };
 
-std::queue<Node*> q1, q2;
+std::queue<Node *> q1, q2;
 
 q1.push(root);
 
-while (!q1.empty()) {
+while (!q1.empty())
+{
     std::vector<int> v;
-    while (!q1.empty()) {
+    while (!q1.empty())
+    {
         v.push_back(q1.front()->val);
         auto tra = q1.front();
         q1.pop();
@@ -21,12 +24,15 @@ while (!q1.empty()) {
 
     res.push_back(v);
 
-    while (!q2.empty()) {
+    while (!q2.empty())
+    {
         root = q2.front();
-        if (root->left) {
+        if (root->left)
+        {
             q1.push(root->left);
         }
-        if (root->right) {
+        if (root->right)
+        {
             q1.push(root->right);
         }
         q2.pop();

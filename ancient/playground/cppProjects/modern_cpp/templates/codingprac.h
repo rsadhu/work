@@ -1,7 +1,7 @@
 #ifndef CODINGPRAC_H
 #define CODINGPRAC_H
 
-#include<string>
+#include <string>
 
 class codingPrac
 {

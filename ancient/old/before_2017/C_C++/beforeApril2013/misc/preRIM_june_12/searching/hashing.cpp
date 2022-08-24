@@ -1,8 +1,8 @@
-#include<stdio.>
+#include <stdio.>
 
 class Node
 {
-	protected:
+protected:
 	int index;
 	long int value;
 };
@@ -11,11 +11,12 @@ class HashTable
 {
 
 	public;
-       	int hashFunction(long int key);
-	private:
+	int hashFunction(long int key);
+
+private:
 	void linearProbing();
 	void chanining();
-	private:
-	Node m_hash[100];
 
+private:
+	Node m_hash[100];
 };

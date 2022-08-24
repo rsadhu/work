@@ -2,7 +2,7 @@
 #define RESTAPICONSUMER_H
 
 #include <QObject>
-#include<QNetWorkReply.h>
+#include <QNetWorkReply.h>
 
 class RestApiConsumer : public QObject
 {
@@ -16,6 +16,7 @@ public:
 	void WithDraw();
 	void ChangePin();
 	void MiniStatement();
+
 private:
 	void slotReplyFinished(QNetworkReply *);
 	void slotReadyRead();

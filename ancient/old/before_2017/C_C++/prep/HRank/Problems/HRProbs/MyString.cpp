@@ -9,14 +9,13 @@ MyString::MyString(char *src)
 	mLength = strlen(src);
 }
 
-
 MyString::MyString(const MyString &rhs)
 {
 	mString = _strdup(rhs.mString);
 	mLength = rhs.mLength;
 }
 
-MyString & MyString::operator = (const MyString &rhs)
+MyString &MyString::operator=(const MyString &rhs)
 {
 	if (this != &rhs)
 	{
@@ -34,7 +33,6 @@ MyString::~MyString()
 	free(mString);
 	mLength = 0;
 }
-
 
 int MyString::length()
 {

@@ -77,7 +77,8 @@ void test_prf1()
     for (int i = 0; i < 16; i++)
         aa.uuid[i] = (uint8_t)65 + i;
 
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 3; i++)
+    {
         aa.entry[i].resX = 40;
         aa.entry[i].resY = 50;
         aa.entry[i].packedSize = 10;
@@ -86,9 +87,10 @@ void test_prf1()
         for (int j = 0; j < 12; j++)
             aa.entry[i].refTemperature[j] = 10 + j;
 
-        uint8_t* data = new uint8_t[aa.entry[i].packedSize];
+        uint8_t *data = new uint8_t[aa.entry[i].packedSize];
 
-        for (int k = 0; k < aa.entry[i].packedSize; k++) {
+        for (int k = 0; k < aa.entry[i].packedSize; k++)
+        {
             data[k] = (93 + k);
         }
 
@@ -108,22 +110,20 @@ void test_prf1()
 //     myData.start_deserialization(file_name);
 // }
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
 
-    
-
-    //test_pbas(file_name);
-    //test_pcic(file_name);
-    //test_pcii(file_name);
-    //test_pcvc(file_name);
-    ///test_pcve(file_name);
-    //test_pcvi(file_name);
-    //test_pdcl(file_name);
-    //test_pmpc(file_name);
-    //test_preg(file_name);
+    // test_pbas(file_name);
+    // test_pcic(file_name);
+    // test_pcii(file_name);
+    // test_pcvc(file_name);
+    /// test_pcve(file_name);
+    // test_pcvi(file_name);
+    // test_pdcl(file_name);
+    // test_pmpc(file_name);
+    // test_preg(file_name);
     test_prf1();
-    //test_prf2(file_name);
+    // test_prf2(file_name);
 
     return 0;
 }

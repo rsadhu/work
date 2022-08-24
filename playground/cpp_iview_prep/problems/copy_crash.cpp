@@ -53,32 +53,29 @@ class Test
 {
     char *m_data = nullptr;
     size_t m_len = 0;
-    public:
 
+public:
     Test(std::string str)
     {
         m_len = str.length();
-        m_data = new char [str.length()];
+        m_data = new char[str.length()];
         memcpy(m_data, str.c_str(), m_len);
     }
 
     ~Test()
     {
-        std::cout<<"\n~Test\n";
+        std::cout << "\n~Test\n";
         if (m_data)
-            delete [] m_data;
+            delete[] m_data;
         m_data = nullptr;
         m_len = 0;
     }
 
     void display()
     {
-        std::cout<<" \n data is " << m_data <<"\n";
+        std::cout << " \n data is " << m_data << "\n";
     }
 };
-
-
-
 
 void test(Test u)
 {
@@ -92,7 +89,7 @@ int main(void)
 
     test(t);
 
-    Test z ("Somu");
+    Test z("Somu");
     z = t;
     z.display();
 

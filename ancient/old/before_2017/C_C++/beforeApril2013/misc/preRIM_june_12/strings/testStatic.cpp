@@ -1,38 +1,33 @@
-#include<stdio.h>
-
+#include <stdio.h>
 
 class A
 {
 public:
-  A ()
+  A()
   {
-    printf ("\n A::A\n");
+    printf("\n A::A\n");
   }
-   ~A ()
+  ~A()
   {
-    printf ("\nA::~A\n");
+    printf("\nA::~A\n");
   }
 };
 
-void
-foo ()
+void foo()
 {
   static A a;
-
 }
 
-
-int
-main (void)
+int main(void)
 {
-  printf ("\n main::main\n");
-  foo ();
+  printf("\n main::main\n");
+  foo();
   char buf[20];
-  fgets (buf, 20, stdin);
-  printf ("\n %s\n", buf);
-  foo ();
-  fflush (stdout);
-  fgets (buf, 0, stdin);
-  printf ("\n %s\n", buf);
+  fgets(buf, 20, stdin);
+  printf("\n %s\n", buf);
+  foo();
+  fflush(stdout);
+  fgets(buf, 0, stdin);
+  printf("\n %s\n", buf);
   return 0;
 }

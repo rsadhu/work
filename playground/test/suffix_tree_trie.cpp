@@ -10,9 +10,10 @@
 using namespace std;
 
 // A Suffix Trie (A Trie of all suffixes) Node
-class SuffixTrieNode {
+class SuffixTrieNode
+{
 public:
-    SuffixTrieNode* children[MAX_CHAR];
+    SuffixTrieNode *children[MAX_CHAR];
     SuffixTrieNode() // Constructor
     {
         // Initialize all child pointers as nullptr
@@ -26,9 +27,10 @@ public:
 };
 
 // A Trie of all suffixes
-class SuffixTrie {
-    SuffixTrieNode* root;
-    int _countNodesInTrie(SuffixTrieNode*);
+class SuffixTrie
+{
+    SuffixTrieNode *root;
+    int _countNodesInTrie(SuffixTrieNode *);
 
 public:
     // Constructor (Builds a trie of suffies of the given text)
@@ -52,7 +54,8 @@ public:
 void SuffixTrieNode::insertSuffix(string s)
 {
     // If string has more characters
-    if (s.length() > 0) {
+    if (s.length() > 0)
+    {
         // Find the first character and convert it
         // into 0-25 range.
         char cIndex = s.at(0) - 'a';
@@ -68,14 +71,15 @@ void SuffixTrieNode::insertSuffix(string s)
 }
 
 // A recursive function to count nodes in trie
-int SuffixTrie::_countNodesInTrie(SuffixTrieNode* node)
+int SuffixTrie::_countNodesInTrie(SuffixTrieNode *node)
 {
     // If all characters of pattern have been processed,
     if (node == nullptr)
         return 0;
 
     int count = 0;
-    for (int i = 0; i < MAX_CHAR; i++) {
+    for (int i = 0; i < MAX_CHAR; i++)
+    {
         // if children is not nullptr then find count
         // of all nodes in this subtrie
         if (node->children[i] != nullptr)
@@ -105,9 +109,11 @@ int countDistinct_brute(std::string str)
 {
     std::set<std::string> lookup;
     int cnt = 0;
-    for (int i = 0; i < str.length(); i++) {
+    for (int i = 0; i < str.length(); i++)
+    {
 
-        for (int j = i + 1; j < str.length(); j++) {
+        for (int j = i + 1; j < str.length(); j++)
+        {
             auto sub_str = str.substr(i, j);
 
             lookup.insert(sub_str);
@@ -124,7 +130,7 @@ int countDistinct_brute(std::string str)
 }
 
 // Driver program to test above function
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     string str = "asjhjahsjahjshjdhsjhdjshdsjkjdksjdksjdksjkdsjkdsjdksjdksjkdjskdjkdjshdjshdjshjdshjababhjshjcxhjchxjoiwuqyuwqyuwya";
     if (argc == 2)

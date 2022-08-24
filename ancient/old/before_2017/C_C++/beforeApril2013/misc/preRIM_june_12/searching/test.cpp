@@ -1,59 +1,57 @@
-#include<stdio.h>
-
+#include <stdio.h>
 
 class A
 {
 
 public:
-  A ():a (0), b (0), c (0)
+  A() : a(0), b(0), c(0)
   {
-    printf ("\nA::A\n");
+    printf("\nA::A\n");
   }
-  void set (int b)
+  void set(int b)
   {
     c = b;
-    printf ("\n A::A\n %d %d %d ", a, this->b, c);
+    printf("\n A::A\n %d %d %d ", a, this->b, c);
   }
   int a;
+
 protected:
   int b;
+
 private:
   int c;
 };
 
-
-
-class B:public A
+class B : public A
 {
 public:
-  B ()
+  B()
   {
-    printf ("\nB::B\n");
+    printf("\nB::B\n");
   }
-  void display ()
+  void display()
   {
     a = 10;
     b = 20;
-    printf ("\n %d %d \n", a, b);
-    set (99);
+    printf("\n %d %d \n", a, b);
+    set(99);
   }
 };
 
 void foo(int &d)
 {
-	d=100;
+  d = 100;
 }
 
-int
-main (void)
+int main(void)
 {
   B b;
-  b.display ();
-  int y=9;
-  int &i=y;
-  i=0;
-  printf("\n %d %d \n",i,y);
+  b.display();
+  int y = 9;
+  int &i = y;
+  i = 0;
+  printf("\n %d %d \n", i, y);
   foo(i);
-  printf("\n %d  %d\n",i,y);
+  printf("\n %d  %d\n", i, y);
   return 0;
 }

@@ -1,23 +1,23 @@
 #include <atomic>
 #include <iostream>
 
-class Test {
+class Test
+{
 public:
-    Test() { }
+    Test() {}
     Test(int d, std::string rhs)
-        : m_data(d)
-        , m_str(rhs)
+        : m_data(d), m_str(rhs)
     {
     }
 
-    Test(const Test& rhs)
+    Test(const Test &rhs)
     {
-<<<<<<< HEAD
-=======
-
->>>>>>> 04cbe58 (add cpp iview folder)
     }
-    std::string str() const { return m_str; }
+
+    std::string str() const
+    {
+        return m_str;
+    }
     int data() const { return m_data; }
 
 private:

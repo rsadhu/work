@@ -13,8 +13,8 @@ int main()
     for (int r = 0; r < height; r++)
         for (int c = 0; c < width; c++)
             cout << "(" << r << "," << c << ") ="
-                << " R" << (int)src(c,r,0,0)
-                << " G" << (int)src(c,r,0,1)
-                << " B" << (int)src(c,r,0,2) << endl;
+                 << " R" << (int)src(c, r, 0, 0)
+                 << " G" << (int)src(c, r, 0, 1)
+                 << " B" << (int)src(c, r, 0, 2) << endl;
     return 0;
 }

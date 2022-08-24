@@ -1,6 +1,7 @@
 #include <iostream>
 
-struct Data {
+struct Data
+{
     char ch;
     short s;
     int num;

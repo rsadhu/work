@@ -2,175 +2,155 @@
 #include <string>
 #include <vector>
 
-
-
 struct comp
 {
   char z;
   int x;
   char y;
-//  std::string str;
+  //  std::string str;
 };
 
 using Data = struct comp;
 
-
-Data
-setData (Data & d)
+Data setData(Data &d)
 {
   Data t;
   t = d;
-//memset (d,t, sizeof(d));
+  // memset (d,t, sizeof(d));
   return t;
 }
-
-
 
 class Base
 {
 public:
-  Base ()
+  Base()
   {
     std::cout << "\nBase::Base\n";
   }
 
-  Base (const Base & rhs)
+  Base(const Base &rhs)
   {
     std::cout << "\nBase::copy\n";
   }
 
-  Base (Base && rhs)
+  Base(Base &&rhs)
   {
-    std::cout << "\n Base::move\n";;
+    std::cout << "\n Base::move\n";
+    ;
   }
-  virtual void foo (int a)
+  virtual void foo(int a)
   {
     std::cout << "Base : " << a << "\n";
   }
 
-  virtual ~ Base ()
+  virtual ~Base()
   {
     std::cout << "\n~Base\n";
   }
-
 };
 
-class Der:public Base
+class Der : public Base
 {
 public:
-
-  void foo (int a)
+  void foo(int a)
   {
     std::cout << "Der" << a << "\n";
   }
 
-   ~Der ()
+  ~Der()
   {
     std::cout << "\n ~Der\n";
   }
 };
 
-
-Base
-copy ()
+Base copy()
 {
-  return Base ();
+  return Base();
 }
 
-void
-process ()
+void process()
 {
 }
 
-
-
-template < typename FirstPara, typename ... Params > void
-process (FirstPara firstArg, Params ... args)
+template <typename FirstPara, typename... Params>
+void process(FirstPara firstArg, Params... args)
 {
   std::cout << "parameter pack gesendet:  " << firstArg << "\n";
 
-  process (args ...);
-
+  process(args...);
 }
 
 class BBase
 {
 public:
-  virtual void foo (void)
+  virtual void foo(void)
   {
     std::cout << "\nBBase::foo\n";
   }
 
-  virtual void run (void)
+  virtual void run(void)
   {
-
-
   }
 
-  void start ()
+  void start()
   {
-    foo ();
+    foo();
   }
 };
 
-class DDer:public BBase
+class DDer : public BBase
 {
 public:
-  void foo (void)
+  void foo(void)
   {
     std::cout << "\nDDer::foo\n";
   }
 
-  void run ()
+  void run()
   {
-    foo ();
+    foo();
   }
-
 };
 
-
-class DDer1:public DDer
+class DDer1 : public DDer
 {
 public:
-  void foo ()
+  void foo()
   {
     std::cout << " DDer1::foo\n";
   }
-
 };
 
-int
-main (void)
+int main(void)
 {
 
   Data tt;
   tt.x = 1;
   tt.y = 'b';
   tt.z = 'a';
-  auto xx = setData (tt);
+  auto xx = setData(tt);
   std::cout << xx.x << "\n";
   std::cout << xx.y << "\n";
   std::cout << xx.z << "\n";
 
-  std::cout << "char-> " << sizeof (char) << "\n";
-  std::cout << "int-> " << sizeof (int) << "\n";
-  std::cout << "double-> " << sizeof (double) << "\n";
-  std::cout << "float-> " << sizeof (float) << "\n";
-  std::cout << "string-> " << sizeof (std::string) << "\n";
+  std::cout << "char-> " << sizeof(char) << "\n";
+  std::cout << "int-> " << sizeof(int) << "\n";
+  std::cout << "double-> " << sizeof(double) << "\n";
+  std::cout << "float-> " << sizeof(float) << "\n";
+  std::cout << "string-> " << sizeof(std::string) << "\n";
 
-  std::cout << "\nsize is" << sizeof (tt);
+  std::cout << "\nsize is" << sizeof(tt);
 
-  std::cout << "\nsizeof BBase -> " << sizeof (BBase) << "\n";
-  std::cout << "\nsizeof DDer -> " << sizeof (DDer) << "\n";
+  std::cout << "\nsizeof BBase -> " << sizeof(BBase) << "\n";
+  std::cout << "\nsizeof DDer -> " << sizeof(DDer) << "\n";
 
+  Base b = copy();
 
-  Base b = copy ();
+  process("hello", 1234, 4.555, 3.1f);
 
-  process ("hello", 1234, 4.555, 3.1f);
-
-  BBase *bb = new DDer1 ();
-  bb->start ();
-  bb->run ();
+  BBase *bb = new DDer1();
+  bb->start();
+  bb->run();
 
   return 0;
 }

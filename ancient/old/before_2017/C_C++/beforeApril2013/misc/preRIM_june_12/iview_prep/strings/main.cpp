@@ -1,11 +1,9 @@
-#include"stringmanipulation.h"
+#include "stringmanipulation.h"
 
-
-int
-main (void)
+int main(void)
 {
-  String *p = new DerString ();
-  p->display ();
+  String *p = new DerString();
+  p->display();
   delete p;
   return 0;
 }

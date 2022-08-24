@@ -1,25 +1,24 @@
 #ifndef LIST_H
 #define LIST_H
 
-#include<exception>
-#include<string>
+#include <exception>
+#include <string>
 
-template<typename T>
+template <typename T>
 
 class Node
 {
 public:
-    Node(T d): data(d), left(nullptr),right(nullptr){}
-    Node *right=nullptr,*left=nullptr;
+    Node(T d) : data(d), left(nullptr), right(nullptr) {}
+    Node *right = nullptr, *left = nullptr;
     T data;
 };
 
-
-template<typename T>
+template <typename T>
 class List
 {
 public:
-    List(){}
+    List() {}
     void push_back(T);
     void push_front(T);
     void pop_back();
@@ -37,12 +36,11 @@ public:
     List end();
 
 private:
-    Node<T> *m_root=nullptr;
+    Node<T> *m_root = nullptr;
 };
 
-
-//template<typename T>
-//T List<T>::operator *()
+// template<typename T>
+// T List<T>::operator *()
 //{
 ////    if(m_root)
 ////        return m_root->data;
@@ -50,95 +48,90 @@ private:
 
 //}
 
-//template<typename T>
-//List & List<T>::operator &()
+// template<typename T>
+// List & List<T>::operator &()
 //{
 
 //}
 
-//template<typename T>
-//void List<T>:: operator ++()
+// template<typename T>
+// void List<T>:: operator ++()
 //{
 
 //}
 
-//template<typename T>
-//bool List<T>::operator !=()
+// template<typename T>
+// bool List<T>::operator !=()
 //{
 
 //}
 
-//template<typename T>
-//bool List<T>::operator ==()
+// template<typename T>
+// bool List<T>::operator ==()
 //{
 
 //}
 
-template<typename T>
+template <typename T>
 List<T> List<T>::begin()
 {
-
 }
 
-template<typename T>
+template <typename T>
 List<T> List<T>::end()
 {
-
 }
 
-
-
-template<typename T>
+template <typename T>
 void List<T>::push_back(T d)
 {
-    Node <T> *tmp =  new Node<T>(d);
-    if(m_root)
+    Node<T> *tmp = new Node<T>(d);
+    if (m_root)
     {
-        Node<T> *tra =  m_root;
-        for(;tra->right;tra =  tra->right);
-        tra->right =  tmp;
-        tmp->left  = tra;
+        Node<T> *tra = m_root;
+        for (; tra->right; tra = tra->right)
+            ;
+        tra->right = tmp;
+        tmp->left = tra;
     }
     else
     {
-        m_root =  tmp;
+        m_root = tmp;
     }
 }
 
-
-template<typename T>
+template <typename T>
 void List<T>::push_front(T d)
 {
-    Node <T> *tmp =  new Node<T>(d);
-    if(m_root)
+    Node<T> *tmp = new Node<T>(d);
+    if (m_root)
     {
         tmp->right = m_root;
-        m_root->left =  tmp;
-        m_root =  tmp;
+        m_root->left = tmp;
+        m_root = tmp;
     }
     else
     {
-        m_root =  tmp;
+        m_root = tmp;
     }
 }
 
-
-template<typename T>
+template <typename T>
 void List<T>::pop_back()
 {
-    Node<T> *tra =  m_root,*prev;
-    if(tra)
+    Node<T> *tra = m_root, *prev;
+    if (tra)
     {
-        while(tra->right)
+        while (tra->right)
         {
             prev = tra;
-            tra =  tra->right;
+            tra = tra->right;
         }
 
-        if(tra)
+        if (tra)
         {
             delete tra;
-            prev->right =  nullptr;
+            prev->right = nullptr;
         }
     }
     else
@@ -147,13 +140,12 @@ void List<T>::pop_back()
     }
 }
 
-
-template<typename T>
+template <typename T>
 void List<T>::pop_front()
 {
-    if(m_root)
+    if (m_root)
     {
-        Node<T> *tra =  m_root;
+        Node<T> *tra = m_root;
         m_root = tra->right;
         delete tra;
     }
@@ -163,36 +155,34 @@ void List<T>::pop_front()
     }
 }
 
-
-template<typename T>
+template <typename T>
 int List<T>::length()
 {
     int len = 0;
-    for(Node<T> *tra =  m_root;tra->right;tra=tra->right,len++);
+    for (Node<T> *tra = m_root; tra->right; tra = tra->right, len++)
+        ;
     return len;
 }
 
-
-template<typename T>
+template <typename T>
 T List<T>::front()
 {
-    if(m_root)
+    if (m_root)
         return m_root->data;
     else
         throw new std::exception();
 }
 
-
-template<typename T>
+template <typename T>
 T List<T>::back()
 {
-    if(m_root)
+    if (m_root)
     {
-        Node<T> *tra =  m_root;
+        Node<T> *tra = m_root;
 
-        while(tra->right)
+        while (tra->right)
         {
-            tra =  tra->right;
+            tra = tra->right;
         }
         return tra->data;
     }
@@ -201,7 +191,5 @@ T List<T>::back()
         throw new std::exception();
     }
 }
-
-
 
 #endif // LIST_H

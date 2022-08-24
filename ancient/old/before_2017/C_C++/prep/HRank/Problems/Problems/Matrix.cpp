@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "Matrix.h"
-#include<string>
-#include<vector>
-#include<iostream>
+#include <string>
+#include <vector>
+#include <iostream>
 using namespace std;
 using namespace ARRAY;
 
@@ -12,7 +12,6 @@ Matrix::Matrix()
 	mSubMat = 0;
 	mMatRow = mMatCol = mSubMatRow = mSubMatcol = 0;
 }
-
 
 Matrix::~Matrix()
 {
@@ -31,9 +30,9 @@ void Matrix::search()
 	typedef struct _pair
 	{
 		int row, col;
-	}pair;
+	} pair;
 
-	vector<pair>list;
+	vector<pair> list;
 
 	int seed = mSubMat[0][0];
 
@@ -83,13 +82,12 @@ void Matrix::search()
 
 void Matrix::searchGlassHour()
 {
-
 }
 
-int ** Matrix::init(int row, int col)
+int **Matrix::init(int row, int col)
 {
 	int **arr = 0;
-	arr = new int*[row];
+	arr = new int *[row];
 	for (int j = 0; j < row; j++)
 	{
 		arr[j] = new int[col];
@@ -144,6 +142,4 @@ void Matrix::spiralDisplay()
 	mMat = init(row, col);
 	mMatRow = row;
 	mMatCol = col;
-
-
 }

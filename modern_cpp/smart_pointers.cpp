@@ -1,7 +1,8 @@
 #include <iostream>
 #include <memory>
 
-class Base {
+class Base
+{
 public:
     Base()
     {
@@ -13,23 +14,23 @@ public:
         std::cout << "\nBase::~Base " << --m_ref << "\n";
     }
 
-    Base(const Base& rhs)
+    Base(const Base &rhs)
     {
         std::cout << "\nBase::Base::copy:: " << ++m_ref << "\n";
     }
 
-    Base& operator=(const Base& rhs)
+    Base &operator=(const Base &rhs)
     {
         std::cout << "\nBase::Base::= operator :: " << ++m_ref << "\n";
         return *this;
     }
 
-    Base(const Base&& rhs)
+    Base(const Base &&rhs)
     {
         std::cout << "\nBase::Base::move\n";
     }
 
-    Base& operator=(const Base&& rhs)
+    Base &operator=(const Base &&rhs)
     {
         std::cout << "\nBase::Base::move = operator\n";
         return *this;
@@ -46,7 +47,7 @@ private:
 
 int Base::m_ref = 0;
 
-Base& foo(Base& rhs)
+Base &foo(Base &rhs)
 {
     return rhs;
 }
@@ -61,7 +62,7 @@ Base createBase()
     return Base();
 }
 
-Base createTempFromTemp(Base&& r)
+Base createTempFromTemp(Base &&r)
 {
     return r;
 }
@@ -73,9 +74,10 @@ Base createTempFromTemp(Base&& r)
 // }
 
 template <typename T>
-class MySmartPointer {
+class MySmartPointer
+{
 public:
-    MySmartPointer(T* ptr)
+    MySmartPointer(T *ptr)
         : m_ptr(ptr)
     {
     }
@@ -85,24 +87,24 @@ public:
         delete m_ptr;
     }
 
-    T& operator*()
+    T &operator*()
     {
         return *m_ptr;
     }
 
-    T* operator->()
+    T *operator->()
     {
         return m_ptr;
     }
 
 private:
-    T* m_ptr;
+    T *m_ptr;
 
     // static
 };
 
 template <typename T>
-void pass_my_pointer(MySmartPointer<T>& p)
+void pass_my_pointer(MySmartPointer<T> &p)
 {
 }
 

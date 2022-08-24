@@ -1,23 +1,23 @@
-#include<iostream>
-#include<memory>
+#include <iostream>
+#include <memory>
 
 class Data
 {
 public:
-  Data ()
+  Data()
   {
     std::cout << "Data::Data:: " << s_ref++ << "\n";
   }
-  Data (const Data & rhs)
+  Data(const Data &rhs)
   {
     std::cout << "Data::copy Data:: " << s_ref++ << "\n";
   }
 
-  ~Data ()
+  ~Data()
   {
     std::cout << "Data::~Data:: " << s_ref-- << "\n";
   }
-  void display ()
+  void display()
   {
     std::cout << " Data::display\n";
   }
@@ -26,77 +26,73 @@ public:
 
 int Data::s_ref = 0;
 
-template < typename T > 
+template <typename T>
 class Compositor
 {
 public:
-  Compositor ()
+  Compositor()
   {
-    m_obj = std::make_unique < T > ();
+    m_obj = std::make_unique<T>();
   }
-  ~Compositor ()
+  ~Compositor()
   {
     std::cout << "Compositor::~Compositor\n";
   }
-  void setImplementation (std::unique_ptr < T > d)
+  void setImplementation(std::unique_ptr<T> d)
   {
     m_obj = d;
   }
+
 private:
-  std::unique_ptr < T > m_obj;
+  std::unique_ptr<T> m_obj;
 };
 
-template < typename T > 
+template <typename T>
 class Test
 {
 public:
   void
-  receive (const std::shared_ptr < T >);
-  std::shared_ptr < T > send ()const;
+  receive(const std::shared_ptr<T>);
+  std::shared_ptr<T> send() const;
+
 private:
-  std::shared_ptr < T > m_sptr;
+  std::shared_ptr<T> m_sptr;
 };
 
-
-template < typename T > 
-void Test <T >::receive (const std::shared_ptr < T > sp)
+template <typename T>
+void Test<T>::receive(const std::shared_ptr<T> sp)
 {
-  T * rPtr = sp.get ();
+  T *rPtr = sp.get();
 }
 
-
-template < typename T > 
-std::shared_ptr < T > Test < T >::send () const
+template <typename T>
+std::shared_ptr<T> Test<T>::send() const
 {
   return m_sptr;
 }
 
-
-
-int
-main (void)
+int main(void)
 {
-  std::unique_ptr < int > p = std::make_unique < int >();
+  std::unique_ptr<int> p = std::make_unique<int>();
 
   *p = 10;
 
-  std::cout << "jjjjjjjjj===>>  " << *(p.get ());
-  std::cout << "jjjjjjjjj===>>  " << *(p.get ());
+  std::cout << "jjjjjjjjj===>>  " << *(p.get());
+  std::cout << "jjjjjjjjj===>>  " << *(p.get());
 
+  std::unique_ptr<int> up = std::make_unique<int>(10);
 
-  std::unique_ptr<int> up = std::make_unique<int> (10);
+  std::cout << " value in up is " << *up << "\n";
 
-  std::cout<<" value in up is "<<*up<<"\n";
-  
   std::unique_ptr<int> &nup = up;
-  
-  *nup =  100;
-  
-  std::cout<<" value in up is "<<*up<<"\n";
-  
-//  delete nup.get();
 
-//  std::cout<<" value in up is "<<*up<<"\n";
+  *nup = 100;
+
+  std::cout << " value in up is " << *up << "\n";
+
+  //  delete nup.get();
+
+  //  std::cout<<" value in up is "<<*up<<"\n";
   std::unique_ptr<int> ppp;
   return 0;
 }

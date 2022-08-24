@@ -39,22 +39,21 @@ main(void)
 
 class Animal
 {
-    public:
+public:
     Animal()
     {
-        std::cout<<"\nAnimal::Animal\n";
-                makeSound();
-
+        std::cout << "\nAnimal::Animal\n";
+        makeSound();
     }
 
     ~Animal()
     {
-        std::cout<<"\nAnimal::~Animal\n";
+        std::cout << "\nAnimal::~Animal\n";
     }
 
     virtual void makeSound()
     {
-        std::cout<<"\nAnimal::makesound \n";
+        std::cout << "\nAnimal::makesound \n";
     }
 
     void test()
@@ -63,37 +62,34 @@ class Animal
     }
 };
 
-
-class Dog: public Animal
+class Dog : public Animal
 {
 
 public:
     Dog()
     {
-        std::cout<<"\nDog::Dog\n";
+        std::cout << "\nDog::Dog\n";
     }
 
     ~Dog()
     {
-        std::cout<<"\nDog::~Dog\n";
+        std::cout << "\nDog::~Dog\n";
     }
 
     void makeSound() override
     {
-        std::cout<<"\nDog::barks\n";
+        std::cout << "\nDog::barks\n";
     }
 };
 
-
-
-//template specialization
-template<typename T>
+// template specialization
+template <typename T>
 void foo(T arg)
 {
-    std::cout<<"\n data is "<< arg<<"\n";
+    std::cout << "\n data is " << arg << "\n";
 }
 
-template<>
+template <>
 void foo(Dog d)
 {
     d.makeSound();
@@ -101,10 +97,9 @@ void foo(Dog d)
 
 int main(void)
 {
-    std::cout<<"\nFirst Try with DOG\n";
+    std::cout << "\nFirst Try with DOG\n";
     Dog d;
     d.test();
-
 
     foo(123);
     foo("abc");

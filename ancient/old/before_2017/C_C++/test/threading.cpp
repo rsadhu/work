@@ -1,62 +1,54 @@
-#include<iostream>
-#include<thread>
-#include<pthread.h>
-#include<unistd.h>
+#include <iostream>
+#include <thread>
+#include <pthread.h>
+#include <unistd.h>
 
 using namespace std;
 
-void
-myThread ()
+void myThread()
 {
-  std::this_thread::sleep_for (std::chrono::milliseconds (50));
+  std::this_thread::sleep_for(std::chrono::milliseconds(50));
   std::cout << " Worker Thread1:: I am in my thread\n";
 }
-
 
 class FunctorClas
 {
 public:
-  void operator     () ()
+  void operator()()
   {
     std::cout << "\nMain Thread ::  Hello you're in Functor class \n";
   }
 };
 
 void *
-lThread (void *p)
+lThread(void *p)
 {
-  int val = *(int *) p;
-  std::this_thread::sleep_for (std::chrono::milliseconds (10));
+  int val = *(int *)p;
+  std::this_thread::sleep_for(std::chrono::milliseconds(10));
   std::cout << "Worker Thread:: Thread wait finished ::  " << val << std::endl;
-  return (void *) (val * val);
+  return (void *)(val * val);
 }
 
-void
-linuxThread ()
+void linuxThread()
 {
   pthread_t t1;
-  int *p = new int (9);
-  pthread_create (&t1, 0, lThread, (void *) p);
+  int *p = new int(9);
+  pthread_create(&t1, 0, lThread, (void *)p);
   void **ret;
-  pthread_join (t1, ret);
-  std::cout << " MainThread:: value from thread :: " << *(int *) ret;
+  pthread_join(t1, ret);
+  std::cout << " MainThread:: value from thread :: " << *(int *)ret;
   delete p;
 }
-int
-main (void)
+int main(void)
 {
- 
-  std::thread t1 (myThread);
+
+  std::thread t1(myThread);
   FunctorClas s;
-  s ();
+  s();
 
+  linuxThread();
 
-  linuxThread ();
-  
-  t1.join ();
+  t1.join();
 
   return 0;
 }
-
-
-

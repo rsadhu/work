@@ -1,15 +1,13 @@
-#include<iostream>
+#include <iostream>
 
-template<typename T>
-T adder(T x,T y)
+template <typename T>
+T adder(T x, T y)
 {
- return x+y;
+    return x + y;
 }
-
-
 
 int main(void)
 {
- std::cout<<  adder(9,1)<<" \n";
- return 0;
+    std::cout << adder(9, 1) << " \n";
+    return 0;
 }

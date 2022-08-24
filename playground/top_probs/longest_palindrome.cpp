@@ -8,10 +8,12 @@ std::string brute_force(std::string s)
         return s;
     std::string res;
 
-    auto isPalindrome = [](std::string s) {
+    auto isPalindrome = [](std::string s)
+    {
         int beg = 0, end = s.size() - 1;
 
-        while (beg <= end) {
+        while (beg <= end)
+        {
             if (s[beg++] != s[end--])
                 return false;
         }
@@ -19,12 +21,17 @@ std::string brute_force(std::string s)
         return true;
     };
 
-    for (int i = 0; i < s.size(); i++) {
-        for (int j = i; j < s.size(); j++) {
-            if (s[i] == s[j]) {
+    for (int i = 0; i < s.size(); i++)
+    {
+        for (int j = i; j < s.size(); j++)
+        {
+            if (s[i] == s[j])
+            {
                 auto sub_str = s.substr(i, j - i);
-                if (isPalindrome(sub_str)) {
-                    if (sub_str.size() > res.size()) {
+                if (isPalindrome(sub_str))
+                {
+                    if (sub_str.size() > res.size())
+                    {
                         res = sub_str;
                     }
                 }

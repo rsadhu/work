@@ -2,16 +2,17 @@
 #include <iostream>
 #include <vector>
 
-class SegmentTree {
+class SegmentTree
+{
 public:
-    SegmentTree(std::vector<int>& rlist);
+    SegmentTree(std::vector<int> &rlist);
     int getMin(int low, int high);
 
 private:
     size_t generateSize(size_t sz);
     bool isPowerOfTwo(size_t sz);
     size_t nextPowerOfTwo(size_t sz);
-    void constructSegmentTree(std::vector<int>& list, int beg, int end, int pos);
+    void constructSegmentTree(std::vector<int> &list, int beg, int end, int pos);
     int query(int qbeg, int qend, int beg, int end, int pos);
 
     std::vector<int> arr_;
@@ -29,12 +30,13 @@ int SegmentTree::query(int qbeg, int qend, int beg, int end, int pos)
     int mid = (beg + end) / 2;
 
     return std::max(query(qbeg, qend, beg, mid, 2 * pos + 1),
-        query(qbeg, qend, mid + 1, end, 2 * pos + 2));
+                    query(qbeg, qend, mid + 1, end, 2 * pos + 2));
 }
 
-void SegmentTree::constructSegmentTree(std::vector<int>& list, int beg, int end, int pos)
+void SegmentTree::constructSegmentTree(std::vector<int> &list, int beg, int end, int pos)
 {
-    if (beg == end) {
+    if (beg == end)
+    {
         arr_[pos] = list[beg];
         return;
     }
@@ -48,10 +50,14 @@ void SegmentTree::constructSegmentTree(std::vector<int>& list, int beg, int end,
 // if n is power of 2
 bool SegmentTree::isPowerOfTwo(size_t n)
 {
-    while (n > 1) {
-        if (n % 2 == 0) {
+    while (n > 1)
+    {
+        if (n % 2 == 0)
+        {
             n /= 2;
-        } else {
+        }
+        else
+        {
             return false;
         }
     }
@@ -61,7 +67,8 @@ bool SegmentTree::isPowerOfTwo(size_t n)
 size_t SegmentTree::nextPowerOfTwo(size_t n)
 {
     size_t m = 2;
-    while (m <= n) {
+    while (m <= n)
+    {
         m = m << 1;
     }
     return m;
@@ -70,10 +77,13 @@ size_t SegmentTree::nextPowerOfTwo(size_t n)
 size_t SegmentTree::generateSize(size_t sz)
 {
     size_t new_size = 0;
-    if (isPowerOfTwo(sz)) {
+    if (isPowerOfTwo(sz))
+    {
         std::cout << "yes it is power of 2\n";
         new_size = sz * 2 - 1;
-    } else {
+    }
+    else
+    {
         size_t m = nextPowerOfTwo(sz);
         std::cout << " nein es ist nicht power von 2   " << m << "\n";
         new_size = m * 2 - 1;
@@ -81,9 +91,10 @@ size_t SegmentTree::generateSize(size_t sz)
     return new_size;
 }
 
-SegmentTree::SegmentTree(std::vector<int>& list)
+SegmentTree::SegmentTree(std::vector<int> &list)
 {
-    if (list.size() > 0) {
+    if (list.size() > 0)
+    {
         size_t sz = generateSize(list.size());
         std::cout << " the size of segment tree would be " << sz << "\n";
         arr_.resize(sz, INT_MAX);
@@ -99,14 +110,15 @@ int SegmentTree::getMin(int l, int h)
     return query(l, h, 0, size_, 0);
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     std::cout << "\n Start the Segment \n";
-    std::vector<int> arr { -1, 2, 4, 0, -100, 9, -200, 300, 8, 1, 500, 6 };
+    std::vector<int> arr{-1, 2, 4, 0, -100, 9, -200, 300, 8, 1, 500, 6};
     SegmentTree st = arr;
     int l = 0, h = 10;
 
-    if (argc == 3) {
+    if (argc == 3)
+    {
         l = std::stoi(argv[1]);
         h = std::stoi(argv[2]);
     }

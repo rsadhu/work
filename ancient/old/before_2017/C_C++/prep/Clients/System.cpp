@@ -4,40 +4,30 @@
 #include <tlhelp32.h>
 #include <tchar.h>
 #include <stdio.h>
-#include<qDebug.h>
-#include<Logger.h>
+#include <qDebug.h>
+#include <Logger.h>
 
 //  Forward declarations:
-//BOOL GetProcessList();
+// BOOL GetProcessList();
 BOOL ListProcessModules(DWORD dwPID);
 BOOL ListProcessThreads(DWORD dwOwnerPID);
-void printError(TCHAR* msg);
+void printError(TCHAR *msg);
 
 System::System()
 {
 }
 
-
 System::~System()
 {
 }
 
-
-
-unsigned long long System:: getTotalSystemMemory()
+unsigned long long System::getTotalSystemMemory()
 {
 	MEMORYSTATUSEX status;
 	status.dwLength = sizeof(status);
 	GlobalMemoryStatusEx(&status);
 	return status.ullTotalPhys;
 }
-
-
-
-
-
-
-
 
 #include <windows.h>
 #include <stdio.h>
@@ -54,8 +44,8 @@ void PrintProcessNameAndID(DWORD processID)
 	// Get a handle to the process.
 
 	HANDLE hProcess = OpenProcess(PROCESS_QUERY_INFORMATION |
-		PROCESS_VM_READ,
-		FALSE, processID);
+									  PROCESS_VM_READ,
+								  FALSE, processID);
 
 	// Get the process name.
 
@@ -65,20 +55,20 @@ void PrintProcessNameAndID(DWORD processID)
 		DWORD cbNeeded;
 
 		if (EnumProcessModules(hProcess, &hMod, sizeof(hMod),
-			&cbNeeded))
+							   &cbNeeded))
 		{
 			GetModuleBaseName(hProcess, hMod, szProcessName,
-				sizeof(szProcessName) / sizeof(TCHAR));
+							  sizeof(szProcessName) / sizeof(TCHAR));
 		}
 	}
 
 	// Print the process name and identifier.
 
 	printf("%s  (PID: %u)\n", szProcessName, processID);
-	char arr[100] = { 0 };
+	char arr[100] = {0};
 	sprintf(arr, "%s (PID: %u)\n", szProcessName, processID);
 	string s = arr;
-	
+
 	Logger::log(s);
 
 	// Release the handle to the process.
@@ -86,7 +76,7 @@ void PrintProcessNameAndID(DWORD processID)
 	CloseHandle(hProcess);
 }
 
-bool System:: GetProcessList(void)
+bool System::GetProcessList(void)
 {
 	// Get the list of process identifiers.
 
@@ -97,7 +87,6 @@ bool System:: GetProcessList(void)
 	{
 		return 1;
 	}
-
 
 	// Calculate how many process identifiers were returned.
 
@@ -116,22 +105,22 @@ bool System:: GetProcessList(void)
 	return 0;
 }
 
-
 int System::GetDiskSpace()
 {
 	int hdSize = 0;
-	_In_opt_  LPCTSTR         lpDirectoryName = L"D:";
-	_Out_opt_ PULARGE_INTEGER lpFreeBytesAvailable=0;
-	_Out_opt_ PULARGE_INTEGER lpTotalNumberOfBytes=0;
+	_In_opt_ LPCTSTR lpDirectoryName = L"D:";
+	_Out_opt_ PULARGE_INTEGER lpFreeBytesAvailable = 0;
+	_Out_opt_ PULARGE_INTEGER lpTotalNumberOfBytes = 0;
 	_Out_opt_ PULARGE_INTEGER lpTotalNumberOfFreeBytes = 0;
 	lpFreeBytesAvailable = (PULARGE_INTEGER)malloc(sizeof(PULARGE_INTEGER));
 	lpTotalNumberOfBytes = (PULARGE_INTEGER)malloc(sizeof(PULARGE_INTEGER));
 	lpTotalNumberOfFreeBytes = (PULARGE_INTEGER)malloc(sizeof(PULARGE_INTEGER));
-	try{
+	try
+	{
 		bool ret = GetDiskFreeSpaceEx(lpDirectoryName, lpFreeBytesAvailable, lpTotalNumberOfBytes, lpTotalNumberOfFreeBytes);
-		qDebug() << "FreeBytes Available::" << (lpFreeBytesAvailable->QuadPart)/(1024*1024*1024) << endl;
-		qDebug() << "TotalNumberOfBytes::" << (lpTotalNumberOfBytes->QuadPart) / (1024 * 1024*1024) << endl;
-		qDebug() << "TotalNumberOfFreeBytes::" << (lpTotalNumberOfFreeBytes->QuadPart) / (1024 * 1024*1024) << endl;
+		qDebug() << "FreeBytes Available::" << (lpFreeBytesAvailable->QuadPart) / (1024 * 1024 * 1024) << endl;
+		qDebug() << "TotalNumberOfBytes::" << (lpTotalNumberOfBytes->QuadPart) / (1024 * 1024 * 1024) << endl;
+		qDebug() << "TotalNumberOfFreeBytes::" << (lpTotalNumberOfFreeBytes->QuadPart) / (1024 * 1024 * 1024) << endl;
 		hdSize = (lpTotalNumberOfFreeBytes->QuadPart) / (1024 * 1024 * 1024);
 		char *ram = new char[100];
 		itoa(hdSize, ram, 10);

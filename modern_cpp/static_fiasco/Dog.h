@@ -1,10 +1,11 @@
 #include <iostream>
 
-class Dog {
+class Dog
+{
     std::string _name;
 
 public:
     void bark();
 
-    Dog(char* name);
+    Dog(char *name);
 };

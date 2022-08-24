@@ -1,23 +1,22 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 class T
 {
   int a;
+
 public:
-    T ()
+  T()
   {
     cout << "T::T\n";
   }
-  void display ()
+  void display()
   {
     cout << "T::display" << a;
   }
 };
 
-
-int
-main (void)
+int main(void)
 {
   T *t;
-  t->display ();
+  t->display();
 }

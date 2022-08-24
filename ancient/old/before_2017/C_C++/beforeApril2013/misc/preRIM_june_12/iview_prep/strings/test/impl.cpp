@@ -1,46 +1,45 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 class B;
 class A
 {
-    public:
-    A (B * p):ptr (p)
+public:
+    A(B *p) : ptr(p)
     {
         cout << " A::B::ptr.. " << ptr;
     }
-    void check ()
+    void check()
     {
-    // cout << ptr->x;
-    ptr->display ();
+        // cout << ptr->x;
+        ptr->display();
     }
-    private:
-    B * ptr;
+
+private:
+    B *ptr;
 };
 
-
-class B:public A
+class B : public A
 {
-    public:
-    B ():A (this)
+public:
+    B() : A(this)
     {
         cout << " B::B :: " << this << endl;
         x = 100;
     }
-    void display ()
+    void display()
     {
         cout << "B::display\n";
     }
-    private:
-//  friend class A;
+
+private:
+    //  friend class A;
     int x;
 };
 
-
-int
-main (void)
+int main(void)
 {
     A *a = new B;
-    a->check ();
+    a->check();
     return 0;
 }

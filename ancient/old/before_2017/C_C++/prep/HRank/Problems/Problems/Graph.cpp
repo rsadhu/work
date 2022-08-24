@@ -7,7 +7,6 @@ Graph::Graph()
 {
 }
 
-
 Graph::~Graph()
 {
 }

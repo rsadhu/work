@@ -4,13 +4,11 @@
 
 #include "Map.h"
 
-
-Map & Map::operator [](int key)
+Map &Map::operator[](int key)
 {
- return *this;
+    return *this;
 }
 
 void Map::insert(int key, int value)
 {
-
 }

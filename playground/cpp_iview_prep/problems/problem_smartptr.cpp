@@ -1,28 +1,25 @@
 #include <iostream>
 #include <memory>
 
-
 class Animal
 {
-    public:
+public:
     Animal() = default;
 
     void speak(std::string word)
     {
-        std::cout<<"\nI speak "<< word<<"\n";
+        std::cout << "\nI speak " << word << "\n";
     }
 
     void test();
-
 };
-
 
 class Human
 {
-    public:
-    Human(Animal * dependency):impl_(dependency)
+public:
+    Human(Animal *dependency) : impl_(dependency)
     {
-        std::cout<<"\nHuman Called\n";
+        std::cout << "\nHuman Called\n";
     }
 
     ~Human()
@@ -34,18 +31,17 @@ class Human
     {
         impl_->speak("Bow Bow");
     }
-    private:
-    Animal* impl_ =  nullptr;
+
+private:
+    Animal *impl_ = nullptr;
 };
 
 void Animal::test()
 {
     Human ptr(this);
     ptr.makeSound();
-    std::cout<<" test ends\n";
-
+    std::cout << " test ends\n";
 }
-
 
 int main(void)
 {

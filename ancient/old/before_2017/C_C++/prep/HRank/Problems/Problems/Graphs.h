@@ -1,5 +1,5 @@
 #pragma once
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 namespace GRAPHS
@@ -11,9 +11,9 @@ namespace GRAPHS
 		~Graphs();
 		void createGraph();
 		void bfs();
+
 	private:
 		int **mData;
 		int mRow, mCol;
 	};
 };
-

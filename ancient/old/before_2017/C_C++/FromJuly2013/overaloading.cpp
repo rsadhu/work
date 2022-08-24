@@ -1,64 +1,56 @@
-#include<iostream>
-
+#include <iostream>
 
 using namespace std;
 
 class obj
 {
-    public:
+public:
     void display()
     {
-        std::cout<<"obj::dislay\n";
+        std::cout << "obj::dislay\n";
     }
-
 };
-template<typename T>
+template <typename T>
 class A
 {
-    public:
-    A():mData(0)
+public:
+    A() : mData(0)
     {
-     mData= new T;
+        mData = new T;
     }
     ~A()
     {
         delete mData;
-        mData =0;
+        mData = 0;
     }
 
-    T *operator ->();
-    T&operator *();
-    void display(){ cout<<"\nA::display\n";}
-    private:
+    T *operator->();
+    T &operator*();
+    void display() { cout << "\nA::display\n"; }
+
+private:
     T *mData;
 };
 
-template<typename T>
-T* A<T>::operator->()
+template <typename T>
+T *A<T>::operator->()
 {
-     return mData;
+    return mData;
 }
 
-template<typename T>
-T& A<T>::operator*()
+template <typename T>
+T &A<T>::operator*()
 {
-     return *mData;
+    return *mData;
 }
-
 
 int main(void)
 {
-     A<obj> a;// = new A<obj>();
-     A<obj> *b = new A<obj>();
-     a->display();
-     (*b)->display();
-     b->display();
-     delete b;
-     return 0;
+    A<obj> a; // = new A<obj>();
+    A<obj> *b = new A<obj>();
+    a->display();
+    (*b)->display();
+    b->display();
+    delete b;
+    return 0;
 }
-
-
-
-
-
-

@@ -33,9 +33,13 @@ void display(ListNode *head)
     std::cout << "\n";
 }
 
-ListNode *reverse(ListNode *head)
+void reverse(ListNode *head, ListNode *second)
 {
-    return nullptr;
+    if (!second)
+        return;
+
+    reverse(head->next, second->next);
+    second->next = head;
 }
 
 int main(void)
@@ -49,10 +53,10 @@ int main(void)
     }
 
     display(head);
+    ListNode **tra1 = &(head->next);
+    reverse(head, head->next);
 
-    ListNode *rev_head = reverse(head);
-
-    display(rev_head);
+    display(*tra1);
 
     return 0;
 }

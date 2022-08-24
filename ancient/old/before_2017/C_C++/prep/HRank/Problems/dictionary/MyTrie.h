@@ -1,5 +1,5 @@
 #pragma once
-#include<string>
+#include <string>
 
 class MyTrie
 {
@@ -8,7 +8,6 @@ public:
 	~MyTrie();
 	void initialize();
 	void addWord(std::string &);
-	int  countPreffixes();
+	int countPreffixes();
 	int countWords();
 };
-

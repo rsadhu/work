@@ -1,10 +1,9 @@
 // HRProbs.cpp : Defines the entry point for the console application.
 //
 
-
-#include<iostream>
-#include<algorithm>
-#include<string>
+#include <iostream>
+#include <algorithm>
+#include <string>
 #include <cmath>
 #include <cstdio>
 #include <vector>
@@ -38,4 +37,3 @@ void subString();
 bool ransom_note(vector<string> magazine, vector<string> ransom);
 void palindromeCreatiion();
 void HR_Median();
-

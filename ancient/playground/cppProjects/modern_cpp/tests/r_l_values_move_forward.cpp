@@ -1,39 +1,34 @@
-#include<iostream>
+#include <iostream>
 
 class Test
 {
- public:
- Test()=default;
- Test(const Test &rhs)
- {
+public:
+    Test() = default;
+    Test(const Test &rhs)
+    {
 
-     std::cout<<" Test::copy\n";
- }
+        std::cout << " Test::copy\n";
+    }
 
- Test(const Test &&rhs)
- {
-     std::cout<<" Test::move\n";
- }
+    Test(const Test &&rhs)
+    {
+        std::cout << " Test::move\n";
+    }
 };
 
-
-
-void foo(int & rhs)
+void foo(int &rhs)
 {
- std::cout<<" foo:: lvalue ref\n";
+    std::cout << " foo:: lvalue ref\n";
 }
-
-
 
 void foo(int &&rhs)
 {
- std::cout<<" foo:: rvalue ref\n";
+    std::cout << " foo:: rvalue ref\n";
 }
-
 
 void foo(const int &rhs)
 {
- std::cout<<" const foo:: lvalue ref\n";
+    std::cout << " const foo:: lvalue ref\n";
 }
 
 Test retTest()
@@ -42,9 +37,9 @@ Test retTest()
     return t;
 }
 
-void play(Test  &&t)
+void play(Test &&t)
 {
- std::cout<<" Play :: move\n";
+    std::cout << " Play :: move\n";
 }
 
 /*
@@ -58,27 +53,25 @@ void play(Test  &t)
  std::cout<<" Play :: copy\n";
 }*/
 
-void testPF( Test )
+void testPF(Test)
 {
-
 }
 
-template<typename T>
+template <typename T>
 void funcArg(T &&arg)
 {
     testPF(std::forward(arg));
 }
 
-
 int main(void)
 {
-    int x=10;
+    int x = 10;
     foo(x);
     foo(10);
     foo(std::move(x));
 
-    //Test t;
-    //play(t);
+    // Test t;
+    // play(t);
     play(std::move(retTest()));
 
     funcArg<Test>(Test());

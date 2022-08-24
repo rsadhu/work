@@ -1,9 +1,9 @@
 #include "codesnippet.h"
 
-CodeSnippet::CodeSnippet()	
+CodeSnippet::CodeSnippet()
 {
-	
-	ResourceInterface *iface =  mFactory.getInstance("txt");
+
+	ResourceInterface *iface = mFactory.getInstance("txt");
 	if (iface)
 	{
 		iface->showResource();
@@ -12,5 +12,4 @@ CodeSnippet::CodeSnippet()
 
 CodeSnippet::~CodeSnippet()
 {
-
 }

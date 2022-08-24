@@ -9,16 +9,18 @@
 #include <memory>
 #include <stack>
 
-template<typename T>
-struct Node {
+template <typename T>
+struct Node
+{
     Node(T &d) : __data(d) {}
 
     T __data;
     Node *__next = nullptr;
 };
 
-template<typename T>
-class LinkList {
+template <typename T>
+class LinkList
+{
 public:
     LinkList &operator<(T d);
 
@@ -61,16 +63,20 @@ private:
     uint __size = 0;
 };
 
-template<typename T>
-T LinkList<T>::front() const {
+template <typename T>
+T LinkList<T>::front() const
+{
     return __root ? __root->__data : -1;
 }
 
-template<typename T>
-T LinkList<T>::back() const {
-    if (__root) {
+template <typename T>
+T LinkList<T>::back() const
+{
+    if (__root)
+    {
         Node<T> *tmp = __root;
-        while (tmp->__next) {
+        while (tmp->__next)
+        {
             tmp = tmp->__next;
         }
         return tmp->__data;
@@ -78,20 +84,27 @@ T LinkList<T>::back() const {
     return -1;
 }
 
-template<typename T>
-void LinkList<T>::insert(int index, T value) {
-    if (index == 0) {
+template <typename T>
+void LinkList<T>::insert(int index, T value)
+{
+    if (index == 0)
+    {
         Node<T> *tmp = new Node<T>(value);
         tmp->__next = __root;
         __root = tmp;
-    } else {
+    }
+    else
+    {
         Node<T> *prev, *cur = __root;
-        if (cur) {
+        if (cur)
+        {
             prev = cur;
             cur = cur->__next;
             int i = 1;
-            while (cur) {
-                if (index == i) {
+            while (cur)
+            {
+                if (index == i)
+                {
                     Node<T> *tmp = new Node<T>(value);
                     tmp->__next = cur;
                     prev->__next = tmp;
@@ -105,21 +118,29 @@ void LinkList<T>::insert(int index, T value) {
     }
 }
 
-template<typename T>
-void LinkList<T>::erase(int index) {
-    if (!__root) return;
-    if (index == 0) {
+template <typename T>
+void LinkList<T>::erase(int index)
+{
+    if (!__root)
+        return;
+    if (index == 0)
+    {
         auto tmp = __root;
         __root = __root->__next;
         delete tmp;
-    } else {
+    }
+    else
+    {
         Node<T> *prev, *cur = __root;
-        if (cur) {
+        if (cur)
+        {
             prev = cur;
             cur = cur->__next;
             int i = 1;
-            while (cur) {
-                if (index == i) {
+            while (cur)
+            {
+                if (index == i)
+                {
                     prev->__next = cur->__next;
                     delete cur;
                     break;
@@ -132,16 +153,20 @@ void LinkList<T>::erase(int index) {
     }
 }
 
-template<typename T>
-T LinkList<T>::valueIter(Node<T> *root, int n) {
+template <typename T>
+T LinkList<T>::valueIter(Node<T> *root, int n)
+{
     std::stack<T> st;
-    while (root) {
+    while (root)
+    {
         st.push(root->__data);
         root = root->__next;
     }
 
-    if (!st.empty()) {
-        while (n--) {
+    if (!st.empty())
+    {
+        while (n--)
+        {
             st.pop();
         }
         return st.top();
@@ -149,26 +174,32 @@ T LinkList<T>::valueIter(Node<T> *root, int n) {
     return T();
 }
 
-template<typename T>
-void LinkList<T>::valueRec(Node<T> *root, int &cnt, int &value) {
-    if (root) {
+template <typename T>
+void LinkList<T>::valueRec(Node<T> *root, int &cnt, int &value)
+{
+    if (root)
+    {
         valueRec(root->__next, cnt, value);
-        if (0 == cnt--) value = root->__data;
+        if (0 == cnt--)
+            value = root->__data;
     }
 }
 
-template<typename T>
-T LinkList<T>::value_n_from_end(int n) {
+template <typename T>
+T LinkList<T>::value_n_from_end(int n)
+{
     T val;
     // valueRec(__root, n, val);
     val = valueIter(__root, n);
     return val;
 }
 
-template<typename T>
-void LinkList<T>::reverse() {
+template <typename T>
+void LinkList<T>::reverse()
+{
     Node<T> *cur = __root, *prev, *tmp = nullptr;
-    while (cur) {
+    while (cur)
+    {
         prev = cur;
         tmp = cur->__next;
         cur->__next = prev;
@@ -177,18 +208,25 @@ void LinkList<T>::reverse() {
     __root = prev;
 }
 
-template<typename T>
-void LinkList<T>::remove_value(T value) {
-    if (!__root) return;
+template <typename T>
+void LinkList<T>::remove_value(T value)
+{
+    if (!__root)
+        return;
     Node<T> *prev, *cur = __root;
     prev = cur;
     cur = cur->__next;
-    if (value == prev->__data) {
+    if (value == prev->__data)
+    {
         __root = __root->__next;
         delete prev;
-    } else {
-        while (cur->next) {
-            if (cur->__data == value) {
+    }
+    else
+    {
+        while (cur->next)
+        {
+            if (cur->__data == value)
+            {
                 prev->__next = cur->__next;
                 delete cur;
                 break;
@@ -199,16 +237,19 @@ void LinkList<T>::remove_value(T value) {
     }
 }
 
-template<typename T>
-void LinkList<T>::push_front(T value) {
+template <typename T>
+void LinkList<T>::push_front(T value)
+{
     Node<T> *tmp = new Node<T>(value);
     tmp->__next = __root;
     __root = tmp;
 }
 
-template<typename T>
-T LinkList<T>::pop_front() {
-    if (__root) {
+template <typename T>
+T LinkList<T>::pop_front()
+{
+    if (__root)
+    {
         Node<T> *tmp = __root->__data;
         __root = __root->__next;
         auto d = tmp->__data;
@@ -218,28 +259,36 @@ T LinkList<T>::pop_front() {
     return -1;
 }
 
-template<typename T>
-void LinkList<T>::push_back(T value) {
+template <typename T>
+void LinkList<T>::push_back(T value)
+{
     Node<T> *it;
-    for (it = __root; it->__next; it = it->__next);
+    for (it = __root; it->__next; it = it->__next)
+        ;
     it->__next = new Node<T>(value);
 }
 
-template<typename T>
-T LinkList<T>::pop_back() {
+template <typename T>
+T LinkList<T>::pop_back()
+{
     Node<T> *cur, *prev = __root;
     int d = -1;
-    if (prev) {
+    if (prev)
+    {
         cur = prev->__next;
-        if (cur) {
-            while (cur->__next) {
+        if (cur)
+        {
+            while (cur->__next)
+            {
                 prev = cur;
                 cur = cur->__next;
             }
             d = cur->__data;
             delete cur;
             prev->__next = nullptr;
-        } else {
+        }
+        else
+        {
             d = prev->__data;
             delete prev;
             __root = nullptr;
@@ -248,34 +297,44 @@ T LinkList<T>::pop_back() {
     return d;
 }
 
-template<typename T>
-T LinkList<T>::value_at(int index) {
+template <typename T>
+T LinkList<T>::value_at(int index)
+{
     int i = 0;
-    for (auto it = __root; it; it = it->__next) {
-        if (index == i++) return new Node<T>(it->__data);
+    for (auto it = __root; it; it = it->__next)
+    {
+        if (index == i++)
+            return new Node<T>(it->__data);
     }
     return nullptr;
 }
 
-template<typename T>
-LinkList<T> &LinkList<T>::operator<(T d) {
+template <typename T>
+LinkList<T> &LinkList<T>::operator<(T d)
+{
     __size++;
-    if (!__root) {
+    if (!__root)
+    {
         __root = new Node<T>(d);
-    } else {
+    }
+    else
+    {
         Node<T> *tra;
-        for (tra = __root; tra->__next; tra = tra->__next);
+        for (tra = __root; tra->__next; tra = tra->__next)
+            ;
         tra->__next = new Node<T>(d);
     }
 
     return *this;
 }
 
-template<typename T>
-void LinkList<T>::display() {
+template <typename T>
+void LinkList<T>::display()
+{
     std::cout << "\n";
-    for (auto it = __root; it; it = it->__next) std::cout << " " << it->__data;
+    for (auto it = __root; it; it = it->__next)
+        std::cout << " " << it->__data;
     std::cout << "\n";
 }
 
-#endif  // GPREP_LINKLIST_H
+#endif // GPREP_LINKLIST_H

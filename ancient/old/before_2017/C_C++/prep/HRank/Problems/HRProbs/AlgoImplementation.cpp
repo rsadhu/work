@@ -1,6 +1,5 @@
 #include "stdafx.h"
-#include"AlgoHeader.h"
-
+#include "AlgoHeader.h"
 
 void palindromeCreatiion()
 {
@@ -9,9 +8,9 @@ void palindromeCreatiion()
 	cin >> n >> k;
 	string number;
 	cin >> number;
-	char *tmp = (char*)number.c_str();
+	char *tmp = (char *)number.c_str();
 	int i = 0, len = number.size();
-	while (i<len)
+	while (i < len)
 	{
 		if (*(tmp + i) == *(tmp + len - 1 - i))
 		{
@@ -35,11 +34,7 @@ void palindromeCreatiion()
 		cout << tmp;
 	else
 		cout << "-1";
-
 }
-
-
-
 
 bool ransom_note(vector<string> magazine, vector<string> ransom)
 {
@@ -48,7 +43,7 @@ bool ransom_note(vector<string> magazine, vector<string> ransom)
 	for (int i = 0; i < magazine.size(); i++)
 		hashTable[magazine.at(i)] += 1;
 
-	for (int i = 0; i<ransom.size(); i++)
+	for (int i = 0; i < ransom.size(); i++)
 	{
 		if (hashTable[ransom.at(i)] >= 0)
 		{
@@ -63,7 +58,6 @@ bool ransom_note(vector<string> magazine, vector<string> ransom)
 	return true;
 }
 
-
 void subString()
 {
 
@@ -71,35 +65,33 @@ void subString()
 	int n;
 	cin >> m >> n;
 	vector<string> magazine(m);
-	for (int magazine_i = 0; magazine_i < m; magazine_i++){
+	for (int magazine_i = 0; magazine_i < m; magazine_i++)
+	{
 		cin >> magazine[magazine_i];
 	}
 	vector<string> ransom(n);
-	for (int ransom_i = 0; ransom_i < n; ransom_i++){
+	for (int ransom_i = 0; ransom_i < n; ransom_i++)
+	{
 		cin >> ransom[ransom_i];
 	}
 	if (ransom_note(magazine, ransom))
 		cout << "Yes\n";
 	else
 		cout << "No\n";
-
 }
 
-
-int compare(const void * a, const void * b)
+int compare(const void *a, const void *b)
 {
-	return (*(char*)a - *(char*)b);
+	return (*(char *)a - *(char *)b);
 }
-
-
 
 int number_needed(string a, string b)
 {
-	char *src = const_cast<char*>(a.c_str());
-	char *dst = const_cast<char*>(b.c_str());
+	char *src = const_cast<char *>(a.c_str());
+	char *dst = const_cast<char *>(b.c_str());
 
-	qsort((void*)src, a.size(), sizeof(char), compare);
-	qsort((void*)dst, b.size(), sizeof(char), compare);
+	qsort((void *)src, a.size(), sizeof(char), compare);
+	qsort((void *)dst, b.size(), sizeof(char), compare);
 
 	char *tra, *tra1;
 	if (*src > *dst)
@@ -107,11 +99,11 @@ int number_needed(string a, string b)
 		tra = src;
 		tra1 = dst;
 	}
-	else{
+	else
+	{
 		tra = src;
-		tra1 
-			= dst;
-	}	
+		tra1 = dst;
+	}
 
 	return 0;
 }
@@ -132,25 +124,25 @@ void HR_Median()
 	vector<float> a(n);
 	for (int a_i = 0; a_i < n; a_i++)
 	{
-		cin >> a[a_i];		
+		cin >> a[a_i];
 	}
 
 	for (int a_i = 1; a_i <= n; a_i++)
 	{
-		std::sort(a.begin(), a.begin()+a_i);
+		std::sort(a.begin(), a.begin() + a_i);
 		float res = 0.0;
 
-		int mid = (a_i ) / 2 ;		
+		int mid = (a_i) / 2;
 
 		if (a_i % 2 == 0)
 		{
-			res = (a[mid-1] + a[mid ]) / 2;
+			res = (a[mid - 1] + a[mid]) / 2;
 		}
 		else
 		{
 			res = a[mid];
 		}
 
-		printf("%.*f\n",1, res);
+		printf("%.*f\n", 1, res);
 	}
 }

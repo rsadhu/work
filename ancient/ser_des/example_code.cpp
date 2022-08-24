@@ -4,38 +4,40 @@
 #include <fstream>
 #include <iostream>
 
-struct address {
+struct address
+{
     std::string street;
     uint hno;
     char country_code;
 
     template <class Archive>
-    void serialize(Archive& ar)
+    void serialize(Archive &ar)
     {
         ar(hno, country_code);
     }
 };
 
-struct Stud {
+struct Stud
+{
     std::string name;
     uint roll_no;
 
     address house_addr;
 
     template <class Archive>
-    void serialize(Archive& ar)
+    void serialize(Archive &ar)
     {
         ar(roll_no, house_addr);
     }
 };
 
-std::ostream& operator<<(std::ostream& o, Stud& st)
+std::ostream &operator<<(std::ostream &o, Stud &st)
 {
     o << "\nstudent's name " << st.name << "\nroll no " << st.roll_no << "\nstreet address " << st.house_addr.street << "\n house no " << st.house_addr.hno << "\n country code " << st.house_addr.country_code << "\n";
     return o;
 }
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     Stud cand1;
     cand1.name = "Rakesh";
@@ -44,7 +46,7 @@ int main(int argc, char* argv[])
     cand1.house_addr.hno = 14;
     cand1.house_addr.country_code = 'K';
 
-    //Serialize it
+    // Serialize it
 
     std::ofstream out01;
     {
@@ -57,7 +59,7 @@ int main(int argc, char* argv[])
 
     out01.close();
 
-    //deSerialize
+    // deSerialize
     Stud cand2;
     std::ifstream in0;
     {

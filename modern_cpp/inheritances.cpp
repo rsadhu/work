@@ -1,6 +1,7 @@
 #include <iostream>
 
-class Base {
+class Base
+{
 public:
     Base()
     {
@@ -14,7 +15,8 @@ public:
     virtual void foo() = 0;
 };
 
-class Der : public Base {
+class Der : public Base
+{
 public:
     Der()
     {
@@ -30,7 +32,7 @@ public:
 
     void impl() { std::cout << "\nvirtual Der::impl\n"; }
 
-    int& retRef() { return x; }
+    int &retRef() { return x; }
 
     void display()
     {
@@ -40,7 +42,8 @@ public:
     int x = 10;
 };
 
-class Test {
+class Test
+{
 public:
     void foo(int p)
     {
@@ -62,7 +65,7 @@ int main(void)
 {
     //    Der d;
 
-    Base* b = new Der;
+    Base *b = new Der;
 
     b->foo();
     // b->impl();

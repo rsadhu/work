@@ -1,24 +1,22 @@
 #include "stdafx.h"
 #include "Graphs.h"
-#include<queue>
+#include <queue>
 using namespace GRAPHS;
 
 Graphs::Graphs()
 {
 	cin >> mRow;
 	mCol = mRow;
-	mData = new int*[mRow];
+	mData = new int *[mRow];
 	for (int i = 0; i < mRow; i++)
 	{
 		mData[i] = new int[mRow];
 	}
 }
 
-
 Graphs::~Graphs()
 {
 }
-
 
 void Graphs::createGraph()
 {
@@ -36,5 +34,4 @@ void Graphs::createGraph()
 void Graphs::bfs()
 {
 	queue<int> q;
-	
 }

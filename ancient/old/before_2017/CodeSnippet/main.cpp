@@ -4,6 +4,6 @@
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
-	CodeSnippet w;	
+	CodeSnippet w;
 	return a.exec();
 }

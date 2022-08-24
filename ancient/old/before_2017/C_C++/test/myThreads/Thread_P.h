@@ -3,25 +3,19 @@
 class Thread_P
 {
 public:
-  virtual ~ Thread_P ()
-  {
-  };
-  virtual void createThread () = 0;
-  virtual void destroyThread () = 0;
-  virtual bool isAlive () = 0;
-  virtual void wait () = 0;
+  virtual ~Thread_P(){};
+  virtual void createThread() = 0;
+  virtual void destroyThread() = 0;
+  virtual bool isAlive() = 0;
+  virtual void wait() = 0;
 };
 
-
-class ThreadLinux:public Thread_P
+class ThreadLinux : public Thread_P
 {
-
 };
 
-
-class ThreadStdCpp:public Thread_P
+class ThreadStdCpp : public Thread_P
 {
-
 };
 
 #endif //

@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "ObserverPattern.h"
 
-
 void Subject::attach(ObserverPattern *obj)
 {
 	mlist.push_back(obj);
@@ -9,7 +8,7 @@ void Subject::attach(ObserverPattern *obj)
 
 void Subject::detach(ObserverPattern *obj)
 {
-	//mlist.erase(obj);
+	// mlist.erase(obj);
 }
 
 void Subject::updateAll()
@@ -23,5 +22,5 @@ void Subject::updateAll()
 	for (int i = 0; i < mlist.size(); i++)
 	{
 		mlist[i]->notify();
-	}	
+	}
 }

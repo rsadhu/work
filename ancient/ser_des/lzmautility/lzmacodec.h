@@ -7,7 +7,8 @@
 #include <sstream>
 #include <string>
 
-enum class CODEC_RETURN {
+enum class CODEC_RETURN
+{
     FAILED,
     SUCCESS
 };

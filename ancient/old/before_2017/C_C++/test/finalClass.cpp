@@ -1,79 +1,76 @@
-#include<iostream>
+#include <iostream>
 
 class cbClass
 {
- public:
-    virtual void draw()=0;
+public:
+  virtual void draw() = 0;
 };
 
 class Base
 {
 public:
-  Base ()
+  Base()
   {
     foo();
   }
-  void testVir ()
+  void testVir()
   {
-    foo ();
+    foo();
   }
-  virtual ~ Base ()
+  virtual ~Base()
   {
     std::cout << "Base::~Base\n";
   }
 
-  virtual  void foo ();
+  virtual void foo();
   void display(void)
   {
-    std::cout<<"Base::display\n";
+    std::cout << "Base::display\n";
   }
 };
 
-void
-Base::foo ()
+void Base::foo()
 {
   std::cout << "Base::foo\n";
 };
 
-class Der:public Base
+class Der : public Base
 {
 public:
-  Der ()
+  Der()
   {
-
   }
-  Der (cbClass *cb)
+  Der(cbClass *cb)
   {
     cb->draw();
   }
-   ~Der ()
+  ~Der()
   {
     std::cout << "Der::~Der\n";
   }
-  
+
   void display()
   {
-    std::cout<<"Der::display\n";
+    std::cout << "Der::display\n";
   }
-  protected:  
-  void inline foo ()
+
+protected:
+  void inline foo()
   {
     std::cout << "Der::foo\n";
   }
-
 };
 
-class cbDraw: public cbClass
+class cbDraw : public cbClass
 {
-    public:
-        void draw()
-        {
-            std::cout<<"cbDra::draw\n";
-        }
+public:
+  void draw()
+  {
+    std::cout << "cbDra::draw\n";
+  }
 };
 
-int
-main (void)
+int main(void)
 {
   /*Base *t = new Der ();
   t->foo();
@@ -83,7 +80,7 @@ main (void)
   cbClass *p =new cbDraw();
 
   Der b1 (p);
-  
+
   delete t;*/
 
   Der b11;

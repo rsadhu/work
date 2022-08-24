@@ -4,11 +4,14 @@
 
 #define N 100
 
-namespace GPrep {
+namespace GPrep
+{
 
-    class Exception : public std::exception {
+    class Exception : public std::exception
+    {
     public:
-        Exception(std::string str = std::move("Unknown Exception")) {
+        Exception(std::string str = std::move("Unknown Exception"))
+        {
             __message = str;
         }
 
@@ -17,8 +20,9 @@ namespace GPrep {
         std::string __message;
     };
 
-    template<typename T>
-    class Vector {
+    template <typename T>
+    class Vector
+    {
     public:
         Vector(int capacity = 0, int element = 0);
 
@@ -52,27 +56,34 @@ namespace GPrep {
         T *__data = nullptr;
     };
 
-    template<typename T>
-    Vector<T>::Vector(int capacity, int element) {
-        if (capacity == 0) capacity = N;
+    template <typename T>
+    Vector<T>::Vector(int capacity, int element)
+    {
+        if (capacity == 0)
+            capacity = N;
         __capacity = capacity;
         __data = new T[capacity];
     }
 
-    template<typename T>
-    Vector<T>::Vector(std::initializer_list<T> &rhs) {
+    template <typename T>
+    Vector<T>::Vector(std::initializer_list<T> &rhs)
+    {
         Vector(rhs.size());
-        for (auto it : rhs) {
+        for (auto it : rhs)
+        {
             __data[__size++] = it;
         }
     }
 
-    template<typename T>
-    void Vector<T>::resize() {
-        if (__size >= __capacity) {
+    template <typename T>
+    void Vector<T>::resize()
+    {
+        if (__size >= __capacity)
+        {
             __capacity = std::pow(__capacity, 2);
             auto *tmp = new T[__capacity];
-            for (int i = 0; i < __size; i++) {
+            for (int i = 0; i < __size; i++)
+            {
                 tmp[i] = __data[i];
             }
             delete __data;
@@ -80,46 +91,61 @@ namespace GPrep {
         }
     }
 
-    template<typename T>
-    void Vector<T>::push_back(const T &data) {
+    template <typename T>
+    void Vector<T>::push_back(const T &data)
+    {
         resize();
         __data[__size++] = data;
     }
 
-    template<typename T>
-    T Vector<T>::operator[](int index) {
-        if (index <= __size) return __data[index];
+    template <typename T>
+    T Vector<T>::operator[](int index)
+    {
+        if (index <= __size)
+            return __data[index];
         return T();
     }
 
-    template<typename T>
-    T Vector<T>::pop_back() {
-        if (__size > 0) {
+    template <typename T>
+    T Vector<T>::pop_back()
+    {
+        if (__size > 0)
+        {
             return __data[--__size];
-        } else {
+        }
+        else
+        {
             throw Exception("Vector is empty");
         }
     }
 
-    template<typename T>
-    void Vector<T>::insert(int index, T item) {
-        if (index <= __size && index >= 0) {
+    template <typename T>
+    void Vector<T>::insert(int index, T item)
+    {
+        if (index <= __size && index >= 0)
+        {
             int cnt = ++__size;
             resize();
-            while (cnt > index) {
+            while (cnt > index)
+            {
                 __data[cnt] = __data[cnt - 1];
                 cnt--;
             }
             __data[index] = item;
-        } else {
+        }
+        else
+        {
             throw Exception("Out of Range, insertion");
         }
     }
 
-    template<typename T>
-    bool Vector<T>::remove(int index) {
-        if (index < __size && index >= 0) {
-            for (size_t i = index; i < __size - 1; i++) {
+    template <typename T>
+    bool Vector<T>::remove(int index)
+    {
+        if (index < __size && index >= 0)
+        {
+            for (size_t i = index; i < __size - 1; i++)
+            {
                 __data[i] = __data[i + 1];
             }
             __size--;
@@ -128,11 +154,14 @@ namespace GPrep {
         return false;
     }
 
-    template<typename T>
-    int Vector<T>::find(T item) {
-        for (int i = 0; i < __size; i++) {
-            if (__data[i] == item) return i;
+    template <typename T>
+    int Vector<T>::find(T item)
+    {
+        for (int i = 0; i < __size; i++)
+        {
+            if (__data[i] == item)
+                return i;
         }
         return -1;
     }
-}  // namespace GPrep
+} // namespace GPrep

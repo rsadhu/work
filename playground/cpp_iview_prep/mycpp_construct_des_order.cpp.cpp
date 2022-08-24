@@ -1,6 +1,7 @@
 #include <iostream>
 
-class Base {
+class Base
+{
 public:
     Base()
     {
@@ -13,7 +14,8 @@ public:
     }
 };
 
-class Der : Base {
+class Der : Base
+{
 public:
     Der()
     {

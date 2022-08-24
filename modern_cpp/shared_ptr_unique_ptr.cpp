@@ -1,7 +1,8 @@
 #include <iostream>
 #include <memory>
 
-class Test {
+class Test
+{
 public:
     void run();
     void display()
@@ -11,14 +12,16 @@ public:
 };
 
 class HandlerImpl;
-class Handler {
+class Handler
+{
     std::shared_ptr<Test> impl_;
 
 public:
     Handler(std::shared_ptr<HandlerImpl> impl_p);
 };
 
-class HandlerImpl {
+class HandlerImpl
+{
 public:
     HandlerImpl(std::shared_ptr<Test> t_ptr)
     {

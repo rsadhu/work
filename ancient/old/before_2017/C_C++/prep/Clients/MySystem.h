@@ -4,7 +4,6 @@
 #include "TCHAR.h"
 #include "pdh.h"
 
-
 class MySystem
 {
 public:
@@ -13,4 +12,3 @@ public:
 
 	int getRAMSize();
 };
-

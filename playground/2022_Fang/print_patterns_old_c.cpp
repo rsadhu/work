@@ -1,6 +1,7 @@
 #include <iostream>
 
-class Base {
+class Base
+{
 public:
     Base()
     {
@@ -13,7 +14,8 @@ public:
     virtual void foo() { std::cout << "\nBase::foo\n"; }
 };
 
-class Der : public Base {
+class Der : public Base
+{
 public:
     Der() { std::cout << "\n Der:: Der\n"; }
 
@@ -24,7 +26,7 @@ public:
 
 void test(void)
 {
-    Base* b = new Der;
+    Base *b = new Der;
     b->foo();
     delete b;
 }
@@ -34,9 +36,11 @@ void printPatterns()
 
     int sum = 0;
     std::cout << "\n";
-    for (int i = 1; i <= 5; i++) {
+    for (int i = 1; i <= 5; i++)
+    {
         std::cout << "\n";
-        for (int j = 1; j <= 5 - i; j++) {
+        for (int j = 1; j <= 5 - i; j++)
+        {
             sum += j;
             std::cout << sum << " ";
         }

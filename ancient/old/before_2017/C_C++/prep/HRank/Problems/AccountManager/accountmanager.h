@@ -14,6 +14,7 @@ public:
 	~AccountManager();
 public slots:
 	void slotTransitToMainMenu();
+
 private:
 	Ui::AccountManagerClass ui;
 	MainMenu *menu;

@@ -2,21 +2,23 @@
 #include <iostream>
 #include <vector>
 
-class BST {
+class BST
+{
 public:
-    BST(std::vector<int>& list);
+    BST(std::vector<int> &list);
 
 private:
     std::vector<int> bst_;
 };
 
-BST::BST(std::vector<int>& list)
+BST::BST(std::vector<int> &list)
 {
     bst_.resize(list.size(), 0);
 
     bst_[0] = list[0];
 
-    for (int i = 1; i < list.size(); i++) {
+    for (int i = 1; i < list.size(); i++)
+    {
         auto it = list[i];
         auto parent = (i - 1) / 2;
 
@@ -31,7 +33,7 @@ BST::BST(std::vector<int>& list)
 
 int main(void)
 {
-    std::vector<int> a { 10, 5, 8, 2, 19, 17, 26 };
+    std::vector<int> a{10, 5, 8, 2, 19, 17, 26};
     BST b = a;
     return 0;
 }
