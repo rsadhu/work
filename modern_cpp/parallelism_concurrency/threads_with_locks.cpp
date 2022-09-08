@@ -6,12 +6,11 @@
 #include <vector>
 
 using namespace std::chrono_literals;
-class Stack
-{
-    Stack(const Stack &);
-    Stack(Stack &&);
-    Stack &operator=(const Stack &);
-    Stack operator=(Stack &&);
+class Stack {
+    Stack(const Stack&);
+    Stack(Stack&&);
+    Stack& operator=(const Stack&);
+    Stack operator=(Stack&&);
 
 public:
     Stack(int size)
@@ -37,14 +36,11 @@ public:
         mu.lock();
         std::cout << std::this_thread::get_id() << " pop called\n";
 
-        if (!data.empty())
-        {
+        if (!data.empty()) {
             d = data.back();
             data.pop_back();
             mu.unlock();
-        }
-        else
-        {
+        } else {
             throw std::runtime_error("Stack is empty");
         }
         return d;
@@ -71,36 +67,29 @@ int main(void)
     Stack s(100);
     std::map<int, std::function<int(int)>> lookup;
 
-    lookup[0] = [&](int d)
-    {
+    lookup[0] = [&](int d) {
         s.push(d);
         return 1;
     };
 
-    lookup[1] = [&](int d)
-    {
-        if (s.size() > 0)
-        {
+    lookup[1] = [&](int d) {
+        if (s.size() > 0) {
             return s.pop();
         }
         return -1;
     };
 
-    lookup[2] = [&](int d)
-    {
+    lookup[2] = [&](int d) {
         s.push(10 * d);
         return 1; };
 
-    lookup[3] = [&](int d)
-    {
+    lookup[3] = [&](int d) {
         s.push(d + 10);
         return 1; };
 
-    lookup[4] = [&](int d)
-    { return s.pop(); };
+    lookup[4] = [&](int d) { return s.pop(); };
 
-    lookup[5] = [&](int d)
-    { return s.pop(); };
+    lookup[5] = [&](int d) { return s.pop(); };
 
     unsigned int n = std::thread::hardware_concurrency();
 
@@ -109,8 +98,7 @@ int main(void)
     const int c_size = 10;
 
     std::thread ts[c_size];
-    for (int i = 0; i < c_size; i++)
-    {
+    for (int i = 0; i < c_size; i++) {
         ts[i] = std::thread(lookup[i % 5], i);
     }
     for (int i = 0; i < c_size; i++)
