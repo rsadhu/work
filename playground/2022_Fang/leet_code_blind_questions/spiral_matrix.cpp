@@ -5,56 +5,66 @@ using namespace std;
 
 vector<int> spiralOrder(vector<vector<int>> &matrix)
 {
-    int right_left = 0, up_down = 0;
+
     std::vector<int> res;
-    int cnt = 0;
-    bool abs = true;
 
-    while (abs)
+    int left = 0, right = matrix[0].size() - 1, up = 0, down = matrix.size() - 1;
+    int dir = 1;
+    while (left <= right && up <= down)
     {
-        abs = true;
-        // go right
-        while (right_left < (matrix[0].size() - cnt))
+
+        if (dir == 1)
         {
-            res.push_back(matrix[up_down][right_left]);
-            right_left++;
-            abs = true;
+            // go right
+            for (int i = left; i <= right; i++)
+            {
+                res.push_back(matrix[up][i]);
+            }
+            dir = 2;
+            up++;
         }
 
-        right_left--;
-        // go down
-        while (++up_down < (matrix.size() - cnt))
+        else if (dir == 2)
         {
-            res.push_back(matrix[up_down][right_left]);
-            abs = true;
-        }
-        up_down--;
-        // go left
-        while (--right_left >= cnt)
-        {
-            // right_left--;
-            res.push_back(matrix[up_down][right_left]);
-            abs = true;
+            // go down
+            for (int i = up; i <= down; i++)
+            {
+                res.push_back(matrix[i][right]);
+            }
+            right--;
+            dir = 3;
         }
 
-        // go up
-        right_left++;
-        while (--up_down >= cnt)
+        else if (dir == 3)
         {
-            abs = true;
-            // up_down--;
-            res.push_back(matrix[up_down][right_left]);
-        }
-        up_down++;
+            // go left
 
-        cnt++;
+            for (int i = right; i >= left; i--)
+            {
+                res.push_back(matrix[down][i]);
+            }
+            down--;
+            dir = 4;
+        }
+
+        else if (dir == 4)
+        {
+            // go up
+
+            for (int i = down; i >= up; i--)
+            {
+                res.push_back(matrix[i][left]);
+            }
+            left++;
+            dir = 1;
+        }
     }
     return res;
 }
 
 int main(void)
 {
-    std::vector<std::vector<int>> mat = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    std::vector<std::vector<int>> mat = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
 
     auto res = spiralOrder(mat);
 
