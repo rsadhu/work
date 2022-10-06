@@ -37,12 +37,35 @@ false otherwise.
 */
 bool isTwin(std::string a, std::string b)
 {
-    // write your code here
+    return true;
 }
 
-int main(int argc, char argv[][3])
+class Test
 {
-    std::vector<int> prices = {10, 19, 20, 15, 12, 1};
-    std::cout << max_profil(prices);
+    volatile int m_data = 10;
+
+public:
+    Test() = default;
+
+    int getData() const { return m_data; }
+    int getData() { return m_data; }
+
+    void setData(int d) { m_data = d; }
+};
+
+int main(int argc, char **argv)
+{
+
+    const Test t;
+    t.getData();
+    const_cast<Test &>(t).setData(1000);
+
+    std::cout << "  " << t.getData() << " ";
+
+    Test u;
+    u.getData();
+    u.setData(10);
+    std::cout << "  " << u.getData() << " ";
+
     return 0;
 }
