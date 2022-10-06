@@ -82,13 +82,42 @@ void test(Test u)
     u.display();
 }
 
+int counter = 0;
+class A
+{
+public:
+    A()
+    {
+        std::cout << "\nA::A";
+        counter++;
+    }
+    A(const A &rhs)
+    {
+        counter++;
+        std::cout << "A::copy cons\n";
+    }
+
+    A(A &&rhs)
+    {
+        std::cout << "A::move cons\n";
+    }
+    ~A()
+    {
+        counter--;
+        std::cout << "A::~A\n";
+    }
+};
+
 int main(void)
 {
     Test t("Hello World!!");
 
     t.display();
 
-    test(t);
+    // test(t);
 
+    // Test z("Somu");
+    // z = t;
+    // z.display();
     return 0;
 }
