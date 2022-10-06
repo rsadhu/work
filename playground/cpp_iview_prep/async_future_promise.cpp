@@ -1,6 +1,6 @@
 #include <iostream>
 #include <future>
-#include <algorithm>
+    e   #include <algorithm>
 
 class Worker
 {

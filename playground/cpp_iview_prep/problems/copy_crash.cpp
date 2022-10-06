@@ -84,14 +84,11 @@ void test(Test u)
 
 int main(void)
 {
-    Test t("Rakesh");
+    Test t("Hello World!!");
+
     t.display();
 
     test(t);
-
-    Test z("Somu");
-    z = t;
-    z.display();
 
     return 0;
 }
