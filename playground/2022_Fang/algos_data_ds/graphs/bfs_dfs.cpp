@@ -48,7 +48,7 @@ void bfs_iter(graph g, std::string start)
     while (!q.empty())
     {
         std::string node = q.front();
-        u_graph.insert(node);
+     //   u_graph.insert(node);
         q.pop();
         std::cout << node << " ";
         auto range = g.equal_range(node);

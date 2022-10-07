@@ -23,11 +23,12 @@
 #include <map>
 
 using namespace std;
-using graph = std::multimap<std::pair<std::string, std::string>, int>;
-using visited_nodes = std::set<std::string>;
 
-graph g;
-visited_nodes v;
+std::map<std::pair<std::string, std::string>, int> g_edge_weight;
+
+std::multimap<std::string, std::string> g_path;
+
+std::set<std::string> visited_nodes;
 
 bool addToGraph(std::string value)
 {
@@ -62,9 +63,96 @@ bool addToGraph(std::string value)
     }
 
     auto pair = std::make_pair(first, second);
-    //   std::cout << pair.first << pair.second;
-    //  g.insert(pair, int_val);
+
+    g_edge_weight.insert(std::make_pair(pair, int_val));
+
+    g_path.insert(std::make_pair(first,second));
+
     return true;
+}
+
+bool hasPath(std::string start, std::string end, int max_limit,     std::string &final_str)
+{
+    std::stack<std::string> st;
+    st.push(start);
+    int sum = 0;
+    bool found = false;
+    while( !st.empty())
+    {
+        auto node = st.top();
+        st.pop();
+        final_str+=node;
+        final_str+="->";
+        if (node == end)
+        {
+            final_str = final_str.substr(0, final_str.length()-2);
+            found = true;
+            break;
+        }
+
+        auto curr_node = std::make_pair(start, node);
+        auto weight = g_edge_weight[curr_node];
+
+        sum += weight;
+        start = node;
+
+        auto neighbours_list = g_path.equal_range(node);
+
+        for (auto it = neighbours_list.first; it != neighbours_list.second; it++)
+        {
+            if (visited_nodes.count(it->second) == 0)
+            {
+                visited_nodes.insert(it->second);
+                st.push(it->second);
+            }
+            else {
+              final_str="E2";
+              return false;
+            }
+        }
+    }
+
+    if (!found)
+        return false;
+
+    return sum <= max_limit;
+}
+
+int main_()
+{
+
+
+    do
+    {
+        std::string value;
+        std::cin>> value;
+         if (value == "" || value.length() == 0)
+        break;
+        if (value.find("->") == std::string::npos)
+        {
+            if (!addToGraph(value))
+            {
+                std::cout << "E1";
+                return 0;
+            }
+        }
+        else
+        {
+            std::string st="A", ed="D";
+            int max_limit=10;
+            std::string path;
+            bool res = hasPath(st, ed, max_limit, path);
+            if (res)
+                std::cout<<path;
+            else {
+                if (path.empty())
+                    std::cout<<"E3";
+                else
+                    std::cout<<path;
+            }
+        }
+    }while(true);
+    return 0;
 }
 
 int main()
@@ -85,6 +173,11 @@ int main()
         }
         else
         {
+            std::string st="A", ed="D";
+            int max_limit=10;
+            std::string path;
+            bool res = hasPath(st, ed, max_limit, path);
+            std::cout <<" has path"<< res;;
         }
     }
     return 0;
