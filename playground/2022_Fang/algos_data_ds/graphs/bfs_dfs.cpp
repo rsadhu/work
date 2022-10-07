@@ -5,71 +5,70 @@
 #include <string>
 #include <iostream>
 
-using graph = std::multimap<std::string , std::string>;
+using graph = std::multimap<std::string, std::string>;
 
 std::set<std::string> u_graph;
 
 void dfs_rec(graph g, std::string start)
 {
-    //auto range = g[start];
+    // auto range = g[start];
 }
-
 
 void dfs_iter(graph g, std::string start)
 {
-    std::cout<<"\n";
+    std::cout << "\n";
     std::stack<std::string> st;
     st.push(start);
-    while(!st.empty())
+    while (!st.empty())
     {
         std::string node = st.top();
-        u_graph.insert(node);
         st.pop();
-        std::cout<<node<<" ";
+        std::cout << node << " ";
         auto range = g.equal_range(node);
         for (auto i = range.first; i != range.second; ++i)
         {
-            st.push(i->second);
+            if (u_graph.count(i->second) == 0)
+            {
+                u_graph.insert(i->second);
+                st.push(i->second);
+            }
         }
     }
 }
 
-
 void bfs_rec(graph g, std::string start)
 {
-
 }
-
 
 void bfs_iter(graph g, std::string start)
 {
- std::cout<<"\n";
+    std::cout << "\n";
     std::queue<std::string> q;
     q.push(start);
-    while(!q.empty())
+    while (!q.empty())
     {
         std::string node = q.front();
         u_graph.insert(node);
         q.pop();
-        std::cout<<node<<" ";
+        std::cout << node << " ";
         auto range = g.equal_range(node);
         for (auto i = range.first; i != range.second; ++i)
         {
-            q.push(i->second);
+            if (u_graph.count(i->second) == 0)
+            {
+                u_graph.insert(i->second);
+                q.push(i->second);
+            }
         }
     }
-
 }
-
-
-
 
 int main(void)
 {
     graph g;
     g.insert(std::make_pair("a", "b"));
     g.insert(std::make_pair("a", "c"));
-    g.insert(std::make_pair("a", "d"));
+    //    g.insert(std::make_pair("a", "d"));
 
     g.insert(std::make_pair("b", "d"));
 
@@ -79,32 +78,29 @@ int main(void)
     g.insert(std::make_pair("f", "h"));
 
     g.insert(std::make_pair("d", "g"));
-    g.insert(std::make_pair("d", "e"));
-
+    //    g.insert(std::make_pair("d", "e"));
 
     dfs_rec(g, "a");
     dfs_iter(g, "a");
 
+    std::cout << "\n";
 
+    // for (auto it : u_graph)
+    // {
+    //     std::cout << it << " ";
+    // }
 
-    std::cout<<"\n";
-
-    for (auto it : u_graph)
-    {
-        std::cout<<it <<" ";
-    }
+    u_graph.clear();
 
     bfs_rec(g, "a");
     bfs_iter(g, "a");
 
+    std::cout << "\n";
 
-    std::cout<<"\n";
+    // for (auto it : u_graph)
+    // {
+    //     std::cout << it << " ";
+    // }
 
-    for (auto it : u_graph)
-    {
-        std::cout<<it <<" ";
-    }
-
-  
     return 0;
 }
