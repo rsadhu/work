@@ -92,7 +92,6 @@ Date ThirdLatest(std::vector<Date> &dates)
     std::set<Date, decltype(cmp)> lu;
     for (auto it : dates)
     {
-        //  if (lu.find(it) == lu.end())
         lu.insert(it);
     }
 
