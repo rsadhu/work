@@ -16,6 +16,30 @@ function display()
 
 }
 
+function json_to_object(json_str)
+{
+    obj_arr = JSON.parse(json_str)
+   // console.log(obj_arr["members"])
+}
 
+
+var json_str = {
+    "members":[
+    {
+        "name" : "rakesh",
+        "age" : 40,
+        "home" :  "Kashmir",
+        "address" :  "Munich, Germany"},
+
+    {
+        "name" : "valya",
+        "age" : 37,
+        "home" :  "Ukraine",
+        "address" :  "Munich, Germany"
+    }]
+};
 
 display()
+
+
+json_to_object(json_str)
