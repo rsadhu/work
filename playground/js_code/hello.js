@@ -43,3 +43,8 @@ display()
 
 
 json_to_object(json_str)
+
+import("os");
+import("fs")
+
+fs.read();
