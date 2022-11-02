@@ -14,7 +14,7 @@ public:
     }
 };
 
-class Der : Base
+class Der : public Base
 {
 public:
     Der()
@@ -30,6 +30,6 @@ public:
 
 int main(void)
 {
-    Der d;
+    // Der d;
     return 0;
 }
