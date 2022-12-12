@@ -5,12 +5,12 @@ class Base
 public:
     Base()
     {
-        std::cout << "\nBase\n";
+        std::cout << "Base\n";
     }
 
     ~Base()
     {
-        std::cout << "\n~Base\n";
+        std::cout << "~Base\n";
     }
 };
 
@@ -19,17 +19,17 @@ class Der : public Base
 public:
     Der()
     {
-        std::cout << "\nDer\n";
+        std::cout << "Der\n";
     }
 
     ~Der()
     {
-        std::cout << "\n~Der\n";
+        std::cout << "~Der\n";
     }
 };
 
 int main(void)
 {
-    // Der d;
+    Der d;
     return 0;
 }
