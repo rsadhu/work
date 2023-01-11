@@ -11,19 +11,17 @@ lambda which accepts one variable by value and one by reference
 
 pointers vs reference argument passing
 
-template specialization 
+template specialization
 
 
 */
-
-
 
 /*
 1. tell me your favourite 5 concepts of modern c++
 2. what do you know about move and perfect forwarding?
 3. can you implement your own smart pointer ?
 4. dangling pointer, memory leaks, and avoidance ?
-5. example code shall and deep copy crash
+5. example code shallow and deep copy crash
 6. rule of 3, 5 cpp?
 7. is make_shared faster than shared_ptr<new T>()? if yes why ? what are other benefits?
 8. where is custom deleter useful for shared_ptr <T>
@@ -182,45 +180,41 @@ main(void)
 // //     return 0;
 // // }
 
-
-
 class Animal
 {
 public:
-Animal()
-{
-std::cout<<"\nAnimal\n";
-}
+    Animal()
+    {
+        std::cout << "\nAnimal\n";
+    }
 
-virtual void foo() {std::cout<<"\nAnimal :: foo\n";}
+    virtual void foo() { std::cout << "\nAnimal :: foo\n"; }
 
- ~Animal()
-{
-    std::cout<<"\n~Animal\n";
-}
+    ~Animal()
+    {
+        std::cout << "\n~Animal\n";
+    }
 };
 
-class Dog: public Animal
+class Dog : public Animal
 {
-    public :
+public:
     Dog()
     {
-        std::cout<<"\nDog\n";
+        std::cout << "\nDog\n";
     }
-    void foo() {
-        std::cout<<"\nDog :: foo\n";
+    void foo()
+    {
+        std::cout << "\nDog :: foo\n";
     }
     ~Dog()
     {
-        std::cout<<"~Dog\n";
+        std::cout << "~Dog\n";
     }
 };
 
-
-
 int main(void)
 {
-  
 
     return 0;
 }

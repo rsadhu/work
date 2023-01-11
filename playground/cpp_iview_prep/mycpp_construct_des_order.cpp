@@ -2,6 +2,10 @@
 
 class Base
 {
+
+protected:
+    int m_data = 10;
+
 public:
     Base()
     {
@@ -25,6 +29,11 @@ public:
     ~Der()
     {
         std::cout << "~Der\n";
+    }
+
+    void print()
+    {
+        std::cout << " main data is " << m_data << "\n";
     }
 };
 
