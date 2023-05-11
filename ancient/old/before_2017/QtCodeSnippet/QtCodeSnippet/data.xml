@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Main>
-  <img src="D:\\rsadhu\\work\\CodeSnippet\\test.png"  id="img"></img>
-  <mov src="../tes.avi" id="mov"></mov>
-  <txt src="this is a test" id="txt"></txt>
-  <url src="http://google.com" id="url"></url>   
-</Main>

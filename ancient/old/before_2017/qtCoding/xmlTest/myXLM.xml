@@ -1,6 +1,0 @@
-
-
-<iBexShortCuts> 
-  <iBexShortCut ID="ZOOM" Shortcut="CNTRL KEY + MOUSE SCROLL" Description=" video in layout zooms in and out upon combination of CNTRL Key and Mouse Scroll"/>
-  <iBexShortCut ID="SWAPVIDEO" Shortcut="SHIFT KEY  + MOUSE DRAG" Description="Live Camera Layouts can be swapped between two layouts using combination of SHIFT KEY + Mouse Drag"/>  
-</iBexShortCuts>

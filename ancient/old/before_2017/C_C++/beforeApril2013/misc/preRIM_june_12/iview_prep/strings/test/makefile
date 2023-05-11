@@ -1,3 +1,0 @@
-clean:
-	rm *~ .*.swp *.o
-

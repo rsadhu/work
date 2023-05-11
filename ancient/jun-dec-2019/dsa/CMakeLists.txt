@@ -1,7 +1,0 @@
-add_executable(vector main.cpp MyVector.h)
-add_executable(linklist main.cpp linklist.h)
-add_executable(hashtable main.cpp hashtable.h)
-add_executable(queue main.cpp queue.h)
-add_executable(search main.cpp searchAlgos.h)
-add_executable(bitwise main.cpp bitwise.h)
-add_executable(sort main.cpp sort.h)
