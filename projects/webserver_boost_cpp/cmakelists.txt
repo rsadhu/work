@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.12.2)
+project(webserver)
+
+find_package(Boost REQUIRED)
+
+if (${Boost_FOUND})
+    message(${Boost_INCLUDE_DIRS})
+    add_executable(webserver main.cpp webserver.cpp session.cpp)
+    target_link_libraries(webserver ${Bst_LIBRARIES})
+else()
+    message("not found")
+endif()
