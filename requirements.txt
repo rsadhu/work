@@ -9,7 +9,7 @@ click==8.1.7
 cmake==3.27.9
 Cython==3.0.6
 decorator==5.1.1
-Django==5.0
+Django==5.0.2
 dlib==19.24.2
 Flask==3.0.0
 Flask-SQLAlchemy==3.1.1
