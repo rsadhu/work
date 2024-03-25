@@ -26,6 +26,16 @@ class TreeMngr
         inOrder(root->right);
     }
 
+    int sum_nodes(Node *root)
+    {
+        if (!root)
+        {
+            return 0;
+        }
+
+        return root->val + sum_nodes(root->left) + sum_nodes(root->right);
+    }
+
 public:
     void add(int data)
     {
@@ -83,6 +93,11 @@ public:
         std::cout << "\n";
         inOrder(_root);
     }
+
+    int sum_of_all_nodes()
+    {
+        return sum_nodes(_root);
+    }
 };
 
 // Function to generate unique random numbers in a range
@@ -115,8 +130,6 @@ std::vector<int> generateUniqueRandomNumbers(int start, int end, int count)
 int main(void)
 {
     TreeMngr tb;
-    Node *root = nullptr;
-    Node *tra = root;
 
     auto items = generateUniqueRandomNumbers(1, 10, 10);
 
@@ -128,5 +141,7 @@ int main(void)
 
     tb.inOrder();
     tb.levelOrder();
+
+    std::cout << "\n sum is " << tb.sum_of_all_nodes() << "\n";
     return 0;
 }

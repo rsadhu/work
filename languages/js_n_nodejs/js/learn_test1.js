@@ -1,3 +1,4 @@
+helpermod=require("./helper.js")
 
 class  JsCode
 {
@@ -51,3 +52,4 @@ var fun_add = function(a, b)
 
 
 fun_add(9999999, 1);
+console.log("add function from helper .. ",helpermod.add(1,9));
