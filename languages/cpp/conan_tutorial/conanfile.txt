@@ -1,8 +1,0 @@
-[requires]
-qt/5.15.8
-boost/1.81.0
-
-[generators]
-CMakeDeps
-CMakeToolchain
-bazel
