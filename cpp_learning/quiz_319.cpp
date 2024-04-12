@@ -8,30 +8,17 @@ int main(void)
     int i= 0;
     while(true)
     {
-         if(i < n_chdilren)
-        {
-            i++;
-        }
-        else{
-            if (n_candies > 0)
-            {
-                i = 0;
-            }
-            else{
-                break;
-            }
-        }
         if (n_candies <=0)
         break;
         if (candy < n_candies)
-            res[i]+= ++candy;
+            res[i++]+= ++candy;
         else
-            res[i]+= n_candies;
-
+            res[i++]+= n_candies;
         n_candies-=candy;
-
-       
+        if (i % n_chdilren == 0)
+        {
+            i=0;
+        }
     }
-
     return 0;
 }
