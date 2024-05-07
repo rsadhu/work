@@ -1,0 +1,14 @@
+// File: Person.fbs
+
+namespace Test;
+
+// Define a FlatBuffers struct for Person
+table Person {
+  name: string;
+  address: string;
+  list_of_jobs: [string];  // Vector of strings
+  cur_job: string;
+  cur_salary: double;
+}
+
+root_type Person;  // Defines the root of the schema

@@ -1,5 +1,19 @@
 #include "common.h"
 
+template <typename T>
+std::ostream &
+operator<<(std::ostream &o, std::vector<T> &r)
+{
+    static_assert(std::is_same_v<T, int> || std::is_same_v<T, float> || std::is_same_v<T, std::string> ||
+                      std::is_same_v<T, bool>,
+                  "std::cout function only supports  container's int,bool, float and std::string types");
+    for (auto el : r)
+    {
+        o << el << " ";
+    }
+    return o;
+}
+
 std::vector<int> two_sum(std::vector<int> &r, int target)
 {
     std::unordered_map<int, int> lu;
