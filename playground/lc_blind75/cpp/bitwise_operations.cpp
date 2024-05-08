@@ -74,6 +74,11 @@ int missing_number(std::vector<int> &list)
     return missng_num;
 }
 
+/*
+    1 = 0001
+    2 = 0010
+    3 = 0011
+*/
 int main(int argc, char *argv[])
 {
 
