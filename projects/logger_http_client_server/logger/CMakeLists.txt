@@ -1,4 +1,4 @@
-project(Logger)
+project(logger)
 
 
 # Default to Release build if not specified
@@ -27,6 +27,4 @@ find_package(Boost REQUIRED COMPONENTS system thread)
 
 # Define the library
 add_executable(${PROJECT_NAME} main.cpp logger.cpp http_client.h)
-
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${Boost_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} PUBLIC  ${Boost_LIBRARIES})

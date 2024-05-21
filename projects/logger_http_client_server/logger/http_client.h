@@ -1,3 +1,6 @@
+#ifndef HTTP_CLIENT
+#define HTTP_CLIENT
+
 #include <boost/asio.hpp>
 #include <boost/beast.hpp>
 #include <boost/beast/core.hpp>
@@ -63,3 +66,4 @@ private:
     net::io_context &ioc_;
     std::thread io_thread_;
 };
+#endif // HTTP_CLIENT

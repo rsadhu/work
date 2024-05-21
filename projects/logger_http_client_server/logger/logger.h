@@ -1,6 +1,7 @@
 
 #ifndef LOG_ROUTER_H
 #define LOG_ROUTER_H
+#include "http_client.h"
 
 #include <atomic>
 #include <condition_variable>
@@ -9,8 +10,6 @@
 #include <thread>
 #include <vector>
 
-#include "http_client.h"
-
 struct Data
 {
     std::string msg;
@@ -18,6 +17,9 @@ struct Data
     size_t thread_id;
     int log_level;
 };
+
+const std::string PORT_NUM = "13563";
+const std::string IP = "127.0.0.1";
 
 class Logger
 {

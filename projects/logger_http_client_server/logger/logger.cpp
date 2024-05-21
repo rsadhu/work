@@ -1,6 +1,5 @@
 
 #include "logger.h"
-#include <iostream>
 
 Logger::Logger(const std::string &component_name) : component_name_(component_name)
 {
@@ -8,7 +7,7 @@ Logger::Logger(const std::string &component_name) : component_name_(component_na
 
     if (!client_created_)
     {
-        client_ = std::make_shared<http_client>(ioc_, "127.0.0.1", "13563");
+        client_ = std::make_shared<http_client>(ioc_, IP, PORT_NUM);
         client_created_ = true;
     }
 }
