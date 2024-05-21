@@ -9,8 +9,6 @@
 #include <thread>
 #include <vector>
 
-#include <spdlog/details/log_msg.h>
-#include <spdlog/sinks/sink.h>
 #include "http_client.h"
 
 struct Data
