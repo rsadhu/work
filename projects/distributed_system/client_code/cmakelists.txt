@@ -2,12 +2,6 @@ project(ecal_client)
 
 find_package(eCAL REQUIRED)
 
-if (${eCAL_FOUND})
-	message("ecal_include_dir ... ${eCAL_INCLUDE_DIRS}")
-	message("ecal_lib dir ... ${eCAL_LIBRARIES}")
-endif()
-
 add_executable(${PROJECT_NAME} main.cpp)
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_14)
-
 target_link_libraries(${PROJECT_NAME} eCAL::core)
