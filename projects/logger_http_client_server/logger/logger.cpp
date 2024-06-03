@@ -1,14 +1,23 @@
 
 #include "logger.h"
 
-Logger::Logger(const std::string &component_name) : component_name_(component_name)
+Logger::Logger(const std::string ip, const std::string &component_name) : component_name_(component_name)
 {
+    IP_ = ip;
     publisher_thread_ = std::move(std::thread(&Logger::publishLogData, this));
 
-    if (!client_created_)
+    try
     {
-        client_ = std::make_shared<http_client>(ioc_, IP, PORT_NUM);
-        client_created_ = true;
+        if (!client_created_)
+        {
+            client_ = std::make_shared<http_client>(ioc_, IP_, PORT_NUM_);
+            client_created_ = true;
+        }
+    }
+    catch (std::exception &e)
+    {
+        std::cout << "\nBoost connection failed " << e.what() << "\n";
+        publisher_thread_.join();
     }
 }
 
