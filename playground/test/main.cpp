@@ -1,24 +1,96 @@
+#include <functional>
+
+#include <vector>
 #include <iostream>
-#include <chrono>
+#include <assert.h>
+#include <fstream>
+#include <sstream>
+#include <algorithm>
+#include <functional>
+#include <iostream>
+#include <string_view>
+using namespace std;
 
-int main(void)
+string ltrim(const string &);
+string rtrim(const string &);
+
+/*
+ * Complete the class 'xcallable' below.
+ */
+class xcallable
 {
-    auto start = std::chrono::high_resolution_clock::now();
+    int count_ = 0;
+    int x_ = 0;
+    int data_ = 0;
 
-    int i = 0;
-    while (i < 1000000000)
+public:
+    xcallable(int x) : x_(x)
     {
-        i++;
     }
 
-    // Get the current time point after the operation
-    auto end = std::chrono::high_resolution_clock::now();
+    xcallable(const xcallable &rhs) = delete;
+    xcallable(xcallable &rhs)
+    {
+        this->x_ = rhs.x_;
+        this->data_ = rhs.data_;
+    }
 
-    // Calculate the duration between the start and end time points
-    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    xcallable &operator()(int a)
+    {
+        if (this->count_ >= this->x_)
+        {
+            throw -1;
+        }
+        this->count_++;
+        data_ += a;
+        return *this;
+    }
 
-    // Output the duration in milliseconds
-    std::cout << "Time taken: " << duration.count() << " milliseconds" << std::endl;
+    int get_sum() const
+    {
+        return data_;
+    }
+};
+
+vector<int> get_result(int x, vector<int> arr)
+{
+    xcallable obj(x);
+    vector<int> res;
+    for (int i = 0; i < arr.size(); i++)
+    {
+        int num = arr[i];
+        try
+        {
+            obj = obj(num);
+            res.push_back(obj.get_sum());
+        }
+        catch (int e)
+        {
+            assert(i + 1 > x);
+            assert(e == -1);
+            res.push_back(obj.get_sum());
+            continue;
+        }
+        assert(i + 1 <= x);
+    }
+    return res;
+}
+
+int main()
+{
+
+    std::vector<int> arr{1, 3, 7, 1};
+    vector<int> result = get_result(3, arr);
+
+    for (size_t i = 0; i < result.size(); i++)
+    {
+        cout << result[i];
+
+        if (i != result.size() - 1)
+        {
+            cout << "\n";
+        }
+    }
 
     return 0;
 }

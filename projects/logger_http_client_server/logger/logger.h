@@ -18,13 +18,10 @@ struct Data
     int log_level;
 };
 
-const std::string PORT_NUM = "13563";
-const std::string IP = "127.0.0.1";
-
 class Logger
 {
 public:
-    Logger(const std::string &component_name = "");
+    Logger(const std::string ip, const std::string &component_name = "");
     ~Logger();
 
     virtual void log(const std::string &msg);
@@ -49,6 +46,10 @@ private:
     int mock_log_level_ = 0;
     size_t mock_thread_id_ = 1000;
     long mock_date_ = 1212121;
+
+    // ip and port
+    std::string PORT_NUM_ = "13563";
+    std::string IP_ = "127.0.0.1";
 };
 
 #endif // LOG_ROUTER_H
