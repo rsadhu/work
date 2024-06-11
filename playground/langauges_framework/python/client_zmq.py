@@ -9,8 +9,11 @@ import zmq
 context = zmq.Context()
 
 #  Socket to talk to server
-socket = context.socket(zmq.REQ)
-socket.connect("tcp://192.168.178.23:5555")
+print("Connecting to hello world server…")
+socket = context.socket(zmq.SUB)
+socket.connect("tcp://127.0.0.7:5555")
+socket.setsockopt_string(zmq.SUBSCRIBE, '')
+
 
 #  Do 10 requests, waiting each time for a response
 for request in range(10):

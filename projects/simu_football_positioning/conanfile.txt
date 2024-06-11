@@ -1,0 +1,7 @@
+[requires]
+protobuf/5.27.0
+zeromq/4.3.5
+
+[generators]
+CMakeDeps
+CMakeToolchain
