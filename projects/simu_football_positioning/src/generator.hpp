@@ -94,9 +94,7 @@ namespace Generator
                 player.y = std::max(0.0, std::min(static_cast<double>(FIELD_SIZE), player.y));
                 position.timestamp = currentTime();
                 position.sensorId = ++counter;
-                std::cout << player.x << " " << player.y << ", ";
             }
-            std::cout << "\n";
             return std::move(positions_);
         }
 

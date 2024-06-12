@@ -2,6 +2,7 @@
 #include "data_ipublisher.h"
 #include "data_publisher_impl.h"
 #include "schemas/position.pb.h"
+#include "google/protobuf/util/json_util.h"
 
 int main()
 {
@@ -26,16 +27,27 @@ int main()
 
             // Serialize the message to a string
             std::string serialized_data;
+
             if (!position.SerializeToString(&serialized_data))
             {
                 std::cerr << "Failed to serialize position message." << std::endl;
                 return -1;
             }
+            // std::cout << serialized_data << "\n";
 
             pub->publish(serialized_data);
+
+            // myprotobuf::Position position_1;
+            // if (!position_1.ParseFromString(serialized_data))
+            // {
+            //     std::cerr << " Failed t deserialize, this is bad\n";
+            //     return -1;
+            // }
+            // std::cout << position_1.mutable_position_m()->x() << " " << position_1.mutable_position_m()->y() << "\n";
+
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
-        std::cout << "\n";
+        //   std::cout << "\n";
     }
     // Shutdown Google's Protocol Buffers library
     google::protobuf::ShutdownProtobufLibrary();
