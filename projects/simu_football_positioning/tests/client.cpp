@@ -38,8 +38,8 @@ int main(int argc, char *argv[])
         std::cout << "pos.y: " << position.position_m().y() << std::endl;
         std::cout << "pos.z: " << position.position_m().z() << std::endl;
         std::cout << "sensor_id: " << position.sensorid() << std::endl;
-        std::cout << "sensor_id: " << position.timestamp_ms() << std::endl;
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::cout << "timestamp: " << position.timestamp_ms() << std::endl;
+        // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
 
     google::protobuf::ShutdownProtobufLibrary();

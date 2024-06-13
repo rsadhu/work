@@ -25,8 +25,8 @@ namespace Generator
     struct Position
     {
         uint64_t sensorId = 0;
-        uint64_t timestamp;
-        Data3d player;
+        uint64_t timestamp = 0;
+        Data3d player{0, 0, 0};
     };
 
     class PositionGenerator
@@ -64,7 +64,8 @@ namespace Generator
             {
                 Position pos;
                 pos.player = {dis(gen), dis(gen), 0};
-                positions_.push_back(pos);
+                pos.sensorId = i;
+                positions_[i] = std::move(pos);
             }
         }
 
@@ -75,7 +76,7 @@ namespace Generator
             std::uniform_real_distribution<> stepDis(-this->step_size_, this->step_size_);
             std::uniform_real_distribution<> angleDis(0, 2 * M_PI);
             std::set<double> u_x, u_y;
-            int counter = 0;
+            //    int counter = 0;
 
             for (auto &position : positions_)
             {
@@ -93,7 +94,6 @@ namespace Generator
                 player.x = std::max(0.0, std::min(static_cast<double>(FIELD_SIZE), player.x));
                 player.y = std::max(0.0, std::min(static_cast<double>(FIELD_SIZE), player.y));
                 position.timestamp = currentTime();
-                position.sensorId = ++counter;
             }
             return std::move(positions_);
         }
