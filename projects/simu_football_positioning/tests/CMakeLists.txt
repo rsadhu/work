@@ -20,7 +20,7 @@ project(tests)
 
 find_package(ZEROMQ REQUIRED)
 find_package(PROTOBUF REQUIRED)
-
+find_package(absl REQUIRED)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -48,5 +48,7 @@ set(SRC_FILES src/main
 target_include_directories(client PRIVATE  ${ZEROMQ_INCLUDE_DIR} ${ZMQ_INC})
 target_include_directories(server PRIVATE  ${ZEROMQ_INCLUDE_DIR} ${ZMQ_INC})
 
-target_link_libraries(client PUBLIC  ${ZEROMQ_LIBRARIES} ${Protobuf_LIBRARIES} libzmq)
-target_link_libraries(server PUBLIC  ${ZEROMQ_LIBRARIES} ${Protobuf_LIBRARIES}  libzmq)
+target_link_libraries(client PUBLIC  ${ZEROMQ_LIBRARIES} ${Protobuf_LIBRARIES} libzmq  absl::log_internal_message
+absl::log_internal_check_op)
+target_link_libraries(server PUBLIC  ${ZEROMQ_LIBRARIES} ${Protobuf_LIBRARIES}  libzmq  absl::log_internal_message
+absl::log_internal_check_op)

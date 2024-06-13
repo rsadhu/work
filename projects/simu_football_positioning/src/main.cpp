@@ -33,21 +33,11 @@ int main()
                 std::cerr << "Failed to serialize position message." << std::endl;
                 return -1;
             }
-            // std::cout << serialized_data << "\n";
 
             pub->publish(serialized_data);
 
-            // myprotobuf::Position position_1;
-            // if (!position_1.ParseFromString(serialized_data))
-            // {
-            //     std::cerr << " Failed t deserialize, this is bad\n";
-            //     return -1;
-            // }
-            // std::cout << position_1.mutable_position_m()->x() << " " << position_1.mutable_position_m()->y() << "\n";
-
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         }
-        //   std::cout << "\n";
     }
     // Shutdown Google's Protocol Buffers library
     google::protobuf::ShutdownProtobufLibrary();

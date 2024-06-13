@@ -22,6 +22,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 find_package(ZEROMQ REQUIRED)
 find_package(PROTOBUF REQUIRED)
+find_package( absl REQUIRED )
 
 set(PROTO_FILES src/schemas/position.proto)
 set(SRC_FILES src/main
@@ -37,4 +38,8 @@ protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${PROTO_FILES})
 # Define the library
 add_executable(${PROJECT_NAME}  ${PROTO_SRCS} ${PROTO_HDRS} ${SRC_FILES})
 target_include_directories(${PROJECT_NAME} PRIVATE ${Protobuf_INCLUDE_DIRS} ${ZMQ_INCLUDE_DIR})
-target_link_libraries(${PROJECT_NAME} PUBLIC  ${ZEROMQ_LIBRARIES} ${Protobuf_LIBRARIES} libzmq)
+target_link_libraries(${PROJECT_NAME} PUBLIC  ${ZEROMQ_LIBRARIES} ${Protobuf_LIBRARIES} libzmq  absl::log_internal_message
+absl::log_internal_check_op)
+
+add_subdirectory(qtApp)
+add_subdirectory(tests)
