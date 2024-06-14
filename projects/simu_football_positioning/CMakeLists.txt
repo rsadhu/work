@@ -41,5 +41,5 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${Protobuf_INCLUDE_DIRS} ${ZM
 target_link_libraries(${PROJECT_NAME} PUBLIC  ${ZEROMQ_LIBRARIES} ${Protobuf_LIBRARIES} libzmq  absl::log_internal_message
 absl::log_internal_check_op)
 
-#add_subdirectory(qtApp)
+add_subdirectory(qtApp)
 add_subdirectory(tests)

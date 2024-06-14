@@ -9,9 +9,9 @@ MyGraphicsView::MyGraphicsView(QWidget *parent) : QGraphicsView(parent)
     setScene(scene);
     setupScene();
 
-    timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &MyGraphicsView::updatePositions);
-    timer->start(1000); // Update positions every 100 ms
+    // timer = new QTimer(this);
+    // connect(timer, &QTimer::timeout, this, &MyGraphicsView::updatePositions);
+    // timer->start(1000); // Update positions every 100 ms
     connect(&data_receiver_, &DataReceiver::sendData, this, &MyGraphicsView::slotDataReceived);
 
     worker_ = std::thread([this]
@@ -20,13 +20,9 @@ MyGraphicsView::MyGraphicsView(QWidget *parent) : QGraphicsView(parent)
 
 void MyGraphicsView::slotDataReceived(myprotobuf::Position position)
 {
+    static int cnt = 0;
 
-    qDebug() << "Deserialized Position message:";
-    qDebug() << "pos.x: " << position.position_m().x();
-    qDebug() << "pos.y: " << position.position_m().y();
-    qDebug() << "pos.z: " << position.position_m().z();
-    qDebug() << "sensor_id: " << position.sensorid();
-    qDebug() << "timestamp: " << position.timestamp_ms();
+    circles[cnt++ % 10]->setPos(position.position_m().x(), position.position_m().y());
 }
 
 MyGraphicsView::~MyGraphicsView()
@@ -60,12 +56,7 @@ void MyGraphicsView::setupScene()
     }
 }
 
-void MyGraphicsView::updatePositions()
-{
-    for (QGraphicsEllipseItem *circle : circles)
-    {
-        int x = QRandomGenerator::global()->bounded(100);
-        int y = QRandomGenerator::global()->bounded(100);
-        circle->setPos(x, y);
-    }
-}
+// void MyGraphicsView::updatePositions()
+// {
+
+// }
