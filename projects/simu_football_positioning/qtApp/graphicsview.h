@@ -20,7 +20,6 @@ public:
     virtual ~MyGraphicsView();
 
 public slots:
-    // void updatePositions();
     void slotDataReceived(myprotobuf::Position);
 
 private:

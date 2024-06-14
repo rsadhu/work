@@ -9,9 +9,6 @@ MyGraphicsView::MyGraphicsView(QWidget *parent) : QGraphicsView(parent)
     setScene(scene);
     setupScene();
 
-    // timer = new QTimer(this);
-    // connect(timer, &QTimer::timeout, this, &MyGraphicsView::updatePositions);
-    // timer->start(1000); // Update positions every 100 ms
     connect(&data_receiver_, &DataReceiver::sendData, this, &MyGraphicsView::slotDataReceived);
 
     worker_ = std::thread([this]
@@ -55,8 +52,3 @@ void MyGraphicsView::setupScene()
         circles.append(circle);
     }
 }
-
-// void MyGraphicsView::updatePositions()
-// {
-
-// }
