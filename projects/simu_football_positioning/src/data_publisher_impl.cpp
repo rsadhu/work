@@ -1,6 +1,6 @@
 #include "data_publisher_impl.h"
 
-void Publisher::publish(std::string &message)
+void Publisher::publish(const std::string &message)
 {
     zmq::message_t zmqMessage(message.size());
     memcpy(zmqMessage.data(), message.data(), message.size());

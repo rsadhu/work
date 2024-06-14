@@ -1,8 +1,3 @@
-//
-//  Weather update server in C++
-//  Binds PUB socket to tcp://*:5556
-//  Publishes random weather updates
-//
 #include <zmq.hpp>
 #include <stdio.h>
 #include <stdlib.h>

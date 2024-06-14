@@ -32,9 +32,9 @@ namespace Generator
     class PositionGenerator
     {
 
-        uint16_t num_of_players_;
-        uint16_t size_of_field_;
-        uint16_t step_size_;
+        uint16_t num_of_players_ = 0;
+        uint16_t size_of_field_ = 0;
+        uint16_t step_size_ = 0;
         std::vector<Position> positions_;
 
     public:
@@ -76,7 +76,6 @@ namespace Generator
             std::uniform_real_distribution<> stepDis(-this->step_size_, this->step_size_);
             std::uniform_real_distribution<> angleDis(0, 2 * M_PI);
             std::set<double> u_x, u_y;
-            //    int counter = 0;
 
             for (auto &position : positions_)
             {
@@ -96,14 +95,6 @@ namespace Generator
                 position.timestamp = currentTime();
             }
             return std::move(positions_);
-        }
-
-        void printPlayerPositions(const std::vector<Data3d> &players)
-        {
-            for (const auto &player : players)
-            {
-                std::cout << player.x << " " << player.y << ", ";
-            }
         }
     };
 }; // Generator

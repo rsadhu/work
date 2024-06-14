@@ -1,13 +1,13 @@
-#ifndef DATA_PUBLISHER_H
-#define DATA_PUBLISHER_H
+#ifndef I_DATA_PUBLISHER_H
+#define I_DATA_PUBLISHER_H
 
 #include <string>
 
 class IPublisher
 {
 public:
-    virtual void publish(std::string &) = 0;
+    virtual void publish(const std::string &) = 0;
     virtual ~IPublisher() {}
 };
 
-#endif //
+#endif // I_DATA_PUBLISHER_H

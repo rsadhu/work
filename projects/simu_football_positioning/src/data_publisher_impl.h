@@ -12,7 +12,7 @@ public:
         socket_.bind("tcp://*:5556");
     }
 
-    void publish(std::string &buf) override;
+    void publish(const std::string &buf) override;
 
 private:
     zmq::context_t context_{1};

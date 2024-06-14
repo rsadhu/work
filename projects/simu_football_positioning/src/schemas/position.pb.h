@@ -25,7 +25,7 @@
 #include "google/protobuf/metadata_lite.h"
 #include "google/protobuf/generated_message_reflection.h"
 #include "google/protobuf/message.h"
-#include "google/protobuf/repeated_field.h"  // IWYU pragma: export
+#include "google/protobuf/repeated_field.h" // IWYU pragma: export
 #include "google/protobuf/extension_set.h"  // IWYU pragma: export
 #include "google/protobuf/unknown_field_set.h"
 // @@protoc_insertion_point(includes)
@@ -35,678 +35,789 @@
 
 #define PROTOBUF_INTERNAL_EXPORT_position_2eproto
 
-namespace google {
-namespace protobuf {
-namespace internal {
-class AnyMetadata;
-}  // namespace internal
-}  // namespace protobuf
-}  // namespace google
+namespace google
+{
+  namespace protobuf
+  {
+    namespace internal
+    {
+      class AnyMetadata;
+    } // namespace internal
+  } // namespace protobuf
+} // namespace google
 
 // Internal implementation detail -- do not use these members.
-struct TableStruct_position_2eproto {
+struct TableStruct_position_2eproto
+{
   static const ::uint32_t offsets[];
 };
 extern const ::google::protobuf::internal::DescriptorTable
     descriptor_table_position_2eproto;
-namespace myprotobuf {
-class Data3d;
-struct Data3dDefaultTypeInternal;
-extern Data3dDefaultTypeInternal _Data3d_default_instance_;
-class Position;
-struct PositionDefaultTypeInternal;
-extern PositionDefaultTypeInternal _Position_default_instance_;
-}  // namespace myprotobuf
-namespace google {
-namespace protobuf {
-}  // namespace protobuf
-}  // namespace google
+namespace myprotobuf
+{
+  class Data3d;
+  struct Data3dDefaultTypeInternal;
+  extern Data3dDefaultTypeInternal _Data3d_default_instance_;
+  class Position;
+  struct PositionDefaultTypeInternal;
+  extern PositionDefaultTypeInternal _Position_default_instance_;
+} // namespace myprotobuf
+namespace google
+{
+  namespace protobuf
+  {
+  } // namespace protobuf
+} // namespace google
 
-namespace myprotobuf {
+namespace myprotobuf
+{
 
-// ===================================================================
+  // ===================================================================
 
+  // -------------------------------------------------------------------
 
-// -------------------------------------------------------------------
+  class Data3d final : public ::google::protobuf::Message
+  /* @@protoc_insertion_point(class_definition:myprotobuf.Data3d) */ {
+  public:
+    inline Data3d() : Data3d(nullptr) {}
+    ~Data3d() override;
+    template <typename = void>
+    explicit PROTOBUF_CONSTEXPR Data3d(
+        ::google::protobuf::internal::ConstantInitialized);
 
-class Data3d final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:myprotobuf.Data3d) */ {
- public:
-  inline Data3d() : Data3d(nullptr) {}
-  ~Data3d() override;
-  template <typename = void>
-  explicit PROTOBUF_CONSTEXPR Data3d(
-      ::google::protobuf::internal::ConstantInitialized);
-
-  inline Data3d(const Data3d& from) : Data3d(nullptr, from) {}
-  inline Data3d(Data3d&& from) noexcept
-      : Data3d(nullptr, std::move(from)) {}
-  inline Data3d& operator=(const Data3d& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Data3d& operator=(Data3d&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetArena() == from.GetArena()
-#ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetArena() != nullptr
-#endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
+    inline Data3d(const Data3d &from) : Data3d(nullptr, from) {}
+    inline Data3d(Data3d &&from) noexcept
+        : Data3d(nullptr, std::move(from)) {}
+    inline Data3d &operator=(const Data3d &from)
+    {
       CopyFrom(from);
+      return *this;
     }
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Data3d& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Data3d* internal_default_instance() {
-    return reinterpret_cast<const Data3d*>(
-        &_Data3d_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages = 0;
-  friend void swap(Data3d& a, Data3d& b) { a.Swap(&b); }
-  inline void Swap(Data3d* other) {
-    if (other == this) return;
-#ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() != nullptr && GetArena() == other->GetArena()) {
-#else   // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() == other->GetArena()) {
-#endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
-    }
-  }
-  void UnsafeArenaSwap(Data3d* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
-
-  // implements Message ----------------------------------------------
-
-  Data3d* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return ::google::protobuf::Message::DefaultConstruct<Data3d>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const Data3d& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const Data3d& from) { Data3d::MergeImpl(*this, from); }
-
-  private:
-  static void MergeImpl(
-      ::google::protobuf::MessageLite& to_msg,
-      const ::google::protobuf::MessageLite& from_msg);
-
-  public:
-  bool IsInitialized() const {
-    return true;
-  }
-  ABSL_ATTRIBUTE_REINITIALIZES void Clear() final;
-  ::size_t ByteSizeLong() const final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
-
-  private:
-  void SharedCtor(::google::protobuf::Arena* arena);
-  void SharedDtor();
-  void InternalSwap(Data3d* other);
- private:
-  friend class ::google::protobuf::internal::AnyMetadata;
-  static ::absl::string_view FullMessageName() { return "myprotobuf.Data3d"; }
-
- protected:
-  explicit Data3d(::google::protobuf::Arena* arena);
-  Data3d(::google::protobuf::Arena* arena, const Data3d& from);
-  Data3d(::google::protobuf::Arena* arena, Data3d&& from) noexcept
-      : Data3d(arena) {
-    *this = ::std::move(from);
-  }
-  const ::google::protobuf::Message::ClassData* GetClassData() const final;
-
- public:
-  ::google::protobuf::Metadata GetMetadata() const;
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-  enum : int {
-    kXFieldNumber = 1,
-    kYFieldNumber = 2,
-    kZFieldNumber = 3,
-  };
-  // float x = 1;
-  void clear_x() ;
-  float x() const;
-  void set_x(float value);
-
-  private:
-  float _internal_x() const;
-  void _internal_set_x(float value);
-
-  public:
-  // float y = 2;
-  void clear_y() ;
-  float y() const;
-  void set_y(float value);
-
-  private:
-  float _internal_y() const;
-  void _internal_set_y(float value);
-
-  public:
-  // float z = 3;
-  void clear_z() ;
-  float z() const;
-  void set_z(float value);
-
-  private:
-  float _internal_z() const;
-  void _internal_set_z(float value);
-
-  public:
-  // @@protoc_insertion_point(class_scope:myprotobuf.Data3d)
- private:
-  class _Internal;
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      2, 3, 0,
-      0, 2>
-      _table_;
-
-  static constexpr const void* _raw_default_instance_ =
-      &_Data3d_default_instance_;
-
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-    inline explicit constexpr Impl_(
-        ::google::protobuf::internal::ConstantInitialized) noexcept;
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena);
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena, const Impl_& from,
-                          const Data3d& from_msg);
-    float x_;
-    float y_;
-    float z_;
-    mutable ::google::protobuf::internal::CachedSize _cached_size_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
-  };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_position_2eproto;
-};
-// -------------------------------------------------------------------
-
-class Position final : public ::google::protobuf::Message
-/* @@protoc_insertion_point(class_definition:myprotobuf.Position) */ {
- public:
-  inline Position() : Position(nullptr) {}
-  ~Position() override;
-  template <typename = void>
-  explicit PROTOBUF_CONSTEXPR Position(
-      ::google::protobuf::internal::ConstantInitialized);
-
-  inline Position(const Position& from) : Position(nullptr, from) {}
-  inline Position(Position&& from) noexcept
-      : Position(nullptr, std::move(from)) {}
-  inline Position& operator=(const Position& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Position& operator=(Position&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetArena() == from.GetArena()
+    inline Data3d &operator=(Data3d &&from) noexcept
+    {
+      if (this == &from)
+        return *this;
+      if (GetArena() == from.GetArena()
 #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
-        && GetArena() != nullptr
-#endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
-    ) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
+          && GetArena() != nullptr
+#endif // !PROTOBUF_FORCE_COPY_IN_MOVE
+      )
+      {
+        InternalSwap(&from);
+      }
+      else
+      {
+        CopyFrom(from);
+      }
+      return *this;
     }
-    return *this;
-  }
 
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
-      ABSL_ATTRIBUTE_LIFETIME_BOUND {
-    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
-  }
+    inline const ::google::protobuf::UnknownFieldSet &unknown_fields() const
+        ABSL_ATTRIBUTE_LIFETIME_BOUND
+    {
+      return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+    }
+    inline ::google::protobuf::UnknownFieldSet *mutable_unknown_fields()
+        ABSL_ATTRIBUTE_LIFETIME_BOUND
+    {
+      return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+    }
 
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::google::protobuf::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::google::protobuf::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Position& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Position* internal_default_instance() {
-    return reinterpret_cast<const Position*>(
-        &_Position_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages = 1;
-  friend void swap(Position& a, Position& b) { a.Swap(&b); }
-  inline void Swap(Position* other) {
-    if (other == this) return;
+    static const ::google::protobuf::Descriptor *descriptor()
+    {
+      return GetDescriptor();
+    }
+    static const ::google::protobuf::Descriptor *GetDescriptor()
+    {
+      return default_instance().GetMetadata().descriptor;
+    }
+    static const ::google::protobuf::Reflection *GetReflection()
+    {
+      return default_instance().GetMetadata().reflection;
+    }
+    static const Data3d &default_instance()
+    {
+      return *internal_default_instance();
+    }
+    static inline const Data3d *internal_default_instance()
+    {
+      return reinterpret_cast<const Data3d *>(
+          &_Data3d_default_instance_);
+    }
+    static constexpr int kIndexInFileMessages = 0;
+    friend void swap(Data3d &a, Data3d &b) { a.Swap(&b); }
+    inline void Swap(Data3d *other)
+    {
+      if (other == this)
+        return;
 #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() != nullptr && GetArena() == other->GetArena()) {
-#else   // PROTOBUF_FORCE_COPY_IN_SWAP
-    if (GetArena() == other->GetArena()) {
-#endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
-      InternalSwap(other);
-    } else {
-      ::google::protobuf::internal::GenericSwap(this, other);
+      if (GetArena() != nullptr && GetArena() == other->GetArena())
+      {
+#else  // PROTOBUF_FORCE_COPY_IN_SWAP
+      if (GetArena() == other->GetArena())
+      {
+#endif // !PROTOBUF_FORCE_COPY_IN_SWAP
+        InternalSwap(other);
+      }
+      else
+      {
+        ::google::protobuf::internal::GenericSwap(this, other);
+      }
     }
-  }
-  void UnsafeArenaSwap(Position* other) {
-    if (other == this) return;
-    ABSL_DCHECK(GetArena() == other->GetArena());
-    InternalSwap(other);
-  }
+    void UnsafeArenaSwap(Data3d *other)
+    {
+      if (other == this)
+        return;
+      ABSL_DCHECK(GetArena() == other->GetArena());
+      InternalSwap(other);
+    }
 
-  // implements Message ----------------------------------------------
+    // implements Message ----------------------------------------------
 
-  Position* New(::google::protobuf::Arena* arena = nullptr) const final {
-    return ::google::protobuf::Message::DefaultConstruct<Position>(arena);
-  }
-  using ::google::protobuf::Message::CopyFrom;
-  void CopyFrom(const Position& from);
-  using ::google::protobuf::Message::MergeFrom;
-  void MergeFrom(const Position& from) { Position::MergeImpl(*this, from); }
+    Data3d *New(::google::protobuf::Arena *arena = nullptr) const final
+    {
+      return ::google::protobuf::Message::DefaultConstruct<Data3d>(arena);
+    }
+    using ::google::protobuf::Message::CopyFrom;
+    void CopyFrom(const Data3d &from);
+    using ::google::protobuf::Message::MergeFrom;
+    void MergeFrom(const Data3d &from) { Data3d::MergeImpl(*this, from); }
 
   private:
-  static void MergeImpl(
-      ::google::protobuf::MessageLite& to_msg,
-      const ::google::protobuf::MessageLite& from_msg);
+    static void MergeImpl(
+        ::google::protobuf::MessageLite &to_msg,
+        const ::google::protobuf::MessageLite &from_msg);
 
   public:
-  bool IsInitialized() const {
-    return true;
-  }
-  ABSL_ATTRIBUTE_REINITIALIZES void Clear() final;
-  ::size_t ByteSizeLong() const final;
-  ::uint8_t* _InternalSerialize(
-      ::uint8_t* target,
-      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+    bool IsInitialized() const
+    {
+      return true;
+    }
+    ABSL_ATTRIBUTE_REINITIALIZES void Clear() final;
+    ::size_t ByteSizeLong() const final;
+    ::uint8_t *_InternalSerialize(
+        ::uint8_t *target,
+        ::google::protobuf::io::EpsCopyOutputStream *stream) const final;
+    int GetCachedSize() const { return _impl_._cached_size_.Get(); }
 
   private:
-  void SharedCtor(::google::protobuf::Arena* arena);
-  void SharedDtor();
-  void InternalSwap(Position* other);
- private:
-  friend class ::google::protobuf::internal::AnyMetadata;
-  static ::absl::string_view FullMessageName() { return "myprotobuf.Position"; }
+    void SharedCtor(::google::protobuf::Arena *arena);
+    void SharedDtor();
+    void InternalSwap(Data3d *other);
 
- protected:
-  explicit Position(::google::protobuf::Arena* arena);
-  Position(::google::protobuf::Arena* arena, const Position& from);
-  Position(::google::protobuf::Arena* arena, Position&& from) noexcept
-      : Position(arena) {
-    *this = ::std::move(from);
-  }
-  const ::google::protobuf::Message::ClassData* GetClassData() const final;
+  private:
+    friend class ::google::protobuf::internal::AnyMetadata;
+    static ::absl::string_view FullMessageName() { return "myprotobuf.Data3d"; }
 
- public:
-  ::google::protobuf::Metadata GetMetadata() const;
-  // nested types ----------------------------------------------------
+  protected:
+    explicit Data3d(::google::protobuf::Arena *arena);
+    Data3d(::google::protobuf::Arena *arena, const Data3d &from);
+    Data3d(::google::protobuf::Arena *arena, Data3d &&from) noexcept
+        : Data3d(arena)
+    {
+      *this = ::std::move(from);
+    }
+    const ::google::protobuf::Message::ClassData *GetClassData() const final;
 
-  // accessors -------------------------------------------------------
-  enum : int {
-    kPositionMFieldNumber = 3,
-    kSensorIdFieldNumber = 1,
-    kTimestampMsFieldNumber = 2,
+  public:
+    ::google::protobuf::Metadata GetMetadata() const;
+    // nested types ----------------------------------------------------
+
+    // accessors -------------------------------------------------------
+    enum : int
+    {
+      kXFieldNumber = 1,
+      kYFieldNumber = 2,
+      kZFieldNumber = 3,
+    };
+    // float x = 1;
+    void clear_x();
+    float x() const;
+    void set_x(float value);
+
+  private:
+    float _internal_x() const;
+    void _internal_set_x(float value);
+
+  public:
+    // float y = 2;
+    void clear_y();
+    float y() const;
+    void set_y(float value);
+
+  private:
+    float _internal_y() const;
+    void _internal_set_y(float value);
+
+  public:
+    // float z = 3;
+    void clear_z();
+    float z() const;
+    void set_z(float value);
+
+  private:
+    float _internal_z() const;
+    void _internal_set_z(float value);
+
+  public:
+    // @@protoc_insertion_point(class_scope:myprotobuf.Data3d)
+  private:
+    class _Internal;
+    friend class ::google::protobuf::internal::TcParser;
+    static const ::google::protobuf::internal::TcParseTable<
+        2, 3, 0,
+        0, 2>
+        _table_;
+
+    static constexpr const void *_raw_default_instance_ =
+        &_Data3d_default_instance_;
+
+    friend class ::google::protobuf::MessageLite;
+    friend class ::google::protobuf::Arena;
+    template <typename T>
+    friend class ::google::protobuf::Arena::InternalHelper;
+    using InternalArenaConstructable_ = void;
+    using DestructorSkippable_ = void;
+    struct Impl_
+    {
+      inline explicit constexpr Impl_(
+          ::google::protobuf::internal::ConstantInitialized) noexcept;
+      inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                            ::google::protobuf::Arena *arena);
+      inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                            ::google::protobuf::Arena *arena, const Impl_ &from,
+                            const Data3d &from_msg);
+      float x_;
+      float y_;
+      float z_;
+      mutable ::google::protobuf::internal::CachedSize _cached_size_;
+      PROTOBUF_TSAN_DECLARE_MEMBER
+    };
+    union
+    {
+      Impl_ _impl_;
+    };
+    friend struct ::TableStruct_position_2eproto;
   };
-  // optional .myprotobuf.Data3d position_m = 3;
-  bool has_position_m() const;
-  void clear_position_m() ;
-  const ::myprotobuf::Data3d& position_m() const;
-  PROTOBUF_NODISCARD ::myprotobuf::Data3d* release_position_m();
-  ::myprotobuf::Data3d* mutable_position_m();
-  void set_allocated_position_m(::myprotobuf::Data3d* value);
-  void unsafe_arena_set_allocated_position_m(::myprotobuf::Data3d* value);
-  ::myprotobuf::Data3d* unsafe_arena_release_position_m();
+  // -------------------------------------------------------------------
+
+  class Position final : public ::google::protobuf::Message
+  /* @@protoc_insertion_point(class_definition:myprotobuf.Position) */ {
+  public:
+    inline Position() : Position(nullptr) {}
+    ~Position() override;
+    template <typename = void>
+    explicit PROTOBUF_CONSTEXPR Position(
+        ::google::protobuf::internal::ConstantInitialized);
+
+    inline Position(const Position &from) : Position(nullptr, from) {}
+    inline Position(Position &&from) noexcept
+        : Position(nullptr, std::move(from)) {}
+    inline Position &operator=(const Position &from)
+    {
+      CopyFrom(from);
+      return *this;
+    }
+    inline Position &operator=(Position &&from) noexcept
+    {
+      if (this == &from)
+        return *this;
+      if (GetArena() == from.GetArena()
+#ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+          && GetArena() != nullptr
+#endif // !PROTOBUF_FORCE_COPY_IN_MOVE
+      )
+      {
+        InternalSwap(&from);
+      }
+      else
+      {
+        CopyFrom(from);
+      }
+      return *this;
+    }
+
+    inline const ::google::protobuf::UnknownFieldSet &unknown_fields() const
+        ABSL_ATTRIBUTE_LIFETIME_BOUND
+    {
+      return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+    }
+    inline ::google::protobuf::UnknownFieldSet *mutable_unknown_fields()
+        ABSL_ATTRIBUTE_LIFETIME_BOUND
+    {
+      return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+    }
+
+    static const ::google::protobuf::Descriptor *descriptor()
+    {
+      return GetDescriptor();
+    }
+    static const ::google::protobuf::Descriptor *GetDescriptor()
+    {
+      return default_instance().GetMetadata().descriptor;
+    }
+    static const ::google::protobuf::Reflection *GetReflection()
+    {
+      return default_instance().GetMetadata().reflection;
+    }
+    static const Position &default_instance()
+    {
+      return *internal_default_instance();
+    }
+    static inline const Position *internal_default_instance()
+    {
+      return reinterpret_cast<const Position *>(
+          &_Position_default_instance_);
+    }
+    static constexpr int kIndexInFileMessages = 1;
+    friend void swap(Position &a, Position &b) { a.Swap(&b); }
+    inline void Swap(Position *other)
+    {
+      if (other == this)
+        return;
+#ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+      if (GetArena() != nullptr && GetArena() == other->GetArena())
+      {
+#else  // PROTOBUF_FORCE_COPY_IN_SWAP
+      if (GetArena() == other->GetArena())
+      {
+#endif // !PROTOBUF_FORCE_COPY_IN_SWAP
+        InternalSwap(other);
+      }
+      else
+      {
+        ::google::protobuf::internal::GenericSwap(this, other);
+      }
+    }
+    void UnsafeArenaSwap(Position *other)
+    {
+      if (other == this)
+        return;
+      ABSL_DCHECK(GetArena() == other->GetArena());
+      InternalSwap(other);
+    }
+
+    // implements Message ----------------------------------------------
+
+    Position *New(::google::protobuf::Arena *arena = nullptr) const final
+    {
+      return ::google::protobuf::Message::DefaultConstruct<Position>(arena);
+    }
+    using ::google::protobuf::Message::CopyFrom;
+    void CopyFrom(const Position &from);
+    using ::google::protobuf::Message::MergeFrom;
+    void MergeFrom(const Position &from) { Position::MergeImpl(*this, from); }
 
   private:
-  const ::myprotobuf::Data3d& _internal_position_m() const;
-  ::myprotobuf::Data3d* _internal_mutable_position_m();
+    static void MergeImpl(
+        ::google::protobuf::MessageLite &to_msg,
+        const ::google::protobuf::MessageLite &from_msg);
 
   public:
-  // uint64 sensorId = 1;
-  void clear_sensorid() ;
-  ::uint64_t sensorid() const;
-  void set_sensorid(::uint64_t value);
+    bool IsInitialized() const
+    {
+      return true;
+    }
+    ABSL_ATTRIBUTE_REINITIALIZES void Clear() final;
+    ::size_t ByteSizeLong() const final;
+    ::uint8_t *_InternalSerialize(
+        ::uint8_t *target,
+        ::google::protobuf::io::EpsCopyOutputStream *stream) const final;
+    int GetCachedSize() const { return _impl_._cached_size_.Get(); }
 
   private:
-  ::uint64_t _internal_sensorid() const;
-  void _internal_set_sensorid(::uint64_t value);
-
-  public:
-  // optional uint64 timestamp_ms = 2;
-  bool has_timestamp_ms() const;
-  void clear_timestamp_ms() ;
-  ::uint64_t timestamp_ms() const;
-  void set_timestamp_ms(::uint64_t value);
+    void SharedCtor(::google::protobuf::Arena *arena);
+    void SharedDtor();
+    void InternalSwap(Position *other);
 
   private:
-  ::uint64_t _internal_timestamp_ms() const;
-  void _internal_set_timestamp_ms(::uint64_t value);
+    friend class ::google::protobuf::internal::AnyMetadata;
+    static ::absl::string_view FullMessageName() { return "myprotobuf.Position"; }
+
+  protected:
+    explicit Position(::google::protobuf::Arena *arena);
+    Position(::google::protobuf::Arena *arena, const Position &from);
+    Position(::google::protobuf::Arena *arena, Position &&from) noexcept
+        : Position(arena)
+    {
+      *this = ::std::move(from);
+    }
+    const ::google::protobuf::Message::ClassData *GetClassData() const final;
 
   public:
-  // @@protoc_insertion_point(class_scope:myprotobuf.Position)
- private:
-  class _Internal;
-  friend class ::google::protobuf::internal::TcParser;
-  static const ::google::protobuf::internal::TcParseTable<
-      2, 3, 1,
-      0, 2>
-      _table_;
+    ::google::protobuf::Metadata GetMetadata() const;
+    // nested types ----------------------------------------------------
 
-  static constexpr const void* _raw_default_instance_ =
-      &_Position_default_instance_;
+    // accessors -------------------------------------------------------
+    enum : int
+    {
+      kPositionMFieldNumber = 3,
+      kSensorIdFieldNumber = 1,
+      kTimestampMsFieldNumber = 2,
+    };
+    // optional .myprotobuf.Data3d position_m = 3;
+    bool has_position_m() const;
+    void clear_position_m();
+    const ::myprotobuf::Data3d &position_m() const;
+    PROTOBUF_NODISCARD ::myprotobuf::Data3d *release_position_m();
+    ::myprotobuf::Data3d *mutable_position_m();
+    void set_allocated_position_m(::myprotobuf::Data3d *value);
+    void unsafe_arena_set_allocated_position_m(::myprotobuf::Data3d *value);
+    ::myprotobuf::Data3d *unsafe_arena_release_position_m();
 
-  friend class ::google::protobuf::MessageLite;
-  friend class ::google::protobuf::Arena;
-  template <typename T>
-  friend class ::google::protobuf::Arena::InternalHelper;
-  using InternalArenaConstructable_ = void;
-  using DestructorSkippable_ = void;
-  struct Impl_ {
-    inline explicit constexpr Impl_(
-        ::google::protobuf::internal::ConstantInitialized) noexcept;
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena);
-    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
-                          ::google::protobuf::Arena* arena, const Impl_& from,
-                          const Position& from_msg);
-    ::google::protobuf::internal::HasBits<1> _has_bits_;
-    mutable ::google::protobuf::internal::CachedSize _cached_size_;
-    ::myprotobuf::Data3d* position_m_;
-    ::uint64_t sensorid_;
-    ::uint64_t timestamp_ms_;
-    PROTOBUF_TSAN_DECLARE_MEMBER
+  private:
+    const ::myprotobuf::Data3d &_internal_position_m() const;
+    ::myprotobuf::Data3d *_internal_mutable_position_m();
+
+  public:
+    // uint64 sensorId = 1;
+    void clear_sensorid();
+    ::uint64_t sensorid() const;
+    void set_sensorid(::uint64_t value);
+
+  private:
+    ::uint64_t _internal_sensorid() const;
+    void _internal_set_sensorid(::uint64_t value);
+
+  public:
+    // optional uint64 timestamp_ms = 2;
+    bool has_timestamp_ms() const;
+    void clear_timestamp_ms();
+    ::uint64_t timestamp_ms() const;
+    void set_timestamp_ms(::uint64_t value);
+
+  private:
+    ::uint64_t _internal_timestamp_ms() const;
+    void _internal_set_timestamp_ms(::uint64_t value);
+
+  public:
+    // @@protoc_insertion_point(class_scope:myprotobuf.Position)
+  private:
+    class _Internal;
+    friend class ::google::protobuf::internal::TcParser;
+    static const ::google::protobuf::internal::TcParseTable<
+        2, 3, 1,
+        0, 2>
+        _table_;
+
+    static constexpr const void *_raw_default_instance_ =
+        &_Position_default_instance_;
+
+    friend class ::google::protobuf::MessageLite;
+    friend class ::google::protobuf::Arena;
+    template <typename T>
+    friend class ::google::protobuf::Arena::InternalHelper;
+    using InternalArenaConstructable_ = void;
+    using DestructorSkippable_ = void;
+    struct Impl_
+    {
+      inline explicit constexpr Impl_(
+          ::google::protobuf::internal::ConstantInitialized) noexcept;
+      inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                            ::google::protobuf::Arena *arena);
+      inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                            ::google::protobuf::Arena *arena, const Impl_ &from,
+                            const Position &from_msg);
+      ::google::protobuf::internal::HasBits<1> _has_bits_;
+      mutable ::google::protobuf::internal::CachedSize _cached_size_;
+      ::myprotobuf::Data3d *position_m_;
+      ::uint64_t sensorid_;
+      ::uint64_t timestamp_ms_;
+      PROTOBUF_TSAN_DECLARE_MEMBER
+    };
+    union
+    {
+      Impl_ _impl_;
+    };
+    friend struct ::TableStruct_position_2eproto;
   };
-  union { Impl_ _impl_; };
-  friend struct ::TableStruct_position_2eproto;
-};
 
-// ===================================================================
+  // ===================================================================
 
-
-
-
-// ===================================================================
-
+  // ===================================================================
 
 #ifdef __GNUC__
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wstrict-aliasing"
-#endif  // __GNUC__
-// -------------------------------------------------------------------
+#endif // __GNUC__
+  // -------------------------------------------------------------------
 
-// Data3d
+  // Data3d
 
-// float x = 1;
-inline void Data3d::clear_x() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.x_ = 0;
-}
-inline float Data3d::x() const {
-  // @@protoc_insertion_point(field_get:myprotobuf.Data3d.x)
-  return _internal_x();
-}
-inline void Data3d::set_x(float value) {
-  _internal_set_x(value);
-  // @@protoc_insertion_point(field_set:myprotobuf.Data3d.x)
-}
-inline float Data3d::_internal_x() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.x_;
-}
-inline void Data3d::_internal_set_x(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.x_ = value;
-}
-
-// float y = 2;
-inline void Data3d::clear_y() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.y_ = 0;
-}
-inline float Data3d::y() const {
-  // @@protoc_insertion_point(field_get:myprotobuf.Data3d.y)
-  return _internal_y();
-}
-inline void Data3d::set_y(float value) {
-  _internal_set_y(value);
-  // @@protoc_insertion_point(field_set:myprotobuf.Data3d.y)
-}
-inline float Data3d::_internal_y() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.y_;
-}
-inline void Data3d::_internal_set_y(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.y_ = value;
-}
-
-// float z = 3;
-inline void Data3d::clear_z() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.z_ = 0;
-}
-inline float Data3d::z() const {
-  // @@protoc_insertion_point(field_get:myprotobuf.Data3d.z)
-  return _internal_z();
-}
-inline void Data3d::set_z(float value) {
-  _internal_set_z(value);
-  // @@protoc_insertion_point(field_set:myprotobuf.Data3d.z)
-}
-inline float Data3d::_internal_z() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.z_;
-}
-inline void Data3d::_internal_set_z(float value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.z_ = value;
-}
-
-// -------------------------------------------------------------------
-
-// Position
-
-// uint64 sensorId = 1;
-inline void Position::clear_sensorid() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.sensorid_ = ::uint64_t{0u};
-}
-inline ::uint64_t Position::sensorid() const {
-  // @@protoc_insertion_point(field_get:myprotobuf.Position.sensorId)
-  return _internal_sensorid();
-}
-inline void Position::set_sensorid(::uint64_t value) {
-  _internal_set_sensorid(value);
-  // @@protoc_insertion_point(field_set:myprotobuf.Position.sensorId)
-}
-inline ::uint64_t Position::_internal_sensorid() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.sensorid_;
-}
-inline void Position::_internal_set_sensorid(::uint64_t value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.sensorid_ = value;
-}
-
-// optional uint64 timestamp_ms = 2;
-inline bool Position::has_timestamp_ms() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
-  return value;
-}
-inline void Position::clear_timestamp_ms() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.timestamp_ms_ = ::uint64_t{0u};
-  _impl_._has_bits_[0] &= ~0x00000002u;
-}
-inline ::uint64_t Position::timestamp_ms() const {
-  // @@protoc_insertion_point(field_get:myprotobuf.Position.timestamp_ms)
-  return _internal_timestamp_ms();
-}
-inline void Position::set_timestamp_ms(::uint64_t value) {
-  _internal_set_timestamp_ms(value);
-  _impl_._has_bits_[0] |= 0x00000002u;
-  // @@protoc_insertion_point(field_set:myprotobuf.Position.timestamp_ms)
-}
-inline ::uint64_t Position::_internal_timestamp_ms() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.timestamp_ms_;
-}
-inline void Position::_internal_set_timestamp_ms(::uint64_t value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.timestamp_ms_ = value;
-}
-
-// optional .myprotobuf.Data3d position_m = 3;
-inline bool Position::has_position_m() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || _impl_.position_m_ != nullptr);
-  return value;
-}
-inline void Position::clear_position_m() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.position_m_ != nullptr) _impl_.position_m_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000001u;
-}
-inline const ::myprotobuf::Data3d& Position::_internal_position_m() const {
-  ::google::protobuf::internal::TSanRead(&_impl_);
-  const ::myprotobuf::Data3d* p = _impl_.position_m_;
-  return p != nullptr ? *p : reinterpret_cast<const ::myprotobuf::Data3d&>(::myprotobuf::_Data3d_default_instance_);
-}
-inline const ::myprotobuf::Data3d& Position::position_m() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:myprotobuf.Position.position_m)
-  return _internal_position_m();
-}
-inline void Position::unsafe_arena_set_allocated_position_m(::myprotobuf::Data3d* value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (GetArena() == nullptr) {
-    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.position_m_);
+  // float x = 1;
+  inline void Data3d::clear_x()
+  {
+    ::google::protobuf::internal::TSanWrite(&_impl_);
+    _impl_.x_ = 0;
   }
-  _impl_.position_m_ = reinterpret_cast<::myprotobuf::Data3d*>(value);
-  if (value != nullptr) {
-    _impl_._has_bits_[0] |= 0x00000001u;
-  } else {
+  inline float Data3d::x() const
+  {
+    // @@protoc_insertion_point(field_get:myprotobuf.Data3d.x)
+    return _internal_x();
+  }
+  inline void Data3d::set_x(float value)
+  {
+    _internal_set_x(value);
+    // @@protoc_insertion_point(field_set:myprotobuf.Data3d.x)
+  }
+  inline float Data3d::_internal_x() const
+  {
+    ::google::protobuf::internal::TSanRead(&_impl_);
+    return _impl_.x_;
+  }
+  inline void Data3d::_internal_set_x(float value)
+  {
+    ::google::protobuf::internal::TSanWrite(&_impl_);
+    _impl_.x_ = value;
+  }
+
+  // float y = 2;
+  inline void Data3d::clear_y()
+  {
+    ::google::protobuf::internal::TSanWrite(&_impl_);
+    _impl_.y_ = 0;
+  }
+  inline float Data3d::y() const
+  {
+    // @@protoc_insertion_point(field_get:myprotobuf.Data3d.y)
+    return _internal_y();
+  }
+  inline void Data3d::set_y(float value)
+  {
+    _internal_set_y(value);
+    // @@protoc_insertion_point(field_set:myprotobuf.Data3d.y)
+  }
+  inline float Data3d::_internal_y() const
+  {
+    ::google::protobuf::internal::TSanRead(&_impl_);
+    return _impl_.y_;
+  }
+  inline void Data3d::_internal_set_y(float value)
+  {
+    ::google::protobuf::internal::TSanWrite(&_impl_);
+    _impl_.y_ = value;
+  }
+
+  // float z = 3;
+  inline void Data3d::clear_z()
+  {
+    ::google::protobuf::internal::TSanWrite(&_impl_);
+    _impl_.z_ = 0;
+  }
+  inline float Data3d::z() const
+  {
+    // @@protoc_insertion_point(field_get:myprotobuf.Data3d.z)
+    return _internal_z();
+  }
+  inline void Data3d::set_z(float value)
+  {
+    _internal_set_z(value);
+    // @@protoc_insertion_point(field_set:myprotobuf.Data3d.z)
+  }
+  inline float Data3d::_internal_z() const
+  {
+    ::google::protobuf::internal::TSanRead(&_impl_);
+    return _impl_.z_;
+  }
+  inline void Data3d::_internal_set_z(float value)
+  {
+    ::google::protobuf::internal::TSanWrite(&_impl_);
+    _impl_.z_ = value;
+  }
+
+  // -------------------------------------------------------------------
+
+  // Position
+
+  // uint64 sensorId = 1;
+  inline void Position::clear_sensorid()
+  {
+    ::google::protobuf::internal::TSanWrite(&_impl_);
+    _impl_.sensorid_ = ::uint64_t{0u};
+  }
+  inline ::uint64_t Position::sensorid() const
+  {
+    // @@protoc_insertion_point(field_get:myprotobuf.Position.sensorId)
+    return _internal_sensorid();
+  }
+  inline void Position::set_sensorid(::uint64_t value)
+  {
+    _internal_set_sensorid(value);
+    // @@protoc_insertion_point(field_set:myprotobuf.Position.sensorId)
+  }
+  inline ::uint64_t Position::_internal_sensorid() const
+  {
+    ::google::protobuf::internal::TSanRead(&_impl_);
+    return _impl_.sensorid_;
+  }
+  inline void Position::_internal_set_sensorid(::uint64_t value)
+  {
+    ::google::protobuf::internal::TSanWrite(&_impl_);
+    _impl_.sensorid_ = value;
+  }
+
+  // optional uint64 timestamp_ms = 2;
+  inline bool Position::has_timestamp_ms() const
+  {
+    bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
+    return value;
+  }
+  inline void Position::clear_timestamp_ms()
+  {
+    ::google::protobuf::internal::TSanWrite(&_impl_);
+    _impl_.timestamp_ms_ = ::uint64_t{0u};
+    _impl_._has_bits_[0] &= ~0x00000002u;
+  }
+  inline ::uint64_t Position::timestamp_ms() const
+  {
+    // @@protoc_insertion_point(field_get:myprotobuf.Position.timestamp_ms)
+    return _internal_timestamp_ms();
+  }
+  inline void Position::set_timestamp_ms(::uint64_t value)
+  {
+    _internal_set_timestamp_ms(value);
+    _impl_._has_bits_[0] |= 0x00000002u;
+    // @@protoc_insertion_point(field_set:myprotobuf.Position.timestamp_ms)
+  }
+  inline ::uint64_t Position::_internal_timestamp_ms() const
+  {
+    ::google::protobuf::internal::TSanRead(&_impl_);
+    return _impl_.timestamp_ms_;
+  }
+  inline void Position::_internal_set_timestamp_ms(::uint64_t value)
+  {
+    ::google::protobuf::internal::TSanWrite(&_impl_);
+    _impl_.timestamp_ms_ = value;
+  }
+
+  // optional .myprotobuf.Data3d position_m = 3;
+  inline bool Position::has_position_m() const
+  {
+    bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+    PROTOBUF_ASSUME(!value || _impl_.position_m_ != nullptr);
+    return value;
+  }
+  inline void Position::clear_position_m()
+  {
+    ::google::protobuf::internal::TSanWrite(&_impl_);
+    if (_impl_.position_m_ != nullptr)
+      _impl_.position_m_->Clear();
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:myprotobuf.Position.position_m)
-}
-inline ::myprotobuf::Data3d* Position::release_position_m() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-
-  _impl_._has_bits_[0] &= ~0x00000001u;
-  ::myprotobuf::Data3d* released = _impl_.position_m_;
-  _impl_.position_m_ = nullptr;
-#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
-  auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
-  released = ::google::protobuf::internal::DuplicateIfNonNull(released);
-  if (GetArena() == nullptr) {
-    delete old;
+  inline const ::myprotobuf::Data3d &Position::_internal_position_m() const
+  {
+    ::google::protobuf::internal::TSanRead(&_impl_);
+    const ::myprotobuf::Data3d *p = _impl_.position_m_;
+    return p != nullptr ? *p : reinterpret_cast<const ::myprotobuf::Data3d &>(::myprotobuf::_Data3d_default_instance_);
   }
-#else   // PROTOBUF_FORCE_COPY_IN_RELEASE
-  if (GetArena() != nullptr) {
-    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+  inline const ::myprotobuf::Data3d &Position::position_m() const ABSL_ATTRIBUTE_LIFETIME_BOUND
+  {
+    // @@protoc_insertion_point(field_get:myprotobuf.Position.position_m)
+    return _internal_position_m();
   }
-#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
-  return released;
-}
-inline ::myprotobuf::Data3d* Position::unsafe_arena_release_position_m() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:myprotobuf.Position.position_m)
-
-  _impl_._has_bits_[0] &= ~0x00000001u;
-  ::myprotobuf::Data3d* temp = _impl_.position_m_;
-  _impl_.position_m_ = nullptr;
-  return temp;
-}
-inline ::myprotobuf::Data3d* Position::_internal_mutable_position_m() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.position_m_ == nullptr) {
-    auto* p = ::google::protobuf::Message::DefaultConstruct<::myprotobuf::Data3d>(GetArena());
-    _impl_.position_m_ = reinterpret_cast<::myprotobuf::Data3d*>(p);
-  }
-  return _impl_.position_m_;
-}
-inline ::myprotobuf::Data3d* Position::mutable_position_m() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  _impl_._has_bits_[0] |= 0x00000001u;
-  ::myprotobuf::Data3d* _msg = _internal_mutable_position_m();
-  // @@protoc_insertion_point(field_mutable:myprotobuf.Position.position_m)
-  return _msg;
-}
-inline void Position::set_allocated_position_m(::myprotobuf::Data3d* value) {
-  ::google::protobuf::Arena* message_arena = GetArena();
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (message_arena == nullptr) {
-    delete (_impl_.position_m_);
-  }
-
-  if (value != nullptr) {
-    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
-    if (message_arena != submessage_arena) {
-      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+  inline void Position::unsafe_arena_set_allocated_position_m(::myprotobuf::Data3d *value)
+  {
+    ::google::protobuf::internal::TSanWrite(&_impl_);
+    if (GetArena() == nullptr)
+    {
+      delete reinterpret_cast<::google::protobuf::MessageLite *>(_impl_.position_m_);
     }
-    _impl_._has_bits_[0] |= 0x00000001u;
-  } else {
-    _impl_._has_bits_[0] &= ~0x00000001u;
+    _impl_.position_m_ = reinterpret_cast<::myprotobuf::Data3d *>(value);
+    if (value != nullptr)
+    {
+      _impl_._has_bits_[0] |= 0x00000001u;
+    }
+    else
+    {
+      _impl_._has_bits_[0] &= ~0x00000001u;
+    }
+    // @@protoc_insertion_point(field_unsafe_arena_set_allocated:myprotobuf.Position.position_m)
   }
+  inline ::myprotobuf::Data3d *Position::release_position_m()
+  {
+    ::google::protobuf::internal::TSanWrite(&_impl_);
 
-  _impl_.position_m_ = reinterpret_cast<::myprotobuf::Data3d*>(value);
-  // @@protoc_insertion_point(field_set_allocated:myprotobuf.Position.position_m)
-}
+    _impl_._has_bits_[0] &= ~0x00000001u;
+    ::myprotobuf::Data3d *released = _impl_.position_m_;
+    _impl_.position_m_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+    auto *old = reinterpret_cast<::google::protobuf::MessageLite *>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr)
+    {
+      delete old;
+    }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+    if (GetArena() != nullptr)
+    {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+#endif // !PROTOBUF_FORCE_COPY_IN_RELEASE
+    return released;
+  }
+  inline ::myprotobuf::Data3d *Position::unsafe_arena_release_position_m()
+  {
+    ::google::protobuf::internal::TSanWrite(&_impl_);
+    // @@protoc_insertion_point(field_release:myprotobuf.Position.position_m)
+
+    _impl_._has_bits_[0] &= ~0x00000001u;
+    ::myprotobuf::Data3d *temp = _impl_.position_m_;
+    _impl_.position_m_ = nullptr;
+    return temp;
+  }
+  inline ::myprotobuf::Data3d *Position::_internal_mutable_position_m()
+  {
+    ::google::protobuf::internal::TSanWrite(&_impl_);
+    if (_impl_.position_m_ == nullptr)
+    {
+      auto *p = ::google::protobuf::Message::DefaultConstruct<::myprotobuf::Data3d>(GetArena());
+      _impl_.position_m_ = reinterpret_cast<::myprotobuf::Data3d *>(p);
+    }
+    return _impl_.position_m_;
+  }
+  inline ::myprotobuf::Data3d *Position::mutable_position_m() ABSL_ATTRIBUTE_LIFETIME_BOUND
+  {
+    _impl_._has_bits_[0] |= 0x00000001u;
+    ::myprotobuf::Data3d *_msg = _internal_mutable_position_m();
+    // @@protoc_insertion_point(field_mutable:myprotobuf.Position.position_m)
+    return _msg;
+  }
+  inline void Position::set_allocated_position_m(::myprotobuf::Data3d *value)
+  {
+    ::google::protobuf::Arena *message_arena = GetArena();
+    ::google::protobuf::internal::TSanWrite(&_impl_);
+    if (message_arena == nullptr)
+    {
+      delete (_impl_.position_m_);
+    }
+
+    if (value != nullptr)
+    {
+      ::google::protobuf::Arena *submessage_arena = (value)->GetArena();
+      if (message_arena != submessage_arena)
+      {
+        value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+      }
+      _impl_._has_bits_[0] |= 0x00000001u;
+    }
+    else
+    {
+      _impl_._has_bits_[0] &= ~0x00000001u;
+    }
+
+    _impl_.position_m_ = reinterpret_cast<::myprotobuf::Data3d *>(value);
+    // @@protoc_insertion_point(field_set_allocated:myprotobuf.Position.position_m)
+  }
 
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
-#endif  // __GNUC__
+#endif // __GNUC__
 
-// @@protoc_insertion_point(namespace_scope)
-}  // namespace myprotobuf
-
+  // @@protoc_insertion_point(namespace_scope)
+} // namespace myprotobuf
 
 // @@protoc_insertion_point(global_scope)
 
 #include "google/protobuf/port_undef.inc"
 
-#endif  // GOOGLE_PROTOBUF_INCLUDED_position_2eproto_2epb_2eh
+#endif // GOOGLE_PROTOBUF_INCLUDED_position_2eproto_2epb_2eh

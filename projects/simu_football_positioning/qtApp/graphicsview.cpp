@@ -1,4 +1,7 @@
 #include "graphicsview.h"
+#include "../src/schemas/position.pb.h"
+#include <QDebug>
+#include "zeromq_Client.h"
 
 MyGraphicsView::MyGraphicsView(QWidget *parent) : QGraphicsView(parent)
 {
@@ -9,10 +12,26 @@ MyGraphicsView::MyGraphicsView(QWidget *parent) : QGraphicsView(parent)
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MyGraphicsView::updatePositions);
     timer->start(1000); // Update positions every 100 ms
+    connect(&data_receiver_, &DataReceiver::sendData, this, &MyGraphicsView::slotDataReceived);
+
+    worker_ = std::thread([this]
+                          { data_receiver_.run(); });
+}
+
+void MyGraphicsView::slotDataReceived(myprotobuf::Position position)
+{
+
+    qDebug() << "Deserialized Position message:";
+    qDebug() << "pos.x: " << position.position_m().x();
+    qDebug() << "pos.y: " << position.position_m().y();
+    qDebug() << "pos.z: " << position.position_m().z();
+    qDebug() << "sensor_id: " << position.sensorid();
+    qDebug() << "timestamp: " << position.timestamp_ms();
 }
 
 MyGraphicsView::~MyGraphicsView()
 {
+    worker_.join();
 }
 
 void MyGraphicsView::setupScene()

@@ -1,8 +1,6 @@
 #include "generator.hpp"
-#include "data_ipublisher.h"
 #include "data_publisher_impl.h"
 #include "schemas/position.pb.h"
-#include "google/protobuf/util/json_util.h"
 
 int main()
 {
